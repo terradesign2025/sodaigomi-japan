@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>粗大ごみ判定アプリ / Bulky Waste Checker Japan</title>
+<style>
+:root{--p:#34C759;--pd:#28A745;--pl:#F0FBF4;--bg:#F4F6FB;--card:#fff;--t1:#1C1C1E;--t2:#636366;--t3:#8E8E93;--b:#E5E5EA;--warn:#FF3B30;--blue:#007AFF;--sh:0 2px 12px rgba(0,0,0,.06);--r:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--t1);line-height:1.5;-webkit-font-smoothing:antialiased}
+.app{max-width:720px;margin:0 auto;min-height:100vh;background:var(--bg);padding-bottom:70px}
+/* Header */
+header{background:var(--card);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--b)}
+.hd-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 18px}
+.hd-left{display:flex;align-items:center;gap:10px}
+.hd-ico{width:34px;height:34px;background:var(--pl);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.hd-app{font-size:15px;font-weight:700;color:var(--t1)}
+.hd-city{font-size:11px;color:var(--t3);margin-top:1px}
+.hd-right{display:flex;align-items:center;gap:8px}
+.lang-btn{padding:5px 10px;background:var(--pl);border:none;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;color:var(--pd)}
+.hd-avatar{width:34px;height:34px;background:var(--pl);border-radius:50%;border:none;cursor:pointer;font-size:17px}
+/* City select */
+#scSel{padding:0}
+.sel-hero{background:linear-gradient(135deg,var(--p),var(--pd));color:#fff;padding:28px 20px 24px}
+.sel-title{font-size:22px;font-weight:800;margin-bottom:4px}
+.sel-sub{font-size:13px;opacity:.88}
+.sel-body{padding:16px}
+.sc-input{width:100%;padding:13px 14px;border:1.5px solid var(--b);border-radius:var(--r);font-size:16px;background:var(--card);box-shadow:var(--sh);margin-bottom:14px;outline:none}
+.sc-input:focus{border-color:var(--p)}
+.sec-label{font-size:11px;color:var(--t3);font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase}
+.rg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:16px}
+.rg-btn{padding:13px 8px;background:var(--card);border:1.5px solid var(--b);border-radius:var(--r);font-size:13px;font-weight:600;cursor:pointer;color:var(--t1);text-align:center;box-shadow:var(--sh);transition:all .15s}
+.rg-btn:active,.rg-btn.active{background:var(--p);color:#fff;border-color:var(--p)}
+.pref-list,.city-list{background:var(--card);border-radius:var(--r);overflow:hidden;margin-bottom:12px;box-shadow:var(--sh)}
+.li-row{padding:13px 16px;border-bottom:1px solid #F2F2F7;cursor:pointer;font-size:14px;display:flex;justify-content:space-between;align-items:center;color:var(--t1);transition:background .1s}
+.li-row:last-child{border-bottom:none}
+.li-row:active{background:var(--pl)}
+.s-ready{font-size:10px;padding:2px 8px;border-radius:6px;background:var(--pl);color:var(--p);font-weight:700}
+.s-soon{font-size:10px;padding:2px 8px;border-radius:6px;background:#FFF5F5;color:var(--warn);font-weight:600}
+.back-btn{background:transparent;border:none;color:var(--t3);font-size:13px;cursor:pointer;padding:8px 0;margin-bottom:10px;display:flex;align-items:center;gap:4px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chip{padding:6px 12px;background:var(--card);border:1px solid var(--b);border-radius:20px;font-size:12px;cursor:pointer;color:var(--t1);font-weight:600}
+.chip:active{background:var(--p);color:#fff;border-color:var(--p)}
+/* App */
+#scApp{display:none;padding:16px}
+.city-hero{background:linear-gradient(135deg,var(--p),var(--pd));border-radius:var(--r);padding:18px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;color:#fff}
+.city-name{font-size:22px;font-weight:800;line-height:1.2}
+.city-pref{font-size:12px;opacity:.85;margin-top:3px}
+.city-tag{display:inline-block;background:rgba(255,255,255,.2);font-size:10px;padding:3px 8px;border-radius:8px;margin-top:6px;font-weight:600}
+.city-chg{background:rgba(255,255,255,.25);border:1.5px solid rgba(255,255,255,.5);color:#fff;padding:7px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.tile{border-radius:var(--r);padding:16px 10px 14px;text-align:center;cursor:pointer}
+.tile-g{background:linear-gradient(135deg,#34C759,#28A745);color:#fff}
+.tile-b{background:linear-gradient(135deg,#007AFF,#0056D6);color:#fff}
+.tile-o{background:linear-gradient(135deg,#FF9500,#E07B00);color:#fff}
+.tile-num{font-size:22px;font-weight:800;line-height:1.2}
+.tile-lbl{font-size:10px;opacity:.9;margin-top:4px;font-weight:600}
+.sec-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.sec-hdr-ico{width:28px;height:28px;background:var(--pl);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px}
+.sec-hdr-title{font-size:15px;font-weight:700;color:var(--t1)}
+/* Search */
+.sbwrap{background:var(--card);border-radius:var(--r);padding:12px;box-shadow:var(--sh);margin-bottom:10px}
+.srel{position:relative}
+.sinput-ico{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:15px;color:var(--t3);pointer-events:none}
+.sinput{width:100%;padding:13px 40px 13px 40px;border:1.5px solid var(--b);border-radius:11px;font-size:16px;background:#F8F9FC;color:var(--t1);outline:none}
+.sinput:focus{border-color:var(--p);background:var(--card);box-shadow:0 0 0 3px rgba(52,199,89,.12)}
+.sclr{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;background:var(--b);color:var(--t3);border:none;font-size:14px;cursor:pointer;display:none;align-items:center;justify-content:center}
+.gjgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:12px}
+.gjbtn{padding:9px 0;background:var(--card);border:1px solid var(--b);border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;color:var(--t2)}
+.gjbtn.active{background:var(--p);color:#fff;border-color:var(--p)}
+/* Items */
+.item-list{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.item-wrap{border-bottom:1px solid #F2F2F7}
+.item-wrap:last-child{border-bottom:none}
+.item-row{padding:12px 14px;display:flex;align-items:center;gap:10px}
+.item-ico{width:38px;height:38px;border-radius:10px;background:var(--pl);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.item-main{flex:1;min-width:0;cursor:pointer}
+.iname{display:flex;align-items:center;gap:6px}
+.aico{font-size:9px;color:var(--t3);transition:transform .2s}
+.ntxt{font-size:14px;font-weight:500;color:var(--t1);line-height:1.3}
+.iname.open .aico{transform:rotate(90deg);color:var(--p)}
+.iname.open .ntxt{color:var(--p);font-weight:600}
+.isub{font-size:11px;color:var(--t3);margin-top:2px}
+.item-right{display:flex;gap:6px;align-items:center;flex-shrink:0}
+.ifee{font-size:12px;font-weight:700;color:var(--p);background:var(--pl);padding:4px 10px;border-radius:10px;white-space:nowrap}
+.ifee.sp{background:#FFF0ED;color:var(--warn)}
+.badd{background:var(--p);color:#fff;border:none;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(52,199,89,.35)}
+.badd.added{background:#A8D5BC}
+.acc{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.acc.open{max-height:400px}
+.accbody{padding:12px 14px 14px;background:#F9FCF9;border-top:1px solid #F2F2F7}
+.arow{display:flex;font-size:13px;padding:3px 0}
+.albl{width:70px;color:var(--t3);font-size:12px;font-weight:600;flex-shrink:0}
+.anote{margin-top:10px;padding:10px 12px;background:var(--card);border-radius:8px;border-left:3px solid var(--p);font-size:12.5px;line-height:1.7;color:var(--t2)}
+.anote.warn{border-left-color:var(--warn);background:#FFF5F5;color:#C0392B}
+/* Suggest */
+.suggest-hd{background:#FFFCE8;border:1px solid #F5E6A0;border-radius:12px;padding:12px 14px;margin-bottom:10px;display:flex;gap:10px;align-items:flex-start}
+.sug-ico{width:34px;height:34px;background:var(--card);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.sug-t1{font-size:13px;font-weight:700;color:#6B5E1A}
+.sug-t2{font-size:11px;color:#8D7E2E;margin-top:2px}
+.empty{text-align:center;padding:36px 16px;color:var(--t3);font-size:13px}
+/* Guide */
+.rules-card{background:#FFFBE6;border:1px solid #F5E6A0;border-radius:var(--r);padding:14px 16px;margin-bottom:14px;font-size:12px;color:#6B5E1A;line-height:1.7}
+.ilist2{background:var(--card);border-radius:var(--r);overflow:hidden;margin-bottom:14px;box-shadow:var(--sh)}
+.irow2{display:flex;padding:13px 16px;border-bottom:1px solid #F2F2F7;font-size:13px}
+.irow2:last-child{border-bottom:none}
+.ilbl2{width:80px;color:var(--t3);font-size:12px;font-weight:600;flex-shrink:0}
+.ival2{flex:1;line-height:1.6}
+/* Sponsor */
+.sp-portal{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:var(--r);padding:14px 16px;margin-bottom:14px;text-decoration:none;color:inherit;box-shadow:var(--sh);border-left:4px solid var(--p);cursor:pointer}
+.sp-logo{flex-shrink:0;width:46px;height:46px;border-radius:12px;background:var(--pl);display:flex;align-items:center;justify-content:center;font-size:22px}
+.sp-text{flex:1;min-width:0}
+.sp-title{font-size:13px;font-weight:700;color:var(--t1)}
+.sp-pr{font-size:9px;background:var(--pl);color:var(--p);padding:1px 6px;border-radius:4px;font-weight:700}
+.sp-sub{font-size:11.5px;color:var(--t3);margin-top:3px}
+.sp-arr{font-size:18px;color:var(--p)}
+.sp-full{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:14px}
+.sp-hero{width:100%;height:150px;background:linear-gradient(135deg,#1a5c35,var(--p) 60%,#7dcea0);position:relative;display:flex;align-items:flex-end;padding:16px}
+.sp-hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65),transparent 60%)}
+.sp-hero-logo{position:relative;z-index:1;width:48px;height:48px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 2px 8px rgba(0,0,0,.2);flex-shrink:0}
+.sp-hero-name{position:relative;z-index:1;color:#fff;font-size:15px;font-weight:700;margin-left:12px;text-shadow:0 1px 4px rgba(0,0,0,.4);flex:1}
+.sp-body{padding:14px 16px}
+.sp-tag{display:inline-block;font-size:10px;color:var(--p);background:var(--pl);padding:2px 8px;border-radius:4px;font-weight:700;margin-bottom:8px}
+.sp-tagline{font-size:15px;font-weight:700;color:var(--t1);margin-bottom:6px}
+.sp-desc{font-size:12.5px;color:var(--t2);line-height:1.8;margin-bottom:12px}
+.sp-msg{background:var(--pl);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.sp-msg-lbl{font-size:10px;color:var(--p);font-weight:700;margin-bottom:5px}
+.sp-msg-txt{font-size:13px;color:var(--t1);line-height:1.7;font-style:italic}
+.sp-cta{display:flex;align-items:center;justify-content:center;background:var(--p);color:#fff;border-radius:12px;padding:12px;font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 3px 10px rgba(52,199,89,.35)}
+.sp-empty{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:var(--r);padding:14px 16px;margin-bottom:14px;cursor:pointer;border:1.5px dashed #C8D6CC;box-shadow:var(--sh)}
+.sp-empty:hover{border-color:var(--p);background:var(--pl)}
+.sp-empty-ico{width:46px;height:46px;border-radius:12px;background:#F0F5F2;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+/* Bottom nav */
+.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:720px;background:var(--card);border-top:1px solid var(--b);display:flex;height:62px;z-index:90;box-shadow:0 -2px 12px rgba(0,0,0,.06)}
+.bnav-btn{flex:1;border:none;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--t3);font-size:10px;font-weight:600;position:relative}
+.bnav-btn.active{color:var(--p)}
+.bnav-ico{font-size:22px;line-height:1}
+.bnav-badge{position:absolute;top:6px;right:calc(50% - 22px);background:var(--warn);color:#fff;border-radius:10px;min-width:16px;height:16px;font-size:10px;font-weight:700;display:none;align-items:center;justify-content:center;padding:0 4px}
+/* Modal */
+.mbg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:flex-end;backdrop-filter:blur(4px);display:none}
+.mbg.show{display:flex;animation:fi .2s}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+.modal{background:var(--card);width:100%;max-width:720px;margin:0 auto;border-radius:20px 20px 0 0;padding:8px 0 32px;max-height:92vh;overflow-y:auto;animation:su .25s cubic-bezier(.2,.8,.3,1)}
+@keyframes su{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.mhd{width:36px;height:4px;background:var(--b);border-radius:2px;margin:8px auto 16px}
+.mc{padding:0 20px}
+.mc h2{font-size:18px;font-weight:700;color:var(--t1);margin-bottom:4px}
+.feeblk{background:linear-gradient(135deg,var(--p),var(--pd));color:#fff;padding:16px 18px;border-radius:14px;margin:12px 0}
+.feelbl{font-size:11px;opacity:.85}
+.feeamt{font-size:28px;font-weight:800;margin-top:2px}
+.ci{background:var(--card);border:1px solid var(--b);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+.cihd{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.ciname{font-weight:600;font-size:14px;flex:1}
+.cifee{font-weight:700;font-size:13px;color:var(--p);white-space:nowrap}
+.cictrl{display:flex;align-items:center;gap:6px;margin-top:8px}
+.qbtn{width:32px;height:32px;border-radius:8px;background:#F4F6F9;border:1px solid var(--b);font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.qbtn:disabled{opacity:.4}
+.qnum{font-weight:700;min-width:24px;text-align:center;font-size:14px}
+.brem{margin-left:auto;padding:5px 10px;background:transparent;color:var(--warn);border:1px solid var(--warn);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer}
+.cmemo{width:100%;padding:8px 10px;margin-top:8px;border:1px solid var(--b);border-radius:8px;font-size:12px;background:#F8F9FB;resize:none;font-family:inherit;outline:none}
+.csumbox{background:linear-gradient(135deg,var(--pd),var(--p));color:#fff;padding:18px;border-radius:14px;margin-bottom:14px}
+.csamount{font-size:30px;font-weight:800;margin:2px 0 8px}
+.csticket{background:rgba(255,255,255,.18);padding:8px 10px;border-radius:8px;font-size:12px}
+.csrow{display:flex;justify-content:space-between;padding:2px 0}
+.cwarnbox{background:#FFF0ED;border:1px solid #FFBCB3;border-radius:12px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:#9B2335}
+.cactions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.bcopy{padding:12px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;border:none;background:var(--p);color:#fff}
+.bclr{padding:12px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;background:transparent;color:var(--warn);border:1.5px solid var(--warn)}
+.boutline{padding:13px;background:transparent;color:var(--t1);border:1.5px solid var(--b);border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;width:100%;margin-top:12px}
+/* Feedback FAB */
+.fb-fab{position:fixed;right:16px;bottom:74px;z-index:89;width:42px;height:42px;background:var(--card);border-radius:50%;box-shadow:0 2px 12px rgba(0,0,0,.15);display:none;align-items:center;justify-content:center;cursor:pointer;border:1px solid var(--b);font-size:20px}
+.fb-fab.show{display:flex}
+/* Toast */
+.toast{position:fixed;bottom:76px;left:50%;transform:translateX(-50%);background:rgba(28,28,30,.88);color:#fff;padding:10px 20px;border-radius:24px;font-size:13px;font-weight:600;z-index:300;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(-4px)}
+.fnote{margin-top:20px;padding:12px;text-align:center;font-size:11px;color:var(--t3);line-height:1.6}
+.fnote a{color:var(--p)}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="hd-inner">
+      <div class="hd-left">
+        <div class="hd-ico">🗑️</div>
+        <div>
+          <div class="hd-app" id="hdAppName">粗大ごみ判定</div>
+          <div class="hd-city" id="hdCity">地域を選択してください</div>
+        </div>
+      </div>
+      <div class="hd-right">
+        <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+        <button class="hd-avatar" onclick="showSel()" title="地域変更">👤</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 都市選択 -->
+  <div id="scSel">
+    <div class="sel-hero">
+      <div class="sel-title" id="selTitle">🗑️ 粗大ごみ判定アプリ</div>
+      <div class="sel-sub" id="selSub">お住まいの地域を選んで品目・料金を確認</div>
+    </div>
+    <div class="sel-body">
+      <input type="text" class="sc-input" id="citySearch" oninput="searchCity(this.value)">
+      <div id="citySearchResult"></div>
+      <div id="recentSec" style="display:none">
+        <div class="sec-label" id="lblRecent">⏱ 最近使用</div>
+        <div class="chips" id="recentChips"></div>
+      </div>
+      <div id="rgSec">
+        <div class="sec-label" id="lblRegion">地方から選ぶ</div>
+        <div class="rg-grid" id="rgGrid"></div>
+      </div>
+      <div id="prefSec" style="display:none">
+        <button class="back-btn" onclick="showRg()">← <span id="lblBackRg">地方選択に戻る</span></button>
+        <div class="sec-label" id="prefLabel"></div>
+        <div class="pref-list" id="prefList"></div>
+      </div>
+      <div id="citySec" style="display:none">
+        <button class="back-btn" onclick="showPref()">← <span id="lblBackPref">都道府県選択に戻る</span></button>
+        <div class="sec-label" id="cityLabel"></div>
+        <div class="city-list" id="cityList"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- メインアプリ -->
+  <div id="scApp">
+    <div class="city-hero">
+      <div>
+        <div class="city-name" id="chcCity">市区町村</div>
+        <div class="city-pref" id="chcPref">都道府県</div>
+        <div class="city-tag" id="chcTag">粗大ごみ 品目検索</div>
+      </div>
+      <button class="city-chg" id="chcBtn" onclick="showSel()">地域変更</button>
+    </div>
+    <div class="tiles">
+      <div class="tile tile-g" onclick="openCart()">
+        <div class="tile-num" id="tileCart">0件</div>
+        <div class="tile-lbl" id="tileLbl1">カート品目</div>
+      </div>
+      <div class="tile tile-b" onclick="openCart()">
+        <div class="tile-num" id="tileAmt">¥0</div>
+        <div class="tile-lbl" id="tileLbl2">合計金額</div>
+      </div>
+      <div class="tile tile-o">
+        <div class="tile-num" id="tileItems">--</div>
+        <div class="tile-lbl" id="tileLbl3">登録品目数</div>
+      </div>
+    </div>
+    <div id="spTop"></div>
+    <section id="tabSearch">
+      <div class="sec-hdr">
+        <div class="sec-hdr-ico">🔍</div>
+        <div class="sec-hdr-title" id="secSearch">品目を検索</div>
+      </div>
+      <div class="sbwrap">
+        <div class="srel">
+          <span class="sinput-ico">🔍</span>
+          <input type="text" class="sinput" id="sinput">
+          <button class="sclr" id="sclr" onclick="clearSearch()">×</button>
+        </div>
+      </div>
+      <div class="gjgrid" id="gjgrid"></div>
+      <div id="itemArea"></div>
+    </section>
+    <section id="tabInfo" style="display:none">
+      <div class="sec-hdr">
+        <div class="sec-hdr-ico">📋</div>
+        <div class="sec-hdr-title" id="secInfo">出し方ガイド</div>
+      </div>
+      <div class="rules-card" id="rulesCard"></div>
+      <div class="ilist2" id="infoList"></div>
+    </section>
+    <div id="spBot"></div>
+    <div class="fnote" id="fnote"></div>
+  </div>
+</div>
+
+<!-- ボトムナビ -->
+<nav class="bnav" id="bnav" style="display:none">
+  <button class="bnav-btn active" id="bnavSearch" onclick="switchTab('search')">
+    <span class="bnav-ico">🔍</span><span id="bnavLblSearch">検索</span>
+  </button>
+  <button class="bnav-btn" id="bnavInfo" onclick="switchTab('info')">
+    <span class="bnav-ico">📋</span><span id="bnavLblInfo">ガイド</span>
+  </button>
+  <button class="bnav-btn" id="bnavCart" onclick="openCart()">
+    <span class="bnav-ico">🛒</span><span id="bnavLblCart">カート</span>
+    <span class="bnav-badge" id="navBadge">0</span>
+  </button>
+  <button class="bnav-btn" onclick="showSel()">
+    <span class="bnav-ico">🏙️</span><span id="bnavLblRegion">地域</span>
+  </button>
+</nav>
+
+<!-- フィードバックFAB -->
+<div class="fb-fab" id="fbFab" onclick="openFeedback()">💬</div>
+
+<!-- カートモーダル -->
+<div class="mbg" id="cartModal">
+  <div class="modal"><div class="mhd"></div><div class="mc" id="cartContent"></div></div>
+</div>
+
+<!-- フィードバックモーダル -->
+<div class="mbg" id="fbModal">
+  <div class="modal"><div class="mhd"></div>
+    <div class="mc">
+      <div style="font-size:18px;font-weight:700;margin-bottom:4px">💬 <span id="fbTitle">ご意見・ご報告</span></div>
+      <div style="font-size:12px;color:var(--t3);margin-bottom:20px" id="fbSub">品目が見つからない、同義語の提案など</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+        <button onclick="openFbQuick('notfound')" style="padding:14px 10px;background:var(--pl);border:1.5px solid var(--p);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;line-height:1.4">🔍 <span id="fb1">品目が見つからない</span></button>
+        <button onclick="openFbQuick('synonym')" style="padding:14px 10px;background:#F0F7FF;border:1.5px solid var(--blue);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;line-height:1.4">💡 <span id="fb2">同義語を提案する</span></button>
+        <button onclick="openFbQuick('wrong')" style="padding:14px 10px;background:#FFF5F5;border:1.5px solid var(--warn);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;line-height:1.4">⚠️ <span id="fb3">情報が間違っている</span></button>
+        <button onclick="openFbQuick('bug')" style="padding:14px 10px;background:#F8F8F8;border:1.5px solid var(--b);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;line-height:1.4">🐛 <span id="fb4">バグ報告</span></button>
+      </div>
+      <div style="background:var(--pl);border-radius:12px;padding:14px 16px;margin-bottom:16px">
+        <div style="font-size:13px;font-weight:700;color:var(--pd);margin-bottom:4px">🙌 <span id="fbVolTitle">同義語ボランティア募集中！</span></div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.7" id="fbVolDesc">ご提案は随時反映します。皆さんのご協力でアプリが良くなります！</div>
+      </div>
+      <button onclick="document.getElementById('fbModal').classList.remove('show')" style="width:100%;padding:12px;background:transparent;color:var(--t3);border:none;font-size:14px;cursor:pointer" id="fbClose">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// =====================================================
+// 言語システム
+// =====================================================
+const LANG = {
+  ja: {
+    appName:'粗大ごみ判定',
+    selTitle:'🗑️ 粗大ごみ判定アプリ',
+    selSub:'お住まいの地域を選んで品目・料金を確認',
+    selSearch:'🔍 都市名で検索（例：八王子、横浜、大阪）',
+    lblRecent:'⏱ 最近使用',
+    lblRegion:'地方から選ぶ',
+    lblBackRg:'地方選択に戻る',
+    lblBackPref:'都道府県選択に戻る',
+    chcTag:'粗大ごみ 品目検索',
+    chcBtn:'地域変更',
+    tileLbl1:'カート品目',tileLbl2:'合計金額',tileLbl3:'登録品目数',
+    secSearch:'品目を検索',secInfo:'出し方ガイド',
+    searchPh:'例：ソファ、布団、デスク、ルンバ',
+    bnavSearch:'検索',bnavInfo:'ガイド',bnavCart:'カート',bnavRegion:'地域',
+    sReady:'✓ データあり',sSoon:'準備中',
+    fbTitle:'ご意見・ご報告',fbSub:'品目が見つからない、同義語の提案など',
+    fb1:'品目が見つからない',fb2:'同義語を提案する',fb3:'情報が間違っている',fb4:'バグ報告',
+    fbVolTitle:'同義語ボランティア募集中！',fbVolDesc:'ご提案は随時反映します。皆さんのご協力でアプリが良くなります！',
+    fbClose:'閉じる',
+    hdCity:'地域を選択してください',
+    noResult:'に該当する品目が見つかりませんでした',noResultSub:'別の言い方や50音で検索してみてください',
+    sugLabel:'件の関連品目を表示しています',
+    maybeLbl:'もしかして',
+    feeLabel:'¥',feeUnit:'（ポイント）',methodLabel:'出し方',
+    cartEmpty:'カートは空です',cartTitle:'カート',
+    ticketLabel:'必要な処理券（合計）',
+    ticket5:'5ptシール',ticket1:'1ptシール',sheets:'枚',
+    uncollWarn:'収集不可品目',uncollSub:'別途処理が必要',
+    step1:'下のテキストをコピー',step2:'公式サイトまたは電話で申込',step3:'処理券を購入して品目に貼付',
+    copyBtn:'📋 一括コピー',clearBtn:'カートを空に',closeBtn:'閉じる',
+    listTitle:'申込リスト',
+    notCollLabel:'収集不可 — 別途処理が必要',
+    noCityData:'このデータは準備中です。近日公開予定！',
+    langSwitch:'EN',
+    copySuccess:'✓ コピーしました',addCart:'カートに追加（',
+  },
+  en: {
+    appName:'Bulky Waste Checker',
+    selTitle:'🗑️ Bulky Waste Checker Japan',
+    selSub:'Select your city to check fees and items',
+    selSearch:'🔍 Search city (e.g. Hachioji, Yokohama)',
+    lblRecent:'⏱ Recent',
+    lblRegion:'Select by region',
+    lblBackRg:'Back to regions',
+    lblBackPref:'Back to prefectures',
+    chcTag:'Bulky Waste Search',
+    chcBtn:'Change city',
+    tileLbl1:'Cart items',tileLbl2:'Total fee',tileLbl3:'Items available',
+    secSearch:'Search items',secInfo:'Disposal guide',
+    searchPh:'e.g. sofa, bed, desk, vacuum',
+    bnavSearch:'Search',bnavInfo:'Guide',bnavCart:'Cart',bnavRegion:'City',
+    sReady:'✓ Data ready',sSoon:'Coming soon',
+    fbTitle:'Feedback',fbSub:'Item not found? Suggest synonyms',
+    fb1:'Item not found',fb2:'Suggest a synonym',fb3:'Wrong information',fb4:'Bug report',
+    fbVolTitle:'Help improve the app!',fbVolDesc:'Your suggestions are regularly added. Thank you for contributing!',
+    fbClose:'Close',
+    hdCity:'Please select your city',
+    noResult:' — no items found',noResultSub:'Try different keywords or browse by category',
+    sugLabel:'related items shown',
+    maybeLbl:'Did you mean',
+    feeLabel:'¥',feeUnit:'pt',methodLabel:'Method',
+    cartEmpty:'Your cart is empty',cartTitle:'Cart',
+    ticketLabel:'Processing tickets needed',
+    ticket5:'5pt stickers',ticket1:'1pt stickers',sheets:'',
+    uncollWarn:'Non-collectible items',uncollSub:'Separate disposal required',
+    step1:'Copy the text below',step2:'Apply online or by phone',step3:'Buy processing tickets and attach to items',
+    copyBtn:'📋 Copy list',clearBtn:'Clear cart',closeBtn:'Close',
+    listTitle:'Application list',
+    notCollLabel:'Cannot be collected — requires separate disposal',
+    noCityData:'Data for this city is coming soon!',
+    langSwitch:'JA',
+    copySuccess:'✓ Copied!',addCart:'Added to cart (',
+  }
+};
+
+let lang = localStorage.getItem('sodai_lang') || 'ja';
+
+function T(key) { return LANG[lang][key] || LANG['ja'][key] || key; }
+
+function applyLang() {
+  const L = LANG[lang];
+  document.getElementById('hdAppName').textContent = L.appName;
+  document.getElementById('selTitle').textContent = L.selTitle;
+  document.getElementById('selSub').textContent = L.selSub;
+  document.getElementById('citySearch').placeholder = L.selSearch;
+  document.getElementById('lblRecent').textContent = L.lblRecent;
+  document.getElementById('lblRegion').textContent = L.lblRegion;
+  document.getElementById('lblBackRg').textContent = L.lblBackRg;
+  document.getElementById('lblBackPref').textContent = L.lblBackPref;
+  document.getElementById('chcTag').textContent = L.chcTag;
+  document.getElementById('chcBtn').textContent = L.chcBtn;
+  document.getElementById('tileLbl1').textContent = L.tileLbl1;
+  document.getElementById('tileLbl2').textContent = L.tileLbl2;
+  document.getElementById('tileLbl3').textContent = L.tileLbl3;
+  document.getElementById('secSearch').textContent = L.secSearch;
+  document.getElementById('secInfo').textContent = L.secInfo;
+  document.getElementById('sinput').placeholder = L.searchPh;
+  document.getElementById('bnavLblSearch').textContent = L.bnavSearch;
+  document.getElementById('bnavLblInfo').textContent = L.bnavInfo;
+  document.getElementById('bnavLblCart').textContent = L.bnavCart;
+  document.getElementById('bnavLblRegion').textContent = L.bnavRegion;
+  document.getElementById('fbTitle').textContent = L.fbTitle;
+  document.getElementById('fbSub').textContent = L.fbSub;
+  document.getElementById('fb1').textContent = L.fb1;
+  document.getElementById('fb2').textContent = L.fb2;
+  document.getElementById('fb3').textContent = L.fb3;
+  document.getElementById('fb4').textContent = L.fb4;
+  document.getElementById('fbVolTitle').textContent = L.fbVolTitle;
+  document.getElementById('fbVolDesc').textContent = L.fbVolDesc;
+  document.getElementById('fbClose').textContent = L.fbClose;
+  document.getElementById('langBtn').textContent = L.langSwitch;
+  document.documentElement.lang = lang;
+  if(currentCity) {
+    document.getElementById('hdCity').textContent = `📍 ${currentCity.pref} ${currentCity.name}`;
+  }
+  renderItems();
+}
+
+function toggleLang() {
+  lang = lang === 'ja' ? 'en' : 'ja';
+  localStorage.setItem('sodai_lang', lang);
+  applyLang();
+}
+
+// =====================================================
+// 同義語辞書
+// =====================================================
+const SYNONYMS = {
+  'てすく':['机','テーブル','ライティング','学習','書き物'],
+  'つくえ':['テーブル','デスク','机','学習'],
+  'ちゃふたい':['テーブル','座卓'],
+  'しよくたく':['テーブル','ダイニング','食卓'],
+  'かうち':['ソファ','ソファー'],
+  'なかいす':['ソファ','ソファー'],
+  'ちえあ':['椅子','チェア','座椅子','ソファ'],
+  'すつる':['椅子','スツール','チェア'],
+  'けみんくちえあ':['椅子','チェア','ゲーミング'],
+  'かいこへつと':['ベッド','介護'],
+  'へひいへつと':['ベッド','ベビー'],
+  'まつとれす':['マットレス','ベッド','スプリング'],
+  'すふりんく':['スプリング','マットレス','ベッド'],
+  'ふとん':['布団','寝具','マット'],
+  'はねふとん':['布団','羽毛'],
+  'ちやり':['自転車'],
+  'ちやりんこ':['自転車'],
+  'はいく':['自転車','電動','乗り物'],
+  'いちりんしや':['自転車','一輪車'],
+  'さんりんしや':['自転車','三輪車'],
+  'すとらいたあ':['自転車','ストライダー'],
+  'はきか':['ベビーカー','乳母車'],
+  'しゆうたん':['カーペット','じゅうたん','ラグ'],
+  'ちゆうたん':['カーペット','じゅうたん'],
+  'らく':['カーペット','ラグ','マット'],
+  'ふろりんく':['カーペット','フローリング','ウッド'],
+  'うつとかへつと':['カーペット','ウッド','フローリング'],
+  'たんす':['たんす','収納','タンス','箪笥'],
+  'ちえすと':['たんす','収納','チェスト'],
+  'ほんたな':['棚','本棚','収納'],
+  'らつく':['棚','収納','ラック'],
+  'からほつくす':['棚','収納','カラー'],
+  'てれひほと':['テレビ','ボード','棚'],
+  'すとふ':['ヒーター','ストーブ','オイル','ファン'],
+  'ふあんひた':['ヒーター','ストーブ','ファン'],
+  'てんきすとふ':['ヒーター','電気','ストーブ'],
+  'たんほう':['ヒーター','暖房','ストーブ'],
+  '暖房':['オイルヒーター','ヒーター','ストーブ','ファンヒーター','こたつ'],
+  'うくれれ':['楽器','ギター','ウクレレ'],
+  'へす':['楽器','ベース','ギター'],
+  'えれき':['楽器','ギター','エレキ'],
+  'はいおりん':['楽器','バイオリン','チェロ'],
+  'ちえろ':['楽器','チェロ','バイオリン'],
+  'とらんへつと':['楽器','トランペット','管楽器'],
+  'さつくす':['楽器','サックス','管楽器'],
+  'ふると':['楽器','フルート','管楽器'],
+  'とらむ':['楽器','ドラム','打楽器'],
+  'さみせん':['楽器','三味線','琴'],
+  '楽器':['ギター','キーボード','バイオリン','ドラム','スピーカー','ウクレレ','ベース','三味線','琴'],
+  '弦楽器':['ギター','バイオリン','チェロ','ウクレレ','ベース'],
+  'るんは':['掃除機','ルンバ','ロボット'],
+  'たいそん':['掃除機','ダイソン'],
+  'てれひ':['テレビ','TV'],
+  'くら':['エアコン','クーラー','冷房'],
+  '冷房':['エアコン'],
+  'れいとうこ':['冷蔵庫','冷凍'],
+  'せんたくかんそき':['洗濯機','乾燥機'],
+  'ひし':['パソコン','PC'],
+  'まつく':['パソコン','Mac','MacBook'],
+  'ふくこき':['プリンター','複合機','コピー'],
+  'おふん':['電子レンジ','オーブン'],
+  'れんし':['電子レンジ','レンジ'],
+  'くらふ':['ゴルフ','ゴルフクラブ','クラブ'],
+  'あいあん':['ゴルフ','クラブ','アイアン'],
+  'はつた':['ゴルフ','クラブ','パター'],
+  'くるまいす':['車椅子','車いす','介護'],
+  'かふん':['空気清浄機','花粉'],
+  'かしつ':['加湿器','空気清浄機','加湿'],
+  'しよしつ':['除湿機','加湿器'],
+  'かんふら':['模型','プラモデル','おもちゃ'],
+  'ふらもてる':['模型','プラモデル','おもちゃ'],
+  'けし':['ケージ','ペット','犬','猫'],
+  'ねこ':['キャットタワー','ペット','猫','ケージ'],
+  'いぬ':['犬小屋','ペット','犬','ケージ'],
+  'とれつとみる':['ランニングマシン','トレッドミル'],
+  'るむらんな':['ランニングマシン','ルームランナー'],
+  'らんにんくましん':['トレッドミル','ルームランナー'],
+  'らんにんくましいん':['ランニングマシン','トレッドミル'],
+  'えあろはいく':['サイクリングマシン','エアロバイク'],
+  'けんすいたい':['ぶら下がり','懸垂'],
+  'すのほ':['スノーボード','スキー'],
+  'すき':['スキー板','スノーボード'],
+  'はへきゆ':['バーベキュー','コンロ','BBQ'],
+  'きやんふ':['テント','タープ','バーベキュー'],
+  'かかみ':['姿見','鏡台'],
+  'まくら':['枕','クッション'],
+  'ほしもの':['物干し','竿','台'],
+  'いかるふれさ':['アイロン','アイロン台'],
+  'ひこたつ':['家具調コタツ','こたつ'],
+  'こたつ':['家具調コタツ','コタツ'],
+  '引越し':['ソファ','テーブル','ベッド','たんす'],
+  '介護':['介護ベッド','車椅子','シルバーカー'],
+  'sofa':['ソファ','ソファー','カウチ'],
+  'bed':['ベッド','マットレス','布団'],
+  'desk':['机','テーブル','デスク'],
+  'vacuum':['掃除機','ルンバ'],
+  'guitar':['楽器','ギター'],
+  'bike':['自転車','電動'],
+  'treadmill':['ランニングマシン','トレッドミル'],
+  'chair':['椅子','チェア','座椅子'],
+  'carpet':['カーペット','じゅうたん','ラグ'],
+  'heater':['ヒーター','オイルヒーター','ストーブ'],
+};
+
+// =====================================================
+// 正規化（濁点除去・長音除去・カタカナ→ひらがな）
+// =====================================================
+function norm(s) {
+  let r = String(s||'').toLowerCase()
+    .replace(/[ァ-ヶ]/g, c => String.fromCharCode(c.charCodeAt(0) - 0x60))
+    .replace(/[ー・]/g, '').replace(/\s+/g, '');
+  const dk={'が':'か','ぎ':'き','ぐ':'く','げ':'け','ご':'こ','ざ':'さ','じ':'し','ず':'す','ぜ':'せ','ぞ':'そ',
+    'だ':'た','ぢ':'ち','づ':'つ','で':'て','ど':'と','ば':'は','び':'ひ','ぶ':'ふ','べ':'へ','ぼ':'ほ',
+    'ぱ':'は','ぴ':'ひ','ぷ':'ふ','ぺ':'へ','ぽ':'ほ','ゔ':'う'};
+  const sm={'ぁ':'あ','ぃ':'い','ぅ':'う','ぇ':'え','ぉ':'お','っ':'つ','ょ':'よ','ゃ':'や','ゅ':'ゆ'};
+  return r.replace(/./g, c => dk[c]||sm[c]||c);
+}
+function itemText(item){ return [item.n,...(item.tags||[]),item.note||''].join(' '); }
+
+function searchItems(q, items) {
+  if (!q.trim()) return { results: items, mode: 'all' };
+  const nq = norm(q);
+  if (!nq) return { results: items, mode: 'all' };
+
+  const direct = items.filter(i => norm(itemText(i)).includes(nq));
+  if (direct.length) return { results: direct, mode: 'direct' };
+
+  if (nq.length >= 2) {
+    const prefix = items.filter(i => norm(itemText(i)).replace(/[（）\s]/g,' ').split(/\s+/).some(w => w.startsWith(nq)));
+    if (prefix.length) return { results: prefix, mode: 'direct' };
+  }
+
+  const matchedKeys = Object.keys(SYNONYMS).filter(k => {
+    const nk = norm(k);
+    return nk === nq || (nk.includes(nq) && nq.length >= 2) || (nq.includes(nk) && nk.length >= 2);
+  });
+  if (matchedKeys.length) {
+    const extraWords = [...new Set(matchedKeys.flatMap(k => SYNONYMS[k]))];
+    const synResults = items.filter(i => { const t=norm(itemText(i)); return extraWords.some(w=>t.includes(norm(w))); });
+    if (synResults.length) {
+      const vals = SYNONYMS[matchedKeys[0]];
+      return { results: synResults, mode: 'synonym', label: `「${q}」= 「${vals.slice(0,3).join('・')}」として検索` };
+    }
+  }
+
+  if (nq.length >= 3) {
+    const tol = nq.length >= 6 ? 2 : 1;
+    const scored = [];
+    for (const item of items) {
+      const words = norm(itemText(item)).replace(/[（）]/g,' ').split(/\s+/);
+      let minD = Infinity;
+      for (const w of words) {
+        if (w.length < 2) continue;
+        for (let s=0;s<=w.length-nq.length;s++) minD=Math.min(minD,ldist(nq,w.substr(s,nq.length)));
+        if (Math.abs(w.length-nq.length)<=2) minD=Math.min(minD,ldist(nq,w));
+      }
+      if (minD <= tol) scored.push({item,dist:minD});
+    }
+    scored.sort((a,b)=>a.dist-b.dist);
+    if (scored.length) {
+      const topNames = [...new Set(scored.slice(0,3).map(x=>x.item.n))].join('、');
+      return { results: scored.slice(0,12).map(x=>x.item), mode:'fuzzy', label:`「${q}」に近い品目: ${topNames}` };
+    }
+  }
+  return { results:[], mode:'none' };
+}
+
+function ldist(a,b) {
+  if(!a)return b.length; if(!b)return a.length;
+  const dp=Array.from({length:a.length+1},(_,i)=>[i,...Array(b.length).fill(0)]);
+  for(let j=1;j<=b.length;j++)dp[0][j]=j;
+  for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)
+    dp[i][j]=a[i-1]===b[j-1]?dp[i-1][j-1]:1+Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]);
+  return dp[a.length][b.length];
+}
+
+// =====================================================
+// 八王子市 埋め込みデータ
+// =====================================================
+const EMBEDDED = {
+  "13201": {
+    city:{id:"13201",name:"八王子市",prefecture:"東京都",rank:"B",
+      rules:{
+        definition:"重さ5kg以上 または 40Lの指定収集袋に入らないもの",
+        contact:"0570-550-530",hours:"月〜金 8:30〜17:15（祝日除く）",
+        internetHours:"24時間365日",
+        websiteUrl:"https://www.city.hachioji.tokyo.jp/kurashi/gomi/kateigomi/sodaigomi/",
+        applicationMethod:"電話 / インターネット24時間受付",
+        paymentMethod:"粗大ごみ処理券（1pt=100円）コンビニ等で購入またはオンライン決済",
+        collectionMethod:"収集日当日の朝8:30までに指定場所へ。処理券に受付番号を記入して貼付。立ち会い不要",
+        selfCarryIn:"渋沢清掃工場 / 多摩清掃工場。料金10kgごとに350円。事前予約・本人確認書類が必要",
+        nonCollectibleNote:"家電リサイクル4品目（エアコン・テレビ・冷蔵庫・洗濯機）、パソコン、バイク・タイヤ、消火器、ピアノ、金庫等は市では収集できません"
+      }
+    },
+    items:[
+      {n:"アイロン台",k:["あ"],fee:200,m:"収集/持込",tags:["アイロン","板"]},
+      {n:"アコーディオンカーテン・ブラインド",k:["あ"],fee:200,m:"収集/持込",tags:["カーテン","ブラインド","仕切り"]},
+      {n:"足裏・足もみマッサージ機",k:["あ"],fee:500,m:"収集/持込",tags:["マッサージ","健康","フットマッサージャー"]},
+      {n:"一輪車",k:["あ"],fee:200,m:"収集/持込",tags:["乗り物","自転車","ユニサイクル"]},
+      {n:"ウォーターサーバー",k:["あ"],fee:500,m:"収集/持込",tags:["水サーバー","サーバー"]},
+      {n:"ウッドカーペット（6畳未満）",k:["あ"],fee:500,m:"収集/持込",tags:["カーペット","敷物","ラグ","フローリング","ウッド"]},
+      {n:"ウッドカーペット（6畳以上）",k:["あ"],fee:1000,m:"収集/持込",tags:["カーペット","敷物","ラグ","フローリング","ウッド"]},
+      {n:"オイルヒーター",k:["あ"],fee:1000,m:"収集/持込",tags:["ヒーター","暖房","ストーブ","デロンギ","電気暖房","パネルヒーター"]},
+      {n:"おもちゃの車",k:["あ"],fee:200,m:"収集/持込",tags:["おもちゃ","玩具","乗り物","乗用","車"]},
+      {n:"介護ベッド",k:["か"],fee:2000,m:"収集/持込",note:"要解体",tags:["ベッド","介護","電動ベッド","昇降ベッド"]},
+      {n:"額・姿見",k:["か"],fee:200,m:"収集/持込",tags:["額","姿見","鏡","スタンドミラー","全身鏡"]},
+      {n:"家具調コタツ（最長辺100cm以上）",k:["か"],fee:1000,m:"収集/持込",tags:["コタツ","こたつ","炬燵","テーブル","暖房テーブル"]},
+      {n:"加湿器・除湿機",k:["か"],fee:200,m:"収集/持込",tags:["加湿","除湿","加湿器","除湿機","空気清浄機"]},
+      {n:"ガスコンロ（2口以上）",k:["か"],fee:200,m:"収集/持込",tags:["ガスコンロ","IH","コンロ","電磁調理器","IHコンロ"]},
+      {n:"観葉植物（直径20cm・長さ100cm未満）",k:["か"],fee:200,m:"収集/持込",note:"鉢は自己処理",tags:["観葉植物","植物","グリーン"]},
+      {n:"カーペット・じゅうたん（6畳未満）",k:["か"],fee:200,m:"収集/持込",tags:["カーペット","じゅうたん","絨毯","ラグ","マット","敷物"]},
+      {n:"カーペット・じゅうたん（6畳以上）",k:["か"],fee:500,m:"収集/持込",tags:["カーペット","じゅうたん","絨毯","ラグ","マット"]},
+      {n:"ギター（ケース含む）",k:["か"],fee:200,m:"収集/持込",tags:["楽器","ギター","エレキギター","アコースティックギター","アコギ","弦楽器"]},
+      {n:"ギターアンプ（30Wまで）",k:["か"],fee:200,m:"収集/持込",tags:["楽器","アンプ","ギター","音響"]},
+      {n:"キーボード（楽器）",k:["か"],fee:200,m:"収集/持込",tags:["楽器","キーボード","電子キーボード","シンセサイザー","ピアノ","鍵盤"]},
+      {n:"空気清浄機",k:["か"],fee:200,m:"収集/持込",tags:["家電","空気清浄機","加湿空気清浄機","花粉","HEPA"]},
+      {n:"クッション",k:["か"],fee:200,m:"収集/持込",note:"1点2P",tags:["クッション","座布団","ビーズクッション"]},
+      {n:"車椅子（電動式を除く）",k:["か"],fee:500,m:"収集/持込",tags:["車椅子","車いす","介護","手動車椅子"]},
+      {n:"車椅子（電動式・バッテリーを外したもの）",k:["か"],fee:1000,m:"収集/持込",tags:["車椅子","電動車椅子","車いす","介護"]},
+      {n:"ゴルフクラブ",k:["か"],fee:200,m:"収集/持込",note:"5本以上ごとに",tags:["ゴルフ","クラブ","アイアン","ウッド","ドライバー","パター","ウェッジ"]},
+      {n:"ゴルフバッグ（中身は空に）",k:["か"],fee:200,m:"収集/持込",tags:["ゴルフ","バッグ","キャディバッグ"]},
+      {n:"サイクリングマシン（家庭用）",k:["さ"],fee:1000,m:"収集/持込",tags:["エアロバイク","運動","健康","フィットネスバイク","スピンバイク","ダイエットバイク"]},
+      {n:"座椅子型マッサージチェア",k:["さ"],fee:500,m:"収集/持込",tags:["マッサージ","健康","マッサージチェア","マッサージ機"]},
+      {n:"座卓",k:["さ"],fee:500,m:"収集/持込",tags:["テーブル","机","ちゃぶ台","座卓"]},
+      {n:"三面鏡",k:["さ"],fee:500,m:"収集/持込",tags:["鏡","鏡台","ドレッサー","姿見"]},
+      {n:"自転車",k:["さ"],fee:500,m:"収集/持込",note:"電動アシストも可。フル電動は不可",tags:["自転車","チャリ","チャリンコ","ジテンシャ","電動自転車","クロスバイク","ロードバイク","マウンテンバイク","MTB"]},
+      {n:"シュレッダー",k:["さ"],fee:200,m:"収集/持込",note:"業務用は不可",tags:["シュレッダー","書類裁断"]},
+      {n:"食器洗い乾燥機",k:["さ"],fee:200,m:"収集/持込",tags:["食洗機","食器洗い","食器洗い乾燥機"]},
+      {n:"掃除機",k:["さ"],fee:200,m:"収集/持込",tags:["家電","掃除機","ルンバ","ロボット掃除機","ダイソン","コードレス","スティック","クリーナー","バキューム"]},
+      {n:"ソファー（座面70cm未満）",k:["さ"],fee:500,m:"収集/持込",tags:["ソファ","ソファー","カウチ","長椅子","1人掛け","2人掛け"]},
+      {n:"ソファー（座面70cm以上）",k:["さ"],fee:1000,m:"収集/持込",note:"分割式は分割して申込",tags:["ソファ","ソファー","カウチ","長椅子","3人掛け","コーナーソファ","Lソファ"]},
+      {n:"ソファーベッド",k:["さ"],fee:1000,m:"収集/持込",tags:["ソファ","ベッド","ソファーベッド","カウチ"]},
+      {n:"スプリングマットレス（シングル・セミダブル）",k:["さ"],fee:2400,m:"収集/持込",tags:["マットレス","ベッド","スプリング","ポケットコイル","ボンネルコイル"]},
+      {n:"スプリングマットレス（ダブル）",k:["さ"],fee:2900,m:"収集/持込",tags:["マットレス","ベッド","スプリング","ダブル"]},
+      {n:"スキー板（ストック含む）・スノーボード",k:["さ"],fee:200,m:"収集/持込",tags:["スキー","スノーボード","スノボ","ウィンタースポーツ"]},
+      {n:"ステッパー",k:["さ"],fee:500,m:"収集/持込",tags:["運動","健康","ステッパー","足踏み"]},
+      {n:"スカイウォーカー",k:["さ"],fee:1000,m:"収集/持込",tags:["運動","健康","クロストレーナー","エリプティカル"]},
+      {n:"スピーカー",k:["さ"],fee:200,m:"収集/持込",note:"1台につき200円",tags:["スピーカー","音響","サウンドバー"]},
+      {n:"たんす・収納（最長辺100cm未満）",k:["た"],fee:500,m:"収集/持込",tags:["タンス","たんす","収納","箪笥","チェスト","本棚","棚","ラック","カラーボックス","TVボード","シェルフ"]},
+      {n:"たんす・収納（最長辺100cm以上）",k:["た"],fee:1000,m:"収集/持込",tags:["タンス","たんす","収納","箪笥","チェスト","本棚","棚","ラック","カラーボックス","テレビボード","TVボード","シェルフ","食器棚","ワードローブ"]},
+      {n:"チャイルドシート・ジュニアシート",k:["た"],fee:200,m:"収集/持込",tags:["チャイルドシート","ジュニアシート","ベビー","子供","シート"]},
+      {n:"テーブル（最長辺100cm未満）",k:["た"],fee:200,m:"収集/持込",tags:["テーブル","机","ちゃぶ台","ローテーブル","コーヒーテーブル","折りたたみ","キャンプテーブル"]},
+      {n:"テーブル・机（最長辺100cm以上）",k:["た"],fee:1000,m:"収集/持込",tags:["テーブル","机","ダイニングテーブル","食卓","デスク","学習机","書き物","パソコンデスク","ワークデスク","作業台","つくえ","勉強机"]},
+      {n:"電子レンジ",k:["た"],fee:500,m:"収集/持込",tags:["電子レンジ","レンジ","オーブン","オーブンレンジ","スチームオーブン","トースター","ヘルシオ","マイクロウェーブ"]},
+      {n:"電子ピアノ・エレクトーン（80kg以上）",k:["た"],fee:2000,m:"収集/持込",tags:["楽器","電子ピアノ","エレクトーン","ピアノ","クラビノーバ","鍵盤"]},
+      {n:"ベビーカー",k:["は"],fee:200,m:"収集/持込",tags:["ベビーカー","乳母車","バギー","ストローラー","stroller"]},
+      {n:"ベビーベッド",k:["は"],fee:500,m:"収集/持込",note:"要解体",tags:["ベッド","ベビー","赤ちゃん","ハイローチェア","バウンサー"]},
+      {n:"ベッド（シングル・セミダブル）",k:["は"],fee:1000,m:"収集/持込",note:"要解体",tags:["ベッド","シングル","セミダブル","ベッドフレーム","すのこベッド","収納ベッド","bed"]},
+      {n:"ベッド（ダブル・クイーン以上）",k:["は"],fee:2000,m:"収集/持込",note:"要解体",tags:["ベッド","ダブル","クイーン","キング","大型ベッド"]},
+      {n:"布団",k:["は"],fee:200,m:"収集/持込",note:"1枚2P",tags:["布団","寝具","掛け布団","敷き布団","羽毛布団","毛布","futon","blanket"]},
+      {n:"ぶら下がり健康器",k:["は"],fee:500,m:"収集/持込",tags:["運動","健康","懸垂","懸垂台","チンニングスタンド","鉄棒","マルチジム"]},
+      {n:"プリンター",k:["は"],fee:200,m:"収集/持込",tags:["プリンター","複合機","インクジェット","コピー機","スキャナー","FAX","printer"]},
+      {n:"物干し台（コンクリート足台1組）",k:["は"],fee:500,m:"収集/持込",tags:["物干し","竿","台","洗濯"]},
+      {n:"バイオリン・チェロ（ケース含む）",k:["は"],fee:200,m:"収集/持込",tags:["楽器","バイオリン","チェロ","ビオラ","弦楽器","ヴァイオリン","violin"]},
+      {n:"バーベキューコンロ",k:["は"],fee:200,m:"収集/持込",tags:["バーベキュー","BBQ","コンロ","グリル","焚き火","キャンプ","barbecue"]},
+      {n:"マッサージチェア（大型）",k:["ま"],fee:2000,m:"収集/持込",note:"80kg以上",tags:["マッサージ","マッサージチェア","整体チェア","もみ機","massage chair"]},
+      {n:"マットレス（スプリングなし）",k:["ま"],fee:200,m:"収集/持込",tags:["マットレス","低反発","高反発","ウレタン","ベッドマット","mattress"]},
+      {n:"物置（解体できるもの・1畳以下）",k:["ま"],fee:1000,m:"収集/持込",tags:["物置","倉庫","ガーデンシェッド"]},
+      {n:"模型・プラモデル",k:["ま"],fee:200,m:"収集/持込",note:"ムシろ対策必要",tags:["ガンプラ","プラモデル","フィギュア","ミニカー","鉄道模型","玩具","おもちゃ"]},
+      {n:"ランニングマシン（家庭用）",k:["ら"],fee:2000,m:"収集/持込",note:"80kg以上は不可",tags:["ランニング","運動","トレッドミル","ルームランナー","ランニングマシーン","treadmill"]},
+      {n:"扇風機・冷風扇",k:["さ"],fee:200,m:"収集/持込",tags:["扇風機","サーキュレーター","冷風扇","家電","fan"]},
+      {n:"レーザープリンター",k:["ら"],fee:500,m:"収集/持込",note:"業務用は不可",tags:["レーザー","プリンター","複合機"]},
+      {n:"三輪車",k:["さ"],fee:200,m:"収集/持込",tags:["乗り物","子供","三輪車","自転車","tricycle"]},
+      {n:"ストライダー",k:["さ"],fee:200,m:"収集/持込",tags:["自転車","ペダルなし","バランスバイク","キックバイク","乗り物","balance bike"]},
+      {n:"ジャングルジム（屋内用）",k:["さ"],fee:200,m:"収集/持込",tags:["子供","遊具","おもちゃ"]},
+      {n:"ベビーサークル・ベビーゲート",k:["は"],fee:200,m:"収集/持込",tags:["ベビー","サークル","ゲート","フェンス","赤ちゃん"]},
+      {n:"水槽",k:["さ"],fee:200,m:"収集/持込",note:"付属品は含まない・砂は自己処理",tags:["水槽","アクアリウム","熱帯魚","金魚","fish tank"]},
+      {n:"キャットタワー",k:["か"],fee:500,m:"収集/持込",note:"要解体",tags:["猫","ペット","キャットタワー","キャットウォーク","ネコタワー","cat tower"]},
+      {n:"ペット用ケージ（サークル）",k:["は"],fee:200,m:"収集/持込",note:"1枚の底板ごとに一式200円",tags:["ケージ","ペット","犬","猫","サークル","クレート","cage"]},
+      {n:"犬小屋",k:["あ"],fee:200,m:"収集/持込",note:"要解体",tags:["犬","ペット","ドッグハウス","犬小屋","kennel"]},
+      {n:"スーツケース・キャリーバッグ",k:["さ"],fee:200,m:"収集/持込",note:"中身は空に",tags:["スーツケース","キャリー","トランク","旅行","suitcase"]},
+      {n:"テント（ドーム型）",k:["た"],fee:200,m:"収集/持込",tags:["テント","キャンプ","アウトドア","ドームテント","tent"]},
+      {n:"照明器具",k:["さ"],fee:200,m:"収集/持込",tags:["照明","シーリングライト","シャンデリア","ペンダントライト","フロアライト","LED","light"]},
+    ],
+    uncollectible:[
+      {n:"エアコン",k:["特"],reason:"家電リサイクル法対象（市では収集不可）",tags:["エアコン","クーラー","冷暖房","air conditioner"]},
+      {n:"テレビ",k:["特"],reason:"家電リサイクル法対象（液晶・有機EL・ブラウン管すべて）",tags:["テレビ","TV","液晶","有機EL","ブラウン管","television"]},
+      {n:"冷蔵庫・冷凍庫",k:["特"],reason:"家電リサイクル法対象",tags:["冷蔵庫","冷凍庫","冷蔵","refrigerator","fridge"]},
+      {n:"洗濯機・衣類乾燥機",k:["特"],reason:"家電リサイクル法対象",tags:["洗濯機","乾燥機","ドラム式","washing machine","washer"]},
+      {n:"パソコン・ノートPC",k:["特"],reason:"PCリサイクル法対象",tags:["パソコン","PC","ノートPC","タブレット","iPad","MacBook","laptop","computer"]},
+      {n:"バイク・原付",k:["特"],reason:"二輪車リサイクル対象（電動自転車含む）",tags:["バイク","原付","スクーター","オートバイ","motorcycle"]},
+      {n:"タイヤ（車用）",k:["特"],reason:"産廃扱い",tags:["タイヤ","車タイヤ","tire"]},
+      {n:"消火器",k:["特"],reason:"専門業者処分",tags:["消火器","fire extinguisher"]},
+      {n:"ピアノ（アコースティック）",k:["特"],reason:"重量超過・専門業者処分",tags:["ピアノ","アップライトピアノ","グランドピアノ","piano"]},
+      {n:"金庫（耐火・大型）",k:["特"],reason:"重量超過・専門業者処分",tags:["金庫","耐火金庫","safe"]},
+    ]
+  }
+};
+
+// =====================================================
+// 都市リスト（Kanto）
+// =====================================================
+let CITIES = [];
+async function loadCitiesIndex() {
+  try {
+    const r = await fetch('./data/cities_kanto.json');
+    const d = await r.json();
+    CITIES = d.cities || [];
+  } catch(e) {
+    CITIES = Object.entries(EMBEDDED).map(([id,d])=>({id,pref:id.substring(0,2),prefName:d.city.prefecture,name:d.city.name,rank:d.city.rank,pop:0,dataReady:true,scrapeUrl:''}));
+  }
+}
+
+// =====================================================
+// 状態
+// =====================================================
+const STORAGE_CART='sodai_cart_v3', STORAGE_CITY='sodai_city';
+const GOJUON=['あ','か','さ','た','な','は','ま','や','ら','わ','特'];
+const REGIONS=[
+  {name:'東京（23区）',prefs:['13'],filter:'23ku'},
+  {name:'東京（多摩）',prefs:['13'],filter:'tama'},
+  {name:'神奈川',prefs:['14'],filter:null},
+  {name:'埼玉',prefs:['11'],filter:null},
+  {name:'千葉',prefs:['12'],filter:null},
+  {name:'茨城・栃木・群馬',prefs:['08','09','10'],filter:null},
+];
+const PREFS=[
+  {c:'08',n:'茨城県'},{c:'09',n:'栃木県'},{c:'10',n:'群馬県'},
+  {c:'11',n:'埼玉県'},{c:'12',n:'千葉県'},{c:'13',n:'東京都'},
+  {c:'14',n:'神奈川県'}
+];
+
+let cityData=null, currentCity=null;
+let cart=loadCart(), activeKana=null, activeRegion=null, activePref=null;
+
+// =====================================================
+// 起動
+// =====================================================
+window.addEventListener('DOMContentLoaded', async() => {
+  await loadCitiesIndex();
+  buildRg(); buildGj();
+  applyLang();
+  const saved=localStorage.getItem(STORAGE_CITY);
+  if(saved){try{const v=JSON.parse(saved);await loadCity(v.id,v.name,v.pref);}catch(e){}}
+  showSel();
+  loadRecent();
+});
+
+// =====================================================
+// 都市選択
+// =====================================================
+function buildRg() {
+  document.getElementById('rgGrid').innerHTML=REGIONS.map((r,i)=>
+    `<button class="rg-btn" onclick="selRg(${i})">${r.name}</button>`).join('');
+}
+
+function selRg(i) {
+  activeRegion=REGIONS[i];
+  const {prefs,filter}=activeRegion;
+
+  let cities;
+  if(filter==='23ku') cities=CITIES.filter(c=>c.pref==='13'&&parseInt(c.id)<=13123);
+  else if(filter==='tama') cities=CITIES.filter(c=>c.pref==='13'&&parseInt(c.id)>13123);
+  else cities=CITIES.filter(c=>prefs.includes(c.pref));
+
+  if(prefs.length===1||filter) {
+    // 都道府県1つ → 直接都市リストへ
+    showCityList(cities, activeRegion.name);
+  } else {
+    // 複数都道府県 → 都道府県選択へ
+    const filteredPrefs=PREFS.filter(p=>prefs.includes(p.c));
+    document.getElementById('prefLabel').textContent=activeRegion.name+' › 都道府県を選ぶ';
+    document.getElementById('prefList').innerHTML=filteredPrefs.map(p=>
+      `<div class="li-row" onclick="selPref('${p.c}','${p.n}')">${p.n}<span>›</span></div>`).join('');
+    document.getElementById('rgSec').style.display='none';
+    document.getElementById('prefSec').style.display='block';
+    document.getElementById('citySec').style.display='none';
+  }
+}
+
+function showRg() {
+  document.getElementById('rgSec').style.display='block';
+  document.getElementById('prefSec').style.display='none';
+  document.getElementById('citySec').style.display='none';
+}
+
+function selPref(code, name) {
+  const cities=CITIES.filter(c=>c.pref===code);
+  showCityList(cities, name);
+}
+
+function showCityList(cities, label) {
+  document.getElementById('cityLabel').textContent=label+' › 市区町村を選ぶ';
+  const sReady=T('sReady'), sSoon=T('sSoon');
+  const html=cities.sort((a,b)=>a.name.localeCompare(b.name,'ja')).map(c=>{
+    const ready=c.dataReady||!!EMBEDDED[c.id];
+    return `<div class="li-row" onclick="loadCity('${c.id}','${c.name}','${c.pref}')">
+      ${esc(c.name)}<span class="${ready?'s-ready':'s-soon'}">${ready?sReady:sSoon}</span>
+    </div>`;
+  }).join('');
+  document.getElementById('cityList').innerHTML=html||`<div class="li-row" style="color:var(--t3);cursor:default">準備中</div>`;
+  document.getElementById('prefSec').style.display='none';
+  document.getElementById('rgSec').style.display='none';
+  document.getElementById('citySec').style.display='block';
+}
+
+function showPref() {
+  document.getElementById('prefSec').style.display='block';
+  document.getElementById('citySec').style.display='none';
+}
+
+function searchCity(q) {
+  const el=document.getElementById('citySearchResult');
+  if(!q.trim()){el.innerHTML='';return;}
+  const hits=[...CITIES,...Object.entries(EMBEDDED).map(([id,d])=>({id,pref:id.substring(0,2),prefName:d.city.prefecture,name:d.city.name,dataReady:true}))]
+    .filter((c,i,a)=>a.findIndex(x=>x.id===c.id)===i)
+    .filter(c=>c.name.includes(q)||c.prefName?.includes(q));
+  const sReady=T('sReady'), sSoon=T('sSoon');
+  if(!hits.length){el.innerHTML=`<div class="pref-list"><div class="li-row" style="color:var(--t3);cursor:default">「${esc(q)}」は見つかりません</div></div>`;return;}
+  el.innerHTML=`<div class="pref-list">${hits.slice(0,10).map(c=>{
+    const ready=c.dataReady||!!EMBEDDED[c.id];
+    return `<div class="li-row" onclick="loadCity('${c.id}','${c.name}','${c.pref}')">
+      ${esc(c.prefName||'')} ${esc(c.name)}<span class="${ready?'s-ready':'s-soon'}">${ready?sReady:sSoon}</span>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+async function loadCity(id, name, prefCode) {
+  const data=EMBEDDED[id];
+  if(!data){showToast(T('noCityData'));return;}
+  cityData=data; currentCity={id,name:data.city.name,pref:data.city.prefecture,prefCode};
+  localStorage.setItem(STORAGE_CITY,JSON.stringify({id,name:data.city.name,pref:prefCode}));
+  saveRecent({id,name:data.city.name,pref:data.city.prefecture});
+  showApp();
+}
+
+function showSel() {
+  document.getElementById('scApp').style.display='none';
+  document.getElementById('scSel').style.display='block';
+  document.getElementById('bnav').style.display='none';
+  document.getElementById('fbFab').classList.remove('show');
+  document.getElementById('hdCity').textContent=T('hdCity');
+  document.getElementById('rgSec').style.display='block';
+  document.getElementById('prefSec').style.display='none';
+  document.getElementById('citySec').style.display='none';
+  document.getElementById('citySearch').value='';
+  document.getElementById('citySearchResult').innerHTML='';
+  loadRecent();
+}
+function showCitySelect(){showSel();}
+
+function saveRecent(c){
+  let a=[];try{a=JSON.parse(localStorage.getItem('sodai_recent'))||[];}catch(e){}
+  a=a.filter(x=>x.id!==c.id);a.unshift(c);a=a.slice(0,5);
+  localStorage.setItem('sodai_recent',JSON.stringify(a));
+}
+function loadRecent(){
+  try{
+    const a=JSON.parse(localStorage.getItem('sodai_recent'))||[];
+    const sec=document.getElementById('recentSec');
+    if(!a.length){sec.style.display='none';return;}
+    document.getElementById('recentChips').innerHTML=a.map(c=>
+      `<button class="chip" onclick="loadCity('${c.id}','${c.name}','${c.id.substring(0,2)}')">📍 ${esc(c.name)}</button>`).join('');
+    sec.style.display='block';
+  }catch(e){}
+}
+
+// =====================================================
+// アプリ画面
+// =====================================================
+function showApp() {
+  document.getElementById('scSel').style.display='none';
+  document.getElementById('scApp').style.display='block';
+  document.getElementById('bnav').style.display='flex';
+  document.getElementById('fbFab').classList.add('show');
+  document.getElementById('hdCity').textContent=`📍 ${currentCity.pref} ${currentCity.name}`;
+  document.getElementById('chcCity').textContent=currentCity.name;
+  document.getElementById('chcPref').textContent=currentCity.pref;
+  document.getElementById('chcTag').textContent=T('chcTag');
+  document.getElementById('chcBtn').textContent=T('chcBtn');
+  document.getElementById('tileItems').textContent=(cityData?.items||[]).length+'件';
+  switchTab('search');
+  renderItems();
+  renderInfo();
+  renderSponsors();
+  updateCartBadge();
+  document.getElementById('fnote').innerHTML=
+    `情報は最新版をご確認ください。<a href="${esc(cityData.city.rules.websiteUrl)}" target="_blank">${esc(currentCity.name)}公式サイト</a> — Terra Design`;
+}
+
+function switchTab(tab) {
+  document.getElementById('tabSearch').style.display=tab==='search'?'block':'none';
+  document.getElementById('tabInfo').style.display=tab==='info'?'block':'none';
+  document.getElementById('bnavSearch').classList.toggle('active',tab==='search');
+  document.getElementById('bnavInfo').classList.toggle('active',tab==='info');
+}
+
+// =====================================================
+// アイテムアイコン
+// =====================================================
+function getItemIcon(item) {
+  const n=item.n, tags=item.tags||[];
+  if(item.fee===-1)return'⚠️';
+  if(tags.includes('楽器')||n.includes('ピアノ')||n.includes('ギター'))return'🎵';
+  if(tags.includes('自転車')||n.includes('自転車')||n.includes('一輪車'))return'🚲';
+  if(n.includes('ベッド')||n.includes('マットレス')||n.includes('布団'))return'🛏️';
+  if(n.includes('ソファ')||n.includes('ソファー'))return'🛋️';
+  if(n.includes('テーブル')||n.includes('机')||n.includes('座卓'))return'🪑';
+  if(n.includes('椅子')||n.includes('チェア'))return'🪑';
+  if(n.includes('たんす')||n.includes('収納')||n.includes('棚'))return'🗄️';
+  if(tags.includes('家電')||n.includes('掃除機')||n.includes('レンジ'))return'🔌';
+  if(n.includes('エアコン')||n.includes('ヒーター')||n.includes('ストーブ')||n.includes('こたつ'))return'🌡️';
+  if(tags.includes('健康')||tags.includes('運動')||n.includes('マシン'))return'🏃';
+  if(tags.includes('ペット')||n.includes('犬')||n.includes('猫'))return'🐾';
+  if(tags.includes('おもちゃ')||tags.includes('模型'))return'🎮';
+  if(n.includes('ゴルフ'))return'⛳';
+  if(n.includes('スキー')||n.includes('スノー'))return'🎿';
+  if(tags.includes('アウトドア')||n.includes('テント'))return'🏕️';
+  if(n.includes('ベビー')||n.includes('チャイルド'))return'👶';
+  if(n.includes('車椅子'))return'♿';
+  if(n.includes('プリンター')||n.includes('パソコン'))return'💻';
+  if(n.includes('照明')||n.includes('ライト'))return'💡';
+  return'📦';
+}
+
+// =====================================================
+// 品目リスト
+// =====================================================
+function buildGj() {
+  document.getElementById('gjgrid').innerHTML=GOJUON.map(k=>{
+    const l=k==='特'?'特殊':k+'行';
+    return `<button class="gjbtn" data-k="${k}" onclick="toggleGj('${k}',this)">${l}</button>`;
+  }).join('');
+}
+function toggleGj(k,btn) {
+  activeKana=activeKana===k?null:k;
+  document.querySelectorAll('.gjbtn').forEach(b=>b.classList.remove('active'));
+  if(activeKana)btn.classList.add('active');
+  renderItems();
+}
+
+function renderItems() {
+  if(!cityData)return;
+  const q=document.getElementById('sinput').value.trim();
+  document.getElementById('sclr').style.display=q?'flex':'none';
+  const kmap={'あ':['あ','い','う','え','お'],'か':['か','き','く','け','こ'],'さ':['さ','し','す','せ','そ'],
+    'た':['た','ち','つ','て','と'],'な':['な','に','ぬ','ね','の'],'は':['は','ひ','ふ','へ','ほ'],
+    'ま':['ま','み','む','め','も'],'や':['や','ゆ','よ'],'ら':['ら','り','る','れ','ろ'],'わ':['わ','を','ん'],'特':['特']};
+  const allItems=[...cityData.items,...cityData.uncollectible.map(u=>({...u,fee:-1,m:T('notCollLabel')||'収集不可'}))];
+  let pool=allItems;
+  if(activeKana){const ok=kmap[activeKana]||[];pool=pool.filter(i=>(i.k||[]).some(x=>ok.includes(x))||(activeKana==='特'&&i.fee===-1));}
+  let results=pool, searchMode='all', searchLabel='';
+  if(q){const sr=searchItems(q,pool);results=sr.results;searchMode=sr.mode;searchLabel=sr.label||'';}
+  const el=document.getElementById('itemArea');
+  if(!results.length){
+    const hints=['ベッド','テーブル','ソファ','自転車','布団','楽器','掃除機','棚'];
+    el.innerHTML=`<div class="suggest-hd" style="flex-direction:column;align-items:stretch">
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px">
+        <div class="sug-ico">🤔</div><div><div class="sug-t1">「${esc(q)}」${T('noResult')}</div><div class="sug-t2">${T('noResultSub')}</div></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        ${hints.map(h=>`<button style="padding:6px 12px;background:var(--card);border:1px solid var(--b);border-radius:16px;font-size:12px;font-weight:600;cursor:pointer;color:var(--t1)" onclick="document.getElementById('sinput').value='${h}';renderItems()">🔍 ${h}</button>`).join('')}
+      </div></div>`;
+    return;
+  }
+  let html='';
+  if(q&&searchMode==='synonym'&&searchLabel){
+    html+=`<div class="suggest-hd"><div class="sug-ico">💡</div><div><div class="sug-t1">${esc(searchLabel)}</div><div class="sug-t2">${results.length}${T('sugLabel')}</div></div></div>`;
+  } else if(q&&searchMode==='fuzzy'&&searchLabel){
+    html+=`<div class="suggest-hd" style="background:#FFF0F0;border-color:#F5C0C0"><div class="sug-ico">🔎</div><div><div class="sug-t1" style="color:#7B2020">${T('maybeLbl')}「${esc(q)}」?</div><div class="sug-t2" style="color:#9B4040">${esc(searchLabel)}</div></div></div>`;
+  }
+  html+='<div class="item-list">';
+  results.forEach((item,i)=>{
+    const sp=item.fee===-1;
+    const inCart=cart.some(c=>c.n===item.n);
+    const ico=getItemIcon(item);
+    const feeText=sp?T('notCollLabel')||'不可':'¥'+item.fee.toLocaleString();
+    html+=`<div class="item-wrap">
+      <div class="item-row">
+        <div class="item-ico">${ico}</div>
+        <div class="item-main" onclick="toggleAcc(${i})">
+          <div class="iname" id="nm${i}"><span class="aico">▶</span><span class="ntxt">${esc(item.n)}</span></div>
+          <div class="isub">${sp?T('notCollLabel')||'収集不可':esc(item.m||'')}</div>
+        </div>
+        <div class="item-right">
+          <span class="ifee${sp?' sp':''}">${sp?'不可':'¥'+item.fee.toLocaleString()}</span>
+          ${!sp?`<button class="badd${inCart?' added':''}" onclick="addCart('${esc(item.n)}')">${inCart?'✓':'＋'}</button>`:''}
+        </div>
+      </div>
+      <div class="acc" id="ac${i}">
+        <div class="accbody">
+          ${sp?`<div class="anote warn">⚠️ ${esc(item.reason||'')}</div>`
+              :`<div class="arow"><span class="albl">${T('feeLabel')}</span><span><strong style="color:var(--p);font-size:15px">¥${item.fee.toLocaleString()}</strong>（${item.fee/100}${T('feeUnit')}）</span></div>
+                <div class="arow"><span class="albl">${T('methodLabel')}</span><span>${esc(item.m||'-')}</span></div>
+                ${item.note?`<div class="anote">${esc(item.note)}</div>`:''}`}
+        </div>
+      </div></div>`;
+  });
+  html+='</div>';
+  el.innerHTML=html;
+}
+
+function toggleAcc(i) {
+  const ac=document.getElementById('ac'+i),nm=document.getElementById('nm'+i);
+  document.querySelectorAll('.acc.open').forEach(a=>{if(a!==ac){a.classList.remove('open');a.previousElementSibling?.querySelector('.iname')?.classList.remove('open');}});
+  ac.classList.toggle('open');nm.classList.toggle('open');
+}
+function clearSearch(){document.getElementById('sinput').value='';document.getElementById('sclr').style.display='none';renderItems();}
+document.addEventListener('DOMContentLoaded',()=>{
+  const si=document.getElementById('sinput');
+  if(si)si.addEventListener('input',renderItems);
+});
+
+// =====================================================
+// 出し方ガイド
+// =====================================================
+function renderInfo() {
+  if(!cityData)return;
+  const r=cityData.city.rules;
+  document.getElementById('rulesCard').innerHTML=`<strong>📋 ${esc(currentCity.name)}の粗大ごみとは</strong><br>${esc(r.definition)}`;
+  const rows=[
+    ['申込先',esc(r.contact)+(r.hours?`<br><small style="color:var(--t3)">${esc(r.hours)}</small>`:'')],
+    ['申込方法',esc(r.applicationMethod)],
+    ['受付時間',esc(r.internetHours||'-')],
+    ['支払方法',esc(r.paymentMethod)],
+    ['出し方',esc(r.collectionMethod)],
+    ['持ち込み',esc(r.selfCarryIn||'-')],
+    ['収集不可',`<span style="color:var(--warn)">${esc(r.nonCollectibleNote)}</span>`],
+  ];
+  document.getElementById('infoList').innerHTML=rows.map(([l,v])=>`<div class="irow2"><span class="ilbl2">${l}</span><span class="ival2">${v}</span></div>`).join('');
+}
+
+// =====================================================
+// スポンサー
+// =====================================================
+function getSponsorForCity(id){ return null; }
+
+function renderSponsors() {
+  const cn=currentCity?.name||'', pref=currentCity?.pref||'';
+  const sp=getSponsorForCity(currentCity?.id);
+  const t=document.getElementById('spTop'), b=document.getElementById('spBot');
+  if(sp){
+    t.innerHTML=`<a class="sp-portal" href="${esc(sp.url)}" target="_blank" rel="noopener sponsored">
+      <div class="sp-logo">${sp.icon||'🏢'}</div>
+      <div class="sp-text"><div class="sp-title">${esc(sp.companyName)} <span class="sp-pr">${esc(sp.prTag||'PR')}</span></div>
+      <div class="sp-sub">${esc(sp.supportMsg||'このアプリは'+cn+'の皆様へのご支援で運営しています')}</div></div>
+      <span class="sp-arr">›</span></a>`;
+    b.innerHTML=`<div class="sp-full"><div class="sp-hero"><div class="sp-hero-ov"></div>
+      <div class="sp-hero-logo">${sp.icon||'🏢'}</div><div class="sp-hero-name">${esc(sp.companyName)}</div></div>
+      <div class="sp-body"><div class="sp-tag">📣 スポンサー</div>
+      <div class="sp-tagline">${esc(sp.tagline||sp.headline||'')}</div>
+      <div class="sp-desc">${esc(sp.body||'')}</div>
+      ${sp.message?`<div class="sp-msg"><div class="sp-msg-lbl">💬 ${esc(cn)}の皆様へのメッセージ</div><div class="sp-msg-txt">"${esc(sp.message)}"</div></div>`:''}
+      <a class="sp-cta" href="${esc(sp.url)}" target="_blank" rel="noopener sponsored">詳しくはこちら →</a>
+      </div></div>`;
+  } else {
+    const emHtml=`<div class="sp-empty" onclick="showToast('スポンサー申込は近日公開予定 月額¥10,000〜')">
+      <div class="sp-empty-ico">📣</div>
+      <div style="flex:1"><div style="font-size:13px;font-weight:700;color:var(--t1)">${esc(cn)}のスポンサー募集中</div>
+      <div style="font-size:11px;color:var(--t3);margin-top:2px">月額¥10,000〜 年間¥120,000〜</div></div>
+      <span style="font-size:18px;color:var(--t3)">›</span></div>`;
+    t.innerHTML=emHtml;
+    b.innerHTML=`<div class="sp-full" style="cursor:pointer" onclick="showToast('スポンサー申込は近日公開予定 月額¥10,000〜')">
+      <div class="sp-hero"><div class="sp-hero-ov"></div>
+        <div class="sp-hero-logo">📣</div><div class="sp-hero-name">${esc(cn)}のスポンサー様を募集しています</div>
+      </div>
+      <div class="sp-body"><div class="sp-tag">📌 スポンサー枠 空き</div>
+        <div class="sp-tagline">あなたのビジネスをこの位置に掲載できます</div>
+        <div class="sp-desc">${esc(pref)}${esc(cn)}エリアの粗大ごみ検索ユーザーへ直接アプローチ。<br>不用品回収・引越し・リフォーム・買取業者様に最適です。</div>
+        <div class="sp-msg"><div class="sp-msg-lbl">📌 掲載料金のめやす</div>
+          <div class="sp-msg-txt">月額 ¥10,000〜 / 年間 ¥120,000〜<br>ロゴ・紹介文・メッセージ・リンクを掲載できます</div>
+        </div>
+        <div class="sp-cta">スポンサーとして掲載する →</div>
+      </div></div>`;
+  }
+  t.style.display='block'; b.style.display='block';
+}
+
+// =====================================================
+// カート
+// =====================================================
+function loadCart(){try{return JSON.parse(localStorage.getItem(STORAGE_CART))||[];}catch(e){return[];}}
+function saveCart(){localStorage.setItem(STORAGE_CART,JSON.stringify(cart));updateCartBadge();}
+function updateCartBadge(){
+  const col=cart.filter(c=>c.fee>=0), n=col.reduce((s,c)=>s+(c.qty||1),0), total=col.reduce((s,c)=>s+c.fee*(c.qty||1),0);
+  const badge=document.getElementById('navBadge');
+  if(badge){badge.textContent=n;badge.style.display=n>0?'flex':'none';}
+  const tc=document.getElementById('tileCart'), ta=document.getElementById('tileAmt');
+  if(tc)tc.textContent=n+'件';
+  if(ta)ta.textContent=total>0?'¥'+total.toLocaleString():'¥0';
+  const cnt=document.getElementById('cartCnt');if(cnt)cnt.textContent=n;
+}
+function addCart(name){
+  const all=[...(cityData?.items||[]),...(cityData?.uncollectible||[]).map(u=>({...u,fee:-1}))];
+  const item=all.find(i=>i.n===name);if(!item)return;
+  const idx=cart.findIndex(c=>c.n===name);
+  if(idx>=0)cart[idx].qty=(cart[idx].qty||1)+1;else cart.push({n:item.n,fee:item.fee||0,qty:1,memo:''});
+  saveCart();renderItems();showToast(T('addCart')+item.n+'）');
+}
+function openCart(){renderCart();document.getElementById('cartModal').classList.add('show');}
+function renderCart(){
+  const col=cart.filter(c=>c.fee>=0),unc=cart.filter(c=>c.fee<0);
+  const total=col.reduce((s,c)=>s+c.fee*(c.qty||1),0),pt=total/100,fiveT=Math.floor(pt/5),oneT=pt%5;
+  let html=`<h2>${T('cartTitle')}</h2>`;
+  if(!cart.length){html+=`<div class="empty">${T('cartEmpty')}</div>`;}
+  else{
+    html+=`<div class="csumbox"><div style="font-size:11px;opacity:.85">${T('ticketLabel')}</div>
+      <div class="csamount">¥${total.toLocaleString()}</div>
+      <div class="csticket"><div class="csrow"><span>${T('ticket5')}</span><span><strong>${fiveT}${T('sheets')}</strong></span></div>
+      <div class="csrow"><span>${T('ticket1')}</span><span><strong>${oneT}${T('sheets')}</strong></span></div></div></div>`;
+    if(unc.length)html+=`<div class="cwarnbox">⚠️ ${T('uncollWarn')} ${unc.length}件 — ${T('uncollSub')}</div>`;
+    col.forEach(c=>{
+      const q=c.qty||1;
+      html+=`<div class="ci"><div class="cihd"><div class="ciname">${esc(c.n)}</div><div class="cifee">¥${(c.fee*q).toLocaleString()}</div></div>
+        <div class="cictrl"><button class="qbtn" onclick="chgQty('${esc(c.n)}',-1)" ${q<=1?'disabled':''}>−</button>
+          <span class="qnum">${q}</span><button class="qbtn" onclick="chgQty('${esc(c.n)}',1)">＋</button>
+          <span style="font-size:11px;color:var(--t3);margin-left:6px">@¥${c.fee.toLocaleString()}</span>
+          <button class="brem" onclick="rmCart('${esc(c.n)}')">削除</button></div>
+        <textarea class="cmemo" placeholder="メモ（設置場所等）" rows="1" onchange="updMemo('${esc(c.n)}',this.value)">${esc(c.memo||'')}</textarea>
+      </div>`;
+    });
+    html+=`<div style="margin:12px 0;padding:12px;background:var(--pl);border-radius:10px;font-size:12px;color:var(--t2);line-height:1.7">
+      💡 1. ${T('step1')}<br>2. <a href="${esc(cityData?.city?.rules?.websiteUrl||'#')}" target="_blank" style="color:var(--p)">${esc(currentCity?.name||'')}公式サイト</a>または電話 ${esc(cityData?.city?.rules?.contact||'')} で申込<br>3. ${T('step3')}</div>
+    <textarea id="ctxt" readonly rows="5" style="width:100%;padding:10px;border:1px solid var(--b);border-radius:8px;font-size:12px;background:#F8F9FB;font-family:inherit">${buildCopyTxt()}</textarea>
+    <div class="cactions"><button class="bcopy" onclick="copyTxt()">${T('copyBtn')}</button><button class="bclr" onclick="clearCart()">${T('clearBtn')}</button></div>`;
+  }
+  html+=`<button class="boutline" onclick="document.getElementById('cartModal').classList.remove('show')">${T('closeBtn')}</button>`;
+  document.getElementById('cartContent').innerHTML=html;
+}
+function chgQty(n,d){const c=cart.find(x=>x.n===n);if(!c)return;c.qty=Math.max(1,(c.qty||1)+d);saveCart();renderCart();}
+function rmCart(n){cart=cart.filter(c=>c.n!==n);saveCart();renderCart();renderItems();}
+function updMemo(n,m){const c=cart.find(x=>x.n===n);if(c){c.memo=m;saveCart();}}
+function clearCart(){if(!confirm('カートを空にしますか？'))return;cart=[];saveCart();renderCart();renderItems();}
+function buildCopyTxt(){
+  const col=cart.filter(c=>c.fee>=0),unc=cart.filter(c=>c.fee<0);
+  const total=col.reduce((s,c)=>s+c.fee*(c.qty||1),0),pt=total/100;
+  let t=`【${currentCity?.name||''} ${T('listTitle')}】\n合計: ¥${total.toLocaleString()}（${pt}ポイント）\n\n`;
+  col.forEach((c,i)=>{t+=`${i+1}. ${c.n} ×${c.qty||1}個 ¥${(c.fee*(c.qty||1)).toLocaleString()}\n`;if(c.memo)t+=`   メモ: ${c.memo}\n`;});
+  if(unc.length)t+=`\n【収集不可・別途処理必要】\n${unc.map(c=>c.n).join('\n')}`;
+  t+=`\n申込先: ${cityData?.city?.rules?.contact||''} / ${cityData?.city?.rules?.websiteUrl||''}`;
+  return t;
+}
+function copyTxt(){
+  const ta=document.getElementById('ctxt');if(!ta)return;
+  navigator.clipboard?.writeText(ta.value).then(()=>showToast(T('copySuccess'))).catch(()=>{ta.select();document.execCommand('copy');showToast(T('copySuccess'));});
+}
+document.getElementById('cartModal').addEventListener('click',e=>{if(e.target.id==='cartModal')e.target.classList.remove('show');});
+
+// =====================================================
+// フィードバック
+// =====================================================
+const FB_FORM_URL='https://forms.gle/XXXXXXXXXXXX'; // GoogleフォームURLに変更
+function openFeedback(){document.getElementById('fbModal').classList.add('show');}
+function openFbQuick(type){document.getElementById('fbModal').classList.remove('show');window.open(FB_FORM_URL,'_blank','noopener');}
+document.getElementById('fbModal').addEventListener('click',e=>{if(e.target.id==='fbModal')e.target.classList.remove('show');});
+
+// =====================================================
+// ユーティリティ
+// =====================================================
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2200);}
+</script>
+</body>
+</html>
