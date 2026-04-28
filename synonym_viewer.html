@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>同義語マスター — 粗大ごみ判定アプリ</title>
+<style>
+:root{--p:#34C759;--pd:#28A745;--pl:#F0FBF4;--bg:#F4F6FB;--card:#fff;--t1:#1C1C1E;--t2:#636366;--t3:#8E8E93;--b:#E5E5EA;--warn:#FF3B30}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--t1);-webkit-font-smoothing:antialiased}
+.hd{background:linear-gradient(135deg,var(--p),var(--pd));color:#fff;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.hd-title{font-size:20px;font-weight:800}
+.hd-sub{font-size:12px;opacity:.85;margin-top:4px}
+.hd-stats{background:rgba(255,255,255,.2);padding:8px 14px;border-radius:10px;font-size:13px;font-weight:600;text-align:center}
+.hd-stats span{font-size:22px;font-weight:800;display:block}
+.controls{padding:16px 24px;background:var(--card);border-bottom:1px solid var(--b);display:flex;gap:10px;flex-wrap:wrap;align-items:center;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.search-wrap{flex:1;min-width:200px;position:relative}
+.search-wrap input{width:100%;padding:10px 14px 10px 38px;border:1.5px solid var(--b);border-radius:10px;font-size:14px;outline:none}
+.search-wrap input:focus{border-color:var(--p)}
+.search-wrap::before{content:"🔍";position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:14px}
+.cat-filter{display:flex;gap:6px;flex-wrap:wrap}
+.cat-btn{padding:7px 12px;border:1.5px solid var(--b);background:var(--card);border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;color:var(--t2);transition:all .15s;white-space:nowrap}
+.cat-btn.active{background:var(--p);color:#fff;border-color:var(--p)}
+.count-badge{font-size:12px;color:var(--t3);padding:4px 0;white-space:nowrap}
+.main{padding:16px 24px}
+.item-card{background:var(--card);border-radius:14px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.05);border:1px solid var(--b);display:none}
+.item-card.visible{display:block}
+.item-card.is-ngonly{border-left:4px solid var(--warn)}
+.card-head{padding:14px 16px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .1s}
+.card-head:hover{background:#F9F9FC}
+.cat-tag{flex-shrink:0;font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;background:var(--pl);color:var(--pd)}
+.cat-tag.ng{background:#FFF0ED;color:var(--warn)}
+.item-name{font-size:15px;font-weight:700;flex:1}
+.item-yomi{font-size:11px;color:var(--t3);margin-top:2px}
+.acc-ico{font-size:12px;color:var(--t3);transition:transform .2s;flex-shrink:0}
+.card-head.open .acc-ico{transform:rotate(180deg);color:var(--p)}
+.card-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.card-body.open{max-height:600px}
+.card-inner{padding:0 16px 16px;border-top:1px solid #F2F2F7}
+.section{margin-top:12px}
+.section-lbl{font-size:10px;font-weight:700;color:var(--t3);letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase}
+.syn-list{display:flex;flex-wrap:wrap;gap:6px}
+.syn-chip{padding:5px 10px;background:#F4F6FB;border:1px solid var(--b);border-radius:16px;font-size:12px;color:var(--t1);cursor:pointer;transition:background .1s}
+.syn-chip:hover,.syn-chip.highlight{background:var(--pl);border-color:var(--p);color:var(--pd);font-weight:600}
+.syn-chip.en{background:#F0F4FF;border-color:#C7D5FF;color:#0057D8}
+.incl-box{background:#F9FCF9;border-radius:8px;padding:10px 12px;font-size:12.5px;color:var(--t2);line-height:1.7;border-left:3px solid var(--p)}
+.incl-box.warn{background:#FFF5F5;border-left-color:var(--warn);color:#C0392B}
+.edit-hint{font-size:11px;color:var(--t3);margin-top:6px;display:flex;align-items:center;gap:4px}
+.empty{text-align:center;padding:40px;color:var(--t3);font-size:14px}
+.footer{text-align:center;padding:24px;font-size:11px;color:var(--t3);border-top:1px solid var(--b);margin-top:20px}
+.footer a{color:var(--p)}
+@media print{.controls{position:static}.item-card{break-inside:avoid}.card-body{max-height:none!important}}
+@media(max-width:600px){.main{padding:12px}.controls{padding:12px}}
+</style>
+</head>
+<body>
+
+<div class="hd">
+  <div>
+    <div class="hd-title">🗑️ 同義語マスター</div>
+    <div class="hd-sub">全国粗大ごみ判定アプリ — Terra Design</div>
+  </div>
+  <div style="display:flex;gap:8px">
+    <div class="hd-stats"><span id="statTotal">67</span>品目</div>
+    <div class="hd-stats"><span id="statSyn">--</span>同義語総数</div>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="search-wrap">
+    <input type="text" id="searchBox" placeholder="品目名・同義語・英語で絞り込み..." oninput="filterAll()">
+  </div>
+  <div class="cat-filter" id="catFilter">
+    <button class="cat-btn active" data-cat="" onclick="setCat(this,'')">すべて</button>
+  </div>
+  <div class="count-badge" id="countBadge"></div>
+</div>
+
+<div class="main" id="main"></div>
+
+<div class="footer">
+  このデータは <strong>synonym_master_v2.csv</strong> に対応しています。<br>
+  同義語の追加・修正は CSVファイルを編集してください。<br>
+  Terra Design 粗大ごみ判定アプリ — <span id="updateDate"></span>
+</div>
+
+<script>
+// =====================================================
+// 同義語マスターデータ（synonym_master_v2.csv から生成）
+// =====================================================
+const MASTER = [
+  {name:"ソファー（小）",yomi:"そふぁー",cat:"家具",syn:"ソファ|カウチ|長椅子|1人掛け|2人掛け|ラブソファ|コンパクトソファ|ふかふかいす|座れる家具|ひとりがけ|ふたりがけ|ローソファ|ヘッドレストソファ|クッションソファ",incl:"1〜2人掛けソファ・ラブソファ・コンパクトソファ等",en:"sofa couch loveseat"},
+  {name:"ソファー（大）",yomi:"そふぁー（おおきい）",cat:"家具",syn:"ソファ|3人掛け|コーナーソファ|Lソファ|セクショナルソファ|大型ソファ|ファミリーソファ|3Pソファ|コーナー|L字ソファ",incl:"3人掛け・コーナー型・L字ソファ等（分割して申込可）",en:"large sofa sectional"},
+  {name:"椅子・座椅子",yomi:"いす",cat:"家具",syn:"チェア|いす|座椅子|スツール|オットマン|デスクチェア|ダイニングチェア|アウトドアチェア|キャンプチェア|ゲーミングチェア|折りたたみ椅子|事務椅子|回転椅子|バーチェア|風呂椅子|テーブルチェア|ピアノ椅子|パイプ椅子|丸椅子",incl:"座椅子・スツール・デスクチェア・ゲーミングチェア・アウトドアチェア・キャンプチェア・風呂椅子等すべての椅子類",en:"chair stool seat"},
+  {name:"テーブル（小）",yomi:"てーぶる（こ）",cat:"家具",syn:"ちゃぶ台|折りたたみテーブル|キャンプテーブル|ローテーブル|コーヒーテーブル|サイドテーブル|センターテーブル|ランチテーブル|ミニテーブル|トレイテーブル",incl:"ちゃぶ台・折りたたみ・コーヒーテーブル・サイドテーブル等（100cm未満）",en:"small table coffee table"},
+  {name:"テーブル・机（大）",yomi:"てーぶる（おおきい）",cat:"家具",syn:"ダイニングテーブル|食卓テーブル|センターテーブル|リビングテーブル|デスク|机|学習机|パソコンデスク|ライティングデスク|作業台|書き物机|ワークデスク|勉強机|ダイニング|食卓",incl:"ダイニングテーブル・学習机・デスク・各種大型テーブル等（100cm以上）",en:"desk dining table"},
+  {name:"たんす・収納（小）",yomi:"たんす（こ）",cat:"収納",syn:"タンス|箪笥|チェスト|ローチェスト|本棚（小）|カラーボックス|ラック（小）|シェルフ（小）|収納ボックス|衣装ケース|おもちゃ箱|整理箱",incl:"タンス・チェスト・本棚・カラーボックス・ラック等（100cm未満）",en:"dresser cabinet chest"},
+  {name:"たんす・収納（大）",yomi:"たんす（おおきい）",cat:"収納",syn:"タンス|箪笥|チェスト|本棚（大）|書棚|ラック（大）|スチールラック|メタルラック|シェルフ|TVボード|テレビボード|キャビネット|サイドボード|食器棚|ワードローブ|衣装箪笥",incl:"タンス・チェスト・本棚・ラック・TVボード等（100cm以上）",en:"wardrobe bookshelf cabinet"},
+  {name:"ベッド（シングル・セミダブル）",yomi:"べっど（こ）",cat:"寝具",syn:"シングルベッド|セミダブルベッド|ベッドフレーム|すのこベッド|収納ベッド|パイプベッド|折りたたみベッド|ロフトベッド|二段ベッド|子供用ベッド|シングル|セミダブル|ねるとこ|寝台",incl:"シングル・セミダブルフレーム・すのこベッド・収納ベッド等",en:"bed single bed"},
+  {name:"ベッド（ダブル以上）",yomi:"べっど（おおきい）",cat:"寝具",syn:"ダブルベッド|クイーンベッド|キングベッド|大きいベッド|夫婦ベッド|ワイドダブル|大型ベッド",incl:"ダブル・クイーン・キングサイズ各種",en:"double bed queen bed"},
+  {name:"マットレス（スプリングなし）",yomi:"まっとれす",cat:"寝具",syn:"低反発マットレス|高反発マットレス|ウレタンマットレス|ベッドマット|敷きマット|ファイバーマットレス|敷布団代わり",incl:"スプリングなしマットレス全般",en:"mattress foam"},
+  {name:"スプリングマットレス（シングル・セミダブル）",yomi:"すぷりんぐまっとれす（こ）",cat:"寝具",syn:"スプリングマット|コイルマット|ポケットコイル|ボンネルコイル|スプリング入りマット|コイルマットレス",incl:"シングル・セミダブルのスプリングマットレス",en:"spring mattress coil"},
+  {name:"スプリングマットレス（ダブル）",yomi:"すぷりんぐまっとれす（おおきい）",cat:"寝具",syn:"スプリングマット（大）|コイルマット（大）|ダブルサイズマットレス",incl:"ダブル・クイーン・キングスプリングマットレス",en:"spring mattress double"},
+  {name:"布団",yomi:"ふとん",cat:"寝具",syn:"掛け布団|敷き布団|羽毛布団|毛布（大型）|肌掛け|羽根布団|かけぶとん|しきぶとん|ねぶとん|お布団|ふかふか布団|布団一式",incl:"掛け布団・敷き布団・羽毛布団等（1枚ごとに費用発生）",en:"futon blanket"},
+  {name:"介護ベッド",yomi:"かいごべっど",cat:"介護用品",syn:"電動ベッド|介護用ベッド|昇降ベッド|リハビリベッド|病院みたいなベッド|ベッド（介護）|介護機器（ベッド）",incl:"電動介護ベッド・昇降ベッド等（要解体）",en:"hospital bed electric bed"},
+  {name:"自転車",yomi:"じてんしゃ",cat:"乗り物",syn:"チャリ|チャリンコ|ママチャリ|電動自転車|電動アシスト|クロスバイク|ロードバイク|マウンテンバイク|MTB|ミニベロ|折りたたみ自転車|E-BIKE|電動チャリ|子供用自転車|スポーツバイク|シティバイク|通勤自転車",incl:"ママチャリ・電動アシスト・クロスバイク・ロードバイク等（フル電動は不可）",en:"bicycle bike cycling"},
+  {name:"一輪車",yomi:"いちりんしゃ",cat:"乗り物",syn:"ユニサイクル|一輪乗り物",incl:"ユニサイクル",en:"unicycle"},
+  {name:"三輪車",yomi:"さんりんしゃ",cat:"乗り物",syn:"子供三輪車|幼児用三輪車|三輪",incl:"子供用三輪車各種",en:"tricycle"},
+  {name:"ストライダー",yomi:"すとらいだー",cat:"子供用品",syn:"ペダルなし自転車|バランスバイク|キックバイク|ランニングバイク|足けり|足こぎバイク",incl:"バランスバイク・ペダルなし自転車等",en:"balance bike"},
+  {name:"ベビーカー",yomi:"べびーかー",cat:"ベビー用品",syn:"乳母車|バギー|A型|B型|両対面|ストローラー|ベビーバギー|ジョギングベビーカー",incl:"A型・B型・両対面式・ジョギング型等",en:"stroller pram baby carriage"},
+  {name:"チャイルドシート",yomi:"ちゃいるどしーと",cat:"ベビー用品",syn:"ジュニアシート|ベビーシート|幼児用シート|カーシート（子供）",incl:"チャイルドシート・ジュニアシート全般",en:"car seat child seat"},
+  {name:"掃除機",yomi:"そうじき",cat:"家電",syn:"ルンバ|ロボット掃除機|ダイソン|コードレス|スティック型|ハンディ|サイクロン|キャニスター|クリーナー|バキューム|掃除ロボット|ハンディクリーナー",incl:"ロボット掃除機・スティック型・キャニスター型等",en:"vacuum cleaner roomba"},
+  {name:"電子レンジ",yomi:"でんしれんじ",cat:"家電",syn:"レンジ|オーブンレンジ|オーブン（レンジ）|スチームオーブン|ヘルシオ|ビストロ|石窯ドーム|電子レンジ（単機能）|マイクロウェーブ",incl:"電子レンジ・オーブンレンジ・スチームオーブン等",en:"microwave oven"},
+  {name:"炊飯器",yomi:"すいはんき",cat:"家電",syn:"ご飯炊き|電気炊飯器|IH炊飯器|圧力IH|土鍋炊飯器|ライスクッカー|炊飯ジャー",incl:"電気・IH・圧力IH各種炊飯器",en:"rice cooker"},
+  {name:"プリンター",yomi:"ぷりんたー",cat:"電子機器",syn:"プリンタ|インクジェット|複合機|コピー機|FAX複合機|スキャナー付き|フォトプリンター",incl:"インクジェット・複合機等（レーザー式は別品目）",en:"printer inkjet"},
+  {name:"オイルヒーター",yomi:"おいるひーたー",cat:"暖房",syn:"ヒーター|ストーブ|電気ストーブ|デロンギ|パネルヒーター|暖房器具|ラジエーターヒーター|ぽかぽか機|暖め機|電気暖房",incl:"オイルヒーター・パネルヒーター・ラジエーターヒーター等",en:"heater oil heater"},
+  {name:"ファンヒーター",yomi:"ふぁんひーたー",cat:"暖房",syn:"ヒーター|ストーブ|石油ファンヒーター|石油ストーブ|セラミックヒーター|ハロゲンヒーター|電気ストーブ|暖房器具|温風器|暖房|冬の電気",incl:"石油ファンヒーター・セラミックヒーター・ハロゲンヒーター等",en:"space heater fan heater"},
+  {name:"家具調こたつ",yomi:"かぐちょうこたつ",cat:"暖房",syn:"こたつ|炬燵|コタツテーブル|暖房テーブル|ヒーターテーブル|おこた|ぬくぬくテーブル",incl:"大型コタツ・電熱テーブル等",en:"kotatsu heated table"},
+  {name:"空気清浄機",yomi:"くうきせいじょうき",cat:"家電",syn:"加湿空気清浄機|空気清浄器|花粉対策機|PM2.5対策|HEPA|ダイキン|シャープ|空気きれい機",incl:"空気清浄機（加湿機能付きも含む）",en:"air purifier"},
+  {name:"加湿器・除湿機",yomi:"かしつき・じょしつき",cat:"家電",syn:"加湿器|除湿機|加湿空気清浄機|スチーム加湿器|超音波加湿器|除湿乾燥機|乾燥対策",incl:"加湿器・除湿機・加湿空気清浄機",en:"humidifier dehumidifier"},
+  {name:"扇風機・冷風扇",yomi:"せんぷうき",cat:"家電",syn:"扇風機|サーキュレーター|冷風扇|冷風機|DCファン|羽根なし扇風機|クールファン|スポットクーラー",incl:"扇風機・サーキュレーター・冷風扇等",en:"fan electric fan"},
+  {name:"ギター",yomi:"ぎたー",cat:"楽器",syn:"エレキギター|アコースティックギター|アコギ|ガットギター|クラシックギター|フラメンコギター|テレキャス|レスポール|ストラト|フライングV|弦楽器（ギター）|弾き語り",incl:"各種ギター・アコースティック・クラシック等",en:"guitar electric guitar acoustic"},
+  {name:"ベース（楽器）",yomi:"べーす",cat:"楽器",syn:"ベースギター|エレキベース|アコースティックベース|フレットレスベース|4弦ベース|弦楽器（ベース）|バンド楽器",incl:"ベースギター各種",en:"bass guitar"},
+  {name:"ウクレレ",yomi:"うくれれ",cat:"楽器",syn:"ウクレレ|ハワイアンウクレレ|コンサートウクレレ|ソプラノウクレレ|弦楽器（小）|小さいギター",incl:"各種ウクレレ",en:"ukulele"},
+  {name:"バイオリン・チェロ",yomi:"ばいおりん",cat:"楽器",syn:"バイオリン|チェロ|ビオラ|コントラバス|ヴァイオリン|弓弦楽器|弦楽器（弓）",incl:"バイオリン・チェロ・ビオラ等（ケース含む）",en:"violin cello viola"},
+  {name:"キーボード（楽器）",yomi:"きーぼーど",cat:"楽器",syn:"電子キーボード|シンセサイザー|シンセ|MIDIキーボード|電子ピアノ（小型）|鍵盤楽器|電子オルガン（小）",incl:"電子キーボード・シンセサイザー等",en:"keyboard synthesizer"},
+  {name:"電子ピアノ",yomi:"でんしぴあの",cat:"楽器",syn:"電子ピアノ|エレクトーン|デジタルピアノ|ステージピアノ|クラビノーバ|ヤマハ電子ピアノ|カワイ電子ピアノ|鍵盤（電子大型）",incl:"電子ピアノ・エレクトーン等（80kg以上）",en:"digital piano electric piano"},
+  {name:"ゴルフクラブ",yomi:"ごるふくらぶ",cat:"スポーツ",syn:"ゴルフ|クラブ|アイアン|ウッド|ドライバー|パター|ウェッジ|アプローチ|クラブセット|ゴルフ道具",incl:"ゴルフクラブ各種（5本以上でポイント加算）",en:"golf club iron driver putter"},
+  {name:"ゴルフバッグ",yomi:"ごるふばっぐ",cat:"スポーツ",syn:"キャディバッグ|ゴルフケース|ゴルフバッグ",incl:"キャディバッグ各種（中身を空に）",en:"golf bag caddy bag"},
+  {name:"スキー板・スノーボード",yomi:"すきーいた",cat:"スポーツ",syn:"スキー|スノーボード|スノボ|スキーセット|ウィンタースポーツ|スキーストック付き",incl:"スキー板（ストック含む）・スノーボード各種",en:"ski snowboard"},
+  {name:"サイクリングマシン",yomi:"さいくりんぐましん",cat:"健康器具",syn:"エアロバイク|フィットネスバイク|スピンバイク|室内自転車|固定自転車|ダイエットバイク|有酸素運動マシン|漕ぎマシン",incl:"エアロバイク・スピンバイク等",en:"exercise bike stationary bike aerobike"},
+  {name:"ランニングマシン",yomi:"らんにんぐましん",cat:"健康器具",syn:"トレッドミル|ルームランナー|ランニングマシーン|走るマシン|走るやつ|マシン（走る）|ランニング器具|ランニングベルト|ウォーキングマシン|ジョギングマシン|トレッドミルマシン|ベルトランニング",incl:"トレッドミル・ルームランナー・ウォーキングマシン等（80kg以上は不可）",en:"treadmill running machine walking machine"},
+  {name:"マッサージチェア（大型）",yomi:"まっさーじちぇあ",cat:"健康器具",syn:"マッサージ機|フルボディ|整体チェア|揉み機|リラックスチェア（マッサージ付）|高級マッサージ",incl:"大型マッサージチェア等（80kg以上）",en:"massage chair"},
+  {name:"ぶら下がり健康器",yomi:"ぶらさがりけんこうき",cat:"健康器具",syn:"懸垂台|チンニングスタンド|懸垂マシン|鉄棒（家庭用）|マルチジム|ぶらさがり",incl:"懸垂台・チンニングスタンド・マルチジム等",en:"pull-up bar chin-up station"},
+  {name:"車椅子（手動）",yomi:"くるまいす（てどう）",cat:"介護用品",syn:"車いす|手動車椅子|折りたたみ車椅子|介護車いす",incl:"手動式・折りたたみ式各種",en:"wheelchair manual wheelchair"},
+  {name:"車椅子（電動）",yomi:"くるまいす（でんどう）",cat:"介護用品",syn:"電動車椅子|電動車いす|パワーチェア",incl:"電動式（バッテリーを外して搬出）",en:"electric wheelchair power wheelchair"},
+  {name:"シルバーカー",yomi:"しるばーかー",cat:"介護用品",syn:"押し車|歩行補助|ウォーカー|手押し車|シルバーカート|老人用カート|買い物カート（介護）",incl:"シルバーカー・歩行補助カート等",en:"walking aid walker rollator"},
+  {name:"ベビーベッド",yomi:"べびーべっど",cat:"ベビー用品",syn:"赤ちゃんベッド|ハイローチェア（大型）|バウンサー（大型）|クーハン（大型）|乳幼児用ベッド",incl:"ベビーベッド・ハイローチェア等（要解体）",en:"baby cot baby bed"},
+  {name:"キャットタワー",yomi:"きゃっとたわー",cat:"ペット用品",syn:"猫タワー|ネコタワー|キャットウォーク|猫用棚|猫家具|猫のおうち|ねこタワー",incl:"キャットタワー・キャットウォーク等（要解体）",en:"cat tower cat tree"},
+  {name:"ペット用ケージ",yomi:"ぺっとけーじ",cat:"ペット用品",syn:"ケージ|クレート|ペットサークル|犬ケージ|猫ケージ|うさぎケージ|ペット柵|サークル",incl:"ペット用ケージ・サークル・クレート等",en:"pet cage crate"},
+  {name:"犬小屋",yomi:"いぬごや",cat:"ペット用品",syn:"ペットハウス|ドッグハウス|犬の家|ペットシェルター|わんこのおうち",incl:"犬小屋・ドッグハウス等（要解体）",en:"dog house kennel"},
+  {name:"水槽",yomi:"すいそう",cat:"趣味",syn:"アクアリウム|熱帯魚水槽|金魚水槽|メダカ水槽|ビオトープ容器|魚タンク",incl:"水槽各種（付属品・砂は含まない）",en:"fish tank aquarium"},
+  {name:"模型・プラモデル",yomi:"もけい",cat:"趣味",syn:"ガンプラ|プラモデル|フィギュア|ミニカー|鉄道模型|ダイキャスト|ガレージキット|ロボットモデル|アクションフィギュア|コレクターズアイテム",incl:"ガンプラ・プラモデル・フィギュア等（ムシろ対策必要）",en:"model kit figure miniature"},
+  {name:"スーツケース",yomi:"すーつけーす",cat:"旅行用品",syn:"キャリーバッグ|トランク|旅行カバン|キャリーケース|ハードケース|ソフトケース|ガラガラ（旅行）",incl:"スーツケース・トランク・キャリーバッグ等（中身を空に）",en:"suitcase luggage carry-on"},
+  {name:"テント（ドーム型）",yomi:"てんと（どーむ）",cat:"アウトドア",syn:"テント|ドームテント|ワンタッチテント|ポップアップテント|キャンプテント",incl:"各種ドーム型テント",en:"tent camping tent dome tent"},
+  {name:"テント・タープ",yomi:"てんとたーぷ",cat:"アウトドア",syn:"タープ|ヘキサタープ|スクリーンタープ|レクタタープ|タープテント|日よけ（大型）",incl:"タープ・スクリーンタープ等（屋根型）",en:"tarp canopy"},
+  {name:"バーベキューコンロ",yomi:"ばーべきゅーこんろ",cat:"アウトドア",syn:"BBQコンロ|バーベキューグリル|炭火コンロ|グリル|BBQセット|焚き火台（コンロ型）|アウトドアコンロ",incl:"BBQコンロ・グリル等",en:"barbecue grill BBQ"},
+  {name:"照明器具",yomi:"しょうめいきぐ",cat:"家電",syn:"シーリングライト|シャンデリア|ペンダントライト|フロアライト|スタンドライト|電気スタンド|LED照明|ランプ（大型）",incl:"シーリングライト・シャンデリア・フロアライト等",en:"light fixture lamp chandelier"},
+  {name:"物置",yomi:"ものおき",cat:"庭・外構",syn:"倉庫|ガーデンシェッド|屋外収納|屋外倉庫|収納庫|庭小屋",incl:"解体可能な物置各種",en:"outdoor shed storage shed"},
+  {name:"カーペット・じゅうたん",yomi:"かーぺっと",cat:"床材",syn:"ウッドカーペット|フローリングカーペット|じゅうたん|絨毯|ラグ|マット|ラグマット|コルクマット|ジョイントマット|バスマット|タイルカーペット|ホットカーペット",incl:"カーペット・じゅうたん・ラグ・マット各種",en:"carpet rug mat"},
+  {name:"物干し竿・台",yomi:"ものほし",cat:"生活用品",syn:"物干し竿|物干し台|物干しスタンド|物干しポール|竿|洗濯物干し",incl:"物干し竿・台・ポール等",en:"clothes drying rack"},
+  // 収集不可
+  {name:"エアコン",yomi:"えあこん",cat:"家電（収集不可）",syn:"クーラー|冷暖房|エアコン|壁掛けエアコン|冷房|室外機",incl:"⚠️ 家電リサイクル法対象 — 市では収集不可",en:"air conditioner",ng:true},
+  {name:"テレビ",yomi:"てれび",cat:"家電（収集不可）",syn:"TV|液晶テレビ|有機EL|プラズマ|ブラウン管|4Kテレビ|モニター|ディスプレイ",incl:"⚠️ 家電リサイクル法対象 — 市では収集不可",en:"television TV",ng:true},
+  {name:"冷蔵庫",yomi:"れいぞうこ",cat:"家電（収集不可）",syn:"冷凍庫|冷蔵|ミニ冷蔵庫|ワインセラー|業務用冷蔵庫",incl:"⚠️ 家電リサイクル法対象 — 市では収集不可",en:"refrigerator fridge",ng:true},
+  {name:"洗濯機",yomi:"せんたくき",cat:"家電（収集不可）",syn:"乾燥機|ドラム式|縦型|洗濯乾燥機|全自動洗濯機",incl:"⚠️ 家電リサイクル法対象 — 市では収集不可",en:"washing machine washer",ng:true},
+  {name:"パソコン",yomi:"ぱそこん",cat:"電子機器（収集不可）",syn:"PC|ノートPC|デスクトップ|タブレット|iPad|Surface|MacBook|iMac|ラップトップ",incl:"⚠️ PCリサイクル法対象 — 市では収集不可",en:"computer laptop PC tablet",ng:true},
+  {name:"バイク・原付",yomi:"ばいく",cat:"乗り物（収集不可）",syn:"原付|スクーター|オートバイ|電動バイク|電動スクーター|二輪車（エンジン）",incl:"⚠️ 二輪車リサイクル対象 — 市では収集不可",en:"motorcycle scooter",ng:true},
+];
+
+// カテゴリ一覧を生成
+const cats = [...new Set(MASTER.map(m => m.cat))];
+const catFilter = document.getElementById('catFilter');
+cats.forEach(c => {
+  const btn = document.createElement('button');
+  btn.className = 'cat-btn';
+  btn.dataset.cat = c;
+  btn.textContent = c;
+  btn.onclick = () => setCat(btn, c);
+  catFilter.appendChild(btn);
+});
+
+// 統計計算
+let totalSyn = 0;
+MASTER.forEach(m => {
+  totalSyn += m.syn.split('|').length + m.en.split(' ').length;
+});
+document.getElementById('statTotal').textContent = MASTER.length;
+document.getElementById('statSyn').textContent = totalSyn.toLocaleString();
+document.getElementById('updateDate').textContent = '更新: 2026年4月';
+
+// レンダリング
+const mainEl = document.getElementById('main');
+let activeCat = '', searchQ = '';
+
+function render() {
+  const q = searchQ.toLowerCase();
+  let count = 0;
+  document.querySelectorAll('.item-card').forEach((card, i) => {
+    const m = MASTER[i];
+    const catMatch = !activeCat || m.cat === activeCat;
+    const qMatch = !q || [m.name, m.yomi, m.syn, m.en, m.incl].join(' ').toLowerCase().includes(q);
+    const show = catMatch && qMatch;
+    card.classList.toggle('visible', show);
+    if (show) count++;
+  });
+  document.getElementById('countBadge').textContent = `${count}件表示中`;
+}
+
+function setCat(btn, cat) {
+  activeCat = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function filterAll() {
+  searchQ = document.getElementById('searchBox').value;
+  render();
+}
+
+function toggleCard(idx) {
+  const body = document.getElementById('cb' + idx);
+  const head = document.getElementById('ch' + idx);
+  body.classList.toggle('open');
+  head.classList.toggle('open');
+}
+
+// カード生成
+MASTER.forEach((m, i) => {
+  const syns = m.syn.split('|');
+  const ens = m.en.split(' ');
+  const q = searchQ;
+  const card = document.createElement('div');
+  card.className = `item-card visible${m.ng ? ' is-ngonly' : ''}`;
+
+  card.innerHTML = `
+    <div class="card-head" id="ch${i}" onclick="toggleCard(${i})">
+      <span class="cat-tag${m.ng ? ' ng' : ''}">${m.cat}</span>
+      <div>
+        <div class="item-name">${m.name}</div>
+        <div class="item-yomi">${m.yomi}</div>
+      </div>
+      <span style="margin-left:auto;font-size:12px;color:var(--t3);margin-right:8px">${syns.length + ens.length}語</span>
+      <span class="acc-ico">▼</span>
+    </div>
+    <div class="card-body" id="cb${i}">
+      <div class="card-inner">
+        <div class="section">
+          <div class="section-lbl">🔤 同義語・別名・言い換え（${syns.length}語）</div>
+          <div class="syn-list">
+            ${syns.map(s => `<span class="syn-chip">${s}</span>`).join('')}
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-lbl">🌐 英語キーワード</div>
+          <div class="syn-list">
+            ${ens.map(e => `<span class="syn-chip en">${e}</span>`).join('')}
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-lbl">📦 含まれるもの・具体例</div>
+          <div class="incl-box${m.ng ? ' warn' : ''}">${m.incl}</div>
+        </div>
+        <div class="edit-hint">
+          ✏️ synonym_master_v2.csv の ${i + 2} 行目を編集すると更新できます
+        </div>
+      </div>
+    </div>
+  `;
+  mainEl.appendChild(card);
+});
+
+render();
+
+// 検索ボックスにフォーカス
+setTimeout(() => document.getElementById('searchBox').focus(), 100);
+</script>
+</body>
+</html>

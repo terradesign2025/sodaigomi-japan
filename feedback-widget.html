@@ -1,0 +1,300 @@
+<!--
+  粗大ごみ判定アプリ フィードバックウィジェット
+  このファイルの <script> と <style> を index.html に貼り付けてください。
+  FORM_URL を実際のGoogleフォームURLに変更してください。
+-->
+
+<!-- ====== アプリ内フィードバックボタン（index.html の </body> 直前に追加） ====== -->
+
+<!-- フィードバックFABボタン -->
+<div id="fbFab" style="
+  position:fixed; right:16px; bottom:78px; z-index:89;
+  width:44px; height:44px;
+  background:#fff; border-radius:50%;
+  box-shadow:0 2px 12px rgba(0,0,0,.15);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; border:1px solid #E5E5EA;
+  font-size:20px;
+  transition:transform .15s;
+" onclick="openFeedback()" title="品目が見つからない？教えてください">
+  💬
+</div>
+
+<!-- フィードバックモーダル -->
+<div id="fbModal" style="
+  position:fixed; inset:0; background:rgba(0,0,0,.45);
+  z-index:400; display:none; align-items:flex-end;
+  backdrop-filter:blur(4px);
+" onclick="if(event.target===this)closeFeedback()">
+  <div style="
+    background:#fff; width:100%; max-width:720px; margin:0 auto;
+    border-radius:20px 20px 0 0; padding:8px 0 40px;
+    animation:su .25s cubic-bezier(.2,.8,.3,1);
+  ">
+    <div style="width:36px;height:4px;background:#E5E5EA;border-radius:2px;margin:8px auto 16px"></div>
+    <div style="padding:0 20px">
+
+      <!-- タイトル -->
+      <div style="font-size:18px;font-weight:700;color:#1C1C1E;margin-bottom:4px">💬 ご意見・ご報告</div>
+      <div style="font-size:12px;color:#8E8E93;margin-bottom:20px">品目が見つからない、同義語の提案など何でもどうぞ</div>
+
+      <!-- クイックボタン（よく使われる報告タイプ） -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+        <button onclick="openForm('notfound')" style="
+          padding:14px 10px; background:#F0FBF4; border:1.5px solid #34C759;
+          border-radius:12px; font-size:13px; font-weight:600; cursor:pointer;
+          color:#1C1C1E; text-align:center; line-height:1.4;
+        ">
+          🔍 品目が見つからない
+          <div style="font-size:10px;color:#8E8E93;font-weight:400;margin-top:3px">検索してもヒットしない</div>
+        </button>
+        <button onclick="openForm('synonym')" style="
+          padding:14px 10px; background:#F0F7FF; border:1.5px solid #007AFF;
+          border-radius:12px; font-size:13px; font-weight:600; cursor:pointer;
+          color:#1C1C1E; text-align:center; line-height:1.4;
+        ">
+          💡 同義語を提案する
+          <div style="font-size:10px;color:#8E8E93;font-weight:400;margin-top:3px">こんな言葉でも出るように</div>
+        </button>
+        <button onclick="openForm('wrong')" style="
+          padding:14px 10px; background:#FFF5F5; border:1.5px solid #FF3B30;
+          border-radius:12px; font-size:13px; font-weight:600; cursor:pointer;
+          color:#1C1C1E; text-align:center; line-height:1.4;
+        ">
+          ⚠️ 情報が間違っている
+          <div style="font-size:10px;color:#8E8E93;font-weight:400;margin-top:3px">料金・ルールの修正</div>
+        </button>
+        <button onclick="openForm('other')" style="
+          padding:14px 10px; background:#F8F8F8; border:1.5px solid #E5E5EA;
+          border-radius:12px; font-size:13px; font-weight:600; cursor:pointer;
+          color:#1C1C1E; text-align:center; line-height:1.4;
+        ">
+          🐛 その他・バグ報告
+          <div style="font-size:10px;color:#8E8E93;font-weight:400;margin-top:3px">アプリの不具合など</div>
+        </button>
+      </div>
+
+      <!-- ボランティア募集メッセージ -->
+      <div style="
+        background:linear-gradient(135deg,#F0FBF4,#E8F8EC);
+        border-radius:12px; padding:14px 16px; margin-bottom:16px;
+        border:1px solid rgba(52,199,89,.2);
+      ">
+        <div style="font-size:13px;font-weight:700;color:#28A745;margin-bottom:4px">
+          🙌 同義語ボランティア募集中！
+        </div>
+        <div style="font-size:12px;color:#636366;line-height:1.7">
+          「この言葉でも検索できるようにしてほしい」という<br>
+          ご提案を随時募集しています。<br>
+          皆さんのご協力でアプリが良くなります！
+        </div>
+      </div>
+
+      <!-- 詳細フォームリンク -->
+      <button onclick="openFullForm()" style="
+        width:100%; padding:14px; background:#34C759; color:#fff;
+        border:none; border-radius:12px; font-size:14px; font-weight:700;
+        cursor:pointer; box-shadow:0 3px 10px rgba(52,199,89,.35);
+      ">
+        📝 詳しく教えてくれる方はこちら →
+      </button>
+
+      <button onclick="closeFeedback()" style="
+        width:100%; padding:12px; background:transparent; color:#8E8E93;
+        border:none; font-size:14px; cursor:pointer; margin-top:10px;
+      ">
+        閉じる
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- クイック報告フォーム（インライン） -->
+<div id="fbQuick" style="
+  position:fixed; inset:0; background:rgba(0,0,0,.5);
+  z-index:500; display:none; align-items:center; justify-content:center;
+  padding:20px;
+" onclick="if(event.target===this)closeQuick()">
+  <div style="
+    background:#fff; width:100%; max-width:400px;
+    border-radius:16px; padding:20px;
+    box-shadow:0 10px 40px rgba(0,0,0,.2);
+  ">
+    <div id="fbQuickTitle" style="font-size:16px;font-weight:700;color:#1C1C1E;margin-bottom:16px"></div>
+
+    <div style="margin-bottom:12px">
+      <div style="font-size:12px;font-weight:600;color:#636366;margin-bottom:6px">検索したキーワード（必須）</div>
+      <input id="fbInputQ" type="text" placeholder="例：ゲーミングチェア、デスク" style="
+        width:100%;padding:11px 12px;border:1.5px solid #E5E5EA;
+        border-radius:10px;font-size:15px;outline:none;font-family:inherit;
+      " onfocus="this.style.borderColor='#34C759'" onblur="this.style.borderColor='#E5E5EA'">
+    </div>
+
+    <div style="margin-bottom:16px">
+      <div style="font-size:12px;font-weight:600;color:#636366;margin-bottom:6px">本当は何を捨てたいですか？（必須）</div>
+      <input id="fbInputA" type="text" placeholder="例：椅子、ベッド、机" style="
+        width:100%;padding:11px 12px;border:1.5px solid #E5E5EA;
+        border-radius:10px;font-size:15px;outline:none;font-family:inherit;
+      " onfocus="this.style.borderColor='#34C759'" onblur="this.style.borderColor='#E5E5EA'">
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <button onclick="closeQuick()" style="
+        padding:12px;background:#F4F6FB;color:#636366;
+        border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;
+      ">キャンセル</button>
+      <button onclick="submitQuickFeedback()" style="
+        padding:12px;background:#34C759;color:#fff;
+        border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;
+        box-shadow:0 2px 8px rgba(52,199,89,.35);
+      ">送信する</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="fbToast" style="
+  position:fixed;bottom:90px;left:50%;transform:translateX(-50%);
+  background:rgba(28,28,30,.9);color:#fff;padding:10px 20px;
+  border-radius:24px;font-size:13px;font-weight:600;z-index:600;
+  opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;
+  white-space:nowrap;
+"></div>
+
+<script>
+// ===================================================
+// フィードバックウィジェット設定
+// GoogleフォームのURLに書き換えてください
+// ===================================================
+const FEEDBACK_CONFIG = {
+  // GoogleフォームのURL（?usp=sf_link の形式）
+  FORM_URL: 'https://forms.gle/XXXXXXXXXXXX',  // ← ここをGoogleフォームURLに変更
+
+  // Googleフォームの入力フィールドのentry番号
+  // フォームを右クリック→検証で entry.XXXXXXX を確認してください
+  ENTRY_TYPE:    'entry.111111111',  // 種別
+  ENTRY_KEYWORD: 'entry.222222222',  // 検索キーワード
+  ENTRY_ITEM:    'entry.333333333',  // 探していた品目
+
+  // 種別の選択肢（Googleフォームのラジオボタンの値と一致させる）
+  TYPES: {
+    notfound: '🔍 品目が見つからなかった（検索してもヒットしなかった）',
+    synonym:  '💡 こんな言葉でも検索できるようにしてほしい（同義語の提案）',
+    wrong:    '⚠️ 情報が間違っている・古い（料金・ルールの修正）',
+    other:    '🐛 アプリが正しく動かない（バグ報告）',
+  }
+};
+
+let currentFbType = '';
+
+function openFeedback(){
+  document.getElementById('fbModal').style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeFeedback(){
+  document.getElementById('fbModal').style.display='none';
+  document.body.style.overflow='';
+}
+
+function openForm(type){
+  currentFbType = type;
+  closeFeedback();
+  const titles = {
+    notfound: '🔍 品目が見つからなかった',
+    synonym:  '💡 同義語の提案',
+    wrong:    '⚠️ 情報の修正報告',
+    other:    '🐛 その他・バグ報告',
+  };
+  document.getElementById('fbQuickTitle').textContent = titles[type] || 'ご報告';
+  document.getElementById('fbInputQ').value = '';
+  document.getElementById('fbInputA').value = '';
+
+  // 現在の検索ワードがあれば自動入力
+  const currentSearch = document.getElementById('sinput')?.value || '';
+  if(currentSearch) document.getElementById('fbInputQ').value = currentSearch;
+
+  document.getElementById('fbQuick').style.display='flex';
+  document.body.style.overflow='hidden';
+  setTimeout(()=>document.getElementById('fbInputQ').focus(), 100);
+}
+
+function closeQuick(){
+  document.getElementById('fbQuick').style.display='none';
+  document.body.style.overflow='';
+}
+
+function submitQuickFeedback(){
+  const q = document.getElementById('fbInputQ').value.trim();
+  const a = document.getElementById('fbInputA').value.trim();
+  if(!q || !a){
+    showFbToast('キーワードと品目名を入力してください');
+    return;
+  }
+
+  // Googleフォームにプリフィル付きで送信（サイレント送信）
+  const typeVal = encodeURIComponent(FEEDBACK_CONFIG.TYPES[currentFbType] || currentFbType);
+  const url = `${FEEDBACK_CONFIG.FORM_URL}?${FEEDBACK_CONFIG.ENTRY_TYPE}=${typeVal}`
+            + `&${FEEDBACK_CONFIG.ENTRY_KEYWORD}=${encodeURIComponent(q)}`
+            + `&${FEEDBACK_CONFIG.ENTRY_ITEM}=${encodeURIComponent(a)}`;
+
+  // iframeで静かに送信（ユーザーにフォームページを見せない）
+  const iframe = document.createElement('iframe');
+  iframe.name = 'fbFrame';
+  iframe.style.display = 'none';
+  document.body.appendChild(iframe);
+
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = FEEDBACK_CONFIG.FORM_URL.replace('/viewform', '/formResponse');
+  form.target = 'fbFrame';
+  form.style.display = 'none';
+
+  const addField = (name, val) => {
+    const inp = document.createElement('input');
+    inp.type = 'hidden';
+    inp.name = name;
+    inp.value = val;
+    form.appendChild(inp);
+  };
+
+  addField(FEEDBACK_CONFIG.ENTRY_TYPE, FEEDBACK_CONFIG.TYPES[currentFbType] || '');
+  addField(FEEDBACK_CONFIG.ENTRY_KEYWORD, q);
+  addField(FEEDBACK_CONFIG.ENTRY_ITEM, a);
+  document.body.appendChild(form);
+
+  try {
+    form.submit();
+  } catch(e) {}
+
+  // ローカルにも保存（オフライン時のバックアップ）
+  try {
+    const pending = JSON.parse(localStorage.getItem('fb_pending') || '[]');
+    pending.push({type: currentFbType, keyword: q, item: a, ts: new Date().toISOString()});
+    localStorage.setItem('fb_pending', JSON.stringify(pending.slice(-50)));
+  } catch(e) {}
+
+  closeQuick();
+  setTimeout(() => {
+    document.body.removeChild(form);
+    document.body.removeChild(iframe);
+  }, 3000);
+
+  showFbToast('✓ ご報告ありがとうございます！');
+}
+
+function openFullForm(){
+  closeFeedback();
+  window.open(FEEDBACK_CONFIG.FORM_URL, '_blank', 'noopener');
+}
+
+function showFbToast(msg){
+  const t = document.getElementById('fbToast');
+  t.textContent = msg;
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(-4px)';
+  clearTimeout(t._t);
+  t._t = setTimeout(()=>{
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(-50%)';
+  }, 2500);
+}
+</script>
