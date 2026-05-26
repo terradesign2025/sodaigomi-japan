@@ -1,0 +1,20 @@
+{
+  "city": {
+    "id": "09209",
+    "name": "真岡市",
+    "prefecture": "栃木県",
+    "rank": "C",
+    "dataVersion": "2026-05",
+    "rules": {
+      "websiteUrl": "https://www.city.moka.lg.jp/kakuka/kankyo/gyomu/gomi/bunbetsu_shushu/1248.html",
+      "contact": "0285-83-8126（環境課ごみ減量係）",
+      "nonCollectibleNote": "家電リサイクル4品目（エアコン・テレビ・冷蔵庫・洗濯機）、パソコン、バイク・タイヤ、消火器は収集できません",
+      "applicationMethod": "市許可業者に依頼（大型ごみ・粗大ごみ）",
+      "selfCarryIn": "芳賀地区エコステーションへ持込可"
+    }
+  },
+  "items": [
+    {"n":"粗大ごみ（家具・家電・寝具など）","k":["そ"],"fee":0,"m":"持込","note":"持込は無料（芳賀地区エコステーション）。戸別収集は市許可業者に有料依頼","tags":["タンス","ベッド","テーブル","椅子","自転車","布団","カーペット","家電","畳","ソファ"],"en":"Bulky Waste (free carry-in to ecostation)"}
+  ],
+  "uncollectible": ["エアコン","テレビ","冷蔵庫","洗濯機","パソコン","バイク","タイヤ","消火器"]
+}

@@ -1,0 +1,22 @@
+{
+  "city": {
+    "id": "10204",
+    "name": "伊勢崎市",
+    "prefecture": "群馬県",
+    "rank": "C",
+    "dataVersion": "2026-05",
+    "rules": {
+      "websiteUrl": "https://www.city.isesaki.lg.jp/kurashi_tetsuzuki/gomi_recycle/gominowakekata_dashikata/index.html",
+      "contact": "0270-27-2732（資源循環課）",
+      "nonCollectibleNote": "家電リサイクル4品目（エアコン・テレビ・冷蔵庫・洗濯機）、パソコン、バイク・タイヤ、消火器は収集できません",
+      "applicationMethod": "収集日（月1回程度）に事前紙付け（町名・苗字）でステーション出し。申込不要",
+      "paymentMethod": "無料（ステーション収集）",
+      "selfCarryIn": "清掃リサイクルセンター21（954 芝町）へ持込可（10kgにつき120円）"
+    }
+  },
+  "items": [
+    {"n":"粗大ごみ（ステーション収集・無料）","k":["そ"],"fee":0,"m":"収集","note":"45Lごみ袋に入らないもの。ステーションに紙（町名・苗字）を貼って出す","tags":["タンス","テーブル","クッション","ストーブ","扇風機","家具","自転車","布団","カーペット","スプリングマットレス","ソファ"],"en":"Bulky Waste (free station collection)"},
+    {"n":"粗大ごみ（持込）","k":["そ"],"fee":120,"m":"持込","note":"清掃リサイクルセンター21。10kgにつき120円","tags":["家具","家電","寝具","自転車"],"en":"Bulky Waste (carry-in, 120 yen/10kg)"}
+  ],
+  "uncollectible": ["エアコン","テレビ","冷蔵庫","洗濯機","パソコン","バイク","タイヤ","消火器"]
+}

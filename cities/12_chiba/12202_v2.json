@@ -1,0 +1,30 @@
+{
+  "city": {
+    "id": "12202",
+    "name": "銚子市",
+    "prefecture": "千葉県",
+    "rank": "C",
+    "dataVersion": "2026-05",
+    "rules": {
+      "definition": "指定ごみ袋に入らない大きさのもの（家庭から排出されるもの）",
+      "websiteUrl": "https://www.city.choshi.chiba.jp/kurashi/page150004.html",
+      "contact": "0479-24-8764",
+      "hours": "月〜金 8:30〜17:15（祝日除く）",
+      "applicationMethod": "許可業者への依頼（電話で戸別収集業者に直接申込）または東総地区クリーンセンターへ直接搬入",
+      "paymentMethod": "業者依頼の場合：各業者の料金による。直接搬入の場合：10kgごとに100円（税込・10kg未満は100円）",
+      "collectionMethod": "市・クリーンセンターによる戸別収集は行っていない。許可業者（9社）への申込が必要",
+      "selfCarryIn": "東総地区クリーンセンターへの直接持込可（10kgごと100円）",
+      "nonCollectibleNote": "家電リサイクル4品目（エアコン・テレビ・冷蔵庫・洗濯機）、パソコン、バイク・タイヤ、消火器等は収集不可"
+    }
+  },
+  "items": [
+    {"n": "粗大ごみ（直接搬入・10kgごと）", "k": ["そ"], "fee": 100, "m": "持込のみ", "tags": ["持込", "重量別"], "en": "Bulky Waste (self carry-in, per 10kg)"},
+    {"n": "ソファー（業者依頼）", "k": ["そ"], "fee": 0, "m": "要確認", "tags": ["ソファー", "家具", "業者"], "en": "Sofa (via licensed collector)"},
+    {"n": "ベッド（業者依頼）", "k": ["は"], "fee": 0, "m": "要確認", "tags": ["ベッド", "寝具", "業者"], "en": "Bed (via licensed collector)"},
+    {"n": "タンス（業者依頼）", "k": ["た"], "fee": 0, "m": "要確認", "tags": ["タンス", "家具", "業者"], "en": "Chest (via licensed collector)"},
+    {"n": "自転車（業者依頼）", "k": ["さ"], "fee": 0, "m": "要確認", "tags": ["自転車", "業者"], "en": "Bicycle (via licensed collector)"},
+    {"n": "布団（業者依頼）", "k": ["は"], "fee": 0, "m": "要確認", "tags": ["布団", "寝具", "業者"], "en": "Futon (via licensed collector)"}
+  ],
+  "uncollectible": ["エアコン", "テレビ", "冷蔵庫", "洗濯機", "パソコン", "バイク", "タイヤ", "消火器"],
+  "_note": "市による戸別収集なし。許可業者（生活環境課 0479-24-8764）に問い合わせ。直接搬入は東総地区クリーンセンター（10kgごと100円）"
+}

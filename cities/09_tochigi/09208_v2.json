@@ -1,0 +1,21 @@
+{
+  "city": {
+    "id": "09208",
+    "name": "小山市",
+    "prefecture": "栃木県",
+    "rank": "B",
+    "dataVersion": "2026-05",
+    "rules": {
+      "websiteUrl": "https://www.city.oyama.tochigi.jp/kurashi/gomi-seikatsu/gomi-recycle/page001086.html",
+      "contact": "0285-22-9111",
+      "nonCollectibleNote": "家電リサイクル4品目（エアコン・テレビ・冷蔵庫・洗濯機）、パソコン、バイク・タイヤ、消火器は収集できません",
+      "applicationMethod": "電話で事前申込",
+      "paymentMethod": "1点1,000円均一",
+      "collectionMethod": "収集日当日の朝8:30までに指定場所へ"
+    }
+  },
+  "items": [
+    {"n":"粗大ごみ（1点）","k":["そ"],"fee":1000,"m":"収集","note":"1辺60cm以上。1点1,000円均一","tags":["タンス","ベッド","テーブル","椅子","自転車","布団","カーペット","家電","畳","ソファ","掃除機"],"en":"Bulky Waste (1 item, 1000 yen flat)"}
+  ],
+  "uncollectible": ["エアコン","テレビ","冷蔵庫","洗濯機","パソコン","バイク","タイヤ","消火器"]
+}

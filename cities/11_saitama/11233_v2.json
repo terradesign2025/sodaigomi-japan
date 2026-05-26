@@ -1,0 +1,29 @@
+{
+  "city": {
+    "id": "11233",
+    "name": "八潮市",
+    "prefecture": "埼玉県",
+    "rank": "C",
+    "dataVersion": "2026-05",
+    "rules": {
+      "definition": "重さが10kg以上のもの、または1辺の長さが1メートル以上のもの",
+      "websiteUrl": "https://www.city.yashio.lg.jp/kurashi/gomi_kankyo/recycle/sodaigomi_dashikata.html",
+      "contact": "048-996-2111",
+      "hours": "月〜金 8:30〜17:15（祝日除く）",
+      "applicationMethod": "電話申込",
+      "paymentMethod": "基本料金10kgにつき250円＋戸別収集時は収集運搬料800円加算。スプリング入りマットレスは別途2,000円加算",
+      "collectionMethod": "収集日当日に指定場所へ排出",
+      "selfCarryIn": "東埼玉資源環境組合への直接持込可",
+      "nonCollectibleNote": "家電リサイクル4品目（エアコン・テレビ・冷蔵庫・洗濯機）、パソコン等は収集できません"
+    }
+  },
+  "items": [
+    {"n": "粗大ごみ（重量別基本料金）", "k": ["そ"], "fee": 250, "m": "収集のみ", "tags": ["一般", "大型ごみ"], "en": "Bulky Waste (by weight)", "note": "10kgにつき250円＋収集運搬料800円（戸別収集時）"},
+    {"n": "スプリング入りマットレス（加算）", "k": ["す"], "fee": 2000, "m": "収集のみ", "tags": ["マットレス", "スプリング", "特定困難物"], "en": "Spring Mattress (surcharge)", "note": "重量別料金に2,000円加算"},
+    {"n": "自転車", "k": ["さ"], "fee": 250, "m": "収集のみ", "tags": ["自転車", "乗物"], "en": "Bicycle", "note": "重量別・10kgにつき250円"},
+    {"n": "タンス・食器棚", "k": ["た"], "fee": 250, "m": "収集のみ", "tags": ["タンス", "収納", "家具"], "en": "Chest / Cabinet", "note": "重量別"},
+    {"n": "ベッド（フレーム）", "k": ["は"], "fee": 250, "m": "収集のみ", "tags": ["ベッド", "寝具"], "en": "Bed Frame", "note": "重量別"},
+    {"n": "畳", "k": ["た"], "fee": 250, "m": "収集のみ", "tags": ["畳"], "en": "Tatami Mat", "note": "戸別収集のみ・重量別"}
+  ],
+  "uncollectible": ["エアコン", "テレビ", "冷蔵庫", "冷凍庫", "洗濯機", "衣類乾燥機", "パソコン", "車部品", "コンクリート"]
+}

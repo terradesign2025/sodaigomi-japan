@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>粗大ごみ処分料金かんたん検索 | 全国対応・無料で今すぐ調べる</title>
+<meta name="description" content="粗大ごみの処分料金・出し方を市区町村ごとに無料で検索。東京・神奈川・埼玉・千葉・大阪など197都市・740品目以上に対応。">
+<meta property="og:title" content="粗大ごみ処分料金かんたん検索">
+<meta property="og:description" content="無料・全国対応・740品目以上。粗大ごみの処分料金をすぐ調べられます。">
+<meta property="og:type" content="website">
+
+<!-- Google Analytics GA4 ※計測IDを差し替えてください -->
+<!-- [設定手順] analytics.google.com → 管理 → プロパティ作成 → G-XXXXXXXXXX を取得して下記に貼り付け -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script> -->
+
+<style>
+:root{
+  --g:#16a34a;--gd:#14532d;--gl:#dcfce7;--glm:#bbf7d0;
+  --bg:#f0fdf4;--card:#fff;--text:#111827;--muted:#6b7280;
+  --border:#e5e7eb;--orange:#f59e0b;--navy:#1e3a5f;
+  --sh:0 2px 16px rgba(22,163,74,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+
+/* ── HEADER ── */
+.top-bar{background:var(--card);border-bottom:1px solid var(--border);padding:10px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 1px 6px rgba(0,0,0,.05);}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;}
+.logo-ico{width:36px;height:36px;background:var(--gl);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;}
+.logo-txt{font-size:14px;font-weight:800;color:var(--gd);}
+.cta-top{background:var(--g);color:#fff;padding:8px 18px;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;box-shadow:0 2px 8px rgba(22,163,74,.3);}
+.cta-top:hover{background:var(--gd);}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(145deg,#14532d 0%,#16a34a 50%,#22c55e 100%);color:#fff;padding:60px 20px 80px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(255,255,255,.07) 0%,transparent 60%);}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:700;margin-bottom:16px;letter-spacing:.04em;}
+.hero h1{font-size:clamp(24px,5vw,38px);font-weight:900;line-height:1.25;margin-bottom:14px;position:relative;}
+.hero h1 em{font-style:normal;color:#bbf7d0;}
+.hero-sub{font-size:15px;opacity:.9;max-width:480px;margin:0 auto 30px;line-height:1.7;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-hero{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--gd);padding:14px 28px;border-radius:30px;font-size:15px;font-weight:800;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:all .15s;}
+.btn-hero:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.25);}
+.btn-hero-sub{background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.5);}
+.btn-hero-sub:hover{background:rgba(255,255,255,.25);color:#fff;}
+.hero-wave{position:absolute;bottom:-1px;left:0;width:100%;line-height:0;}
+.hero-wave svg{display:block;}
+
+/* ── STATS ── */
+.stats{background:var(--card);padding:32px 20px;border-bottom:1px solid var(--border);}
+.stats-inner{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center;}
+.stat-item{padding:16px 8px;}
+.stat-num{font-size:clamp(28px,5vw,40px);font-weight:900;color:var(--g);line-height:1;}
+.stat-unit{font-size:13px;font-weight:700;color:var(--g);}
+.stat-label{font-size:11px;color:var(--muted);margin-top:6px;}
+@media(max-width:480px){.stats-inner{grid-template-columns:1fr 1fr;}.stat-item:last-child{grid-column:span 2;}}
+
+/* ── PROBLEM ── */
+.problem{padding:52px 20px;background:var(--bg);}
+.section-tag{display:inline-block;background:var(--gl);color:var(--gd);font-size:11px;font-weight:700;padding:3px 12px;border-radius:12px;margin-bottom:10px;letter-spacing:.04em;}
+.section-h2{font-size:clamp(20px,4vw,28px);font-weight:900;color:var(--navy);margin-bottom:8px;line-height:1.3;}
+.section-sub{font-size:14px;color:var(--muted);max-width:520px;line-height:1.7;}
+.problem-inner{max-width:760px;margin:0 auto;}
+.prob-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:28px;}
+.prob-card{background:var(--card);border:1px solid #fee2e2;border-radius:12px;padding:18px;display:flex;gap:12px;align-items:flex-start;}
+.prob-ico{font-size:24px;flex-shrink:0;}
+.prob-txt strong{display:block;font-size:13px;color:#b91c1c;margin-bottom:3px;}
+.prob-txt span{font-size:12px;color:var(--muted);}
+.arrow-down{text-align:center;font-size:28px;margin:20px 0;color:var(--g);}
+
+/* ── FEATURES ── */
+.features{padding:52px 20px;background:var(--card);}
+.feat-inner{max-width:760px;margin:0 auto;}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:28px;}
+.feat-card{background:var(--gl);border-radius:14px;padding:22px 18px;text-align:center;border:1px solid var(--glm);}
+.feat-ico{font-size:36px;margin-bottom:12px;}
+.feat-title{font-size:15px;font-weight:800;color:var(--gd);margin-bottom:6px;}
+.feat-desc{font-size:12px;color:#166534;line-height:1.6;}
+
+/* ── HOW TO USE ── */
+.howto{padding:52px 20px;background:var(--bg);}
+.howto-inner{max-width:640px;margin:0 auto;}
+.steps{margin-top:28px;display:flex;flex-direction:column;gap:14px;}
+.step{background:var(--card);border-radius:14px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;box-shadow:0 1px 6px rgba(0,0,0,.04);}
+.step-num{width:36px;height:36px;background:var(--g);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;flex-shrink:0;}
+.step-body strong{display:block;font-size:14px;font-weight:700;color:var(--navy);margin-bottom:3px;}
+.step-body span{font-size:12px;color:var(--muted);}
+
+/* ── AREA ── */
+.area{padding:52px 20px;background:var(--card);}
+.area-inner{max-width:760px;margin:0 auto;}
+.area-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:24px;}
+.area-chip{background:var(--gl);border:1px solid var(--glm);border-radius:8px;padding:8px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--gd);}
+.area-chip .ac-num{font-size:18px;font-weight:900;color:var(--g);display:block;line-height:1.1;}
+.area-chip .ac-pref{font-size:11px;color:var(--muted);}
+.area-soon{background:#f9fafb;border:1px solid var(--border);color:var(--muted);}
+
+/* ── SPONSOR ── */
+.sponsor{padding:52px 20px;background:linear-gradient(135deg,#fafffe,#f0fdf4);}
+.sponsor-inner{max-width:720px;margin:0 auto;}
+.sponsor-box{background:var(--card);border:2px solid var(--glm);border-radius:18px;padding:32px 28px;box-shadow:var(--sh);}
+.sponsor-box h3{font-size:20px;font-weight:800;color:var(--gd);margin-bottom:10px;}
+.sponsor-box p{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;}
+.sponsor-merit{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;}
+.sm-item{background:var(--gl);border-radius:10px;padding:12px 14px;font-size:12px;color:#166534;}
+.sm-item strong{display:block;font-size:13px;font-weight:700;color:var(--gd);margin-bottom:3px;}
+.btn-sponsor{display:inline-block;background:var(--g);color:#fff;padding:14px 32px;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;text-align:center;box-shadow:0 3px 12px rgba(22,163,74,.3);}
+.btn-sponsor:hover{background:var(--gd);}
+@media(max-width:480px){.sponsor-merit{grid-template-columns:1fr;}}
+
+/* ── FAQ ── */
+.faq{padding:52px 20px;background:var(--bg);}
+.faq-inner{max-width:680px;margin:0 auto;}
+.faq-list{margin-top:24px;display:flex;flex-direction:column;gap:10px;}
+details.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+details.faq-item summary{padding:16px 18px;cursor:pointer;font-size:14px;font-weight:700;color:var(--navy);list-style:none;display:flex;justify-content:space-between;align-items:center;user-select:none;}
+details.faq-item summary::after{content:"＋";font-size:18px;color:var(--g);flex-shrink:0;margin-left:8px;}
+details.faq-item[open] summary::after{content:"－";}
+details.faq-item summary::-webkit-details-marker{display:none;}
+.faq-ans{padding:0 18px 16px;font-size:13px;color:var(--muted);line-height:1.7;border-top:1px solid var(--border);}
+.faq-q{font-size:11px;font-weight:700;color:var(--g);background:var(--gl);padding:2px 8px;border-radius:6px;margin-right:6px;}
+
+/* ── SHARE ── */
+.share-section{padding:40px 20px;background:var(--card);text-align:center;border-top:1px solid var(--border);}
+.share-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.share-sub{font-size:12px;color:var(--muted);margin-bottom:20px;}
+.share-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.share-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;border:none;cursor:pointer;transition:all .15s;}
+.share-btn:hover{transform:translateY(-1px);opacity:.9;}
+.sb-line{background:#06c755;color:#fff;}
+.sb-x{background:#000;color:#fff;}
+.sb-fb{background:#1877f2;color:#fff;}
+.sb-copy{background:var(--gl);color:var(--gd);border:1px solid var(--glm);}
+
+/* ── CTA FINAL ── */
+.cta-final{background:linear-gradient(135deg,var(--gd),var(--g));color:#fff;padding:56px 20px;text-align:center;}
+.cta-final h2{font-size:clamp(20px,4vw,28px);font-weight:900;margin-bottom:10px;}
+.cta-final p{font-size:14px;opacity:.9;margin-bottom:28px;}
+.btn-cta-big{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--gd);padding:16px 36px;border-radius:30px;font-size:16px;font-weight:900;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,.2);}
+
+/* ── FOOTER ── */
+footer{background:var(--gd);color:rgba(255,255,255,.7);text-align:center;padding:24px 20px;font-size:11px;line-height:1.8;}
+footer a{color:rgba(255,255,255,.7);}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:#111;color:#fff;padding:10px 24px;border-radius:20px;font-size:13px;font-weight:700;opacity:0;transition:all .3s;pointer-events:none;z-index:9999;white-space:nowrap;}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+@media(max-width:640px){
+  .hero{padding:48px 16px 64px;}
+  .stats-inner{gap:10px;}
+  .feat-grid,.area-grid{gap:10px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="top-bar">
+  <a href="index.html" class="logo">
+    <div class="logo-ico">♻️</div>
+    <span class="logo-txt">粗大ごみ料金検索</span>
+  </a>
+  <a href="index.html" class="cta-top">今すぐ調べる →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-badge">🗾 全国対応・完全無料</p>
+  <h1>粗大ごみの処分料金を<br><em>今すぐ、かんたんに調べる</em></h1>
+  <p class="hero-sub">市区町村を選んで品目を検索するだけ。費用・出し方・申込先まで一発でわかります。</p>
+  <div class="hero-btns">
+    <a href="index.html" class="btn-hero">♻️ 料金を調べる（無料）</a>
+    <a href="#how" class="btn-hero btn-hero-sub">使い方を見る</a>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,20 C240,40 480,0 720,20 C960,40 1200,0 1440,20 L1440,40 L0,40 Z" fill="#f0fdf4"/>
+    </svg>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div><span class="stat-num">197</span><span class="stat-unit">+</span></div>
+      <div class="stat-label">対応市区町村</div>
+    </div>
+    <div class="stat-item">
+      <div><span class="stat-num">740</span><span class="stat-unit">+</span></div>
+      <div class="stat-label">対応品目数</div>
+    </div>
+    <div class="stat-item">
+      <div><span class="stat-num">0</span><span class="stat-unit">円</span></div>
+      <div class="stat-label">利用料金</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="problem-inner">
+    <p class="section-tag">PROBLEM</p>
+    <h2 class="section-h2">こんなお悩みありませんか？</h2>
+    <div class="prob-list">
+      <div class="prob-card">
+        <div class="prob-ico">🤔</div>
+        <div class="prob-txt"><strong>「これ粗大ごみ？普通のごみ？」</strong><span>サイズや素材で判断が難しく、毎回迷ってしまう…</span></div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-ico">💸</div>
+        <div class="prob-txt"><strong>「いくらかかるの？」</strong><span>市区町村ごとに料金が違って、なかなかわからない…</span></div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-ico">📋</div>
+        <div class="prob-txt"><strong>「申込み方法が複雑…」</strong><span>行政のサイトは読みにくく、どこに連絡すればいいかわからない…</span></div>
+      </div>
+    </div>
+    <div class="arrow-down">↓</div>
+    <p style="text-align:center;font-size:16px;font-weight:800;color:var(--gd);">このアプリで全部解決できます</p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="feat-inner">
+    <p class="section-tag">FEATURES</p>
+    <h2 class="section-h2">3つの特長</h2>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-ico">🔍</div>
+        <div class="feat-title">かんたん検索</div>
+        <div class="feat-desc">品目名を入力するだけ。「電子レンジ」「ソファ」「自転車」など740品目以上に対応。</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-ico">🗾</div>
+        <div class="feat-title">全国対応</div>
+        <div class="feat-desc">東京・神奈川・埼玉・千葉・大阪など197都市以上。順次拡大中。</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-ico">📞</div>
+        <div class="feat-title">地域情報つき</div>
+        <div class="feat-desc">申込み連絡先・出し方・当日の注意点まで地域別にまとめて表示。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO USE -->
+<section class="howto" id="how">
+  <div class="howto-inner">
+    <p class="section-tag">HOW TO USE</p>
+    <h2 class="section-h2">3ステップで完了</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>地域を選ぶ</strong><span>都道府県・市区町村を選択します。現在地取得も可能です。</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>品目を検索</strong><span>捨てたいものの名前を入力。キーワードで候補が絞り込まれます。</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>料金・手順を確認</strong><span>処分料金・申込み方法・受付電話番号を一覧で確認。</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:28px;">
+      <a href="index.html" class="btn-cta-big" style="background:var(--g);color:#fff;padding:14px 30px;border-radius:12px;font-size:15px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:6px;box-shadow:0 3px 12px rgba(22,163,74,.3);">♻️ アプリを使ってみる（無料）</a>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE AREA -->
+<section class="area">
+  <div class="area-inner">
+    <p class="section-tag">COVERAGE</p>
+    <h2 class="section-h2">対応エリア</h2>
+    <p class="section-sub">対応都市を順次拡大中。ご希望のエリアはリクエストを送ってください。</p>
+    <div class="area-grid">
+      <div class="area-chip"><span class="ac-num">49</span><span class="ac-pref">東京都</span></div>
+      <div class="area-chip"><span class="ac-num">36</span><span class="ac-pref">埼玉県</span></div>
+      <div class="area-chip"><span class="ac-num">25</span><span class="ac-pref">千葉県</span></div>
+      <div class="area-chip"><span class="ac-num">17</span><span class="ac-pref">神奈川県</span></div>
+      <div class="area-chip"><span class="ac-num">15</span><span class="ac-pref">茨城県</span></div>
+      <div class="area-chip"><span class="ac-num">11</span><span class="ac-pref">栃木県</span></div>
+      <div class="area-chip"><span class="ac-num">11</span><span class="ac-pref">群馬県</span></div>
+      <div class="area-chip"><span class="ac-num">33</span><span class="ac-pref">大阪府</span></div>
+      <div class="area-chip area-soon"><span class="ac-num" style="color:var(--muted);">coming</span><span class="ac-pref">愛知県</span></div>
+      <div class="area-chip area-soon"><span class="ac-num" style="color:var(--muted);">coming</span><span class="ac-pref">兵庫県</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSOR (masked - framed as local business listing) -->
+<section class="sponsor">
+  <div class="sponsor-inner">
+    <p class="section-tag">FOR BUSINESS</p>
+    <h2 class="section-h2" style="color:var(--gd);">地域の専門業者様へ</h2>
+    <div class="sponsor-box">
+      <h3>あなたの地域で、お客様と出会う</h3>
+      <p>このアプリを利用するユーザーは「今すぐ粗大ごみを処分したい」方々です。地域の専門業者様の情報を掲載することで、ニーズに合った出会いをサポートします。掲載費用・詳細はお問い合わせください。</p>
+      <div class="sponsor-merit">
+        <div class="sm-item"><strong>📍 地域に絞って露出</strong>自分の対応エリアのユーザーだけに表示。無駄がありません。</div>
+        <div class="sm-item"><strong>🔄 即日対応ニーズ</strong>「今すぐ処分したい」方への最適なタイミングでの露出。</div>
+        <div class="sm-item"><strong>📱 スマホから発見</strong>スマートフォン最適化済み。出先でも見やすい表示。</div>
+        <div class="sm-item"><strong>🌐 年間掲載</strong>一度掲載すれば365日、継続して露出されます。</div>
+      </div>
+      <a href="mailto:terradesignik@gmail.com?subject=粗大ごみ検索アプリ掲載について&body=事業者名：%0D%0A対応エリア（市区町村）：%0D%0Aご担当者名：%0D%0Aご連絡先電話番号：%0D%0A%0D%0Aお問い合わせ内容をご記載ください。" class="btn-sponsor">掲載について問い合わせる →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ (AIO対応) -->
+<section class="faq">
+  <div class="faq-inner">
+    <p class="section-tag">FAQ</p>
+    <h2 class="section-h2">よくある質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary><span class="faq-q">Q</span>利用料金はかかりますか？</summary>
+        <div class="faq-ans">いいえ、完全無料でご利用いただけます。アプリのダウンロードも不要です。</div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q">Q</span>自分の市区町村に対応していますか？</summary>
+        <div class="faq-ans">現在、東京・神奈川・埼玉・千葉・茨城・栃木・群馬・大阪の197都市以上に対応しています。未対応のエリアは順次追加予定です。アプリ内のリクエスト機能からご希望をお寄せください。</div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q">Q</span>粗大ごみの料金はどうやって決まりますか？</summary>
+        <div class="faq-ans">粗大ごみの処分料金は市区町村によって異なります。品目のサイズや種類によって料金が設定されており、有料処理シールや事前申込みが必要な場合がほとんどです。このアプリではお住まいの市区町村の最新情報をもとに料金をお知らせします。</div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q">Q</span>情報はいつ更新されますか？</summary>
+        <div class="faq-ans">各市区町村の最新情報をもとに定期的に更新しています。料金や申込み方法が変更された場合は順次反映しています。万が一情報が古い場合はアプリ内のフィードバック機能からお知らせください。</div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q">Q</span>アプリのインストールは必要ですか？</summary>
+        <div class="faq-ans">インストール不要です。ブラウザから直接ご利用いただけます。スマートフォンのホーム画面に追加することも可能です。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- SHARE -->
+<section class="share-section">
+  <h3 class="share-title">このアプリを友達・家族にシェア</h3>
+  <p class="share-sub">お役に立ちましたら、ぜひシェアしてください</p>
+  <div class="share-btns">
+    <a href="#" onclick="shareToLine();return false;" class="share-btn sb-line">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" rx="3" fill="transparent"/><path d="M8 2C4.69 2 2 4.36 2 7.26c0 2.57 2.27 4.73 5.34 5.15.21.04.49.14.57.32.06.15.04.38.02.54l-.09.55c-.03.15-.12.6.52.33.65-.28 3.49-2.06 4.76-3.52C13.77 9.52 14 8.43 14 7.26 14 4.36 11.31 2 8 2z" fill="white"/></svg>
+      LINE
+    </a>
+    <a href="#" onclick="shareToX();return false;" class="share-btn sb-x">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="white"><path d="M11.07.5H13.2L8.83 5.64 14 13.5H9.94L6.77 9.28 3.12 13.5H.98l4.68-5.47L0 .5h4.18l2.84 3.76L11.07.5zm-.74 11.68h1.18L3.75 1.72H2.48l7.85 10.46z"/></svg>
+      X
+    </a>
+    <a href="#" onclick="shareToFB();return false;" class="share-btn sb-fb">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="white"><path d="M16 8A8 8 0 1 0 6.75 15.89V10.5H4.72V8h2.03V6.27c0-2 1.19-3.11 3.02-3.11.87 0 1.79.16 1.79.16V5.3h-1c-.99 0-1.3.62-1.3 1.25V8h2.22l-.35 2.5H9.26v5.39A8 8 0 0 0 16 8z"/></svg>
+      Facebook
+    </a>
+    <button onclick="copyURL();" class="share-btn sb-copy">
+      🔗 URLをコピー
+    </button>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <h2>まずは一度、試してみてください</h2>
+  <p>登録不要・完全無料・今すぐ使える</p>
+  <a href="index.html" class="btn-cta-big">♻️ 無料で料金を調べる</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 粗大ごみ処分料金かんたん検索 | Powered by テラデザイン</p>
+  <p style="margin-top:4px;"><a href="index.html">アプリトップへ</a> | <a href="mailto:terradesignik@gmail.com">お問い合わせ</a></p>
+  <p style="margin-top:8px;font-size:10px;opacity:.6;">掲載情報は各市区町村の公式情報をもとにしていますが、変更になる場合があります。最新情報は各自治体へご確認ください。</p>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+const PAGE_URL = encodeURIComponent(location.href.replace('lp.html', ''));
+const PAGE_TEXT = encodeURIComponent('粗大ごみの処分料金を今すぐ無料で調べられます！市区町村別・品目別で一発検索。');
+
+function shareToLine() {
+  window.open('https://social-plugins.line.me/lineit/share?url=' + PAGE_URL, '_blank');
+}
+function shareToX() {
+  window.open('https://twitter.com/intent/tweet?url=' + PAGE_URL + '&text=' + PAGE_TEXT, '_blank');
+}
+function shareToFB() {
+  window.open('https://www.facebook.com/sharer/sharer.php?u=' + PAGE_URL, '_blank');
+}
+function copyURL() {
+  const url = location.href.replace('lp.html', '');
+  navigator.clipboard.writeText(url).then(function() {
+    showToast('URLをコピーしました！');
+  }).catch(function() {
+    showToast('URLをコピーできませんでした');
+  });
+}
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 2500);
+}
+
+// Simple scroll animation
+document.querySelectorAll('a[href="#how"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('how').scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>

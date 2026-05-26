@@ -1,0 +1,29 @@
+{
+  "city": {
+    "id": "11221",
+    "name": "越谷市",
+    "prefecture": "埼玉県",
+    "rank": "B",
+    "dataVersion": "2026-05",
+    "rules": {
+      "definition": "一辺が50cm以上または重さが10kg以上のもの。石油ストーブ・石油ファンヒーター・ガスコンロ・電子レンジはサイズに関わらず粗大ごみ",
+      "websiteUrl": "https://www.city.koshigaya.saitama.jp/kurashi_shisei/kurashi/gomi_recycle/kateigomi/sodaigomino-shobunnhouhou.html",
+      "contact": "048-973-5300",
+      "hours": "月〜金 8:30〜17:00（祝日・年末年始除く）",
+      "applicationMethod": "電話申込（粗大ごみ予約専用電話）",
+      "paymentMethod": "サイズ別：50〜120cm未満400円、120〜180cm未満800円、180cm以上1,200円、スプリング入りマットレス2,800円",
+      "collectionMethod": "収集日当日の朝8:30までに指定場所へ排出",
+      "selfCarryIn": "越谷市リサイクルプラザへの直接持込可（スプリング入りマットレス1,600円、その他無料）",
+      "nonCollectibleNote": "家電リサイクル4品目（エアコン・テレビ・冷蔵庫・洗濯機）、パソコン等は収集できません"
+    }
+  },
+  "items": [
+    {"n": "粗大ごみ（50cm以上120cm未満）", "k": ["そ"], "fee": 400, "m": "収集のみ", "tags": ["一般", "小型粗大"], "en": "Bulky Waste (50-120cm)", "note": "石油ストーブ・布団・掃除機・扇風機等"},
+    {"n": "粗大ごみ（120cm以上180cm未満）", "k": ["そ"], "fee": 800, "m": "収集のみ", "tags": ["一般", "中型粗大"], "en": "Bulky Waste (120-180cm)", "note": "タンス・テーブル・自転車等"},
+    {"n": "粗大ごみ（180cm以上）", "k": ["そ"], "fee": 1200, "m": "収集のみ", "tags": ["一般", "大型粗大"], "en": "Bulky Waste (180cm+)", "note": "ベッド・ソファー等"},
+    {"n": "スプリング入りマットレス", "k": ["す"], "fee": 2800, "m": "収集のみ", "tags": ["マットレス", "スプリング", "特定困難物"], "en": "Spring Mattress"},
+    {"n": "石油ストーブ・石油ファンヒーター", "k": ["せ"], "fee": 400, "m": "収集のみ", "tags": ["暖房", "ストーブ"], "en": "Kerosene Heater"},
+    {"n": "電子レンジ・ガスコンロ", "k": ["て"], "fee": 400, "m": "収集のみ", "tags": ["電子レンジ", "ガスコンロ", "調理家電"], "en": "Microwave / Gas Stove"}
+  ],
+  "uncollectible": ["エアコン", "テレビ", "冷蔵庫", "冷凍庫", "洗濯機", "衣類乾燥機", "パソコン"]
+}

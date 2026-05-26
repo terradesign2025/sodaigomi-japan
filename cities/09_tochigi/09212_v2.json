@@ -1,0 +1,21 @@
+{
+  "city": {
+    "id": "09212",
+    "name": "那須塩原市",
+    "prefecture": "栃木県",
+    "rank": "C",
+    "dataVersion": "2026-05",
+    "rules": {
+      "websiteUrl": "https://www.city.nasushiobara.lg.jp/kurashi_tetsuzuki/gomi_recycle/kateigomi/index.html",
+      "contact": "0287-37-5211",
+      "nonCollectibleNote": "家電リサイクル4品目（エアコン・テレビ・冷蔵庫・洗濯機）、パソコン、バイク・タイヤ、消火器は収集できません",
+      "applicationMethod": "電話で事前申込",
+      "paymentMethod": "粗大ごみ処理券（コンビニ等で購入）",
+      "selfCarryIn": "那須塩原クリーンセンターへ持込可（10kgにつき150円）"
+    }
+  },
+  "items": [
+    {"n":"粗大ごみ（家具・寝具・家電など）","k":["そ"],"fee":150,"m":"持込","note":"持込は10kgにつき150円。戸別収集は事前申込・処理券購入","tags":["タンス","ベッド","テーブル","椅子","自転車","布団","カーペット","家電","畳","ソファ","掃除機","扇風機"],"en":"Bulky Waste (150 yen/10kg carry-in)"}
+  ],
+  "uncollectible": ["エアコン","テレビ","冷蔵庫","洗濯機","パソコン","バイク","タイヤ","消火器"]
+}

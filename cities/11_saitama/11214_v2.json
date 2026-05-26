@@ -1,0 +1,30 @@
+{
+  "city": {
+    "id": "11214",
+    "name": "狭山市",
+    "prefecture": "埼玉県",
+    "rank": "C",
+    "dataVersion": "2026-05",
+    "rules": {
+      "definition": "一辺が30センチメートルを超える家庭から出た家具や電化製品など",
+      "websiteUrl": "https://www.city.sayama.saitama.jp/kurashi/gomi/syusyubunbetsu/20220101_1-1.html",
+      "contact": "04-2953-1111",
+      "hours": "月〜金 8:30〜17:15（祝日除く）",
+      "applicationMethod": "電話 / インターネット申込",
+      "paymentMethod": "重量別（5kg未満200円〜80kg以上1,800円）。スプリング入りベッドマットレス追加1,000円",
+      "collectionMethod": "収集日当日に指定場所へ排出",
+      "selfCarryIn": "奥富環境センターへの直接持込可（10kgあたり90円・50kg未満無料）",
+      "nonCollectibleNote": "家電リサイクル4品目（エアコン・テレビ・冷蔵庫・洗濯機）、パソコン・ディスプレイは収集できません"
+    }
+  },
+  "items": [
+    {"n": "粗大ごみ（5kg未満）", "k": ["そ"], "fee": 200, "m": "収集のみ", "tags": ["一般", "軽量"], "en": "Bulky Waste (under 5kg)", "note": "重量別・5kg未満200円"},
+    {"n": "粗大ごみ（5〜10kg未満）", "k": ["そ"], "fee": 300, "m": "収集のみ", "tags": ["一般"], "en": "Bulky Waste (5-10kg)"},
+    {"n": "粗大ごみ（10〜30kg未満）", "k": ["そ"], "fee": 600, "m": "収集のみ", "tags": ["一般", "中型"], "en": "Bulky Waste (10-30kg)"},
+    {"n": "粗大ごみ（30〜50kg未満）", "k": ["そ"], "fee": 900, "m": "収集のみ", "tags": ["一般", "大型"], "en": "Bulky Waste (30-50kg)"},
+    {"n": "粗大ごみ（50〜80kg未満）", "k": ["そ"], "fee": 1300, "m": "収集のみ", "tags": ["一般", "大型"], "en": "Bulky Waste (50-80kg)"},
+    {"n": "粗大ごみ（80kg以上）", "k": ["そ"], "fee": 1800, "m": "収集のみ", "tags": ["一般", "超大型"], "en": "Bulky Waste (80kg+)"},
+    {"n": "スプリング入りベッドマットレス（加算）", "k": ["す"], "fee": 1000, "m": "収集のみ", "tags": ["マットレス", "スプリング", "特定困難物"], "en": "Spring Bed Mattress (surcharge)", "note": "重量別料金に1,000円加算"}
+  ],
+  "uncollectible": ["エアコン", "テレビ", "冷蔵庫", "冷凍庫", "洗濯機", "衣類乾燥機", "パソコン", "ディスプレイ"]
+}

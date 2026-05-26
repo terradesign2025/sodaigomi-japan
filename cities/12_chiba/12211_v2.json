@@ -1,0 +1,35 @@
+{
+  "city": {
+    "id": "12211",
+    "name": "成田市",
+    "prefecture": "千葉県",
+    "rank": "C",
+    "dataVersion": "2026-05",
+    "rules": {
+      "definition": "可燃ごみの特大袋に入らないもの、または資源物の大袋に入らないもの（指定袋超え）",
+      "websiteUrl": "https://www.city.narita.chiba.jp/kurashi/page0128_00003.html",
+      "contact": "0476-36-1689",
+      "hours": "月〜金 8:30〜17:15（祝日除く）",
+      "applicationMethod": "電話（成田富里いずみ清掃工場）",
+      "paymentMethod": "無料（収集費用なし）",
+      "collectionMethod": "申込後の指定収集日に排出。料金は無料",
+      "selfCarryIn": "成田市リサイクルプラザ・成田富里いずみ清掃工場への直接持込可（金属家具・小型家電等）",
+      "nonCollectibleNote": "家電リサイクル4品目（エアコン・テレビ・冷蔵庫・洗濯機）、パソコン、バイク・タイヤは収集不可"
+    }
+  },
+  "items": [
+    {"n": "ソファー（無料収集）", "k": ["そ"], "fee": 0, "m": "収集のみ", "tags": ["ソファー", "家具", "無料"], "en": "Sofa (free collection)"},
+    {"n": "ベッド（無料収集）", "k": ["は"], "fee": 0, "m": "収集のみ", "tags": ["ベッド", "寝具", "無料"], "en": "Bed (free collection)"},
+    {"n": "タンス（無料収集）", "k": ["た"], "fee": 0, "m": "収集のみ", "tags": ["タンス", "家具", "無料"], "en": "Chest (free collection)"},
+    {"n": "自転車（無料収集）", "k": ["さ"], "fee": 0, "m": "収集のみ", "tags": ["自転車", "無料"], "en": "Bicycle (free collection)"},
+    {"n": "布団（無料収集）", "k": ["は"], "fee": 0, "m": "収集のみ", "tags": ["布団", "寝具", "無料"], "en": "Futon (free collection)"},
+    {"n": "テーブル（無料収集）", "k": ["て"], "fee": 0, "m": "収集のみ", "tags": ["テーブル", "家具", "無料"], "en": "Table (free collection)"},
+    {"n": "電子レンジ（無料収集）", "k": ["て"], "fee": 0, "m": "収集のみ", "tags": ["電子レンジ", "調理家電", "無料"], "en": "Microwave Oven (free collection)"},
+    {"n": "カーペット（無料収集）", "k": ["か"], "fee": 0, "m": "収集のみ", "tags": ["カーペット", "敷物", "無料"], "en": "Carpet (free collection)"},
+    {"n": "机（無料収集）", "k": ["つ"], "fee": 0, "m": "収集のみ", "tags": ["机", "デスク", "無料"], "en": "Desk (free collection)"},
+    {"n": "本棚・食器棚（無料収集）", "k": ["は"], "fee": 0, "m": "収集のみ", "tags": ["本棚", "食器棚", "無料"], "en": "Bookshelf / Dish Cabinet (free collection)"},
+    {"n": "扇風機（無料収集）", "k": ["せ"], "fee": 0, "m": "収集のみ", "tags": ["扇風機", "電化", "無料"], "en": "Electric Fan (free collection)"},
+    {"n": "掃除機（無料収集）", "k": ["そ"], "fee": 0, "m": "収集のみ", "tags": ["掃除機", "電化", "無料"], "en": "Vacuum Cleaner (free collection)"}
+  ],
+  "uncollectible": ["エアコン", "テレビ", "冷蔵庫", "洗濯機", "パソコン", "バイク", "タイヤ"]
+}

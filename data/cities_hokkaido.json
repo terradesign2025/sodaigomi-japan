@@ -1,0 +1,16 @@
+{
+  "_comment": "北海道 全市インデックス。dataReady=trueのみアプリで品目検索可。",
+  "_total": 9,
+  "_region": "北海道",
+  "cities": [
+    {"id":"01100","pref":"01","prefName":"北海道","name":"札幌市","rank":"A","pop":1960000,"dataReady":true,"scrapeUrl":"https://www.city.sapporo.jp/seiso/gomi/oogatagomi.html"},
+    {"id":"01202","pref":"01","prefName":"北海道","name":"函館市","rank":"B","pop":250000,"dataReady":true,"scrapeUrl":"https://www.city.hakodate.hokkaido.jp/docs/2014011400153/"},
+    {"id":"01204","pref":"01","prefName":"北海道","name":"旭川市","rank":"B","pop":330000,"dataReady":true,"scrapeUrl":"https://www.city.asahikawa.hokkaido.jp/kurashi/271/272/273/p005894.html"},
+    {"id":"01206","pref":"01","prefName":"北海道","name":"釧路市","rank":"C","pop":170000,"dataReady":true,"scrapeUrl":"https://www.city.kushiro.lg.jp/kurashi/gomi/1004217/1004221.html"},
+    {"id":"01207","pref":"01","prefName":"北海道","name":"帯広市","rank":"C","pop":170000,"dataReady":true,"scrapeUrl":"https://www.city.obihiro.hokkaido.jp/kurashi/gomi/shushu1/1002770.html"},
+    {"id":"01208","pref":"01","prefName":"北海道","name":"北見市","rank":"C","pop":110000,"dataReady":false,"scrapeUrl":""},
+    {"id":"01220","pref":"01","prefName":"北海道","name":"苫小牧市","rank":"C","pop":170000,"dataReady":false,"scrapeUrl":""},
+    {"id":"01231","pref":"01","prefName":"北海道","name":"江別市","rank":"C","pop":120000,"dataReady":false,"scrapeUrl":""},
+    {"id":"01203","pref":"01","prefName":"北海道","name":"小樽市","rank":"C","pop":110000,"dataReady":false,"scrapeUrl":""}
+  ]
+}

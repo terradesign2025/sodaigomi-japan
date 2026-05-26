@@ -1,0 +1,21 @@
+{
+  "city": {
+    "id": "10208",
+    "name": "渋川市",
+    "prefecture": "群馬県",
+    "rank": "C",
+    "dataVersion": "2026-05",
+    "rules": {
+      "websiteUrl": "https://www.city.shibukawa.lg.jp/kurashi/gomi/gomi_wakekatadashikata/p001168.html",
+      "contact": "0279-22-2111",
+      "nonCollectibleNote": "家電リサイクル4品目（エアコン・テレビ・冷蔵庫・洗濯機）、パソコン、バイク・タイヤ、消火器は収集できません",
+      "applicationMethod": "粗大ごみシールを貼付してごみ収集日に出す",
+      "paymentMethod": "粗大ごみシールを市内販売店で購入",
+      "selfCarryIn": "渋川地区広域圏清掃センターへ持込可（10kgにつき220円）"
+    }
+  },
+  "items": [
+    {"n":"粗大ごみ（シール貼付）","k":["そ"],"fee":220,"m":"収集/持込","note":"粗大ごみシールを購入して貼付。持込は10kgにつき220円","tags":["タンス","ベッド","テーブル","椅子","自転車","布団","カーペット","家電","ソファ","掃除機","扇風機","畳"],"en":"Bulky Waste (sticker required, 220 yen/10kg carry-in)"}
+  ],
+  "uncollectible": ["エアコン","テレビ","冷蔵庫","洗濯機","パソコン","バイク","タイヤ","消火器"]
+}

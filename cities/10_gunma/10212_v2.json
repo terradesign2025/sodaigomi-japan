@@ -1,0 +1,21 @@
+{
+  "city": {
+    "id": "10212",
+    "name": "みどり市",
+    "prefecture": "群馬県",
+    "rank": "C",
+    "dataVersion": "2026-05",
+    "rules": {
+      "websiteUrl": "https://www.city.midori.gunma.jp/kurashi/gomi/sodaigomi/",
+      "contact": "0277-76-0960",
+      "nonCollectibleNote": "家電リサイクル4品目（エアコン・テレビ・冷蔵庫・洗濯機）、パソコン、バイク・タイヤ、消火器は収集できません",
+      "applicationMethod": "電話で事前申込",
+      "paymentMethod": "粗大ごみ処理券（コンビニ等で購入）",
+      "collectionMethod": "収集日当日の朝8:30までに指定場所へ"
+    }
+  },
+  "items": [
+    {"n":"粗大ごみ（家具・家電・寝具など）","k":["そ"],"fee":500,"m":"収集/持込","note":"品目・サイズにより異なる。詳細は電話確認","tags":["タンス","ベッド","テーブル","椅子","自転車","布団","カーペット","家電","ソファ","掃除機","扇風機"],"en":"Bulky Waste (various)"}
+  ],
+  "uncollectible": ["エアコン","テレビ","冷蔵庫","洗濯機","パソコン","バイク","タイヤ","消火器"]
+}

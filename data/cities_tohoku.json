@@ -1,0 +1,26 @@
+{
+  "_comment": "東北（青森・岩手・宮城・秋田・山形・福島）全市インデックス。dataReady=trueのみアプリで品目検索可。",
+  "_total": 19,
+  "_region": "東北",
+  "cities": [
+    {"id":"02201","pref":"02","prefName":"青森県","name":"青森市","rank":"B","pop":270000,"dataReady":true,"scrapeUrl":"https://www.city.aomori.aomori.jp/kurashi_kankyo/gomi/1001942/1001944/1001953.html"},
+    {"id":"02202","pref":"02","prefName":"青森県","name":"弘前市","rank":"C","pop":170000,"dataReady":false,"scrapeUrl":""},
+    {"id":"02203","pref":"02","prefName":"青森県","name":"八戸市","rank":"B","pop":220000,"dataReady":true,"scrapeUrl":"https://www.city.hachinohe.aomori.jp/soshikikarasagasu/kankyoseisakuka/gomi_kankyo_pet/1/1/4211.html"},
+    {"id":"03201","pref":"03","prefName":"岩手県","name":"盛岡市","rank":"B","pop":290000,"dataReady":true,"scrapeUrl":"https://www.city.morioka.iwate.jp/kurashi/1033364/1031494/1033219/1033209.html"},
+    {"id":"03215","pref":"03","prefName":"岩手県","name":"奥州市","rank":"C","pop":120000,"dataReady":false,"scrapeUrl":""},
+    {"id":"03209","pref":"03","prefName":"岩手県","name":"花巻市","rank":"C","pop":97000,"dataReady":false,"scrapeUrl":""},
+    {"id":"04100","pref":"04","prefName":"宮城県","name":"仙台市","rank":"A","pop":1090000,"dataReady":true,"scrapeUrl":"https://www.city.sendai.jp/haiki-kanri/kurashi/machi/genryo/gomi/wakekata/sodaigomi.html"},
+    {"id":"04202","pref":"04","prefName":"宮城県","name":"石巻市","rank":"C","pop":140000,"dataReady":false,"scrapeUrl":""},
+    {"id":"04215","pref":"04","prefName":"宮城県","name":"大崎市","rank":"C","pop":120000,"dataReady":false,"scrapeUrl":""},
+    {"id":"04216","pref":"04","prefName":"宮城県","name":"富谷市","rank":"C","pop":54000,"dataReady":false,"scrapeUrl":""},
+    {"id":"05201","pref":"05","prefName":"秋田県","name":"秋田市","rank":"B","pop":300000,"dataReady":true,"scrapeUrl":"https://www.city.akita.lg.jp/kurashi/recycle/1006080/1006201.html"},
+    {"id":"05202","pref":"05","prefName":"秋田県","name":"横手市","rank":"C","pop":85000,"dataReady":false,"scrapeUrl":""},
+    {"id":"06201","pref":"06","prefName":"山形県","name":"山形市","rank":"B","pop":240000,"dataReady":true,"scrapeUrl":"https://www.city.yamagata-yamagata.lg.jp/kurashi/gomi/1006506/1006508/1001914.html"},
+    {"id":"06202","pref":"06","prefName":"山形県","name":"鶴岡市","rank":"C","pop":120000,"dataReady":false,"scrapeUrl":""},
+    {"id":"06203","pref":"06","prefName":"山形県","name":"酒田市","rank":"C","pop":100000,"dataReady":false,"scrapeUrl":""},
+    {"id":"07201","pref":"07","prefName":"福島県","name":"福島市","rank":"B","pop":280000,"dataReady":true,"scrapeUrl":"https://www.city.fukushima.fukushima.jp/kurashi/gomi-recycle/1/2/7857.html"},
+    {"id":"07203","pref":"07","prefName":"福島県","name":"郡山市","rank":"B","pop":320000,"dataReady":true,"scrapeUrl":"https://www.city.koriyama.lg.jp/soshiki/55/1046.html"},
+    {"id":"07204","pref":"07","prefName":"福島県","name":"いわき市","rank":"B","pop":340000,"dataReady":true,"scrapeUrl":"https://www.city.iwaki.lg.jp/www/contents/1001000001954/index.html"},
+    {"id":"07202","pref":"07","prefName":"福島県","name":"会津若松市","rank":"C","pop":120000,"dataReady":false,"scrapeUrl":""}
+  ]
+}

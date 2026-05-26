@@ -1,0 +1,11 @@
+{"city":{"id":"27231","name":"大阪狭山市","prefecture":"大阪府","rank":"C","dataVersion":"2026-05","rules":{"websiteUrl":"https://www.city.osakasayama.osaka.jp/sosiki/siminseikatsubu/seikatsukankyogurupu/1/gomi/5/3/1411355157445.html","contact":"072-367-7953（ごみ問合わせ専用）","fax":"072-367-1254","hours":"月〜金（市役所営業時間）","applicationMethod":"市役所生活環境グループへ電話申込","paymentMethod":"月1回収集（1回3点まで）。臨時ごみ持込：20kgにつき340円","nonCollectibleNote":"エアコン・テレビ・冷蔵庫・洗濯機・衣類乾燥機（家電リサイクル法対象品）、パソコン"}},"items":[
+{"n":"大型家具（たんす等）","k":["た"],"fee":0,"m":"無料収集","tags":["家具","大型","収納"],"en":"Large Furniture (chest, etc.)","note":"月1回収集・3点まで"},
+{"n":"テーブル・机","k":["た"],"fee":0,"m":"無料収集","tags":["テーブル","机","家具"],"en":"Table / Desk","note":"月1回収集"},
+{"n":"椅子・ソファー","k":["い"],"fee":0,"m":"無料収集","tags":["椅子","ソファ","家具"],"en":"Chair / Sofa","note":"月1回収集"},
+{"n":"比較的小さな粗大ごみ（せともの等）","k":["あ"],"fee":0,"m":"無料収集","tags":["陶器","小型","雑貨"],"en":"Small Bulk Items (ceramics, etc.)","note":"月1回収集"},
+{"n":"ガラス類","k":["か"],"fee":0,"m":"無料収集","tags":["ガラス","食器"],"en":"Glassware","note":"月1回収集"},
+{"n":"電化製品（リサイクル家電除く）","k":["た"],"fee":0,"m":"無料収集","tags":["家電","電化"],"en":"Electronics (non-recycling)","note":"月1回収集"},
+{"n":"自転車","k":["さ"],"fee":0,"m":"無料収集","tags":["自転車","乗り物"],"en":"Bicycle","note":"月1回収集"},
+{"n":"布団・カーペット","k":["ふ"],"fee":0,"m":"無料収集","tags":["寝具","布団","カーペット"],"en":"Futon / Carpet","note":"月1回収集"},
+{"n":"臨時ごみ持込（〜20kg）","k":["あ"],"fee":340,"m":"直接持込","tags":["持込","直接搬入"],"en":"Temporary Waste Drop-off (up to 20kg)","note":"清掃工場への直接持込の場合"}
+],"uncollectible":["エアコン","テレビ","冷蔵庫","冷凍庫","洗濯機","衣類乾燥機","パソコン"]}

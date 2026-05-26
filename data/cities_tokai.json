@@ -1,0 +1,30 @@
+{
+  "region": "東海",
+  "generated": "2026-05-20",
+  "cities": [
+    {"id":"23100","pref":"23","prefName":"愛知県","name":"名古屋市","rank":"A","pop":2260000,"dataReady":true,"scrapeUrl":"https://www.city.nagoya.jp/kurashi/gomi/1012183/1035058/1012184/1046468/index.html"},
+    {"id":"23201","pref":"23","prefName":"愛知県","name":"豊橋市","rank":"B","pop":370000,"dataReady":true,"scrapeUrl":"https://www.city.toyohashi.lg.jp/7394.htm"},
+    {"id":"23202","pref":"23","prefName":"愛知県","name":"岡崎市","rank":"B","pop":380000,"dataReady":true,"scrapeUrl":"https://www.city.okazaki.lg.jp/1100/1108/1151/p003024.html"},
+    {"id":"23203","pref":"23","prefName":"愛知県","name":"一宮市","rank":"B","pop":380000,"dataReady":true,"scrapeUrl":"https://www.city.ichinomiya.aichi.jp/kurashi/gomi/sodaigomi/1002027.html"},
+    {"id":"23208","pref":"23","prefName":"愛知県","name":"春日井市","rank":"B","pop":310000,"dataReady":true,"scrapeUrl":"https://www.city.kasugai.lg.jp/kurasi/gomi/sodaigomi/index.html"},
+    {"id":"23211","pref":"23","prefName":"愛知県","name":"豊田市","rank":"B","pop":420000,"dataReady":true,"scrapeUrl":"https://www.city.toyota.aichi.jp/kurashi/gomi/gomi/1003800.html"},
+    {"id":"23212","pref":"23","prefName":"愛知県","name":"安城市","rank":"C","pop":190000,"dataReady":true,"scrapeUrl":"https://www.city.anjo.aichi.jp/kurashi/gomi/sodaigomi/index.html"},
+    {"id":"23213","pref":"23","prefName":"愛知県","name":"西尾市","rank":"C","pop":170000,"dataReady":true,"scrapeUrl":"https://www.city.nishio.aichi.jp/kurashi/gomi/sodaigomi/index.html"},
+    {"id":"23215","pref":"23","prefName":"愛知県","name":"刈谷市","rank":"C","pop":150000,"dataReady":true,"scrapeUrl":"https://www.city.kariya.lg.jp/kurashi/gomi/sodaigomi/index.html"},
+    {"id":"23217","pref":"23","prefName":"愛知県","name":"小牧市","rank":"C","pop":150000,"dataReady":true,"scrapeUrl":"https://www.city.komaki.aichi.jp/kurashi/gomi/sodaigomi/index.html"},
+    {"id":"23220","pref":"23","prefName":"愛知県","name":"知多市","rank":"C","pop":85000,"dataReady":true,"scrapeUrl":"https://www.city.chita.aichi.jp/kurashi/gomi/sodaigomi/index.html"},
+    {"id":"23238","pref":"23","prefName":"愛知県","name":"長久手市","rank":"C","pop":60000,"dataReady":true,"scrapeUrl":"https://www.city.nagakute.lg.jp/kurashi/gomi/sodaigomi/index.html"},
+    {"id":"22100","pref":"22","prefName":"静岡県","name":"静岡市","rank":"A","pop":670000,"dataReady":true,"scrapeUrl":"https://www.city.shizuoka.lg.jp/gomi/s000679.html"},
+    {"id":"22130","pref":"22","prefName":"静岡県","name":"浜松市","rank":"A","pop":780000,"dataReady":true,"scrapeUrl":"https://www.city.hamamatsu.shizuoka.jp/ippai/gomi/dashikata/dashikata/deteil.html"},
+    {"id":"22203","pref":"22","prefName":"静岡県","name":"沼津市","rank":"C","pop":190000,"dataReady":true,"scrapeUrl":"https://www.city.numazu.shizuoka.jp/kurashi/gomi/sodaigomi/index.html"},
+    {"id":"22210","pref":"22","prefName":"静岡県","name":"富士市","rank":"B","pop":240000,"dataReady":true,"scrapeUrl":"https://www.city.fuji.shizuoka.jp/kurashi/gomi/sodaigomi/index.html"},
+    {"id":"22214","pref":"22","prefName":"静岡県","name":"焼津市","rank":"C","pop":140000,"dataReady":true,"scrapeUrl":"https://www.city.yaizu.lg.jp/kurashi/gomi/sodaigomi/index.html"},
+    {"id":"22219","pref":"22","prefName":"静岡県","name":"磐田市","rank":"C","pop":160000,"dataReady":true,"scrapeUrl":"https://www.city.iwata.shizuoka.jp/kurashi/gomi/sodaigomi/index.html"},
+    {"id":"21201","pref":"21","prefName":"岐阜県","name":"岐阜市","rank":"B","pop":400000,"dataReady":true,"scrapeUrl":"https://www.city.gifu.lg.jp/kurashi/gomi/1012143/1023796/1023801/index.html"},
+    {"id":"21202","pref":"21","prefName":"岐阜県","name":"大垣市","rank":"C","pop":150000,"dataReady":true,"scrapeUrl":"https://www.city.ogaki.lg.jp/kurashi/gomi/sodaigomi/index.html"},
+    {"id":"24201","pref":"24","prefName":"三重県","name":"津市","rank":"B","pop":270000,"dataReady":true,"scrapeUrl":"https://www.info.city.tsu.mie.jp/kurashi/gomi/sodaigomi/index.html"},
+    {"id":"24202","pref":"24","prefName":"三重県","name":"四日市市","rank":"B","pop":310000,"dataReady":true,"scrapeUrl":"https://www.city.yokkaichi.lg.jp/www/contents/1001000001550/index.html"},
+    {"id":"24204","pref":"24","prefName":"三重県","name":"松阪市","rank":"C","pop":160000,"dataReady":true,"scrapeUrl":"https://www.city.matsusaka.mie.jp/kurashi/gomi/sodaigomi/index.html"},
+    {"id":"24205","pref":"24","prefName":"三重県","name":"鈴鹿市","rank":"C","pop":190000,"dataReady":true,"scrapeUrl":"https://www.city.suzuka.lg.jp/kurashi/gomi/sodaigomi/index.html"}
+  ]
+}

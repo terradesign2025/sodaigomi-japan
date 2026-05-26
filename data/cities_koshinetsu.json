@@ -1,0 +1,547 @@
+{
+    "_comment":  "甲信越・北陸（新潟・長野・山梨・富山・石川・福井）全市インデックス。dataReady=trueのみアプリで品目検索可。",
+    "_total":  54,
+    "_region":  "甲信越・北陸",
+    "cities":  [
+                   {
+                       "id":  "15100",
+                       "pref":  "15",
+                       "prefName":  "新潟県",
+                       "name":  "新潟市",
+                       "rank":  "A",
+                       "pop":  793000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.niigata.lg.jp/kurashi/gomi/gomishigen/gomidasi/niigata/ryoukinichiran.html"
+                   },
+                   {
+                       "id":  "15202",
+                       "pref":  "15",
+                       "prefName":  "新潟県",
+                       "name":  "長岡市",
+                       "rank":  "B",
+                       "pop":  272000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.nagaoka.niigata.jp/kurashi/cate08/sodai-gomi.html"
+                   },
+                   {
+                       "id":  "15204",
+                       "pref":  "15",
+                       "prefName":  "新潟県",
+                       "name":  "三条市",
+                       "rank":  "C",
+                       "pop":  96000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.sanjo.niigata.jp/"
+                   },
+                   {
+                       "id":  "15205",
+                       "pref":  "15",
+                       "prefName":  "新潟県",
+                       "name":  "柏崎市",
+                       "rank":  "C",
+                       "pop":  83000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.kashiwazaki.niigata.jp/"
+                   },
+                   {
+                       "id":  "15206",
+                       "pref":  "15",
+                       "prefName":  "新潟県",
+                       "name":  "新発田市",
+                       "rank":  "C",
+                       "pop":  95000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.shibata.lg.jp/"
+                   },
+                   {
+                       "id":  "15210",
+                       "pref":  "15",
+                       "prefName":  "新潟県",
+                       "name":  "十日町市",
+                       "rank":  "C",
+                       "pop":  49000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.tokamachi.niigata.jp/"
+                   },
+                   {
+                       "id":  "15211",
+                       "pref":  "15",
+                       "prefName":  "新潟県",
+                       "name":  "見附市",
+                       "rank":  "C",
+                       "pop":  40000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.mitsuke.niigata.jp/"
+                   },
+                   {
+                       "id":  "15212",
+                       "pref":  "15",
+                       "prefName":  "新潟県",
+                       "name":  "村上市",
+                       "rank":  "C",
+                       "pop":  60000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.murakami.niigata.jp/"
+                   },
+                   {
+                       "id":  "15213",
+                       "pref":  "15",
+                       "prefName":  "新潟県",
+                       "name":  "燕市",
+                       "rank":  "C",
+                       "pop":  79000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.tsubame.niigata.jp/"
+                   },
+                   {
+                       "id":  "15216",
+                       "pref":  "15",
+                       "prefName":  "新潟県",
+                       "name":  "糸魚川市",
+                       "rank":  "C",
+                       "pop":  42000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.itoigawa.lg.jp/"
+                   },
+                   {
+                       "id":  "15222",
+                       "pref":  "15",
+                       "prefName":  "新潟県",
+                       "name":  "上越市",
+                       "rank":  "B",
+                       "pop":  191000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.joetsu.niigata.jp/"
+                   },
+                   {
+                       "id":  "15225",
+                       "pref":  "15",
+                       "prefName":  "新潟県",
+                       "name":  "魚沼市",
+                       "rank":  "C",
+                       "pop":  36000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.uonuma.lg.jp/"
+                   },
+                   {
+                       "id":  "15226",
+                       "pref":  "15",
+                       "prefName":  "新潟県",
+                       "name":  "南魚沼市",
+                       "rank":  "C",
+                       "pop":  56000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.minamiuonuma.lg.jp/"
+                   },
+                   {
+                       "id":  "20201",
+                       "pref":  "20",
+                       "prefName":  "長野県",
+                       "name":  "長野市",
+                       "rank":  "B",
+                       "pop":  373000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.nagano.nagano.jp/n121500/contents/p000519.html"
+                   },
+                   {
+                       "id":  "20202",
+                       "pref":  "20",
+                       "prefName":  "長野県",
+                       "name":  "松本市",
+                       "rank":  "B",
+                       "pop":  239000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.matsumoto.nagano.jp/soshiki/53/2854.html"
+                   },
+                   {
+                       "id":  "20203",
+                       "pref":  "20",
+                       "prefName":  "長野県",
+                       "name":  "上田市",
+                       "rank":  "C",
+                       "pop":  155000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.ueda.nagano.jp/"
+                   },
+                   {
+                       "id":  "20204",
+                       "pref":  "20",
+                       "prefName":  "長野県",
+                       "name":  "岡谷市",
+                       "rank":  "C",
+                       "pop":  49000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.okaya.lg.jp/"
+                   },
+                   {
+                       "id":  "20205",
+                       "pref":  "20",
+                       "prefName":  "長野県",
+                       "name":  "飯田市",
+                       "rank":  "C",
+                       "pop":  101000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.iida.nagano.jp/"
+                   },
+                   {
+                       "id":  "20206",
+                       "pref":  "20",
+                       "prefName":  "長野県",
+                       "name":  "諏訪市",
+                       "rank":  "C",
+                       "pop":  50000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.suwa.lg.jp/"
+                   },
+                   {
+                       "id":  "20209",
+                       "pref":  "20",
+                       "prefName":  "長野県",
+                       "name":  "伊那市",
+                       "rank":  "C",
+                       "pop":  69000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.ina.nagano.jp/"
+                   },
+                   {
+                       "id":  "20211",
+                       "pref":  "20",
+                       "prefName":  "長野県",
+                       "name":  "中野市",
+                       "rank":  "C",
+                       "pop":  44000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.nakano.nagano.jp/"
+                   },
+                   {
+                       "id":  "20214",
+                       "pref":  "20",
+                       "prefName":  "長野県",
+                       "name":  "茅野市",
+                       "rank":  "C",
+                       "pop":  57000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.chino.lg.jp/"
+                   },
+                   {
+                       "id":  "20215",
+                       "pref":  "20",
+                       "prefName":  "長野県",
+                       "name":  "塩尻市",
+                       "rank":  "C",
+                       "pop":  68000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.shiojiri.nagano.jp/"
+                   },
+                   {
+                       "id":  "20217",
+                       "pref":  "20",
+                       "prefName":  "長野県",
+                       "name":  "佐久市",
+                       "rank":  "C",
+                       "pop":  98000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.saku.nagano.jp/"
+                   },
+                   {
+                       "id":  "20220",
+                       "pref":  "20",
+                       "prefName":  "長野県",
+                       "name":  "安曇野市",
+                       "rank":  "C",
+                       "pop":  95000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.azumino.nagano.jp/"
+                   },
+                   {
+                       "id":  "19201",
+                       "pref":  "19",
+                       "prefName":  "山梨県",
+                       "name":  "甲府市",
+                       "rank":  "B",
+                       "pop":  193000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.kofu.yamanashi.jp/kurashi/gomi/sodaigomi/"
+                   },
+                   {
+                       "id":  "19202",
+                       "pref":  "19",
+                       "prefName":  "山梨県",
+                       "name":  "富士吉田市",
+                       "rank":  "C",
+                       "pop":  46000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.fujiyoshida.yamanashi.jp/"
+                   },
+                   {
+                       "id":  "19204",
+                       "pref":  "19",
+                       "prefName":  "山梨県",
+                       "name":  "都留市",
+                       "rank":  "C",
+                       "pop":  31000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.tsuru.yamanashi.jp/"
+                   },
+                   {
+                       "id":  "19205",
+                       "pref":  "19",
+                       "prefName":  "山梨県",
+                       "name":  "山梨市",
+                       "rank":  "C",
+                       "pop":  37000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.yamanashi.yamanashi.jp/"
+                   },
+                   {
+                       "id":  "19208",
+                       "pref":  "19",
+                       "prefName":  "山梨県",
+                       "name":  "南アルプス市",
+                       "rank":  "C",
+                       "pop":  72000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.minami-alps.yamanashi.jp/"
+                   },
+                   {
+                       "id":  "19209",
+                       "pref":  "19",
+                       "prefName":  "山梨県",
+                       "name":  "北杜市",
+                       "rank":  "C",
+                       "pop":  44000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.hokuto.yamanashi.jp/"
+                   },
+                   {
+                       "id":  "19210",
+                       "pref":  "19",
+                       "prefName":  "山梨県",
+                       "name":  "甲斐市",
+                       "rank":  "C",
+                       "pop":  74000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.kai.yamanashi.jp/"
+                   },
+                   {
+                       "id":  "19211",
+                       "pref":  "19",
+                       "prefName":  "山梨県",
+                       "name":  "笛吹市",
+                       "rank":  "C",
+                       "pop":  71000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.fuefuki.yamanashi.jp/"
+                   },
+                   {
+                       "id":  "19213",
+                       "pref":  "19",
+                       "prefName":  "山梨県",
+                       "name":  "甲州市",
+                       "rank":  "C",
+                       "pop":  32000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.koshu.yamanashi.jp/"
+                   },
+                   {
+                       "id":  "19214",
+                       "pref":  "19",
+                       "prefName":  "山梨県",
+                       "name":  "中央市",
+                       "rank":  "C",
+                       "pop":  33000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.chuo.yamanashi.jp/"
+                   },
+                   {
+                       "id":  "16201",
+                       "pref":  "16",
+                       "prefName":  "富山県",
+                       "name":  "富山市",
+                       "rank":  "B",
+                       "pop":  418000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.toyama.lg.jp/kurashi/gomi/1010228/1005357.html"
+                   },
+                   {
+                       "id":  "16202",
+                       "pref":  "16",
+                       "prefName":  "富山県",
+                       "name":  "高岡市",
+                       "rank":  "C",
+                       "pop":  167000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.takaoka.toyama.jp/"
+                   },
+                   {
+                       "id":  "16204",
+                       "pref":  "16",
+                       "prefName":  "富山県",
+                       "name":  "魚津市",
+                       "rank":  "C",
+                       "pop":  41000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.uozu.toyama.jp/"
+                   },
+                   {
+                       "id":  "16207",
+                       "pref":  "16",
+                       "prefName":  "富山県",
+                       "name":  "黒部市",
+                       "rank":  "C",
+                       "pop":  40000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.kurobe.toyama.jp/"
+                   },
+                   {
+                       "id":  "16208",
+                       "pref":  "16",
+                       "prefName":  "富山県",
+                       "name":  "砺波市",
+                       "rank":  "C",
+                       "pop":  49000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.tonami.toyama.jp/"
+                   },
+                   {
+                       "id":  "16210",
+                       "pref":  "16",
+                       "prefName":  "富山県",
+                       "name":  "南砺市",
+                       "rank":  "C",
+                       "pop":  48000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.nanto.toyama.jp/"
+                   },
+                   {
+                       "id":  "16211",
+                       "pref":  "16",
+                       "prefName":  "富山県",
+                       "name":  "射水市",
+                       "rank":  "C",
+                       "pop":  93000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.imizu.toyama.jp/"
+                   },
+                   {
+                       "id":  "17201",
+                       "pref":  "17",
+                       "prefName":  "石川県",
+                       "name":  "金沢市",
+                       "rank":  "B",
+                       "pop":  456000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www4.city.kanazawa.lg.jp/soshikikarasagasu/gomigenryosuishinka/gyomuannai/1/3/3/7598.html"
+                   },
+                   {
+                       "id":  "17203",
+                       "pref":  "17",
+                       "prefName":  "石川県",
+                       "name":  "小松市",
+                       "rank":  "C",
+                       "pop":  107000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.komatsu.lg.jp/"
+                   },
+                   {
+                       "id":  "17206",
+                       "pref":  "17",
+                       "prefName":  "石川県",
+                       "name":  "加賀市",
+                       "rank":  "C",
+                       "pop":  68000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.kaga.ishikawa.jp/"
+                   },
+                   {
+                       "id":  "17211",
+                       "pref":  "17",
+                       "prefName":  "石川県",
+                       "name":  "白山市",
+                       "rank":  "C",
+                       "pop":  113000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.hakusan.ishikawa.jp/"
+                   },
+                   {
+                       "id":  "17212",
+                       "pref":  "17",
+                       "prefName":  "石川県",
+                       "name":  "能美市",
+                       "rank":  "C",
+                       "pop":  49000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.nomi.ishikawa.jp/"
+                   },
+                   {
+                       "id":  "17213",
+                       "pref":  "17",
+                       "prefName":  "石川県",
+                       "name":  "野々市市",
+                       "rank":  "C",
+                       "pop":  57000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.nonoichi.ishikawa.jp/"
+                   },
+                   {
+                       "id":  "18201",
+                       "pref":  "18",
+                       "prefName":  "福井県",
+                       "name":  "福井市",
+                       "rank":  "B",
+                       "pop":  263000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.fukui.lg.jp/kurasi/kankyo/kgomi/sodai_kobetu.html"
+                   },
+                   {
+                       "id":  "18202",
+                       "pref":  "18",
+                       "prefName":  "福井県",
+                       "name":  "敦賀市",
+                       "rank":  "C",
+                       "pop":  65000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.tsuruga.lg.jp/"
+                   },
+                   {
+                       "id":  "18205",
+                       "pref":  "18",
+                       "prefName":  "福井県",
+                       "name":  "大野市",
+                       "rank":  "C",
+                       "pop":  32000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.ono.fukui.jp/"
+                   },
+                   {
+                       "id":  "18207",
+                       "pref":  "18",
+                       "prefName":  "福井県",
+                       "name":  "鯖江市",
+                       "rank":  "C",
+                       "pop":  69000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.sabae.fukui.jp/"
+                   },
+                   {
+                       "id":  "18209",
+                       "pref":  "18",
+                       "prefName":  "福井県",
+                       "name":  "越前市",
+                       "rank":  "C",
+                       "pop":  80000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.echizen.lg.jp/"
+                   },
+                   {
+                       "id":  "18210",
+                       "pref":  "18",
+                       "prefName":  "福井県",
+                       "name":  "坂井市",
+                       "rank":  "C",
+                       "pop":  93000,
+                       "dataReady":  true,
+                       "scrapeUrl":  "https://www.city.sakai.fukui.jp/"
+                   }
+               ]
+}

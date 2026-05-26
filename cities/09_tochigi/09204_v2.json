@@ -1,0 +1,22 @@
+{
+  "city": {
+    "id": "09204",
+    "name": "佐野市",
+    "prefecture": "栃木県",
+    "rank": "C",
+    "dataVersion": "2026-05",
+    "rules": {
+      "websiteUrl": "https://www.city.sano.lg.jp/soshikiichiran/shimin/kankyoseisakuka/gyomuannai/gomi/1/5/3783.html",
+      "contact": "0283-23-8153（みかもクリーンセンター）",
+      "nonCollectibleNote": "家電リサイクル4品目（エアコン・テレビ・冷蔵庫・洗濯機）、パソコン、バイク・タイヤ、消火器は収集できません",
+      "applicationMethod": "市役所・行政センターで申請後、戸別訪問収集を依頼",
+      "paymentMethod": "1点1,650円（40kg以下）",
+      "selfCarryIn": "みかもクリーンセンター/葛生清掃センターへ持込可（10kgごとに220円）"
+    }
+  },
+  "items": [
+    {"n":"粗大ごみ（1点・40kg以下）","k":["そ"],"fee":1650,"m":"収集","note":"1点1,650円均一（40kg以下）","tags":["タンス","ベッド","テーブル","椅子","自転車","布団","カーペット","家電","畳","ソファ","掃除機","扇風機"],"en":"Bulky Waste (1 item, 1650 yen, under 40kg)"},
+    {"n":"粗大ごみ（持込・10kgごと）","k":["そ"],"fee":220,"m":"持込","note":"みかもクリーンセンター/葛生清掃センター 持込 10kgごとに220円","tags":["家具","家電","寝具","自転車"],"en":"Bulky Waste (carry-in, 220 yen/10kg)"}
+  ],
+  "uncollectible": ["エアコン","テレビ","冷蔵庫","洗濯機","パソコン","バイク","タイヤ","消火器"]
+}

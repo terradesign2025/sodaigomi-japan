@@ -1,0 +1,226 @@
+{
+  "region": "近畿",
+  "generated": "2026-05-20",
+  "cities": [
+    {
+      "id": "26100",
+      "pref": "26",
+      "prefName": "京都府",
+      "name": "京都市",
+      "rank": "A",
+      "pop": 1460000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.ogomi-kyoto.jp/"
+    },
+    {
+      "id": "26202",
+      "pref": "26",
+      "prefName": "京都府",
+      "name": "宇治市",
+      "rank": "C",
+      "pop": 180000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.uji.kyoto.jp/soshiki/18/2049.html"
+    },
+    {
+      "id": "26206",
+      "pref": "26",
+      "prefName": "京都府",
+      "name": "亀岡市",
+      "rank": "C",
+      "pop": 90000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.kameoka.kyoto.jp/soshiki/11/1295.html"
+    },
+    {
+      "id": "26209",
+      "pref": "26",
+      "prefName": "京都府",
+      "name": "長岡京市",
+      "rank": "C",
+      "pop": 80000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.nagaokakyo.lg.jp/0000004028.html"
+    },
+    {
+      "id": "26208",
+      "pref": "26",
+      "prefName": "京都府",
+      "name": "向日市",
+      "rank": "C",
+      "pop": 55000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.muko.lg.jp/kurashi/gomihaihu/gomitodai/sodaigomi.html"
+    },
+    {
+      "id": "28100",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "神戸市",
+      "rank": "A",
+      "pop": 1520000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.ogatagomi.city.kobe.lg.jp/"
+    },
+    {
+      "id": "28201",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "姫路市",
+      "rank": "B",
+      "pop": 530000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.himeji.lg.jp/kurashi/0000026461.html"
+    },
+    {
+      "id": "28202",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "尼崎市",
+      "rank": "B",
+      "pop": 450000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.ogatagomi-amagasaki.jp/"
+    },
+    {
+      "id": "28203",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "西宮市",
+      "rank": "B",
+      "pop": 480000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.nishi.or.jp/kurashi/gomi/gominoshushu/seikatsugomi/ryokinhyo.html"
+    },
+    {
+      "id": "28206",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "明石市",
+      "rank": "B",
+      "pop": 300000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.akashi.lg.jp/seisou/gm_sodai_ka/sodaigomi.html"
+    },
+    {
+      "id": "28210",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "加古川市",
+      "rank": "B",
+      "pop": 260000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.kakogawa.lg.jp/soshiki/43/1497.html"
+    },
+    {
+      "id": "28215",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "宝塚市",
+      "rank": "B",
+      "pop": 220000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.takarazuka.hyogo.jp/gomi_risaikuru/1009424/1009425.html"
+    },
+    {
+      "id": "28204",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "伊丹市",
+      "rank": "C",
+      "pop": 190000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.itami.lg.jp/SOSIKI/KANKYO/GOMI/1516938988660.html"
+    },
+    {
+      "id": "28216",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "川西市",
+      "rank": "C",
+      "pop": 150000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.kawanishi.hyogo.jp/soshiki/54/2186.html"
+    },
+    {
+      "id": "28212",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "芦屋市",
+      "rank": "C",
+      "pop": 90000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.ashiya.lg.jp/kankyo/sodaigomi.html"
+    },
+    {
+      "id": "29201",
+      "pref": "29",
+      "prefName": "奈良県",
+      "name": "奈良市",
+      "rank": "B",
+      "pop": 350000,
+      "dataReady": true,
+      "scrapeUrl": "https://ogomi-nara.jp/"
+    },
+    {
+      "id": "29206",
+      "pref": "29",
+      "prefName": "奈良県",
+      "name": "橿原市",
+      "rank": "C",
+      "pop": 120000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.kashihara.nara.jp/living_scene/gomi_risaikuru/1/6422.html"
+    },
+    {
+      "id": "29212",
+      "pref": "29",
+      "prefName": "奈良県",
+      "name": "生駒市",
+      "rank": "C",
+      "pop": 110000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.ikoma.lg.jp/0000001698.html"
+    },
+    {
+      "id": "25201",
+      "pref": "25",
+      "prefName": "滋賀県",
+      "name": "大津市",
+      "rank": "B",
+      "pop": 340000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.otsu.lg.jp/soshiki/030/1703/g/bumbetsu/28743.html"
+    },
+    {
+      "id": "25202",
+      "pref": "25",
+      "prefName": "滋賀県",
+      "name": "草津市",
+      "rank": "C",
+      "pop": 140000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.kusatsu.shiga.jp/kurashi/gomi/sodaigomi.html"
+    },
+    {
+      "id": "25203",
+      "pref": "25",
+      "prefName": "滋賀県",
+      "name": "彦根市",
+      "rank": "C",
+      "pop": 110000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.hikone.shiga.jp/soshiki/38/3033.html"
+    },
+    {
+      "id": "30201",
+      "pref": "30",
+      "prefName": "和歌山県",
+      "name": "和歌山市",
+      "rank": "B",
+      "pop": 360000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.sodai-wakayama-city.jp/"
+    }
+  ]
+}

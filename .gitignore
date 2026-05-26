@@ -1,2 +1,8 @@
 .DS_Store
 node_modules/
+Thumbs.db
+
+# バックアップファイル（GitHubには不要）
+*.bak
+*.bak_*
+index.html.bak*

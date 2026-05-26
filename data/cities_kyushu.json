@@ -1,0 +1,32 @@
+{
+  "_comment": "九州・沖縄 全市インデックス。dataReady=trueのみアプリで品目検索可。",
+  "_total": 27,
+  "_region": "九州・沖縄",
+  "cities": [
+    {"id":"40100","pref":"40","prefName":"福岡県","name":"北九州市","rank":"A","pop":920000,"dataReady":true,"scrapeUrl":"https://www.city.kitakyushu.lg.jp/contents/924_10259.html"},
+    {"id":"40130","pref":"40","prefName":"福岡県","name":"福岡市","rank":"A","pop":1620000,"dataReady":true,"scrapeUrl":"https://www.city.fukuoka.lg.jp/kankyo/kateigomi/life/katei-bunbetsu/sodaigomi.html"},
+    {"id":"40203","pref":"40","prefName":"福岡県","name":"飯塚市","rank":"C","pop":120000,"dataReady":true,"scrapeUrl":"https://www.city.iizuka.lg.jp/site/garbage/2720.html"},
+    {"id":"40205","pref":"40","prefName":"福岡県","name":"久留米市","rank":"B","pop":300000,"dataReady":true,"scrapeUrl":"https://www.city.kurume.fukuoka.jp/"},
+    {"id":"40207","pref":"40","prefName":"福岡県","name":"行橋市","rank":"C","pop":70000,"dataReady":true,"scrapeUrl":"https://www.city.yukuhashi.fukuoka.jp/soshiki/30/1269.html"},
+    {"id":"40212","pref":"40","prefName":"福岡県","name":"春日市","rank":"C","pop":110000,"dataReady":true,"scrapeUrl":"https://www.city.kasuga.fukuoka.jp/kurashi/gomi/gomidashi/1001163/1001168.html"},
+    {"id":"40213","pref":"40","prefName":"福岡県","name":"大野城市","rank":"C","pop":100000,"dataReady":true,"scrapeUrl":"https://www.city.onojo.fukuoka.jp/s070/010/010/010/010/020/2423.html"},
+    {"id":"40216","pref":"40","prefName":"福岡県","name":"筑紫野市","rank":"C","pop":100000,"dataReady":true,"scrapeUrl":"https://www.city.chikushino.fukuoka.jp/site/gomi/3802.html"},
+    {"id":"40220","pref":"40","prefName":"福岡県","name":"太宰府市","rank":"C","pop":70000,"dataReady":true,"scrapeUrl":"https://www.city.dazaifu.lg.jp/soshiki/10/11647.html"},
+    {"id":"40222","pref":"40","prefName":"福岡県","name":"宗像市","rank":"C","pop":95000,"dataReady":true,"scrapeUrl":"https://www.city.munakata.lg.jp/w021/010/030/040/0250/201501270160.html"},
+    {"id":"41201","pref":"41","prefName":"佐賀県","name":"佐賀市","rank":"B","pop":230000,"dataReady":true,"scrapeUrl":"https://www.city.saga.lg.jp/main/3036.html"},
+    {"id":"41202","pref":"41","prefName":"佐賀県","name":"唐津市","rank":"C","pop":110000,"dataReady":true,"scrapeUrl":"https://www.city.karatsu.lg.jp/page/2408.html"},
+    {"id":"42201","pref":"42","prefName":"長崎県","name":"長崎市","rank":"B","pop":400000,"dataReady":true,"scrapeUrl":"https://www.city.nagasaki.lg.jp/page/3031.html"},
+    {"id":"42202","pref":"42","prefName":"長崎県","name":"佐世保市","rank":"B","pop":240000,"dataReady":true,"scrapeUrl":"https://www.city.sasebo.lg.jp/kankyo/recycl/sodaigomi.html"},
+    {"id":"43100","pref":"43","prefName":"熊本県","name":"熊本市","rank":"A","pop":740000,"dataReady":true,"scrapeUrl":"https://www.city.kumamoto.jp/kankyo/kiji003552/index.html"},
+    {"id":"43202","pref":"43","prefName":"熊本県","name":"八代市","rank":"C","pop":120000,"dataReady":true,"scrapeUrl":"https://www.city.yatsushiro.lg.jp/kiji0039012/index.html"},
+    {"id":"44201","pref":"44","prefName":"大分県","name":"大分市","rank":"B","pop":470000,"dataReady":true,"scrapeUrl":"https://www.city.oita.oita.jp/kurashi/gomi/kategomi/wakekata/index.html"},
+    {"id":"44202","pref":"44","prefName":"大分県","name":"別府市","rank":"C","pop":110000,"dataReady":true,"scrapeUrl":"https://www.city.beppu.oita.jp/seikatu/kankyou_gomi/g_siwake/sodai.html"},
+    {"id":"45201","pref":"45","prefName":"宮崎県","name":"宮崎市","rank":"B","pop":400000,"dataReady":true,"scrapeUrl":"https://www.city.miyazaki.miyazaki.jp/life/trash/fractionation/34204.html"},
+    {"id":"46201","pref":"46","prefName":"鹿児島県","name":"鹿児島市","rank":"B","pop":590000,"dataReady":true,"scrapeUrl":"https://www.city.kagoshima.lg.jp/shigenseisaku/gomi/kate/dashikata/wakekata/sodaigomi.html"},
+    {"id":"47201","pref":"47","prefName":"沖縄県","name":"那覇市","rank":"B","pop":320000,"dataReady":true,"scrapeUrl":"https://www.city.naha.okinawa.jp/kurasitetuduki/gomirisaikuru/gomi/katei/KHAITAIsodaigomi.html"},
+    {"id":"47205","pref":"47","prefName":"沖縄県","name":"沖縄市","rank":"C","pop":140000,"dataReady":true,"scrapeUrl":"https://www.city.okinawa.okinawa.jp/kurashi/gomi/gomikensaku/sodaigomi.html"},
+    {"id":"47206","pref":"47","prefName":"沖縄県","name":"浦添市","rank":"C","pop":110000,"dataReady":true,"scrapeUrl":"https://www.city.urasoe.lg.jp/doc/610cdde91221e3489c6e3826/"},
+    {"id":"47208","pref":"47","prefName":"沖縄県","name":"宜野湾市","rank":"C","pop":97000,"dataReady":true,"scrapeUrl":"https://www.city.ginowan.lg.jp/kurashi_tetsuzuki/sumai/1/3596.html"},
+    {"id":"47217","pref":"47","prefName":"沖縄県","name":"うるま市","rank":"C","pop":120000,"dataReady":true,"scrapeUrl":"https://www.city.uruma.lg.jp/1006004000/contents/745.html"}
+  ]
+}

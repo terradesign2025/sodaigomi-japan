@@ -1,0 +1,21 @@
+{
+  "city": {
+    "id": "10209",
+    "name": "藤岡市",
+    "prefecture": "群馬県",
+    "rank": "C",
+    "dataVersion": "2026-05",
+    "rules": {
+      "websiteUrl": "https://www.city.fujioka.gunma.jp/soshiki/sinrinkankyobu/seisocenter/1/2392.html",
+      "contact": "0274-23-8305（清掃センター）",
+      "nonCollectibleNote": "家電リサイクル4品目（エアコン・テレビ・冷蔵庫・洗濯機）、パソコン、バイク・タイヤ、消火器は収集できません",
+      "applicationMethod": "電話で申込（毎月第1〜4月曜日・4点まで）",
+      "paymentMethod": "重量制：1kgにつき33円（消費税込）",
+      "collectionMethod": "回収日は月1〜4月曜日（祝日除く）午後1:30〜4:00。当日現金払い"
+    }
+  },
+  "items": [
+    {"n":"粗大ごみ（1kgにつき）","k":["そ"],"fee":33,"m":"収集","note":"1kgにつき33円（消費税込）。10円未満切捨て。4点まで","tags":["タンス","ベッド","テーブル","椅子","自転車","布団","カーペット","家電","ソファ","掃除機","扇風機"],"en":"Bulky Waste (33 yen/kg)"}
+  ],
+  "uncollectible": ["エアコン","テレビ","冷蔵庫","洗濯機","パソコン","バイク","タイヤ","消火器"]
+}
