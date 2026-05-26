@@ -448,7 +448,7 @@ header{background:var(--card);position:sticky;top:0;z-index:100;border-bottom:1p
     <div id="spCtaCard" class="sp-cta-card">
       <div class="sp-cta-card-title" id="spCtaTitle"></div>
       <div class="sp-cta-card-desc">地元企業様の広告を月額¥2,500〜で掲載できます</div>
-      <a class="sp-cta-card-btn" href="https://terra-design.co.jp/sponsor/apply/" target="_blank" rel="noopener">スポンサーに応募する</a>
+      <a class="sp-cta-card-btn" href="sponsor.html" target="_blank" rel="noopener">掲載パートナーに応募する →</a>
     </div>
     <div class="fnote" id="fnote"></div>
   </div>
@@ -2762,8 +2762,8 @@ function renderInfo() {
 // =====================================================
 // スポンサー
 // =====================================================
-// 都市別スポンサーデータ（プロト用サンプル）
-// 本運用時は ./sponsors/{cityId}.json に外出し or DB管理
+// 都市別スポンサーデータ（開発・プレビュー用サンプル）
+// 本番は ./sponsors/{cityId}.json を自動fetch（loadSponsorData参照）
 const SPONSOR_SAMPLES = {
   '13101': {
     companyName: '千代田リサイクル',
@@ -2803,6 +2803,19 @@ const SPONSOR_SAMPLES = {
   }
 };
 
+// sponsors/{cityId}.json を非同期で取得（本番用）
+// ファイルが存在しない(404)→ null、ネットワークエラー→ null を返す
+async function loadSponsorData(cityId) {
+  if (!cityId) return null;
+  // ローカルプレビュー時はサンプルを使用
+  if (location.protocol === 'file:') return SPONSOR_SAMPLES[cityId] || null;
+  try {
+    const res = await fetch(`./sponsors/${cityId}.json`, { cache: 'no-cache' });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch(e) { return null; }
+}
+
 function getSponsorForCity(id){ return SPONSOR_SAMPLES[id] || null; }
 
 // Webに強い・アクセス計測している全国大手5社（プロト用）
@@ -2814,9 +2827,10 @@ const REC_COMPANIES = [
   {name:'メルカリ',desc:'スマホで簡単フリマ。捨てる前にまずはメルカリで売却を',cat:'フリマアプリ',icon:'📱',url:'https://www.mercari.com/jp/'},
 ];
 
-function renderSponsors() {
+async function renderSponsors() {
   const cn=currentCity?.name||'', pref=currentCity?.pref||'';
-  const sp=getSponsorForCity(currentCity?.id);
+  // 本番：sponsors/{cityId}.json を fetch、ローカル：SPONSOR_SAMPLESを使用
+  const sp = await loadSponsorData(currentCity?.id);
   const t=document.getElementById('spTop'), b=document.getElementById('spBot');
 
   // 共通：PR（このエリアのおすすめ）
@@ -2882,8 +2896,8 @@ function renderSponsors() {
     }
   }
 }
-function openSponsorInquiry(){showToast('スポンサーお問い合わせ：近日公開予定');}
-function openSponsorInfo(){window.open('https://terra-design.co.jp/sponsor/apply/','_blank','noopener');}
+function openSponsorInquiry(){ window.open('sponsor.html','_blank','noopener'); }
+function openSponsorInfo(){ window.open('sponsor.html','_blank','noopener'); }
 
 // =====================================================
 // カート
