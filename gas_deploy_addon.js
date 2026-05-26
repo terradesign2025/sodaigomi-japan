@@ -25,7 +25,7 @@
  *     // ── Cloudflare Pages 設定（自動再デプロイ用） ────────────────
  *     // 設定方法: Cloudflare Dashboard > Pages > プロジェクト名 > Settings
  *     //           > Builds & deployments > Deploy hooks > フックを作成してURLをコピー
- *     CLOUDFLARE_DEPLOY_HOOK: 'https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/xxxx',
+ *     CLOUDFLARE_DEPLOY_HOOK: 'https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/3eb0cce2-551f-4f77-be73-4f716f5fe60d',
  *   };
  *
  * ③ onMaterialSubmit() 内で素材確認後に publishSponsor() を呼ぶ方法（例）:

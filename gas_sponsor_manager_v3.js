@@ -83,7 +83,7 @@ const CONFIG = {
   // 設定方法: Cloudflare ダッシュボード > Pages > sodaigomi-japan > Settings
   //           > Builds & deployments > Deploy hooks > 「Add deploy hook」
   //           Hook名: gas-auto-deploy / Branch: main → 作成 → URLをコピー
-  CLOUDFLARE_DEPLOY_HOOK: 'https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+  CLOUDFLARE_DEPLOY_HOOK: 'https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/3eb0cce2-551f-4f77-be73-4f716f5fe60d',
 };
 
 // ============================================================
