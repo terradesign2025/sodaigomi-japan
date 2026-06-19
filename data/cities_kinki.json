@@ -1,5 +1,6 @@
 {
   "region": "近畿",
+  "_total": 78,
   "generated": "2026-05-20",
   "cities": [
     {
@@ -51,6 +52,106 @@
       "pop": 55000,
       "dataReady": true,
       "scrapeUrl": "https://www.city.muko.lg.jp/kurashi/gomihaihu/gomitodai/sodaigomi.html"
+    },
+    {
+      "id": "26201",
+      "pref": "26",
+      "prefName": "京都府",
+      "name": "福知山市",
+      "rank": "C",
+      "pop": 76000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.fukuchiyama.lg.jp/soshiki/24/16715.html"
+    },
+    {
+      "id": "26902",
+      "pref": "26",
+      "prefName": "京都府",
+      "name": "舞鶴市",
+      "rank": "C",
+      "pop": 78000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "26203",
+      "pref": "26",
+      "prefName": "京都府",
+      "name": "綾部市",
+      "rank": "C",
+      "pop": 31000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "26205",
+      "pref": "26",
+      "prefName": "京都府",
+      "name": "宮津市",
+      "rank": "C",
+      "pop": 16000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "26207",
+      "pref": "26",
+      "prefName": "京都府",
+      "name": "城陽市",
+      "rank": "C",
+      "pop": 74000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "26210",
+      "pref": "26",
+      "prefName": "京都府",
+      "name": "八幡市",
+      "rank": "C",
+      "pop": 69000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "26211",
+      "pref": "26",
+      "prefName": "京都府",
+      "name": "京田辺市",
+      "rank": "C",
+      "pop": 75000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "26212",
+      "pref": "26",
+      "prefName": "京都府",
+      "name": "京丹後市",
+      "rank": "C",
+      "pop": 50000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "26213",
+      "pref": "26",
+      "prefName": "京都府",
+      "name": "南丹市",
+      "rank": "C",
+      "pop": 31000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "26214",
+      "pref": "26",
+      "prefName": "京都府",
+      "name": "木津川市",
+      "rank": "C",
+      "pop": 80000,
+      "dataReady": false,
+      "scrapeUrl": ""
     },
     {
       "id": "28100",
@@ -153,6 +254,196 @@
       "scrapeUrl": "https://www.city.ashiya.lg.jp/kankyo/sodaigomi.html"
     },
     {
+      "id": "28205",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "洲本市",
+      "rank": "C",
+      "pop": 41000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28208",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "相生市",
+      "rank": "C",
+      "pop": 28000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28209",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "豊岡市",
+      "rank": "C",
+      "pop": 77000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28912",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "赤穂市",
+      "rank": "C",
+      "pop": 45000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28213",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "西脇市",
+      "rank": "C",
+      "pop": 38000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28915",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "三木市",
+      "rank": "C",
+      "pop": 74000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28916",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "高砂市",
+      "rank": "C",
+      "pop": 87000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28218",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "小野市",
+      "rank": "C",
+      "pop": 47000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28219",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "三田市",
+      "rank": "C",
+      "pop": 106000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28220",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "加西市",
+      "rank": "C",
+      "pop": 42000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28221",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "丹波篠山市",
+      "rank": "C",
+      "pop": 40000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28222",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "養父市",
+      "rank": "C",
+      "pop": 22000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28223",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "丹波市",
+      "rank": "C",
+      "pop": 61000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28224",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "南あわじ市",
+      "rank": "C",
+      "pop": 44000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28225",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "朝来市",
+      "rank": "C",
+      "pop": 28000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28226",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "淡路市",
+      "rank": "C",
+      "pop": 41000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28227",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "宍粟市",
+      "rank": "C",
+      "pop": 34000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28228",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "加東市",
+      "rank": "C",
+      "pop": 40000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "28229",
+      "pref": "28",
+      "prefName": "兵庫県",
+      "name": "たつの市",
+      "rank": "C",
+      "pop": 73000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
       "id": "29201",
       "pref": "29",
       "prefName": "奈良県",
@@ -181,6 +472,96 @@
       "pop": 110000,
       "dataReady": true,
       "scrapeUrl": "https://www.city.ikoma.lg.jp/0000001698.html"
+    },
+    {
+      "id": "29202",
+      "pref": "29",
+      "prefName": "奈良県",
+      "name": "大和高田市",
+      "rank": "C",
+      "pop": 62000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "29203",
+      "pref": "29",
+      "prefName": "奈良県",
+      "name": "大和郡山市",
+      "rank": "C",
+      "pop": 83000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "29204",
+      "pref": "29",
+      "prefName": "奈良県",
+      "name": "天理市",
+      "rank": "C",
+      "pop": 64000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "29906",
+      "pref": "29",
+      "prefName": "奈良県",
+      "name": "桜井市",
+      "rank": "C",
+      "pop": 54000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "29207",
+      "pref": "29",
+      "prefName": "奈良県",
+      "name": "五條市",
+      "rank": "C",
+      "pop": 28000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "29208",
+      "pref": "29",
+      "prefName": "奈良県",
+      "name": "御所市",
+      "rank": "C",
+      "pop": 24000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "29210",
+      "pref": "29",
+      "prefName": "奈良県",
+      "name": "香芝市",
+      "rank": "C",
+      "pop": 79000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "29211",
+      "pref": "29",
+      "prefName": "奈良県",
+      "name": "葛城市",
+      "rank": "C",
+      "pop": 37000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "29912",
+      "pref": "29",
+      "prefName": "奈良県",
+      "name": "宇陀市",
+      "rank": "C",
+      "pop": 28000,
+      "dataReady": false,
+      "scrapeUrl": ""
     },
     {
       "id": "25201",
@@ -213,6 +594,106 @@
       "scrapeUrl": "https://www.city.hikone.shiga.jp/soshiki/38/3033.html"
     },
     {
+      "id": "25903",
+      "pref": "25",
+      "prefName": "滋賀県",
+      "name": "長浜市",
+      "rank": "C",
+      "pop": 113000,
+      "dataReady": true,
+      "scrapeUrl": "https://www.city.nagahama.lg.jp/0000010270.html"
+    },
+    {
+      "id": "25204",
+      "pref": "25",
+      "prefName": "滋賀県",
+      "name": "近江八幡市",
+      "rank": "C",
+      "pop": 81000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "25207",
+      "pref": "25",
+      "prefName": "滋賀県",
+      "name": "守山市",
+      "rank": "C",
+      "pop": 85000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "25208",
+      "pref": "25",
+      "prefName": "滋賀県",
+      "name": "栗東市",
+      "rank": "C",
+      "pop": 70000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "25209",
+      "pref": "25",
+      "prefName": "滋賀県",
+      "name": "甲賀市",
+      "rank": "C",
+      "pop": 89000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "25210",
+      "pref": "25",
+      "prefName": "滋賀県",
+      "name": "野洲市",
+      "rank": "C",
+      "pop": 50000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "25211",
+      "pref": "25",
+      "prefName": "滋賀県",
+      "name": "湖南市",
+      "rank": "C",
+      "pop": 54000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "25212",
+      "pref": "25",
+      "prefName": "滋賀県",
+      "name": "高島市",
+      "rank": "C",
+      "pop": 46000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "25213",
+      "pref": "25",
+      "prefName": "滋賀県",
+      "name": "東近江市",
+      "rank": "C",
+      "pop": 112000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "25214",
+      "pref": "25",
+      "prefName": "滋賀県",
+      "name": "米原市",
+      "rank": "C",
+      "pop": 38000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
       "id": "30201",
       "pref": "30",
       "prefName": "和歌山県",
@@ -221,6 +702,86 @@
       "pop": 360000,
       "dataReady": true,
       "scrapeUrl": "https://www.sodai-wakayama-city.jp/"
+    },
+    {
+      "id": "30202",
+      "pref": "30",
+      "prefName": "和歌山県",
+      "name": "海南市",
+      "rank": "C",
+      "pop": 48000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "30203",
+      "pref": "30",
+      "prefName": "和歌山県",
+      "name": "橋本市",
+      "rank": "C",
+      "pop": 60000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "30204",
+      "pref": "30",
+      "prefName": "和歌山県",
+      "name": "有田市",
+      "rank": "C",
+      "pop": 26000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "30205",
+      "pref": "30",
+      "prefName": "和歌山県",
+      "name": "御坊市",
+      "rank": "C",
+      "pop": 22000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "30206",
+      "pref": "30",
+      "prefName": "和歌山県",
+      "name": "田辺市",
+      "rank": "C",
+      "pop": 69000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "30207",
+      "pref": "30",
+      "prefName": "和歌山県",
+      "name": "新宮市",
+      "rank": "C",
+      "pop": 27000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "30208",
+      "pref": "30",
+      "prefName": "和歌山県",
+      "name": "紀の川市",
+      "rank": "C",
+      "pop": 60000,
+      "dataReady": false,
+      "scrapeUrl": ""
+    },
+    {
+      "id": "30209",
+      "pref": "30",
+      "prefName": "和歌山県",
+      "name": "岩出市",
+      "rank": "C",
+      "pop": 54000,
+      "dataReady": false,
+      "scrapeUrl": ""
     }
   ]
 }

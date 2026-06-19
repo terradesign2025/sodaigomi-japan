@@ -1,6 +1,6 @@
 {
   "_comment": "中国地方（広島・岡山・山口・島根・鳥取）全市インデックス。dataReady=trueのみアプリで品目検索可。",
-  "_total": 36,
+  "_total": 54,
   "_region": "中国",
   "cities": [
     {"id":"34100","pref":"34","prefName":"広島県","name":"広島市","rank":"A","pop":1194000,"dataReady":true,"scrapeUrl":"https://www.city.hiroshima.lg.jp/living/gomi-kankyo/1021277/1003072/1026095/1026097/1003174.html"},

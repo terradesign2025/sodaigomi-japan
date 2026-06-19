@@ -3,7 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>粗大ごみ判定アプリ / Bulky Waste Checker Japan</title>
+<title>粗大ごみ処分料金かんたん検索 | 全国436市区対応・815市区へ拡大中</title>
+<meta name="description" content="粗大ごみの処分料金・出し方・申込先を市区町村ごとに無料で検索。全国436市区対応・815市区へ拡大中。740品目以上を収録し、東京・大阪・名古屋・札幌・福岡など主要都市をカバー。">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="canonical" href="https://terradesign2025.github.io/sodaigomi-japan/">
+<meta property="og:title" content="粗大ごみ処分料金かんたん検索 | 全国436市区対応・無料">
+<meta property="og:description" content="無料・全国436市区対応・815市区へ拡大中・740品目以上。粗大ごみの処分料金をすぐ調べられます。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://terradesign2025.github.io/sodaigomi-japan/">
+<!-- ★OGP画像作成後に有効化（ogp.png をリポジトリ直下に配置してからコメントを外してください） -->
+<!-- <meta property="og:image" content="https://terradesign2025.github.io/sodaigomi-japan/ogp.png"> -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "粗大ごみ処分料金かんたん検索",
+  "url": "https://terradesign2025.github.io/sodaigomi-japan/",
+  "description": "粗大ごみの処分料金・出し方・申込先を市区町村ごとに無料で検索できるWebアプリ。全国436市区に対応し、815市区へ拡大中。",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "inLanguage": "ja",
+  "isAccessibleForFree": true,
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"},
+  "provider": {"@type": "Organization", "name": "株式会社テラデザイン"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "粗大ごみの処分料金はいくらですか？", "acceptedAnswer": {"@type": "Answer", "text": "料金は市区町村と品目によって異なります。例えば八王子市はポイント制（1pt=100円）、東京23区は品目別に300円〜2,300円程度、均一料金制の自治体もあります。本アプリでお住まいの市区と品目を選ぶと料金を確認できます。"}},
+    {"@type": "Question", "name": "粗大ごみの申込方法は？", "acceptedAnswer": {"@type": "Answer", "text": "多くの自治体では電話またはインターネットの粗大ごみ受付センターへ事前に申し込み、コンビニ等で処理券（シール）を購入して品目に貼り、指定日に出します。申込先・受付時間は自治体ごとに異なるため、本アプリの「出し方ガイド」で確認できます。"}},
+    {"@type": "Question", "name": "粗大ごみを処理施設へ直接持ち込みできますか？", "acceptedAnswer": {"@type": "Answer", "text": "持ち込み制度の有無は自治体によって異なります。持ち込みで料金が半額になる自治体、重量制（10kgごとに数百円）の自治体、持ち込み制度がない自治体もあります。本アプリでは市区ごとの持ち込み可否と料金の目安を表示しています。"}},
+    {"@type": "Question", "name": "エアコンやテレビも粗大ごみで出せますか？", "acceptedAnswer": {"@type": "Answer", "text": "エアコン・テレビ・冷蔵庫・洗濯機は家電リサイクル法の対象のため、自治体の粗大ごみ収集では出せません。パソコンも資源有効利用促進法の対象です。本アプリでは収集不可の品目と適切な処分方法の案内を表示しています。"}},
+    {"@type": "Question", "name": "このアプリは無料で使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい、完全無料でご利用いただけます。地域スポンサー企業様の協賛により運営されており、全国436市区に対応、815市区への拡大を進めています。"}}
+  ]
+}
+</script>
+<!-- Google Analytics GA4 ※G-XXXXXXXXXXを取得後コメントアウトを解除 -->
+<!-- analytics.google.com → 管理 → プロパティ作成 → 計測ID(G-XXXXXXXXXX)を取得して下記に貼り付け -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script> -->
 <style>
 :root{--p:#34C759;--pd:#28A745;--pl:#F0FBF4;--bg:#F4F6FB;--card:#fff;--t1:#1C1C1E;--t2:#636366;--t3:#8E8E93;--b:#E5E5EA;--warn:#FF3B30;--blue:#007AFF;--sh:0 2px 12px rgba(0,0,0,.06);--r:14px}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -98,6 +145,19 @@ header{background:var(--card);position:sticky;top:0;z-index:100;border-bottom:1p
 .sug-ico{width:34px;height:34px;background:var(--card);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,.08)}
 .sug-t1{font-size:13px;font-weight:700;color:#6B5E1A}
 .sug-t2{font-size:11px;color:#8D7E2E;margin-top:2px}
+/* 特別アラート（パソコン・家電リサイクル法） */
+.sp-alert{background:#FFF4E5;border:1px solid #F0C58A;border-radius:12px;padding:12px 14px;margin-bottom:10px;display:flex;gap:10px;align-items:flex-start}
+.spa-t1{font-size:13px;font-weight:700;color:#8A4B08;line-height:1.5}
+.spa-t2{font-size:11.5px;color:#9C6212;margin-top:4px;line-height:1.7}
+/* 検索結果の備考1行表示 */
+.inote-line{font-size:10.5px;color:var(--t3);margin-top:2px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* その他の候補（低スコア結果の折りたたみ） */
+.other-cands{margin-top:10px}
+.other-cands>summary{cursor:pointer;font-size:12px;font-weight:600;color:var(--t3);padding:8px 4px;list-style:none;display:flex;align-items:center;gap:6px}
+.other-cands>summary::-webkit-details-marker{display:none}
+.other-cands>summary::before{content:'▸';font-size:10px;transition:transform .2s}
+.other-cands[open]>summary::before{transform:rotate(90deg)}
+.other-cands .item-list{opacity:.88}
 .empty{text-align:center;padding:36px 16px;color:var(--t3);font-size:13px}
 /* Guide */
 .rules-card{background:#FFFBE6;border:1px solid #F5E6A0;border-radius:var(--r);padding:14px 16px;margin-bottom:14px;font-size:12px;color:#6B5E1A;line-height:1.7}
@@ -317,6 +377,15 @@ header{background:var(--card);position:sticky;top:0;z-index:100;border-bottom:1p
 .cs-form-label { font-size:12px; color:var(--t2); font-weight:600; margin-bottom:5px; display:block; }
 .cs-input { width:100%; padding:12px 13px; border:1.5px solid var(--b); border-radius:11px; font-size:15px; background:#F8F9FC; margin-bottom:12px; outline:none; }
 .cs-input:focus { border-color:var(--p); }
+/* h1（ヒーロータイトル）— divからh1へ変更しても見た目を維持 */
+h1.sel-title{font-size:22px;font-weight:800;margin:0 0 4px;line-height:1.3}
+/* サイトフッター（法的ページ・免責） */
+.site-footer{padding:24px 18px 28px;text-align:center}
+.site-footer-disclaimer{font-size:11px;color:var(--t3);line-height:1.8;text-align:left;background:var(--card);border-radius:var(--r);padding:12px 14px;margin-bottom:14px}
+.site-footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;margin-bottom:10px}
+.site-footer-links a{font-size:11px;color:var(--t2);text-decoration:none}
+.site-footer-links a:hover{color:var(--p);text-decoration:underline}
+.site-footer-copy{font-size:10px;color:var(--t3)}
 </style>
 </head>
 <body>
@@ -340,11 +409,11 @@ header{background:var(--card);position:sticky;top:0;z-index:100;border-bottom:1p
   <!-- 都市選択 -->
   <div id="scSel">
     <div class="sel-hero">
-      <div class="sel-title" id="selTitle">🗑️ 粗大ごみ判定アプリ</div>
+      <h1 class="sel-title" id="selTitle">🗑️ 粗大ごみ判定アプリ</h1>
       <div class="sel-sub" id="selSub">お住まいの地域を選んで品目・料金を確認</div>
       <div class="coverage-badges">
-        <span class="cov-badge">197都市対応</span>
-        <span class="cov-badge">815市区展開予定</span>
+        <span class="cov-badge">全国436市区対応</span>
+        <span class="cov-badge">815市区へ拡大中</span>
       </div>
     </div>
     <div class="sel-body">
@@ -355,7 +424,6 @@ header{background:var(--card);position:sticky;top:0;z-index:100;border-bottom:1p
         <div class="sp-recruit-banner">
           <div style="flex:1">
             <div class="sp-recruit-title">🏆 地元企業様スポンサー募集中</div>
-            <div class="sp-recruit-sub">1都市1枠限定 × 全国197都市展開中</div>
           </div>
           <button class="sp-recruit-btn" onclick="openSponsorInfo()">詳しくはこちら →</button>
         </div>
@@ -464,7 +532,8 @@ header{background:var(--card);position:sticky;top:0;z-index:100;border-bottom:1p
       <div>このエリアのデータは現在準備中です。</div>
       <div>ご存じの方のご協力で、より早く公開できます 🙏</div>
     </div>
-    <div style="background:var(--card);border-radius:var(--r);padding:18px;box-shadow:var(--sh);margin-bottom:16px">
+    <!-- URL投稿フォーム（GAS_SUBMIT_URL 未設定時は自動的に非表示） -->
+    <div id="csFormCard" style="background:var(--card);border-radius:var(--r);padding:18px;box-shadow:var(--sh);margin-bottom:16px">
       <div style="font-size:15px;font-weight:700;margin-bottom:6px">🤝 みんなで育てましょう</div>
       <div style="font-size:12px;color:var(--t3);margin-bottom:16px">この地域の粗大ごみ受付ページのURLをご存じでしたら教えてください</div>
       <label class="cs-form-label" for="csUrl">粗大ごみ受付ページのURL（必須）</label>
@@ -475,6 +544,19 @@ header{background:var(--card);position:sticky;top:0;z-index:100;border-bottom:1p
     </div>
     <button onclick="hideComingSoon()" style="width:100%;padding:12px;background:transparent;color:var(--t2);border:1px solid var(--b);border-radius:12px;cursor:pointer;font-size:14px">← 地域選択に戻る</button>
   </div>
+
+  <!-- サイトフッター（免責・法的ページ） -->
+  <footer class="site-footer">
+    <div class="site-footer-disclaimer">掲載している料金・申込方法は各自治体の公式情報をもとに作成していますが、改定等により実際と異なる場合があります。お申し込み前に必ず各自治体の公式情報をご確認ください。</div>
+    <nav class="site-footer-links">
+      <a href="blog/">お役立ち記事</a>
+      <a href="tokushoho.html">特定商取引法に基づく表記</a>
+      <a href="terms.html">利用規約</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="disclaimer.html">免責事項</a>
+    </nav>
+    <div class="site-footer-copy">© 2026 株式会社テラデザイン</div>
+  </footer>
 </div>
 
 <!-- ボトムナビ -->
@@ -526,7 +608,18 @@ header{background:var(--card);position:sticky;top:0;z-index:100;border-bottom:1p
 <div class="toast" id="toast"></div>
 
 <script>
+// =====================================================
+// ★ CONFIG（公開前に設定する項目）
+// =====================================================
+// ★Googleフォーム作成後にURLを貼り付けてください（例: 'https://forms.gle/xxxxxxxx'）
+//   空文字('')の間は、フィードバックボタン（💬）や「品目が見つからない」等の導線は自動的に非表示になります。
+//   URLを設定すると自動的に表示されます。
+const FB_FORM_URL = '';
+// ★GAS（Google Apps Script）のWebアプリURLをデプロイ後に貼り付けてください（例: 'https://script.google.com/macros/s/xxxx/exec'）
+//   空文字('')の間は、Coming Soon画面の「URL情報を送る」フォームは自動的に非表示になります。
+//   URLを設定すると自動的に表示されます。
 const GAS_SUBMIT_URL = '';
+
 // =====================================================
 // 料金体系メモ
 // 八王子市：1pt=¥100（処理券¥100単位）
@@ -542,7 +635,7 @@ const LANG = {
     appName:'粗大ごみ判定',
     selTitle:'🗑️ 粗大ごみ判定アプリ',
     selSub:'お住まいの地域を選んで品目・料金を確認',
-    selSearch:'🔍 都市名で検索（例：八王子・千代田・ちよだ・chiyoda）',
+    selSearch:'🔍 都市名で検索（例：札幌・なごや・osaka・八王子）',
     lblRecent:'⏱ 最近使用',
     lblRegion:'地方から選ぶ',
     lblBackRg:'地方選択に戻る',
@@ -588,7 +681,7 @@ const LANG = {
     appName:'Bulky Waste Checker',
     selTitle:'🗑️ Bulky Waste Checker Japan',
     selSub:'Select your city to check fees and items',
-    selSearch:'🔍 Search city (e.g. Hachioji, Chiyoda, Setagaya)',
+    selSearch:'🔍 Search city (e.g. Sapporo, Osaka, Fukuoka)',
     lblRecent:'⏱ Recent',
     lblRegion:'Select by region',
     lblBackRg:'Back to regions',
@@ -1355,6 +1448,132 @@ const SYNONYMS = {
   'マンドリン':['楽器','マンドリン','弦楽器'],
   'electric guitar':['楽器','ギター','エレキギター'],'acoustic guitar':['楽器','ギター','アコースティックギター','アコギ'],
   'fender':['楽器','ギター'],'フェンダー':['楽器','ギター'],'gibson':['楽器','ギター'],'ギブソン':['楽器','ギター'],
+  // ===== v4 追加（日常語・商品名・カタカナ語ブラッシュアップ 2026-06）=====
+  // --- アウトドア用品 ---
+  'アウトドアテーブル':['テーブル','折りたたみテーブル','アウトドア','キャンプ'],
+  'キャンプテーブル':['テーブル','折りたたみテーブル','アウトドア','キャンプ'],
+  'レジャーテーブル':['テーブル','折りたたみテーブル','アウトドア'],
+  'ロールテーブル':['テーブル','アウトドア','キャンプ'],
+  'ピクニックテーブル':['テーブル','アウトドア','ガーデン'],
+  'コールマンチェア':['椅子','チェア','キャンプチェア','アウトドアチェア','折りたたみ椅子'],
+  'ヘリノックス':['椅子','チェア','キャンプチェア','アウトドアチェア'],
+  'クーラーボックス':['クーラーボックス','アイスボックス','保冷ボックス'],
+  'アイスボックス':['クーラーボックス','アイスボックス','保冷ボックス'],
+  '保冷ボックス':['クーラーボックス','アイスボックス'],
+  'クーラーバッグ':['クーラーボックス','アイスボックス','保冷'],
+  '寝袋':['寝袋','シュラフ','布団'],
+  'シュラフ':['寝袋','シュラフ','布団'],
+  'スリーピングバッグ':['寝袋','シュラフ'],
+  '焚火台':['バーベキューコンロ','焚き火台'],
+  'ファイアグリル':['バーベキューコンロ','焚き火台'],
+  'アウトドアワゴン':['台車','ワゴン','キャリー'],
+  'キャリーワゴン':['台車','ワゴン','キャリー'],
+  'コット':['サマーベッド','折畳ベッド','アウトドア'],
+  'キャンプベッド':['サマーベッド','折畳ベッド','ベッド'],
+  // --- 子供用品 ---
+  'ランニングバイク':['ストライダー','キックバイク','バランスバイク','ペダルなし'],
+  'へんしんバイク':['ストライダー','キックバイク','バランスバイク'],
+  'キッズバイク':['ストライダー','幼児用','自転車'],
+  'ベビーサークル':['ベビーサークル','ベビーゲート','ベビーフェンス','ベビー'],
+  'ベビーゲート':['ベビーゲート','ベビーサークル','ベビーフェンス','ゲート'],
+  'ベビーフェンス':['ベビーフェンス','ベビーサークル','ベビーゲート'],
+  'セーフティゲート':['ベビーゲート','ベビーサークル','ペットゲート'],
+  'すべりだい':['すべり台','滑り台','遊具'],
+  'すべり台':['すべり台','滑り台','遊具'],
+  'トランポリン':['トランポリン','遊具'],
+  'ハイチェア':['ベビーチェア','ハイチェア','子供用椅子'],
+  '抱っこ紐':['ベビー','赤ちゃん'],
+  'だっこひも':['ベビー','赤ちゃん'],
+  'バウンサー':['ベビーラック','ハイローチェア','ベビーチェア'],
+  'ベビーバウンサー':['ベビーラック','ハイローチェア'],
+  '乗用玩具':['おもちゃの車','乗用','乗り物'],
+  // --- 商品名・ブランド呼び ---
+  'ブラーバ':['掃除機','ロボット掃除機'],
+  'roomba':['掃除機','ロボット掃除機'],
+  'アイロボット':['掃除機','ロボット掃除機'],
+  'ルーロ':['掃除機','ロボット掃除機'],
+  'バルミューダ':['トースター','電子レンジ','扇風機'],
+  'エアウィーヴ':['マットレス','ベッド'],
+  'エアウィーブ':['マットレス','ベッド'],
+  'コアラマットレス':['マットレス','ベッド'],
+  'ニトリマットレス':['マットレス','ベッド'],
+  'シモンズ':['マットレス','ベッド'],
+  'テンピュール':['マットレス','枕'],
+  'フランスベッド':['ベッド','マットレス'],
+  'ヨギボー':['ビーズクッション','クッション','ソファ'],
+  'yogibo':['ビーズクッション','クッション'],
+  'ブリタ':['浄水器'],
+  'クリンスイ':['浄水器'],
+  'ケルヒャー':['スチームモップ','スチーマー','高圧洗浄'],
+  'アラジン':['トースター','ストーブ'],
+  'マキタ':['掃除機','コードレス'],
+  // --- 健康・フィットネス ---
+  'ホームジム':['マルチジム','懸垂','健康器具'],
+  'バランスボール':['バランスボール','健康器具','運動'],
+  'ジムボール':['バランスボール','健康器具'],
+  'ヨガマット':['ヨガ','ストレッチ','健康器具'],
+  'ヨガポール':['ストレッチポール','ヨガ'],
+  'フォームローラー':['ストレッチポール','ヨガ'],
+  '腹筋ローラー':['健康器具','運動','腹筋'],
+  'アブローラー':['健康器具','運動','腹筋'],
+  '腹筋マシン':['健康器具','運動','腹筋'],
+  '振動マシン':['振動マシン','健康器具','運動'],
+  'ブルブルマシン':['振動マシン','健康器具','運動'],
+  'パワープレート':['振動マシン','健康器具'],
+  '鉄アレイ':['ダンベル','おもり'],
+  'ダンベル':['ダンベル','おもり','ウエイト'],
+  'バーベル':['バーベル','ダンベル','おもり'],
+  'ケトルベル':['ダンベル','おもり'],
+  'トレーニングベンチ':['ベンチ','トレーニング'],
+  'ローイングマシン':['ローイング','ロービング','ボート漕ぎ'],
+  'ボート漕ぎマシン':['ローイング','ロービング'],
+  'クロストレーナー':['スカイウォーカー','エアウォーカー','クロストレーナー'],
+  'エリプティカル':['スカイウォーカー','クロストレーナー'],
+  'フラフープ':['フラフープ','運動'],
+  // --- 現代家電・ガジェット ---
+  '空気清浄器':['空気清浄機'],
+  'エアドッグ':['空気清浄機'],
+  'プラズマクラスター':['空気清浄機'],
+  'ナノイー':['空気清浄機','加湿器'],
+  '電気圧力鍋':['圧力鍋','調理'],
+  'ホットクック':['圧力鍋','電気調理鍋','調理'],
+  'インスタントポット':['圧力鍋','調理'],
+  '電気調理鍋':['圧力鍋','調理'],
+  'たこ焼き器':['ホットプレート','たこ焼き'],
+  'たこ焼き機':['ホットプレート','たこ焼き'],
+  '焼肉プレート':['ホットプレート','焼肉'],
+  'グリル鍋':['ホットプレート','調理'],
+  'トースター':['トースター','オーブントースター','電子レンジ'],
+  'オーブントースター':['トースター','オーブン','電子レンジ'],
+  'コーヒーメーカー':['コーヒーメーカー'],
+  'エスプレッソマシン':['コーヒーメーカー'],
+  'コーヒーマシン':['コーヒーメーカー'],
+  'モニター':['モニター','テレビ','パソコン'],
+  'ディスプレイ':['モニター','テレビ','パソコン'],
+  'パソコンモニター':['モニター','パソコン','テレビ'],
+  'PCモニター':['モニター','パソコン'],
+  'タワーファン':['扇風機','サーキュレーター'],
+  'ゲーミングデスク':['デスク','パソコンデスク','テーブル'],
+  'ゲーミングモニター':['モニター','パソコン'],
+  // --- 住まい・収納 ---
+  '2段ベッド':['二段ベッド','ベッド'],
+  '脚付きマットレス':['マットレス','脚付き','ベッド'],
+  'こたつ布団':['布団','こたつ'],
+  'プレイマット':['ジョイントマット','カーペット','マット'],
+  'つっぱり棒':['突っ張り棒','つっぱり'],
+  'つっぱり棚':['突っ張り棚','突っ張り棒','つっぱり'],
+  'テンションポール':['突っ張り棒','つっぱり'],
+  'ハンガーラック':['ハンガーラック','パイプハンガー','ハンガー'],
+  'コートハンガー':['ハンガーラック','パイプハンガー','ポールハンガー','ハンガー'],
+  'ポールハンガー':['パイプハンガー','ハンガーラック','ハンガー'],
+  '洋服掛け':['ハンガーラック','パイプハンガー','ハンガー'],
+  'ワイヤーラック':['スチールラック','メタルラック','棚','収納'],
+  'ルミナスラック':['スチールラック','メタルラック'],
+  'ベッドフレーム':['ベッド枠','ベッド','フレーム'],
+  'クローゼット':['ワードローブ','たんす','収納'],
+  'テレビ台':['テレビボード','TVボード','テレビ台','棚'],
+  'パーテーション':['パーティション','ついたて','間仕切り'],
+  '間仕切り':['パーティション','ついたて','アコーディオンカーテン'],
 };
 
 const SYNONYMS_EN = {
@@ -1391,6 +1610,21 @@ const SYNONYMS_EN = {
   'cage':['ケージ','サークル'],'dog house':['犬小屋'],'kennel':['犬小屋'],
   'light':['照明','ライト','シーリング'],'lamp':['照明','ランプ'],
   'shed':['物置','倉庫'],'model':['プラモデル','模型'],
+  // v4 追加
+  'cooler box':['クーラーボックス','アイスボックス'],'cooler':['クーラーボックス','アイスボックス'],
+  'sleeping bag':['寝袋','シュラフ','布団'],
+  'balance bike':['ストライダー','自転車'],'kick bike':['ストライダー','自転車'],
+  'baby gate':['ベビーサークル','ベビーゲート'],'playpen':['ベビーサークル','ベビーゲート'],
+  'high chair':['ベビーチェア','ハイチェア'],'baby chair':['ベビーチェア','ハイチェア'],
+  'trampoline':['トランポリン','遊具'],'slide':['すべり台','遊具'],
+  'dumbbell':['ダンベル','おもり'],'barbell':['バーベル','ダンベル','おもり'],
+  'yoga mat':['ヨガ','ストレッチ'],'exercise ball':['バランスボール','健康器具'],
+  'water purifier':['浄水器'],'hot plate':['ホットプレート'],
+  'coffee maker':['コーヒーメーカー'],'pressure cooker':['圧力鍋'],
+  'display':['モニター','テレビ','パソコン'],'gaming chair':['椅子','チェア','ゲーミングチェア'],
+  'bunk bed':['二段ベッド','ベッド'],'loft bed':['ロフトベッド','ベッド'],
+  'hanger rack':['ハンガーラック','パイプハンガー'],'clothes rack':['ハンガーラック','パイプハンガー','物干し'],
+  'toaster':['トースター','電子レンジ'],'circulator':['扇風機','サーキュレーター'],
 };
 
 // =====================================================
@@ -1406,6 +1640,14 @@ function norm(s) {
   const sm={'ぁ':'あ','ぃ':'い','ぅ':'う','ぇ':'え','ぉ':'お','っ':'つ','ょ':'よ','ゃ':'や','ゅ':'ゆ'};
   return r.replace(/./g, c => dk[c]||sm[c]||c);
 }
+// マイルド正規化: 濁点・長音は保持（ガーデン≠カーテン を区別できる精度重視版）
+function normMild(s) {
+  return String(s||'').toLowerCase()
+    .replace(/[ァ-ヶ]/g, c => String.fromCharCode(c.charCodeAt(0) - 0x60))
+    .replace(/[・\s]/g, '');
+}
+// 品目名から括弧内のサイズ・条件表記を除いた基本名（「カーペット（6畳未満）」→「カーペット」）
+function baseName(item){ return String(item.n||'').replace(/（[^）]*）|\([^)]*\)/g, ''); }
 function itemText(item){ return [item.n,...(item.tags||[]),item.note||''].join(' '); }
 
 function itemEnText(item){ return [item.en||EN_NAMES[item.n]||'',...(item.tags||[]).filter(t=>/[a-z]/i.test(t))].join(' ').toLowerCase(); }
@@ -1432,41 +1674,97 @@ function searchItems(q, items) {
 
   const nq = norm(q);
   if (!nq) return { results: items, mode: 'all' };
+  const mq = normMild(q);
 
-  const direct = items.filter(i => norm(itemText(i)).includes(nq));
-
-  // Check synonym keys in parallel — merge with direct if both exist
-  const matchedKeys = Object.keys(SYNONYMS).filter(k => {
-    const nk = norm(k);
-    return nk === nq || (nk.includes(nq) && nq.length >= 2) || (nq.includes(nk) && nk.length >= 2);
-  });
-  let synResults = [];
-  if (matchedKeys.length) {
-    const extraWords = [...new Set(matchedKeys.flatMap(k => SYNONYMS[k]))];
-    synResults = items.filter(i => { const t=norm(itemText(i)); return extraWords.some(w=>t.includes(norm(w))); });
+  // --- 同義語キーの選定: 完全一致キーを最優先。部分一致は比率・長さで制限し
+  //     「キャンプチェア」が短いキー「ちえあ」等に飲まれて無差別展開されるのを防ぐ ---
+  const allKeys = Object.keys(SYNONYMS);
+  let useKeys = allKeys.filter(k => norm(k) === nq);
+  if (!useKeys.length) {
+    useKeys = allKeys.filter(k => {
+      const nk = norm(k);
+      return (nk.includes(nq) && nq.length >= 2) ||
+             (nq.includes(nk) && nk.length >= 3 && nk.length >= nq.length * 0.6);
+    });
   }
+  const expWords = useKeys.length
+    ? [...new Set(useKeys.flatMap(k => SYNONYMS[k]))].map(w => ({ raw: w, mild: normMild(w) })).filter(w => w.mild)
+    : [];
 
-  if (direct.length && synResults.length) {
-    const directNames = new Set(direct.map(d => d.n));
-    const extras = synResults.filter(s => !directNames.has(s.n));
-    if (extras.length) {
-      return { results: [...direct, ...extras], mode: 'expanded', label: `「${q}」+関連品目${extras.length}件` };
+  // --- スコア式ランキング ---
+  // 100=直接一致(マイルド) / 90=同義語(複数語+品目名一致) / 80=直接一致(あいまい正規化)
+  // 75=連結テキスト一致 / 70=前方一致 / 62=同義語(弱) / 60=タグ部分一致 / 55以下=弱一致
+  const scored = [];
+  items.forEach((item, idx) => {
+    const bn = baseName(item);
+    const bnM = normMild(bn), bnN = norm(bn);
+    const fullM = normMild(item.n), fullN = norm(item.n);
+    const tags = item.tags || [];
+    const tagsM = tags.map(normMild), tagsN = tags.map(norm);
+    const joinedM = normMild(itemText(item)), joinedN = norm(itemText(item));
+
+    let d = 0; // 直接一致系
+    // 1文字クエリ（例:「畳」）は語頭・語尾・完全一致のみ強一致とし、
+    // 「折畳ベッド」のような語中一致は弱一致(58)に落とす
+    const strongM = mq && bnM.includes(mq) && (mq.length >= 2 || bnM === mq || bnM.startsWith(mq) || bnM.endsWith(mq));
+    const strongN = bnN.includes(nq) && (nq.length >= 2 || bnN === nq || bnN.startsWith(nq) || bnN.endsWith(nq));
+    if (mq && (strongM || tagsM.some(t => t === mq))) d = 100;
+    else if (strongN || tagsN.some(t => t === nq)) d = 80;
+    else if ((mq && bnM.includes(mq)) || bnN.includes(nq)) d = 58;
+    else if (mq.length >= 2 && joinedM.includes(mq)) d = 75;
+    else if (nq.length >= 2 && String(item.n).split(/[・\s（）()／\/]+/).some(w => w && (normMild(w).startsWith(mq) || norm(w).startsWith(nq)))) d = 70;
+    else if ((mq && tagsM.some(t => t.includes(mq))) || tagsN.some(t => t.includes(nq))) d = 60;
+    else if (nq.length >= 2 && joinedN.includes(nq)) d = 55;
+
+    let s = 0, cnt = 0, nameHit = false; // 同義語一致（マイルド正規化のみ＝誤爆防止）
+    for (const w of expWords) {
+      const inName = fullM.includes(w.mild);
+      if (inName || tagsM.some(t => t.includes(w.mild))) { cnt++; if (inName) nameHit = true; }
     }
-  }
-  if (direct.length) return { results: direct, mode: 'direct' };
-  if (synResults.length) {
-    const vals = SYNONYMS[matchedKeys[0]];
-    return { results: synResults, mode: 'synonym', label: `「${q}」= 「${vals.slice(0,3).join('・')}」として検索` };
+    if (cnt >= 2 && nameHit) s = 90;
+    else if (cnt >= 1) s = 62;
+
+    let wk = 0; // 弱一致（括弧内サイズ表記・備考のみの一致 例:「6畳未満」）
+    if ((mq && fullM.includes(mq)) || fullN.includes(nq) || norm(item.note || '').includes(nq)) wk = 45;
+
+    const score = Math.max(d, s, wk);
+    if (score > 0) scored.push({ item, score, d, s, cnt, idx });
+  });
+
+  if (scored.length) {
+    scored.sort((a, b) => b.score - a.score || b.cnt - a.cnt || a.idx - b.idx);
+    const top = scored[0];
+    const strongCnt = scored.filter(x => x.score >= 70).length;
+    let main = scored, rest = [];
+    if (strongCnt >= 3) {
+      // 強い候補が十分あるときは低スコアを「その他の候補」へ
+      main = scored.filter(x => x.score >= 70);
+      rest = scored.filter(x => x.score < 70);
+    } else if (top.score >= 80) {
+      // 直接一致があるときは括弧内サイズ表記のみの一致（「畳」→6畳未満 等）を折りたたみ
+      main = scored.filter(x => x.score > 45);
+      rest = scored.filter(x => x.score === 45);
+    }
+    const results = main.map(x => x.item);
+    const others = rest.map(x => x.item);
+    if (top.d >= 80) {
+      const extras = main.filter(x => x.d < 70 && x.s > 0).length;
+      if (extras) return { results, others, mode: 'expanded', label: `「${q}」+関連品目${extras}件` };
+      return { results, others, mode: 'direct' };
+    }
+    if (top.s > 0 && top.s >= top.d && useKeys.length) {
+      const vals = SYNONYMS[useKeys[0]];
+      return { results, others, mode: 'synonym', label: `「${q}」= 「${vals.slice(0,3).join('・')}」として検索` };
+    }
+    return { results, others, mode: 'direct' };
   }
 
-  if (nq.length >= 2) {
-    const prefix = items.filter(i => norm(itemText(i)).replace(/[（）\s]/g,' ').split(/\s+/).some(w => w.startsWith(nq)));
-    if (prefix.length) return { results: prefix, mode: 'direct' };
-  }
-
+  // --- あいまい検索: 編集距離をクエリ長に比例制限（〜4字:1 / 5-7字:2 / 8字〜:3）
+  //     かつ一致率60%未満は除外 ---
   if (nq.length >= 3) {
-    const tol = nq.length >= 6 ? 2 : 1;
-    const scored = [];
+    const lenTol = nq.length <= 4 ? 1 : (nq.length <= 7 ? 2 : 3);
+    const tol = Math.min(lenTol, Math.floor(nq.length * 0.4));
+    const fz = [];
     for (const item of items) {
       const words = norm(itemText(item)).replace(/[（）]/g,' ').split(/\s+/);
       let minD = Infinity;
@@ -1475,12 +1773,12 @@ function searchItems(q, items) {
         for (let s=0;s<=w.length-nq.length;s++) minD=Math.min(minD,ldist(nq,w.substr(s,nq.length)));
         if (Math.abs(w.length-nq.length)<=2) minD=Math.min(minD,ldist(nq,w));
       }
-      if (minD <= tol) scored.push({item,dist:minD});
+      if (minD <= tol && (nq.length - minD) / nq.length >= 0.6) fz.push({item,dist:minD});
     }
-    scored.sort((a,b)=>a.dist-b.dist);
-    if (scored.length) {
-      const topNames = [...new Set(scored.slice(0,3).map(x=>x.item.n))].join('、');
-      return { results: scored.slice(0,12).map(x=>x.item), mode:'fuzzy', label:`「${q}」に近い品目: ${topNames}` };
+    fz.sort((a,b)=>a.dist-b.dist);
+    if (fz.length) {
+      const topNames = [...new Set(fz.slice(0,3).map(x=>x.item.n))].join('、');
+      return { results: fz.slice(0,12).map(x=>x.item), mode:'fuzzy', label:`「${q}」に近い品目: ${topNames}` };
     }
   }
   return { results:[], mode:'none' };
@@ -1494,6 +1792,63 @@ function ldist(a,b) {
     dp[i][j]=a[i-1]===b[j-1]?dp[i-1][j-1]:1+Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]);
   return dp[a.length][b.length];
 }
+
+// =====================================================
+// 全国共通 特別アラート（パソコン＝資源有効利用促進法 / 家電リサイクル法4品目）
+// 都市データに品目が無くても検索クエリだけで必ず表示する
+// =====================================================
+const SPECIAL_ALERTS = [
+  {id:'pc', icon:'💻', type:'pc',
+   kw:['パソコン','ぱそこん','ノートPC','デスクトップ','PCモニター','パソコンモニター','マックブック','macbook','imac','surface','chromebook','ノーパソ','laptop','computer','desktop','pc'],
+   ex:['パソコンデスク','パソコン台','パソコンラック','パソコンチェア','PCデスク','PCラック','PCチェア','パソコンカバー','パソコンバッグ','PCバッグ'],
+   ja:{t:'パソコンは粗大ごみでは出せません（資源有効利用促進法）',
+       b:'①メーカー回収（PCリサイクルマーク付きは無料）<br>②国認定事業者リネットジャパン（宅配回収・自治体提携多数）<br>③自治体の小型家電回収ボックス（小型のみ）'},
+   en:{t:'Computers cannot be disposed of as oversized garbage (Resource Recycling Law)',
+       b:'1) Manufacturer take-back (free with PC Recycle mark)<br>2) Renet Japan, a state-certified courier collection service<br>3) Municipal small-appliance collection box (small items only)'}},
+  {id:'tv', icon:'📺', name:'テレビ', nameEn:'TVs',
+   kw:['テレビ','液晶テレビ','有機ELテレビ','ブラウン管','television','tv'],
+   ex:['テレビ台','テレビボード','テレビラック','テレビスタンド','テレビ回転台','テレビカバー','TVボード','TV台','TVラック','TVスタンド','テレビゲーム','テレビ電話','テレビドアホン','チューナー','アンテナ','リモコン']},
+  {id:'fridge', icon:'🧊', name:'冷蔵庫', nameEn:'Refrigerators',
+   kw:['冷蔵庫','れいぞうこ','refrigerator','fridge','ワインセラー'],
+   ex:['冷蔵庫マット','冷蔵庫台','冷蔵庫ラック','冷蔵庫上']},
+  {id:'freezer', icon:'🧊', name:'冷凍庫', nameEn:'Freezers',
+   kw:['冷凍庫','れいとうこ','フリーザー','冷凍ストッカー','freezer']},
+  {id:'washer', icon:'🌀', name:'洗濯機', nameEn:'Washing machines',
+   kw:['洗濯機','せんたくき','せんたっき','ドラム式','washingmachine','washer'],
+   ex:['洗濯機台','洗濯機ラック','洗濯機パン','洗濯機カバー','洗濯かご','洗濯ばさみ','洗濯物']},
+  {id:'dryer', icon:'🌀', name:'衣類乾燥機', nameEn:'Clothes dryers',
+   kw:['乾燥機','かんそうき','衣類乾燥','clothesdryer'],
+   ex:['布団乾燥','ふとん乾燥','食器乾燥','靴乾燥','髪']},
+  {id:'aircon', icon:'❄️', name:'エアコン', nameEn:'Air conditioners',
+   kw:['エアコン','aircon','airconditioner','クーラー','室外機'],
+   ex:['クーラーボックス','クーラーバッグ','クーラーバック','エアコンラック','室外機ラック','室外機台','室外機カバー','エアコンカバー','エアコンマット']},
+];
+// マイルド正規化で照合（誤発火防止のため濁点・長音を保持して比較）
+function matchSpecialAlert(q){
+  const mq = normMild(q||'');
+  if(!mq) return null;
+  for(const a of SPECIAL_ALERTS){
+    if((a.ex||[]).some(x=>mq.includes(normMild(x)))) continue;
+    if((a.kw||[]).some(k=>{const mk=normMild(k);return mk&&mq.includes(mk);})) return a;
+  }
+  return null;
+}
+function specialAlertHtml(a, isEn){
+  if(!a) return '';
+  let t, b;
+  if(a.type==='pc'){
+    t = isEn ? a.en.t : a.ja.t;
+    b = isEn ? a.en.b : a.ja.b;
+  } else if(isEn){
+    t = `${a.nameEn} cannot be collected as oversized garbage (Home Appliance Recycling Law)`;
+    b = '1) Trade-in pickup when buying a replacement<br>2) Ask the retailer where you bought it<br>3) Bring it to a designated take-back site (recycling fee + transport fee required)';
+  } else {
+    t = `${a.name}は家電リサイクル法対象のため粗大ごみでは収集できません`;
+    b = '①買い替え時に販売店で引き取り<br>②購入した店に引き取り依頼<br>③指定引取場所へ持込（リサイクル料金＋収集運搬料が必要）';
+  }
+  return `<div class="sp-alert"><div class="sug-ico">${a.icon}</div><div><div class="spa-t1">⚠️ ${t}</div><div class="spa-t2">${b}</div></div></div>`;
+}
+// === END SPECIAL_ALERTS ===
 
 // =====================================================
 // 八王子市 埋め込みデータ
@@ -1704,7 +2059,11 @@ function normalizeCityData(data) {
   const items = cityItems || topItems || [];
   const cityUnc = (city.uncollectible && Array.isArray(city.uncollectible)) ? city.uncollectible : null;
   const topUnc = (data.uncollectible && Array.isArray(data.uncollectible)) ? data.uncollectible : null;
-  const uncollectible = cityUnc || topUnc || [];
+  // uncollectible が文字列配列の都市（大阪市等）は {n:文字列} 形式に統一する
+  // （文字列のままだと {...u} 展開で item.n が undefined になり空の⚠️行が表示されるため）
+  const uncollectible = (cityUnc || topUnc || [])
+    .map(u => typeof u === 'string' ? {n: u} : u)
+    .filter(u => u && u.n);
   return {
     city: {
       id: city.id,
@@ -1845,6 +2204,308 @@ const TOKYO_CITIES = [
 const TOKYO_V2_AVAILABLE = new Set(TOKYO_CITIES.map(c => c.id));
 // id → kana/romaji 索引（検索フォールバック用）
 const TOKYO_KANA_INDEX = TOKYO_CITIES.reduce((acc, c) => { acc[c.id] = c; return acc; }, {});
+
+// =====================================================
+// 全国都市 ひらがな・ローマ字検索インデックス
+// （data/cities_*.json の全450都市に対応。東京49都市は TOKYO_KANA_INDEX と併用）
+// 形式: cityId: [ひらがな読み, ローマ字読み]
+// =====================================================
+const CITY_KANA = {
+  // 北海道
+  "01100":["さっぽろし","sapporo"],"01202":["はこだてし","hakodate"],"01203":["おたるし","otaru"],
+  "01204":["あさひかわし","asahikawa"],"01206":["くしろし","kushiro"],"01207":["おびひろし","obihiro"],
+  "01208":["きたみし","kitami"],"01220":["とまこまいし","tomakomai"],"01231":["えべつし","ebetsu"],
+  // 東北
+  "02201":["あおもりし","aomori"],"02202":["ひろさきし","hirosaki"],"02203":["はちのへし","hachinohe"],
+  "03201":["もりおかし","morioka"],"03209":["はなまきし","hanamaki"],"03215":["おうしゅうし","oshu"],
+  "04100":["せんだいし","sendai"],"04202":["いしのまきし","ishinomaki"],"04215":["おおさきし","osaki"],"04216":["とみやし","tomiya"],
+  "05201":["あきたし","akita"],"05202":["よこてし","yokote"],
+  "06201":["やまがたし","yamagata"],"06202":["つるおかし","tsuruoka"],"06203":["さかたし","sakata"],
+  "07201":["ふくしまし","fukushima"],"07202":["あいづわかまつし","aizuwakamatsu"],"07203":["こおりやまし","koriyama"],"07204":["いわきし","iwaki"],
+  // 茨城
+  "08201":["みとし","mito"],"08202":["ひたちし","hitachi"],"08203":["つちうらし","tsuchiura"],
+  "08204":["こがし","koga"],"08205":["いしおかし","ishioka"],"08207":["ゆうきし","yuki"],
+  "08210":["りゅうがさきし","ryugasaki"],"08215":["とりでし","toride"],"08217":["うしくし","ushiku"],
+  "08218":["つくばし","tsukuba"],"08220":["ひたちなかし","hitachinaka"],"08221":["かしまし","kashima"],
+  "08222":["いたこし","itako"],"08224":["もりやし","moriya"],"08232":["ちくせいし","chikusei"],
+  // 栃木
+  "09201":["うつのみやし","utsunomiya"],"09202":["あしかがし","ashikaga"],"09203":["とちぎし","tochigi"],
+  "09204":["さのし","sano"],"09205":["かぬまし","kanuma"],"09206":["にっこうし","nikko"],
+  "09208":["おやまし","oyama"],"09209":["もおかし","moka"],"09210":["おおたわらし","otawara"],
+  "09212":["なすしおばらし","nasushiobara"],"09214":["しもつけし","shimotsuke"],
+  // 群馬
+  "10201":["まえばしし","maebashi"],"10202":["たかさきし","takasaki"],"10203":["きりゅうし","kiryu"],
+  "10204":["いせさきし","isesaki"],"10205":["おおたし","ota"],"10206":["ぬまたし","numata"],
+  "10207":["たてばやしし","tatebayashi"],"10208":["しぶかわし","shibukawa"],"10209":["ふじおかし","fujioka"],
+  "10210":["とみおかし","tomioka"],"10212":["みどりし","midori"],
+  // 埼玉
+  "11100":["さいたまし","saitama"],"11201":["かわごえし","kawagoe"],"11202":["くまがやし","kumagaya"],
+  "11203":["かわぐちし","kawaguchi"],"11204":["ぎょうだし","gyoda"],"11206":["ちちぶし","chichibu"],
+  "11207":["ところざわし","tokorozawa"],"11208":["はんのうし","hanno"],"11209":["かぞし","kazo"],
+  "11210":["ほんじょうし","honjo"],"11211":["ひがしまつやまし","higashimatsuyama"],"11213":["かすかべし","kasukabe"],
+  "11214":["さやまし","sayama"],"11215":["はにゅうし","hanyu"],"11216":["こうのすし","konosu"],
+  "11217":["ふかやし","fukaya"],"11218":["あげおし","ageo"],"11220":["そうかし","soka"],
+  "11221":["こしがやし","koshigaya"],"11222":["わらびし","warabi"],"11223":["とだし","toda"],
+  "11224":["いるまし","iruma"],"11226":["あさかし","asaka"],"11227":["しきし","shiki"],
+  "11228":["わこうし","wako"],"11229":["にいざし","niiza"],"11230":["おけがわし","okegawa"],
+  "11231":["くきし","kuki"],"11232":["きたもとし","kitamoto"],"11233":["やしおし","yashio"],
+  "11234":["ふじみし","fujimi"],"11236":["みさとし","misato"],"11237":["はすだし","hasuda"],
+  "11238":["さかどし","sakado"],"11239":["さってし","satte"],"11240":["つるがしまし","tsurugashima"],
+  "11241":["ひだかし","hidaka"],"11242":["よしかわし","yoshikawa"],"11244":["ふじみのし","fujimino"],"11245":["しらおかし","shiraoka"],
+  // 千葉
+  "12100":["ちばし","chiba"],"12202":["ちょうしし","choshi"],"12203":["いちかわし","ichikawa"],
+  "12204":["ふなばしし","funabashi"],"12205":["たてやまし","tateyama"],"12206":["きさらづし","kisarazu"],
+  "12207":["まつどし","matsudo"],"12208":["のだし","noda"],"12210":["もばらし","mobara"],
+  "12211":["なりたし","narita"],"12212":["さくらし","sakura"],"12214":["ならしのし","narashino"],
+  "12215":["かしわし","kashiwa"],"12217":["いちはらし","ichihara"],"12218":["ながれやまし","nagareyama"],
+  "12219":["やちよし","yachiyo"],"12220":["あびこし","abiko"],"12222":["かまがやし","kamagaya"],
+  "12224":["きみつし","kimitsu"],"12225":["ふっつし","futtsu"],"12226":["うらやすし","urayasu"],
+  "12228":["よつかいどうし","yotsukaido"],"12231":["そでがうらし","sodegaura"],"12233":["いんざいし","inzai"],"12234":["しろいし","shiroi"],
+  // 東京（市部以外の町村。23区・多摩の市は TOKYO_KANA_INDEX 参照）
+  "13303":["みずほまち","mizuho"],"13305":["ひのでまち","hinode"],"13307":["ひのはらむら","hinohara"],"13308":["おくたままち","okutama"],
+  // 神奈川
+  "14100":["よこはまし","yokohama"],"14130":["かわさきし","kawasaki"],"14150":["さがみはらし","sagamihara"],
+  "14201":["よこすかし","yokosuka"],"14203":["ひらつかし","hiratsuka"],"14204":["かまくらし","kamakura"],
+  "14205":["ふじさわし","fujisawa"],"14206":["おだわらし","odawara"],"14207":["ちがさきし","chigasaki"],
+  "14208":["ずしし","zushi"],"14210":["あつぎし","atsugi"],"14211":["やまとし","yamato"],
+  "14212":["いせはらし","isehara"],"14213":["えびなし","ebina"],"14214":["ざまし","zama"],
+  "14215":["みなみあしがらし","minamiashigara"],"14216":["あやせし","ayase"],
+  // 新潟
+  "15100":["にいがたし","niigata"],"15202":["ながおかし","nagaoka"],"15204":["さんじょうし","sanjo"],
+  "15205":["かしわざきし","kashiwazaki"],"15206":["しばたし","shibata"],"15210":["とおかまちし","tokamachi"],
+  "15211":["みつけし","mitsuke"],"15212":["むらかみし","murakami"],"15213":["つばめし","tsubame"],
+  "15216":["いといがわし","itoigawa"],"15222":["じょうえつし","joetsu"],"15225":["うおぬまし","uonuma"],"15226":["みなみうおぬまし","minamiuonuma"],
+  // 富山
+  "16201":["とやまし","toyama"],"16202":["たかおかし","takaoka"],"16204":["うおづし","uozu"],
+  "16207":["くろべし","kurobe"],"16208":["となみし","tonami"],"16210":["なんとし","nanto"],"16211":["いみずし","imizu"],
+  // 石川
+  "17201":["かなざわし","kanazawa"],"17203":["こまつし","komatsu"],"17206":["かがし","kaga"],
+  "17211":["はくさんし","hakusan"],"17212":["のみし","nomi"],"17213":["ののいちし","nonoichi"],
+  // 福井
+  "18201":["ふくいし","fukui"],"18202":["つるがし","tsuruga"],"18205":["おおのし","ono"],
+  "18207":["さばえし","sabae"],"18209":["えちぜんし","echizen"],"18210":["さかいし","sakai"],
+  // 山梨
+  "19201":["こうふし","kofu"],"19202":["ふじよしだし","fujiyoshida"],"19204":["つるし","tsuru"],
+  "19205":["やまなしし","yamanashi"],"19208":["みなみあるぷすし","minamialps"],"19209":["ほくとし","hokuto"],
+  "19210":["かいし","kai"],"19211":["ふえふきし","fuefuki"],"19213":["こうしゅうし","koshu"],"19214":["ちゅうおうし","chuo"],
+  // 長野
+  "20201":["ながのし","nagano"],"20202":["まつもとし","matsumoto"],"20203":["うえだし","ueda"],
+  "20204":["おかやし","okaya"],"20205":["いいだし","iida"],"20206":["すわし","suwa"],
+  "20209":["いなし","ina"],"20211":["なかのし","nakano"],"20214":["ちのし","chino"],
+  "20215":["しおじりし","shiojiri"],"20217":["さくし","saku"],"20220":["あづみのし","azumino"],
+  // 岐阜
+  "21201":["ぎふし","gifu"],"21202":["おおがきし","ogaki"],
+  // 静岡
+  "22100":["しずおかし","shizuoka"],"22130":["はままつし","hamamatsu"],"22203":["ぬまづし","numazu"],
+  "22210":["ふじし","fuji"],"22214":["やいづし","yaizu"],"22219":["いわたし","iwata"],
+  // 愛知
+  "23100":["なごやし","nagoya"],"23201":["とよはしし","toyohashi"],"23202":["おかざきし","okazaki"],
+  "23203":["いちのみやし","ichinomiya"],"23208":["かすがいし","kasugai"],"23211":["とよたし","toyota"],
+  "23212":["あんじょうし","anjo"],"23213":["にしおし","nishio"],"23215":["かりやし","kariya"],
+  "23217":["こまきし","komaki"],"23220":["ちたし","chita"],"23238":["ながくてし","nagakute"],
+  // 三重
+  "24201":["つし","tsu"],"24202":["よっかいちし","yokkaichi"],"24204":["まつさかし","matsusaka"],"24205":["すずかし","suzuka"],
+  // 滋賀
+  "25201":["おおつし","otsu"],"25202":["くさつし","kusatsu"],"25203":["ひこねし","hikone"],
+  // 京都
+  "26100":["きょうとし","kyoto"],"26202":["うじし","uji"],"26206":["かめおかし","kameoka"],
+  "26208":["むこうし","muko"],"26209":["ながおかきょうし","nagaokakyo"],
+  // 大阪
+  "27100":["おおさかし","osaka"],"27140":["さかいし","sakai"],"27201":["きしわだし","kishiwada"],
+  "27202":["とよなかし","toyonaka"],"27203":["いけだし","ikeda"],"27204":["すいたし","suita"],
+  "27205":["いずみおおつし","izumiotsu"],"27206":["たかつきし","takatsuki"],"27207":["かいづかし","kaizuka"],
+  "27208":["もりぐちし","moriguchi"],"27209":["ひらかたし","hirakata"],"27210":["いばらきし","ibaraki"],
+  "27211":["やおし","yao"],"27212":["いずみさのし","izumisano"],"27213":["とんだばやしし","tondabayashi"],
+  "27214":["ねやがわし","neyagawa"],"27215":["かわちながのし","kawachinagano"],"27216":["まつばらし","matsubara"],
+  "27217":["だいとうし","daito"],"27218":["いずみし","izumi"],"27219":["みのおし","minoo"],
+  "27220":["かしわらし","kashiwara"],"27221":["はびきのし","habikino"],"27222":["かどまし","kadoma"],
+  "27223":["せっつし","settsu"],"27224":["たかいしし","takaishi"],"27225":["ふじいでらし","fujiidera"],
+  "27227":["ひがしおおさかし","higashiosaka"],"27228":["せんなんし","sennan"],"27229":["しじょうなわてし","shijonawate"],
+  "27230":["かたのし","katano"],"27231":["おおさかさやまし","osakasayama"],"27232":["はんなんし","hannan"],
+  // 兵庫
+  "28100":["こうべし","kobe"],"28201":["ひめじし","himeji"],"28202":["あまがさきし","amagasaki"],
+  "28203":["にしのみやし","nishinomiya"],"28204":["いたみし","itami"],"28206":["あかしし","akashi"],
+  "28210":["かこがわし","kakogawa"],"28212":["あしやし","ashiya"],"28215":["たからづかし","takarazuka"],"28216":["かわにしし","kawanishi"],
+  // 奈良・和歌山
+  "29201":["ならし","nara"],"29206":["かしはらし","kashihara"],"29212":["いこまし","ikoma"],
+  "30201":["わかやまし","wakayama"],
+  // 鳥取・島根
+  "31201":["とっとりし","tottori"],"31202":["よなごし","yonago"],"31203":["くらよしし","kurayoshi"],"31204":["さかいみなとし","sakaiminato"],
+  "32201":["まつえし","matsue"],"32202":["はまだし","hamada"],"32203":["いずもし","izumo"],
+  "32204":["ますだし","masuda"],"32205":["おおだし","oda"],"32206":["やすぎし","yasugi"],
+  "32207":["ごうつし","gotsu"],"32209":["うんなんし","unnan"],
+  // 岡山
+  "33100":["おかやまし","okayama"],"33202":["くらしきし","kurashiki"],"33203":["つやまし","tsuyama"],
+  "33204":["たまのし","tamano"],"33205":["かさおかし","kasaoka"],"33207":["いばらし","ibara"],
+  "33208":["そうじゃし","soja"],"33209":["たかはしし","takahashi"],"33210":["にいみし","niimi"],
+  "33211":["びぜんし","bizen"],"33212":["せとうちし","setouchi"],"33213":["あかいわし","akaiwa"],
+  "33214":["まにわし","maniwa"],"33215":["みまさかし","mimasaka"],"33216":["あさくちし","asakuchi"],
+  // 広島
+  "34100":["ひろしまし","hiroshima"],"34202":["くれし","kure"],"34203":["たけはらし","takehara"],
+  "34204":["みはらし","mihara"],"34205":["おのみちし","onomichi"],"34207":["ふくやまし","fukuyama"],
+  "34208":["ふちゅうし","fuchu"],"34209":["みよしし","miyoshi"],"34210":["しょうばらし","shobara"],
+  "34211":["おおたけし","otake"],"34212":["ひがしひろしまし","higashihiroshima"],"34213":["はつかいちし","hatsukaichi"],
+  "34214":["あきたかたし","akitakata"],"34215":["えたじまし","etajima"],
+  // 山口
+  "35201":["しものせきし","shimonoseki"],"35202":["うべし","ube"],"35203":["やまぐちし","yamaguchi"],
+  "35204":["はぎし","hagi"],"35206":["ほうふし","hofu"],"35207":["くだまつし","kudamatsu"],
+  "35208":["いわくにし","iwakuni"],"35210":["ひかりし","hikari"],"35211":["ながとし","nagato"],
+  "35212":["やないし","yanai"],"35213":["みねし","mine"],"35215":["しゅうなんし","shunan"],"35216":["さんようおのだし","sanyoonoda"],
+  // 徳島
+  "36201":["とくしまし","tokushima"],"36202":["なるとし","naruto"],"36203":["こまつしまし","komatsushima"],
+  "36204":["あなんし","anan"],"36205":["よしのがわし","yoshinogawa"],"36206":["あわし","awa"],
+  "36207":["みまし","mima"],"36208":["みよしし","miyoshi"],
+  // 香川
+  "37201":["たかまつし","takamatsu"],"37202":["まるがめし","marugame"],"37203":["さかいでし","sakaide"],
+  "37204":["ぜんつうじし","zentsuji"],"37205":["かんおんじし","kanonji"],"37206":["さぬきし","sanuki"],
+  "37207":["ひがしかがわし","higashikagawa"],"37208":["みとよし","mitoyo"],
+  // 愛媛
+  "38201":["まつやまし","matsuyama"],"38202":["いまばりし","imabari"],"38203":["うわじまし","uwajima"],
+  "38204":["やわたはまし","yawatahama"],"38205":["にいはまし","niihama"],"38206":["さいじょうし","saijo"],
+  "38207":["おおずし","ozu"],"38210":["いよし","iyo"],"38211":["しこくちゅうおうし","shikokuchuo"],
+  "38212":["せいよし","seiyo"],"38213":["とうおんし","toon"],
+  // 高知
+  "39201":["こうちし","kochi"],"39202":["むろとし","muroto"],"39203":["あきし","aki"],
+  "39204":["なんこくし","nankoku"],"39205":["とさし","tosa"],"39206":["すさきし","susaki"],
+  "39208":["すくもし","sukumo"],"39209":["とさしみずし","tosashimizu"],"39210":["しまんとし","shimanto"],
+  "39211":["こうなんし","konan"],"39212":["かみし","kami"],
+  // 福岡
+  "40100":["きたきゅうしゅうし","kitakyushu"],"40130":["ふくおかし","fukuoka"],"40203":["いいづかし","iizuka"],
+  "40205":["くるめし","kurume"],"40207":["ゆくはしし","yukuhashi"],"40212":["かすがし","kasuga"],
+  "40213":["おおのじょうし","onojo"],"40216":["ちくしのし","chikushino"],"40220":["だざいふし","dazaifu"],"40222":["むなかたし","munakata"],
+  // 九州・沖縄
+  "41201":["さがし","saga"],"41202":["からつし","karatsu"],
+  "42201":["ながさきし","nagasaki"],"42202":["させぼし","sasebo"],
+  "43100":["くまもとし","kumamoto"],"43202":["やつしろし","yatsushiro"],
+  "44201":["おおいたし","oita"],"44202":["べっぷし","beppu"],
+  "45201":["みやざきし","miyazaki"],"46201":["かごしまし","kagoshima"],
+  "47201":["なはし","naha"],"47205":["おきなわし","okinawa"],"47206":["うらそえし","urasoe"],
+  "47208":["ぎのわんし","ginowan"],"47217":["うるまし","uruma"],
+  // ===== Coming Soon 追加都市 369件（2026-06-08 自動マージ） =====
+  "01205":["むろらんし", "muroran"],"01209":["ゆうばりし", "yubari"],"01210":["いわみざわし", "iwamizawa"],
+  "01211":["あばしりし", "abashiri"],"01212":["るもいし", "rumoi"],"01214":["わっかないし", "wakkanai"],
+  "01215":["びばいし", "bibai"],"01216":["あしべつし", "ashibetsu"],"01218":["あかびらし", "akabira"],
+  "01219":["もんべつし", "monbetsu"],"01221":["なよろし", "nayoro"],"01222":["みかさし", "mikasa"],
+  "01223":["ねむろし", "nemuro"],"01224":["ちとせし", "chitose"],"01225":["たきかわし", "takikawa"],
+  "01226":["すながわし", "sunagawa"],"01227":["うたしないし", "utashinai"],"01228":["ふかがわし", "fukagawa"],
+  "01229":["ふらのし", "furano"],"01230":["のぼりべつし", "noboribetsu"],"01233":["だてし", "date"],
+  "01234":["きたひろしまし", "kitahiroshima"],"01235":["いしかりし", "ishikari"],"01236":["ほくとし", "hokuto"],
+  "01920":["しべつし", "shibetsu"],"01931":["えにわし", "eniwa"],"02204":["くろいしし", "kuroishi"],
+  "02205":["ごしょがわらし", "goshogawara"],"02206":["とわだし", "towada"],"02207":["みさわし", "misawa"],
+  "02208":["むつし", "mutsu"],"02209":["つがるし", "tsugaru"],"02210":["ひらかわし", "hirakawa"],
+  "03202":["みやこし", "miyako"],"03203":["おおふなとし", "ofunato"],"03206":["きたかみし", "kitakami"],
+  "03207":["くじし", "kuji"],"03208":["とおのし", "tono"],"03210":["りくぜんたかたし", "rikuzentakata"],
+  "03211":["かまいしし", "kamaishi"],"03213":["にのへし", "ninohe"],"03214":["はちまんたいし", "hachimantai"],
+  "03216":["たきざわし", "takizawa"],"03909":["いちのせきし", "ichinoseki"],"04203":["しおがまし", "shiogama"],
+  "04205":["けせんぬまし", "kesennuma"],"04206":["しろいしし", "shiroishi"],"04207":["なとりし", "natori"],
+  "04208":["かくだし", "kakuda"],"04209":["たがじょうし", "tagajo"],"04211":["いわぬまし", "iwanuma"],
+  "04212":["とめし", "tome"],"04213":["くりはらし", "kurihara"],"04214":["ひがしまつしまし", "higashimatsushima"],
+  "05204":["おおだてし", "odate"],"05206":["おがし", "oga"],"05207":["ゆざわし", "yuzawa"],
+  "05209":["かづのし", "kazuno"],"05210":["ゆりほんじょうし", "yurihonjo"],"05211":["かたがみし", "katagami"],
+  "05212":["だいせんし", "daisen"],"05213":["きたあきたし", "kitaakita"],"05214":["にかほし", "nikaho"],
+  "05215":["せんぼくし", "senboku"],"05902":["のしろし", "noshiro"],"06205":["しんじょうし", "shinjo"],
+  "06206":["さがえし", "sagae"],"06207":["かみのやまし", "kaminoyama"],"06208":["むらやまし", "murayama"],
+  "06209":["ながいし", "nagai"],"06210":["てんどうし", "tendo"],"06211":["ひがしねし", "higashine"],
+  "06212":["おばなざわし", "obanazawa"],"06213":["なんようし", "nanyo"],"06902":["よねざわし", "yonezawa"],
+  "07205":["しらかわし", "shirakawa"],"07207":["すかがわし", "sukagawa"],"07208":["きたかたし", "kitakata"],
+  "07209":["そうまし", "soma"],"07210":["にほんまつし", "nihonmatsu"],"07211":["たむらし", "tamura"],
+  "07212":["みなみそうまし", "minamisoma"],"07213":["だてし", "date"],"07214":["もとみやし", "motomiya"],
+  "08211":["じょうそうし", "joso"],"08212":["ひたちおおたし", "hitachiota"],"08214":["たかはぎし", "takahagi"],
+  "08216":["かさまし", "kasama"],"08225":["ひたちおおみやし", "hitachiomiya"],"08226":["なかし", "naka"],
+  "08228":["ばんどうし", "bando"],"08229":["いなしきし", "inashiki"],"08230":["かすみがうらし", "kasumigaura"],
+  "08231":["さくらがわし", "sakuragawa"],"08233":["なめがたし", "namegata"],"08234":["ほこたし", "hokota"],
+  "08235":["つくばみらいし", "tsukubamirai"],"08236":["おみたまし", "omitama"],"08910":["しもつまし", "shimotsuma"],
+  "08915":["きたいばらきし", "kitaibaraki"],"08932":["かみすし", "kamisu"],"09211":["やいたし", "yaita"],
+  "09215":["なすからすやまし", "nasukarasuyama"],"09914":["さくらし", "sakura"],"10211":["あんなかし", "annaka"],
+  "12213":["とうがねし", "togane"],"12223":["かもがわし", "kamogawa"],"12230":["やちまたし", "yachimata"],
+  "12235":["そうさし", "sosa"],"12236":["かとりし", "katori"],"12237":["さんむし", "sanmu"],
+  "12238":["いすみし", "isumi"],"12239":["おおあみしらさとし", "oamishirasato"],"12915":["あさひし", "asahi"],
+  "12918":["かつうらし", "katsuura"],"12933":["とみさとし", "tomisato"],"12934":["みなみぼうそうし", "minamiboso"],
+  "14910":["みうらし", "miura"],"14911":["はだのし", "hadano"],"15208":["おぢやし", "ojiya"],
+  "15209":["かもし", "kamo"],"15217":["みょうこうし", "myoko"],"15218":["ごせんし", "gosen"],
+  "15223":["あがのし", "agano"],"15224":["さどし", "sado"],"15227":["たいないし", "tainai"],
+  "16205":["ひみし", "himi"],"16206":["なめりかわし", "namerikawa"],"16209":["おやべし", "oyabe"],
+  "17202":["ななおし", "nanao"],"17204":["わじまし", "wajima"],"17205":["すずし", "suzu"],
+  "17207":["はくいし", "hakui"],"17209":["かほくし", "kahoku"],"18204":["おばまし", "obama"],
+  "18206":["かつやまし", "katsuyama"],"18208":["あわらし", "awara"],"19206":["おおつきし", "otsuki"],
+  "19207":["にらさきし", "nirasaki"],"19212":["うえのはらし", "uenohara"],"20207":["すざかし", "suzaka"],
+  "20208":["こもろし", "komoro"],"20210":["こまがねし", "komagane"],"20212":["おおまちし", "omachi"],
+  "20213":["いいやまし", "iiyama"],"20218":["ちくまし", "chikuma"],"20219":["とうみし", "tomi"],
+  "21203":["たかやまし", "takayama"],"21204":["たじみし", "tajimi"],"21205":["せきし", "seki"],
+  "21206":["なかつがわし", "nakatsugawa"],"21207":["みのし", "mino"],"21208":["みずなみし", "mizunami"],
+  "21209":["はしまし", "hashima"],"21210":["えなし", "ena"],"21211":["みのかもし", "minokamo"],
+  "21212":["ときし", "toki"],"21213":["かかみがはらし", "kakamigahara"],"21214":["かにし", "kani"],
+  "21215":["やまがたし", "yamagata"],"21216":["みずほし", "mizuho"],"21217":["ひだし", "hida"],
+  "21218":["もとすし", "motosu"],"21219":["ぐじょうし", "gujo"],"21220":["げろし", "gero"],
+  "21221":["かいづし", "kaizu"],"22205":["あたみし", "atami"],"22206":["みしまし", "mishima"],
+  "22207":["ふじのみやし", "fujinomiya"],"22208":["いとうし", "ito"],"22209":["しまだし", "shimada"],
+  "22213":["かけがわし", "kakegawa"],"22215":["ごてんばし", "gotenba"],"22216":["ふくろいし", "fukuroi"],
+  "22220":["すそのし", "susono"],"22221":["こさいし", "kosai"],"22222":["いずし", "izu"],
+  "22223":["おまえざきし", "omaezaki"],"22224":["きくがわし", "kikugawa"],"22225":["いずのくにし", "izunokuni"],
+  "22226":["まきのはらし", "makinohara"],"22914":["ふじえだし", "fujieda"],"22919":["しもだし", "shimoda"],
+  "23204":["せとし", "seto"],"23205":["はんだし", "handa"],"23207":["とよかわし", "toyokawa"],
+  "23209":["へきなんし", "hekinan"],"23214":["がまごおりし", "gamagori"],"23216":["とこなめし", "tokoname"],
+  "23221":["しんしろし", "shinshiro"],"23222":["とうかいし", "tokai"],"23223":["おおぶし", "obu"],
+  "23225":["ちりゅうし", "chiryu"],"23226":["おわりあさひし", "owariasahi"],"23227":["たかはまし", "takahama"],
+  "23228":["いわくらし", "iwakura"],"23229":["とよあけし", "toyoake"],"23230":["にっしんし", "nisshin"],
+  "23231":["たはらし", "tahara"],"23232":["あいさいし", "aisai"],"23233":["きよすし", "kiyosu"],
+  "23234":["きたなごやし", "kitanagoya"],"23235":["やとみし", "yatomi"],"23236":["みよしし", "miyoshi"],
+  "23237":["あまし", "ama"],"23908":["つしまし", "tsushima"],"23915":["いぬやまし", "inuyama"],
+  "23917":["こうなんし", "konan"],"23920":["いなざわし", "inazawa"],"24203":["いせし", "ise"],
+  "24208":["なばりし", "nabari"],"24209":["おわせし", "owase"],"24210":["かめやまし", "kameyama"],
+  "24211":["とばし", "toba"],"24212":["くまのし", "kumano"],"24214":["いなべし", "inabe"],
+  "24215":["しまし", "shima"],"24216":["いがし", "iga"],"24905":["くわなし", "kuwana"],
+  "25204":["おうみはちまんし", "omihachiman"],"25207":["もりやまし", "moriyama"],"25208":["りっとうし", "ritto"],
+  "25209":["こうかし", "koka"],"25210":["やすし", "yasu"],"25211":["こなんし", "konan"],
+  "25212":["たかしまし", "takashima"],"25213":["ひがしおうみし", "higashiomi"],"25214":["まいばらし", "maibara"],
+  "25903":["ながはまし", "nagahama"],"26201":["ふくちやまし", "fukuchiyama"],"26203":["あやべし", "ayabe"],
+  "26205":["みやづし", "miyazu"],"26207":["じょうようし", "joyo"],"26210":["やわたし", "yawata"],
+  "26211":["きょうたなべし", "kyotanabe"],"26212":["きょうたんごし", "kyotango"],"26213":["なんたんし", "nantan"],
+  "26214":["きづがわし", "kizugawa"],"26902":["まいづるし", "maizuru"],"28205":["すもとし", "sumoto"],
+  "28208":["あいおいし", "aioi"],"28209":["とよおかし", "toyooka"],"28213":["にしわきし", "nishiwaki"],
+  "28218":["おのし", "ono"],"28219":["さんだし", "sanda"],"28220":["かさいし", "kasai"],
+  "28221":["たんばささやまし", "tanbasasayama"],"28222":["やぶし", "yabu"],"28223":["たんばし", "tanba"],
+  "28224":["みなみあわじし", "minamiawaji"],"28225":["あさごし", "asago"],"28226":["あわじし", "awaji"],
+  "28227":["しそうし", "shiso"],"28228":["かとうし", "kato"],"28229":["たつのし", "tatsuno"],
+  "28912":["あこうし", "ako"],"28915":["みきし", "miki"],"28916":["たかさごし", "takasago"],
+  "29202":["やまとたかだし", "yamatotakada"],"29203":["やまとこおりやまし", "yamatokoriyama"],"29204":["てんりし", "tenri"],
+  "29207":["ごじょうし", "gojo"],"29208":["ごせし", "gose"],"29210":["かしばし", "kashiba"],
+  "29211":["かつらぎし", "katsuragi"],"29906":["さくらいし", "sakurai"],"29912":["うだし", "uda"],
+  "30202":["かいなんし", "kainan"],"30203":["はしもとし", "hashimoto"],"30204":["ありだし", "arida"],
+  "30205":["ごぼうし", "gobo"],"30206":["たなべし", "tanabe"],"30207":["しんぐうし", "shingu"],
+  "30208":["きのかわし", "kinokawa"],"30209":["いわでし", "iwade"],"40202":["おおむたし", "omuta"],
+  "40204":["のおがたし", "nogata"],"40206":["たがわし", "tagawa"],"40210":["やめし", "yame"],
+  "40211":["ちくごし", "chikugo"],"40214":["ぶぜんし", "buzen"],"40215":["なかまし", "nakama"],
+  "40223":["こがし", "koga"],"40224":["ふくつし", "fukutsu"],"40225":["うきはし", "ukiha"],
+  "40226":["みやわかし", "miyawaka"],"40227":["かまし", "kama"],"40228":["あさくらし", "asakura"],
+  "40229":["みやまし", "miyama"],"40230":["いとしまし", "itoshima"],"40231":["なかがわし", "nakagawa"],
+  "40907":["やながわし", "yanagawa"],"40912":["おおかわし", "okawa"],"40916":["おごおりし", "ogori"],
+  "41203":["とすし", "tosu"],"41204":["たくし", "taku"],"41205":["いまりし", "imari"],
+  "41206":["たけおし", "takeo"],"41207":["かしまし", "kashima"],"41208":["おぎし", "ogi"],
+  "41209":["うれしのし", "ureshino"],"41210":["かんざきし", "kanzaki"],"42203":["しまばらし", "shimabara"],
+  "42204":["いさはやし", "isahaya"],"42205":["おおむらし", "omura"],"42207":["ひらどし", "hirado"],
+  "42208":["まつうらし", "matsuura"],"42209":["つしまし", "tsushima"],"42210":["いきし", "iki"],
+  "42211":["ごとうし", "goto"],"42212":["さいかいし", "saikai"],"42213":["うんぜんし", "unzen"],
+  "42214":["みなみしまばらし", "minamishimabara"],"43203":["ひとよしし", "hitoyoshi"],"43204":["あらおし", "arao"],
+  "43205":["みなまたし", "minamata"],"43206":["たまなし", "tamana"],"43208":["やまがし", "yamaga"],
+  "43210":["きくちし", "kikuchi"],"43211":["うとし", "uto"],"43212":["かみあまくさし", "kamiamakusa"],
+  "43213":["うきし", "uki"],"43214":["あそし", "aso"],"43215":["あまくさし", "amakusa"],
+  "43216":["こうしし", "koshi"],"44203":["なかつし", "nakatsu"],"44204":["ひたし", "hita"],
+  "44205":["さいきし", "saiki"],"44206":["うすきし", "usuki"],"44207":["つくみし", "tsukumi"],
+  "44208":["たけたし", "taketa"],"44209":["ぶんごたかだし", "bungotakada"],"44210":["きつきし", "kitsuki"],
+  "44211":["うさし", "usa"],"44212":["ぶんごおおのし", "bungoono"],"44213":["ゆふし", "yufu"],
+  "44214":["くにさきし", "kunisaki"],"45202":["みやこのじょうし", "miyakonojo"],"45203":["のべおかし", "nobeoka"],
+  "45204":["にちなんし", "nichinan"],"45205":["こばやしし", "kobayashi"],"45206":["ひゅうがし", "hyuga"],
+  "45207":["くしまし", "kushima"],"45208":["さいとし", "saito"],"45209":["えびのし", "ebino"],
+  "46203":["かのやし", "kanoya"],"46204":["まくらざきし", "makurazaki"],"46206":["あくねし", "akune"],
+  "46208":["いずみし", "izumi"],"46210":["いぶすきし", "ibusuki"],"46213":["にしのおもてし", "nishinoomote"],
+  "46214":["たるみずし", "tarumizu"],"46215":["さつませんだいし", "satsumasendai"],"46216":["ひおきし", "hioki"],
+  "46217":["そおし", "soo"],"46218":["きりしまし", "kirishima"],"46219":["いちきくしきのし", "ichikikushikino"],
+  "46220":["みなみさつまし", "minamisatsuma"],"46221":["しぶしし", "shibushi"],"46222":["あまみし", "amami"],
+  "46223":["みなみきゅうしゅうし", "minamikyushu"],"46224":["いさし", "isa"],"46225":["あいらし", "aira"],
+  "47209":["いとまんし", "itoman"],"47211":["とみぐすくし", "tomigusuku"],"47213":["みやこじまし", "miyakojima"],
+  "47214":["なんじょうし", "nanjo"],"47906":["いしがきし", "ishigaki"],"47908":["なごし", "nago"],
+};
 
 // カタカナ → ひらがな変換（検索クエリ正規化用）
 function kataToHira(s) {
@@ -2109,6 +2770,12 @@ function matchCityQuery(c, q) {
     if (t.kana && t.kana.includes(qHira)) return true;
     if (t.romaji && t.romaji.toLowerCase().includes(qLower)) return true;
   }
+  // 全国都市 ひらがな・ローマ字索引（CITY_KANA）
+  const nk = CITY_KANA[c.id];
+  if (nk) {
+    if (nk[0] && nk[0].includes(qHira)) return true;
+    if (nk[1] && nk[1].includes(qLower)) return true;
+  }
   return false;
 }
 
@@ -2233,6 +2900,8 @@ function showComingSoon(cityId, cityName, prefName) {
   document.getElementById('csSendBtn').textContent = '情報を送る';
   document.getElementById('csSendBtn').style.display = '';
   document.getElementById('csSuccess').style.display = 'none';
+  // GAS_SUBMIT_URL 未設定の間はURL投稿フォームを表示しない（★CONFIG参照）
+  document.getElementById('csFormCard').style.display = GAS_SUBMIT_URL ? 'block' : 'none';
   window._csCurrentCityId = cityId;
   window._csCurrentCityName = cityName;
   window._csPrefName = prefName;
@@ -2245,6 +2914,11 @@ function hideComingSoon() {
 }
 
 async function submitCityUrl() {
+  // GAS_SUBMIT_URL 未設定時は送信不可（フォーム自体も非表示。★CONFIG参照）
+  if (!GAS_SUBMIT_URL) {
+    showToast('⚠️ 送信フォームは現在準備中です');
+    return;
+  }
   const url = document.getElementById('csUrl').value.trim();
   const email = document.getElementById('csEmail').value.trim();
   if (!url || !url.startsWith('http')) {
@@ -2321,8 +2995,8 @@ function renderHomeSponsor() {
         <div class="sp-by-logo" style="background:#F5F7F6">📣</div>
         <div style="flex:1">
           <div class="sp-by-lbl">Sponsored by</div>
-          <div class="sp-by-name" style="color:var(--t3)">全国版スポンサー募集中</div>
-          <div style="font-size:11px;color:var(--t3);margin-top:2px">トップ枠 ¥120,000/年〜 · お問い合わせはこちら</div>
+          <div class="sp-by-name" style="color:var(--t3)">トップページのスポンサー募集中</div>
+          <div style="font-size:11px;color:var(--t3);margin-top:2px">トップ枠 ¥360,000/年 · お問い合わせはこちら</div>
         </div>
         <span style="font-size:18px;color:var(--t3)">›</span>
       </div>`;
@@ -2354,7 +3028,8 @@ function showApp() {
   document.getElementById('scSel').style.display='none';
   document.getElementById('scApp').style.display='block';
   document.getElementById('bnav').style.display='flex';
-  document.getElementById('fbFab').classList.add('show');
+  // FB_FORM_URL 未設定の間はフィードバックFABを表示しない（★CONFIG参照）
+  if(FB_FORM_URL)document.getElementById('fbFab').classList.add('show');
   document.getElementById('hdCity').textContent=`📍 ${currentCity.pref} ${currentCity.name}`;
   document.getElementById('chcCity').textContent=currentCity.name;
   document.getElementById('chcPref').textContent=lang==='en'?(PREF_EN[currentCity.pref]||currentCity.pref):currentCity.pref;
@@ -2468,14 +3143,16 @@ function renderItems() {
       pool=pool.filter(i=>(i.k||[]).some(x=>ok.includes(x))||(activeKana==='特'&&i.fee===-1));
     }
   }
-  let results=pool, searchMode='all', searchLabel='';
-  if(q){const sr=searchItems(q,allItems);results=sr.results;searchMode=sr.mode;searchLabel=sr.label||'';}
+  let results=pool, searchMode='all', searchLabel='', searchOthers=[];
+  if(q){const sr=searchItems(q,allItems);results=sr.results;searchMode=sr.mode;searchLabel=sr.label||'';searchOthers=sr.others||[];}
+  // 全国共通アラート（パソコン・家電リサイクル法4品目）— 品目データの有無に関わらず表示
+  const spAlertHtml = q ? specialAlertHtml(matchSpecialAlert(q), lang==='en') : '';
   const el=document.getElementById('itemArea');
-  if(!results.length){
+  if(!results.length&&!searchOthers.length){
     const hints=lang==='en'
       ?['Bed','Table','Sofa','Bicycle','Futon','Vacuum','Dresser','Bookshelf']
       :['ベッド','テーブル','ソファ','自転車','布団','楽器','掃除機','棚'];
-    el.innerHTML=`<div class="suggest-hd" style="flex-direction:column;align-items:stretch">
+    el.innerHTML=spAlertHtml+`<div class="suggest-hd" style="flex-direction:column;align-items:stretch">
       <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px">
         <div class="sug-ico">🤔</div><div><div class="sug-t1">「${esc(q)}」${T('noResult')}</div><div class="sug-t2">${T('noResultSub')}</div></div>
       </div>
@@ -2484,14 +3161,19 @@ function renderItems() {
       </div></div>`;
     return;
   }
-  let html='';
+  let html=spAlertHtml;
   if(q&&searchMode==='synonym'&&searchLabel){
     html+=`<div class="suggest-hd"><div class="sug-ico">💡</div><div><div class="sug-t1">${esc(searchLabel)}</div><div class="sug-t2">${results.length}${T('sugLabel')}</div></div></div>`;
   } else if(q&&searchMode==='fuzzy'&&searchLabel){
     html+=`<div class="suggest-hd" style="background:#FFF0F0;border-color:#F5C0C0"><div class="sug-ico">🔎</div><div><div class="sug-t1" style="color:#7B2020">${T('maybeLbl')}「${esc(q)}」?</div><div class="sug-t2" style="color:#9B4040">${esc(searchLabel)}</div></div></div>`;
   }
   html+='<div class="item-list">';
-  results.forEach((item,i)=>{
+  const rowsAll=[...results,...searchOthers];
+  rowsAll.forEach((item,i)=>{
+    // 低スコア結果は「その他の候補」として折りたたみ表示
+    if(searchOthers.length&&i===results.length){
+      html+=`</div><details class="other-cands"><summary>${lang==='en'?'Other possible matches':'その他の候補'}（${searchOthers.length}${lang==='en'?'':'件'}）</summary><div class="item-list">`;
+    }
     // Phase B-2追加: fee=-1（参照用 uncollectible）/ fee=0 / m="収集不可" でも収集不可扱い
     const isUncollByFee = item.fee === -1 || item.fee === 0;
     const isUncollByMethod = /収集不可|not collected/i.test(String(item.m||''));
@@ -2523,6 +3205,7 @@ function renderItems() {
         <div class="item-ico">${ico}</div>
         <div class="item-main" onclick="toggleAcc(${i})">
           <div class="iname" id="nm${i}"><span class="aico">▶</span><span class="ntxt">${esc(lang==='en'?getEnName(item):item.n)}</span></div>
+          ${item.note?`<div class="inote-line">📝 ${esc(item.note)}</div>`:''}
           <div class="isub">${sp?T('notCollLabel')||'収集不可':esc(item.m||'')}</div>
         </div>
         <div class="item-right">
@@ -2541,6 +3224,7 @@ function renderItems() {
       </div></div>`;
   });
   html+='</div>';
+  if(searchOthers.length)html+='</details>';
   el.innerHTML=html;
 }
 
@@ -2924,11 +3608,15 @@ function openCart(){renderCart();document.getElementById('cartModal').classList.
 function renderCart(){
   const col=cart.filter(c=>c.fee>=0),unc=cart.filter(c=>c.fee<0);
   const total=col.reduce((s,c)=>s+c.fee*(c.qty||1),0),pt=total/100,fiveT=Math.floor(pt/5),oneT=pt%5;
+  // ポイント制都市（typeB: 八王子・立川・武蔵野等）のみ処理券シール内訳を表示する
+  // それ以外の都市（均一料金・多種額面券等）では合計金額のみ表示（誤った券種内訳を出さない）
+  const _cartCityId = currentCity?.id || cityData?.city?.id;
+  const isPointCity = getFeeSystemType(_cartCityId, cityData?.city?.rules) === 'typeB';
   let html=`<h2>${T('cartTitle')}</h2>`;
   if(!cart.length){html+=`<div class="empty">${T('cartEmpty')}</div>`;}
   else{
     // Phase B-3: ポイント制都市の上限/下限アラート
-    const cid = currentCity?.id || cityData?.city?.id;
+    const cid = _cartCityId;
     const ptLim = cid && POINT_CITY_LIMITS[String(cid)];
     if (ptLim && col.length) {
       if (ptLim.max != null && pt > ptLim.max) {
@@ -2942,10 +3630,12 @@ function renderCart(){
         html += `<div class="cart-alert info"><span class="cart-alert-ico">💡</span><span>${esc(lang==='en'?msgEn:msgJa)}</span></div>`;
       }
     }
-    html+=`<div class="csumbox"><div style="font-size:11px;opacity:.85">${T('ticketLabel')}</div>
-      <div class="csamount">¥${total.toLocaleString()}</div>
-      <div class="csticket"><div class="csrow"><span>${T('ticket5')}</span><span><strong>${fiveT}${T('sheets')}</strong></span></div>
-      <div class="csrow"><span>${T('ticket1')}</span><span><strong>${oneT}${T('sheets')}</strong></span></div></div></div>`;
+    // ポイント制都市のみシール枚数内訳を表示、それ以外は合計金額のみ
+    html+=`<div class="csumbox"><div style="font-size:11px;opacity:.85">${isPointCity?T('ticketLabel'):T('cartTotal')}</div>
+      <div class="csamount">¥${total.toLocaleString()}</div>`
+      +(isPointCity?`<div class="csticket"><div class="csrow"><span>${T('ticket5')}</span><span><strong>${fiveT}${T('sheets')}</strong></span></div>
+      <div class="csrow"><span>${T('ticket1')}</span><span><strong>${oneT}${T('sheets')}</strong></span></div></div>`:'')
+      +`</div>`;
     if(unc.length)html+=`<div class="cwarnbox">⚠️ ${T('uncollWarn')} ${unc.length}${T('itemUnit')} — ${T('uncollSub')}</div>`;
     col.forEach(c=>{
       const q=c.qty||1;
@@ -2972,7 +3662,9 @@ function clearCart(){if(!confirm(T('clearConfirm')))return;cart=[];saveCart();re
 function buildCopyTxt(){
   const col=cart.filter(c=>c.fee>=0),unc=cart.filter(c=>c.fee<0);
   const total=col.reduce((s,c)=>s+c.fee*(c.qty||1),0),pt=total/100;
-  let t=`【${currentCity?.name||''} ${T('listTitle')}】\n${T('cartTotal')}: ¥${total.toLocaleString()}（${pt}${T('cartPoints')}）\n\n`;
+  // ポイント表記はポイント制都市（typeB）のみ付加する
+  const _isPt=getFeeSystemType(currentCity?.id||cityData?.city?.id,cityData?.city?.rules)==='typeB';
+  let t=`【${currentCity?.name||''} ${T('listTitle')}】\n${T('cartTotal')}: ¥${total.toLocaleString()}${_isPt?`（${pt}${T('cartPoints')}）`:''}\n\n`;
   col.forEach((c,i)=>{t+=`${i+1}. ${c.n} ×${c.qty||1}${T('cartQty')} ¥${(c.fee*(c.qty||1)).toLocaleString()}\n`;if(c.memo)t+=`   ${T('cartMemo').split('（')[0]}: ${c.memo}\n`;});
   if(unc.length)t+=`\n【${T('cartUncollHead')}】\n${unc.map(c=>c.n).join('\n')}`;
   t+=`\n${T('cartContact')}: ${cityData?.city?.rules?.contact||''} / ${cityData?.city?.rules?.websiteUrl||''}`;
@@ -2987,9 +3679,13 @@ document.getElementById('cartModal').addEventListener('click',e=>{if(e.target.id
 // =====================================================
 // フィードバック
 // =====================================================
-const FB_FORM_URL='https://forms.gle/XXXXXXXXXXXX'; // GoogleフォームURLに変更
-function openFeedback(){document.getElementById('fbModal').classList.add('show');}
-function openFbQuick(type){document.getElementById('fbModal').classList.remove('show');window.open(FB_FORM_URL,'_blank','noopener');}
+// FB_FORM_URL はファイル冒頭の ★CONFIG ブロックで定義（未設定時はフィードバックUI非表示）
+function openFeedback(){if(!FB_FORM_URL)return;document.getElementById('fbModal').classList.add('show');}
+function openFbQuick(type){
+  document.getElementById('fbModal').classList.remove('show');
+  if(!FB_FORM_URL){showToast(lang==='en'?'Feedback form is coming soon':'フィードバックフォームは準備中です');return;}
+  window.open(FB_FORM_URL,'_blank','noopener');
+}
 document.getElementById('fbModal').addEventListener('click',e=>{if(e.target.id==='fbModal')e.target.classList.remove('show');});
 
 // =====================================================

@@ -1,6 +1,6 @@
 {
   "_comment": "四国（徳島・香川・愛媛・高知）全市インデックス。dataReady=trueのみアプリで品目検索可。",
-  "_total": 24,
+  "_total": 38,
   "_region": "四国",
   "cities": [
     {"id":"36201","pref":"36","prefName":"徳島県","name":"徳島市","rank":"B","pop":259000,"dataReady":true,"scrapeUrl":"https://www.city.tokushima.tokushima.jp/smph/kurashi/recycle/gomi/sodaigomi.html"},
