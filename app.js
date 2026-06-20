@@ -51,7 +51,7 @@ const LANG = {
     ticket5:'5ptシール',ticket1:'1ptシール',sheets:'枚',
     uncollWarn:'収集不可品目',uncollSub:'別途処理が必要',
     step1:'下のテキストをコピー',step2:'公式サイトまたは電話で申込',step3:'処理券を購入して品目に貼付',
-    copyBtn:'📋 一括コピー',clearBtn:'カートを空に',closeBtn:'閉じる',
+    copyBtn:'📋 一括コピー',saveBtn:'💾 保存',clearBtn:'カートを空に',closeBtn:'閉じる',
     listTitle:'申込リスト',
     notCollLabel:'収集不可 — 別途処理が必要',
     noCityData:'このデータは準備中です。近日公開予定！',
@@ -99,7 +99,7 @@ const LANG = {
     ticket5:'5pt stickers',ticket1:'1pt stickers',sheets:'',
     uncollWarn:'Non-collectible items',uncollSub:'Separate disposal required',
     step1:'Copy the text below',step2:'Apply online or by phone',step3:'Buy processing tickets and attach to items',
-    copyBtn:'📋 Copy list',clearBtn:'Clear cart',closeBtn:'Close',
+    copyBtn:'📋 Copy list',saveBtn:'💾 Save',clearBtn:'Clear cart',closeBtn:'Close',
     listTitle:'Application list',
     notCollLabel:'Cannot be collected — requires separate disposal',
     noCityData:'Data for this city is coming soon!',
@@ -2089,6 +2089,7 @@ window.addEventListener('DOMContentLoaded', async() => {
   if(saved){try{const v=JSON.parse(saved);await loadCity(v.id,v.name,v.pref);}catch(e){}}
   showSel();
   loadRecent();
+  renderNationalBanners();
 });
 
 // =====================================================
@@ -3111,6 +3112,42 @@ const REC_COMPANIES = [
   {name:'メルカリ',desc:'スマホで簡単フリマ。捨てる前にまずはメルカリで売却を',cat:'フリマアプリ',icon:'📱',url:'https://www.mercari.com/jp/'},
 ];
 
+// トップページ用 全国リユース・買取バナー
+const NATIONAL_BANNERS = [
+  {name:'ハードオフ',cat:'家電・家具買取',icon:'🏪',url:'https://www.hardoff.co.jp/'},
+  {name:'トレジャーファクトリー',cat:'総合リユース',icon:'💫',url:'https://www.treasure-f.com/'},
+  {name:'セカンドストリート',cat:'衣類・家電買取',icon:'♻️',url:'https://www.2ndstreet.jp/'},
+  {name:'ゲオ',cat:'ゲーム・家電買取',icon:'🎮',url:'https://geo-online.co.jp/'},
+  {name:'ブックオフ',cat:'本・CD・家電',icon:'📚',url:'https://www.bookoff.co.jp/'},
+  {name:'おたからや',cat:'ブランド・貴金属',icon:'💎',url:'https://www.otakaraya.jp/'},
+  {name:'ジモティー',cat:'地元無料譲渡',icon:'📣',url:'https://jmty.jp/'},
+  {name:'メルカリ',cat:'スマホで売却',icon:'📱',url:'https://www.mercari.com/jp/'},
+];
+
+function renderNationalBanners() {
+  const el = document.getElementById('nationalBannerSec');
+  if (!el) return;
+  const isEn = lang === 'en';
+  const cards = NATIONAL_BANNERS.map(c =>
+    `<a class="nb-card" href="${esc(c.url)}" target="_blank" rel="noopener sponsored">
+      <div class="nb-icon">${c.icon}</div>
+      <div class="nb-name">${esc(c.name)}</div>
+      <div class="nb-cat">${esc(c.cat)}</div>
+    </a>`
+  ).join('');
+  el.innerHTML = `<div class="nb-section">
+    <div class="nb-hd">
+      <span class="nb-label">${isEn ? '♻️ Reuse & Buyback Services' : '♻️ 捨てる前に試そう！買取・リユース'}</span>
+      <span class="nb-sub">${isEn ? 'Nationwide' : '全国対応'}</span>
+    </div>
+    <div class="nb-scroll">${cards}</div>
+    <div class="nb-sponsor-cta">
+      <span>${isEn ? '📣 Advertise here' : '📣 バナー掲載のご相談はこちら'}</span>
+      <button onclick="openSponsorInquiry()" class="nb-cta-btn">${isEn ? 'Sponsor →' : '掲載する →'}</button>
+    </div>
+  </div>`;
+}
+
 async function renderSponsors() {
   const cn=currentCity?.name||'', pref=currentCity?.pref||'';
   // 本番：sponsors/{cityId}.json を fetch、ローカル：SPONSOR_SAMPLESを使用
@@ -3247,6 +3284,13 @@ function renderCart(){
         <textarea class="cmemo" placeholder="${T('cartMemo')}" rows="1" onchange="updMemo('${esc(c.n)}',this.value)">${esc(c.memo||'')}</textarea>
       </div>`;
     });
+    html += `<textarea id="ctxt" readonly rows="5" style="width:100%;padding:10px;border:1px solid var(--b);border-radius:8px;font-size:12px;background:#F8F9FB;font-family:inherit">${buildCopyTxt()}</textarea>
+    <div class="cactions">
+      <button class="bcopy" onclick="copyTxt()">${T('copyBtn')}</button>
+      <button class="bsave" onclick="saveCartAsFile()">${T('saveBtn')}</button>
+      <button class="bclr" onclick="clearCart()">${T('clearBtn')}</button>
+    </div>`;
+    // 申し込みボタン（コピー・保存の後ろに配置）
     (()=>{
       const _rules = cityData?.city?.rules || {};
       const _webUrl = _rules.webApplicationUrl || _rules.applicationUrl;
@@ -3256,18 +3300,17 @@ function renderCart(){
       const _telNum = _phone.replace(/[^\d\-+]/g,'');
       const _isEn = lang === 'en';
       const _webBtn = _hasWeb
-        ? `<a href="${esc(_webUrl)}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;color:#fff;background:var(--blue);padding:7px 14px;border-radius:8px;text-decoration:none;font-size:12px;font-weight:700">🌐 ${_isEn?'Apply online':'ウェブで申し込み'}</a>`
-        : `<span style="display:inline-flex;align-items:center;padding:7px 12px;background:#F3F4F6;color:#9CA3AF;border-radius:8px;font-size:11px;font-weight:600;border:1px dashed #D1D5DB">${_isEn?'No web app':'ウェブ申込なし'}</span>`;
+        ? `<a href="${esc(_webUrl)}" target="_blank" rel="noopener" style="display:flex;flex:1;align-items:center;justify-content:center;gap:4px;color:#fff;background:var(--blue);padding:12px 14px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700">🌐 ${_isEn?'Apply online':'ウェブで申し込み'}</a>`
+        : `<span style="display:flex;flex:1;align-items:center;justify-content:center;padding:12px;background:#F3F4F6;color:#9CA3AF;border-radius:10px;font-size:11px;font-weight:600;border:1px dashed #D1D5DB">${_isEn?'No web app':'ウェブ申込なし'}</span>`;
       const _telBtn = _hasPhone
-        ? `<a href="tel:${esc(_telNum)}" style="display:inline-flex;align-items:center;gap:4px;color:#fff;background:#FF6B35;padding:7px 14px;border-radius:8px;text-decoration:none;font-size:12px;font-weight:700">📞 ${_isEn?'Call to apply':'電話で申し込み'}<span style="font-size:10px;opacity:.88;margin-left:2px">${esc(_phone)}</span></a>`
+        ? `<a href="tel:${esc(_telNum)}" style="display:flex;flex:1;align-items:center;justify-content:center;flex-direction:column;gap:2px;color:#fff;background:#FF6B35;padding:12px 14px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700">📞 ${_isEn?'Call to apply':'電話で申し込み'}<span style="font-size:10px;opacity:.88">${esc(_phone)}</span></a>`
         : '';
-      html+=`<div style="margin:12px 0;padding:12px;background:var(--pl);border-radius:10px;font-size:12px;color:var(--t2);line-height:1.7">
-      💡 1. ${T('step1')}<br>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0">${_webBtn}${_telBtn}</div>
-      2. ${T('step3')}</div>`;
+      html += `<div style="margin-top:14px;padding:12px;background:var(--pl);border-radius:12px">
+        <div style="font-size:11px;color:var(--t3);font-weight:600;margin-bottom:8px">📋 ${_isEn?'Step 2: Submit application':'ステップ2：申し込みをする'}</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">${_webBtn}${_telBtn}</div>
+        <div style="font-size:11px;color:var(--t3);margin-top:8px;line-height:1.5">💡 ${T('step3')}</div>
+      </div>`;
     })();
-    html += `<textarea id="ctxt" readonly rows="5" style="width:100%;padding:10px;border:1px solid var(--b);border-radius:8px;font-size:12px;background:#F8F9FB;font-family:inherit">${buildCopyTxt()}</textarea>
-    <div class="cactions"><button class="bcopy" onclick="copyTxt()">${T('copyBtn')}</button><button class="bclr" onclick="clearCart()">${T('clearBtn')}</button></div>`;
   }
   html+=`<button class="boutline" onclick="document.getElementById('cartModal').classList.remove('show')">${T('closeBtn')}</button>`;
   document.getElementById('cartContent').innerHTML=html;
@@ -3290,6 +3333,23 @@ function buildCopyTxt(){
 function copyTxt(){
   const ta=document.getElementById('ctxt');if(!ta)return;
   navigator.clipboard?.writeText(ta.value).then(()=>showToast(T('copySuccess'))).catch(()=>{ta.select();document.execCommand('copy');showToast(T('copySuccess'));});
+}
+function saveCartAsFile(){
+  const txt=buildCopyTxt();
+  if(!txt.trim()){showToast(T('cartEmpty'));return;}
+  const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  const cityName=currentCity?.name||'';
+  const d=new Date();
+  const dateStr=`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;
+  a.download=`粗大ごみ申込リスト_${cityName}_${dateStr}.txt`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast(lang==='en'?'Saved application list':'申込リストを保存しました');
 }
 document.getElementById('cartModal').addEventListener('click',e=>{if(e.target.id==='cartModal')e.target.classList.remove('show');});
 
