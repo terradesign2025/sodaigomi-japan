@@ -67,7 +67,7 @@ const LANG = {
     infoPayment:'支払方法',infoCollect:'出し方',infoCarryIn:'持ち込み',
     infoNonColl:'収集不可',infoDef:'粗大ごみとは',
     accAddCart:'＋ カートに追加',accAdded:'✓ 追加済み',
-    accApply:'🌐 ウェブで申し込み',accSource:'出典:',accOfficialPage:'公式ページ',
+    accApply:'🌐 ウェブで申し込み',accPhone:'📞 電話で申し込み',accNoWeb:'ウェブ申込なし',accSource:'出典:',accOfficialPage:'公式ページ',
   },
   en: {
     appName:'Bulky Waste Checker',
@@ -115,7 +115,7 @@ const LANG = {
     infoPayment:'Payment',infoCollect:'Collection',infoCarryIn:'Self drop-off',
     infoNonColl:'Non-collectible',infoDef:'What is bulky waste?',
     accAddCart:'＋ Add to cart',accAdded:'✓ Added',
-    accApply:'🌐 Apply online',accSource:'Source:',accOfficialPage:'Official page',
+    accApply:'🌐 Apply online',accPhone:'📞 Call to apply',accNoWeb:'No web app',accSource:'Source:',accOfficialPage:'Official page',
   }
 };
 
@@ -2694,6 +2694,25 @@ function getApplyUrl(city, rules) {
   return `https://www.google.com/search?q=${q}`;
 }
 
+function getAccApplyButtons(city, rules) {
+  const webUrl = rules?.webApplicationUrl || rules?.applicationUrl;
+  const hasWeb = webUrl && webUrl.startsWith('http');
+  const rawPhone = String(rules?.contact || '').trim();
+  const hasPhone = rawPhone.length > 0;
+  const isEn = lang === 'en';
+  let html = '';
+  if (hasWeb) {
+    html += `<a class="acc-btn-apply" href="${esc(webUrl)}" target="_blank" rel="noopener">${isEn ? '🌐 Apply online' : '🌐 ウェブで申し込み'}</a>`;
+  } else {
+    html += `<span class="acc-no-web">${isEn ? 'No web app' : 'ウェブ申込なし'}</span>`;
+  }
+  if (hasPhone) {
+    const telNum = rawPhone.replace(/[^\d\-+]/g, '');
+    html += `<a class="acc-btn-phone" href="tel:${esc(telNum)}">${isEn ? '📞 Call to apply' : '📞 電話で申し込み'}<span class="acc-phone-num">${esc(rawPhone)}</span></a>`;
+  }
+  return html;
+}
+
 function renderItems() {
   if(!cityData)return;
   const q=document.getElementById('sinput').value.trim();
@@ -2798,7 +2817,7 @@ function renderItems() {
                ${item.note?`<div class="anote">📝 ${esc(item.note)}</div>`:''}
                <div class="acc-actions">
                  <button class="acc-btn-cart${inCart?' added':''}" onclick="addCart('${esc(item.n)}')">${inCart?T('accAdded'):T('accAddCart')}</button>
-                 <a class="acc-btn-apply" href="${esc(getApplyUrl(cityData?.city, cityData?.city?.rules))}" target="_blank" rel="noopener">${T('accApply')}</a>
+                 ${getAccApplyButtons(cityData?.city, cityData?.city?.rules)}
                </div>
                <div class="acc-source">📋 ${T('accSource')} <a href="${esc(cityData?.city?.rules?.websiteUrl||'#')}" target="_blank" rel="noopener">${esc(currentCity?.name||'')} ${T('accOfficialPage')} ↗</a></div>`}
         </div>
@@ -3228,9 +3247,26 @@ function renderCart(){
         <textarea class="cmemo" placeholder="${T('cartMemo')}" rows="1" onchange="updMemo('${esc(c.n)}',this.value)">${esc(c.memo||'')}</textarea>
       </div>`;
     });
-    html+=`<div style="margin:12px 0;padding:12px;background:var(--pl);border-radius:10px;font-size:12px;color:var(--t2);line-height:1.7">
-      💡 1. ${T('step1')}<br>2. <a href="${esc(cityData?.city?.rules?.websiteUrl||'#')}" target="_blank" style="color:var(--p)">${esc(currentCity?.name||'')} ${T('officialSite')}</a> ${T('cartOrCall')} ${esc(cityData?.city?.rules?.contact||'')}<br>3. ${T('step3')}</div>
-    <textarea id="ctxt" readonly rows="5" style="width:100%;padding:10px;border:1px solid var(--b);border-radius:8px;font-size:12px;background:#F8F9FB;font-family:inherit">${buildCopyTxt()}</textarea>
+    (()=>{
+      const _rules = cityData?.city?.rules || {};
+      const _webUrl = _rules.webApplicationUrl || _rules.applicationUrl;
+      const _hasWeb = _webUrl && _webUrl.startsWith('http');
+      const _phone = String(_rules.contact || '').trim();
+      const _hasPhone = _phone.length > 0;
+      const _telNum = _phone.replace(/[^\d\-+]/g,'');
+      const _isEn = lang === 'en';
+      const _webBtn = _hasWeb
+        ? `<a href="${esc(_webUrl)}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;color:#fff;background:var(--blue);padding:7px 14px;border-radius:8px;text-decoration:none;font-size:12px;font-weight:700">🌐 ${_isEn?'Apply online':'ウェブで申し込み'}</a>`
+        : `<span style="display:inline-flex;align-items:center;padding:7px 12px;background:#F3F4F6;color:#9CA3AF;border-radius:8px;font-size:11px;font-weight:600;border:1px dashed #D1D5DB">${_isEn?'No web app':'ウェブ申込なし'}</span>`;
+      const _telBtn = _hasPhone
+        ? `<a href="tel:${esc(_telNum)}" style="display:inline-flex;align-items:center;gap:4px;color:#fff;background:#FF6B35;padding:7px 14px;border-radius:8px;text-decoration:none;font-size:12px;font-weight:700">📞 ${_isEn?'Call to apply':'電話で申し込み'}<span style="font-size:10px;opacity:.88;margin-left:2px">${esc(_phone)}</span></a>`
+        : '';
+      html+=`<div style="margin:12px 0;padding:12px;background:var(--pl);border-radius:10px;font-size:12px;color:var(--t2);line-height:1.7">
+      💡 1. ${T('step1')}<br>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0">${_webBtn}${_telBtn}</div>
+      2. ${T('step3')}</div>`;
+    })();
+    html += `<textarea id="ctxt" readonly rows="5" style="width:100%;padding:10px;border:1px solid var(--b);border-radius:8px;font-size:12px;background:#F8F9FB;font-family:inherit">${buildCopyTxt()}</textarea>
     <div class="cactions"><button class="bcopy" onclick="copyTxt()">${T('copyBtn')}</button><button class="bclr" onclick="clearCart()">${T('clearBtn')}</button></div>`;
   }
   html+=`<button class="boutline" onclick="document.getElementById('cartModal').classList.remove('show')">${T('closeBtn')}</button>`;
