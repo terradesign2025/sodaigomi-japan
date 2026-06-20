@@ -25,7 +25,7 @@ const LANG = {
     appName:'粗大ごみ判定',
     selTitle:'🗑️ 粗大ごみ判定アプリ',
     selSub:'お住まいの地域を選んで品目・料金を確認',
-    selSearch:'🔍 都市名で検索（例：札幌・なごや・osaka・八王子）',
+    selSearch:'🔍 都市名・郵便番号で検索（例：札幌・八王子・123-4567）',
     lblRecent:'⏱ 最近使用',
     lblRegion:'地方から選ぶ',
     lblBackRg:'地方選択に戻る',
@@ -73,7 +73,7 @@ const LANG = {
     appName:'Bulky Waste Checker',
     selTitle:'🗑️ Bulky Waste Checker Japan',
     selSub:'Select your city to check fees and items',
-    selSearch:'🔍 Search city (e.g. Sapporo, Osaka, Fukuoka)',
+    selSearch:'🔍 Search city or postal code (e.g. Sapporo, 123-4567)',
     lblRecent:'⏱ Recent',
     lblRegion:'Select by region',
     lblBackRg:'Back to regions',
@@ -2173,9 +2173,47 @@ function matchCityQuery(c, q) {
   return false;
 }
 
+async function lookupZip(zip) {
+  const el = document.getElementById('citySearchResult');
+  el.innerHTML = `<div class="pref-list"><div class="li-row" style="color:var(--t3);cursor:default">🔍 〒${zip.slice(0,3)}-${zip.slice(3)} を検索中...</div></div>`;
+  try {
+    const res = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zip}`);
+    const json = await res.json();
+    if (!json.results || !json.results.length) {
+      el.innerHTML = `<div class="pref-list"><div class="li-row" style="color:var(--t3);cursor:default">〒${zip.slice(0,3)}-${zip.slice(3)} の住所が見つかりません</div></div>`;
+      return;
+    }
+    const r = json.results[0];
+    const pref = r.address1;
+    const cityRaw = r.address2;
+    const merged = [...CITIES, ...Object.entries(EMBEDDED).map(([id,d])=>({id,pref:id.substring(0,2),prefName:d.city.prefecture,name:d.city.name,dataReady:true}))]
+      .filter((c,i,a)=>a.findIndex(x=>x.id===c.id)===i);
+    const hits = merged.filter(c => {
+      if (c.prefName !== pref) return false;
+      return c.name === cityRaw || cityRaw.startsWith(c.name) || c.name.startsWith(cityRaw.replace(/[郡].*/,''));
+    });
+    const sReady = T('sReady'), sSoon = T('sSoon');
+    if (!hits.length) {
+      el.innerHTML = `<div class="pref-list"><div class="li-row" style="color:var(--t3);cursor:default">〒${zip.slice(0,3)}-${zip.slice(3)}（${esc(pref)}${esc(cityRaw)}）はデータ未対応です</div></div>`;
+      return;
+    }
+    el.innerHTML = `<div class="pref-list">${hits.slice(0,10).map(c=>{
+      const ready = isCityReady(c);
+      return `<div class="li-row" onclick="loadCity('${c.id}','${c.name}','${c.pref}')">
+        ${esc(c.prefName||'')} ${esc(c.name)}<span class="${ready?'s-ready':'s-soon'}">${ready?sReady:sSoon}</span>
+      </div>`;
+    }).join('')}</div>`;
+  } catch(e) {
+    el.innerHTML = `<div class="pref-list"><div class="li-row" style="color:var(--t3);cursor:default">郵便番号の検索に失敗しました。通信環境をご確認ください。</div></div>`;
+  }
+}
+
 function searchCity(q) {
   const el=document.getElementById('citySearchResult');
   if(!q.trim()){el.innerHTML='';return;}
+  // 郵便番号判定（ハイフンあり・なし・全角ハイフン対応）
+  const zipOnly = q.replace(/[-ーー－]/g,'');
+  if (/^\d{7}$/.test(zipOnly)) { lookupZip(zipOnly); return; }
   const merged=[...CITIES,...Object.entries(EMBEDDED).map(([id,d])=>({id,pref:id.substring(0,2),prefName:d.city.prefecture,name:d.city.name,dataReady:true}))]
     .filter((c,i,a)=>a.findIndex(x=>x.id===c.id)===i);
   const hits = merged.filter(c => matchCityQuery(c, q));
