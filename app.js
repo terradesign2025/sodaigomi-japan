@@ -2179,6 +2179,62 @@ function matchCityQuery(c, q) {
   return false;
 }
 
+async function detectLocation() {
+  const btn = document.getElementById('gpsBtn');
+  const status = document.getElementById('gpsStatus');
+  const el = document.getElementById('citySearchResult');
+  if (!navigator.geolocation) {
+    status.textContent = '⚠️ お使いのブラウザは位置情報に対応していません';
+    return;
+  }
+  btn.textContent = '⏳';
+  btn.disabled = true;
+  status.textContent = '📍 現在地を取得中...';
+  navigator.geolocation.getCurrentPosition(
+    async (pos) => {
+      const { latitude: lat, longitude: lon } = pos.coords;
+      try {
+        // 逆ジオコーディング: 国土地理院API（無料・CORS対応）
+        const res = await fetch(`https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress?lon=${lon}&lat=${lat}`);
+        const json = await res.json();
+        const r = json.results;
+        if (!r) throw new Error('no results');
+        const prefCode = String(r.muniCd).slice(0, 2).padStart(2, '0');
+        const cityCode = String(r.muniCd).padStart(5, '0');
+        const prefName = r.lv01Nm;
+        const cityName = r.lv02Nm || r.lv01Nm;
+        status.textContent = `📍 ${esc(prefName)} ${esc(cityName)}`;
+        // cityCodeで直接ロード試行、なければ名前で検索
+        const merged = [...CITIES, ...Object.entries(EMBEDDED).map(([id,d])=>({id,pref:id.substring(0,2),prefName:d.city.prefecture,name:d.city.name,dataReady:true}))]
+          .filter((c,i,a)=>a.findIndex(x=>x.id===c.id)===i);
+        let hit = merged.find(c => c.id === cityCode);
+        if (!hit) hit = merged.find(c => c.prefName === prefName && c.name === cityName);
+        if (!hit) hit = merged.find(c => c.prefName && c.prefName.includes(prefName.replace(/[都道府県]/,'')) && cityName && c.name && c.name.includes(cityName.replace(/[市区町村]/,'')));
+        if (hit) {
+          status.textContent = `📍 ${esc(hit.prefName||'')} ${esc(hit.name)} を検出`;
+          el.innerHTML = `<div class="pref-list"><div class="li-row" onclick="loadCity('${hit.id}','${hit.name}','${hit.pref}')">
+            ${esc(hit.prefName||'')} ${esc(hit.name)}<span class="${isCityReady(hit)?'s-ready':'s-soon'}">${isCityReady(hit)?T('sReady'):T('sSoon')}</span>
+          </div></div>`;
+        } else {
+          status.textContent = `📍 ${esc(prefName)}${esc(cityName)} はデータ未対応です`;
+          el.innerHTML = '';
+        }
+      } catch(e) {
+        status.textContent = '⚠️ 住所の取得に失敗しました';
+      }
+      btn.textContent = '📍';
+      btn.disabled = false;
+    },
+    (err) => {
+      const msg = err.code === 1 ? '位置情報の許可が必要です' : err.code === 2 ? '位置情報を取得できません' : 'タイムアウトしました';
+      status.textContent = `⚠️ ${msg}`;
+      btn.textContent = '📍';
+      btn.disabled = false;
+    },
+    { timeout: 10000, maximumAge: 60000 }
+  );
+}
+
 async function lookupZip(zip) {
   const el = document.getElementById('citySearchResult');
   el.innerHTML = `<div class="pref-list"><div class="li-row" style="color:var(--t3);cursor:default">🔍 〒${zip.slice(0,3)}-${zip.slice(3)} を検索中...</div></div>`;

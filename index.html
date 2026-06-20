@@ -455,7 +455,11 @@ h1.sel-title{font-size:22px;font-weight:800;margin:0 0 4px;line-height:1.3}
         <div id="ifSelected"></div>
       </div>
       <div class="if-divider" id="ifDivider">または地域から選ぶ</div>
-      <input type="text" class="sc-input" id="citySearch" oninput="searchCity(this.value)">
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:4px;">
+        <input type="text" class="sc-input" id="citySearch" oninput="searchCity(this.value)" style="flex:1;margin-bottom:0;">
+        <button id="gpsBtn" onclick="detectLocation()" title="現在地から検索" style="flex-shrink:0;width:44px;height:44px;border-radius:12px;border:1.5px solid var(--b);background:var(--card);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;" aria-label="現在地から検索">📍</button>
+      </div>
+      <div id="gpsStatus" style="font-size:11px;color:var(--t3);margin-bottom:4px;min-height:16px;"></div>
       <div id="citySearchResult"></div>
       <div id="recentSec" style="display:none">
         <div class="sec-label" id="lblRecent">⏱ 最近使用</div>
