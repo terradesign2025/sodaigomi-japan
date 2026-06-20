@@ -1246,9 +1246,84 @@ function specialAlertHtml(a, isEn){
     t = `${a.name}は家電リサイクル法対象のため粗大ごみでは収集できません`;
     b = '①買い替え時に販売店で引き取り<br>②購入した店に引き取り依頼<br>③指定引取場所へ持込（リサイクル料金＋収集運搬料が必要）';
   }
-  return `<div class="sp-alert"><div class="sug-ico">${a.icon}</div><div><div class="spa-t1">⚠️ ${t}</div><div class="spa-t2">${b}</div></div></div>`;
+  const dgHtml = disposalGuideHtml(a.name || (a.type === 'pc' ? 'パソコン' : ''), isEn);
+  return `<div class="sp-alert"><div class="sug-ico">${a.icon}</div><div><div class="spa-t1">⚠️ ${t}</div><div class="spa-t2">${b}</div>${dgHtml}</div></div>`;
 }
 // === END SPECIAL_ALERTS ===
+
+// =====================================================
+// 収集不可品目 処分ガイド + アフィリエイトリンク設定
+// ★ アフィリエイトID取得後に url を追跡URLに差し替えてください
+// =====================================================
+const AFFILIATE_LINKS = {
+  yamada: { url:'https://www.yamada-denkiweb.com/item/category/recycle/', label:'ヤマダ電機で引き取り手配', icon:'🏪' },
+  renet:  { url:'https://renetjapan.com/',                                 label:'リネットジャパン（PC宅配回収）', icon:'📦' },
+  jarc:   { url:'https://www.jarc.or.jp/',                                 label:'二輪車リサイクル機構（無料申込）', icon:'🏍️' },
+  kakaku: { url:'https://kakaku.com/kaden/',                               label:'価格.comで買い替え品を比較', icon:'🔍' },
+};
+
+const DISPOSAL_CATEGORIES = [
+  {
+    id: 'kaden',
+    pattern: /エアコン|テレビ|冷蔵庫|冷凍庫|洗濯機|衣類乾燥機/,
+    jaTitle: '🔌 処分方法（家電リサイクル法対象品）',
+    jaSteps: [
+      '①<strong>買い替え時</strong>に家電量販店へ持込・引取依頼（最安・最も手軽）',
+      '②<strong>購入した販売店</strong>に引き取りを依頼（電話でOK）',
+      '③<strong>指定引取場所</strong>に持込（リサイクル料金＋収集運搬料が別途必要）',
+    ],
+    jaNote: '💡 リサイクル料金目安：エアコン¥990〜、テレビ¥1,320〜2,970、冷蔵庫¥3,740〜4,730、洗濯機¥2,530〜',
+    links: ['yamada','kakaku'],
+  },
+  {
+    id: 'pc',
+    pattern: /パソコン|ノートPC|デスクトップ|MacBook|タブレット|iPad/,
+    jaTitle: '💻 処分方法（PCリサイクル法対象品）',
+    jaSteps: [
+      '①<strong>PCリサイクルマーク付き</strong>→ メーカーが無料回収（メーカーHPから申込）',
+      '②<strong>リネットジャパン</strong>宅配回収（自治体提携・初回無料プランあり）',
+      '③<strong>市区町村の小型家電回収ボックス</strong>（ノートPCなど小型のみ対応）',
+    ],
+    links: ['renet','kakaku'],
+  },
+  {
+    id: 'bike',
+    pattern: /バイク|原付|スクーター|オートバイ/,
+    jaTitle: '🏍️ 処分方法（二輪車リサイクル）',
+    jaSteps: [
+      '①<strong>二輪車リサイクル機構</strong>に申し込み（全国対応・無料）',
+      '②<strong>バイク販売店・中古買取店</strong>に査定依頼（価値があれば買取も）',
+    ],
+    links: ['jarc'],
+  },
+  {
+    id: 'tire',
+    pattern: /タイヤ/,
+    jaTitle: '🚗 処分方法（タイヤ類）',
+    jaSteps: [
+      '①<strong>タイヤ販売店・カー用品店</strong>（オートバックス等）に持込（¥200〜500/本）',
+      '②<strong>ガソリンスタンド</strong>に持込・引取依頼（有料）',
+    ],
+    links: [],
+  },
+];
+
+function getDisposalCategory(itemName) {
+  const n = String(itemName || '');
+  return DISPOSAL_CATEGORIES.find(c => c.pattern.test(n)) || null;
+}
+
+function disposalGuideHtml(itemName, isEn) {
+  const cat = getDisposalCategory(itemName);
+  if (!cat || isEn) return '';
+  const steps = cat.jaSteps.map(s => `<div class="dg-step">${s}</div>`).join('');
+  const note = cat.jaNote ? `<div class="dg-note">${cat.jaNote}</div>` : '';
+  const links = (cat.links || []).map(k => {
+    const af = AFFILIATE_LINKS[k];
+    return af ? `<a class="dg-link" href="${af.url}" target="_blank" rel="noopener noreferrer">${af.icon} ${af.label} ↗</a>` : '';
+  }).filter(Boolean).join('');
+  return `<div class="disposal-guide"><div class="dg-title">${cat.jaTitle}</div><div class="dg-steps">${steps}</div>${note}${links ? `<div class="dg-links">${links}</div>` : ''}</div>`;
+}
 
 // =====================================================
 // 八王子市 埋め込みデータ
@@ -2717,7 +2792,7 @@ function renderItems() {
       <div class="acc" id="ac${i}">
         <div class="accbody">
           ${sp
-            ? `<div class="acc-uncoll">⚠️ <strong>${lang==='en'?'Not collectible':'収集不可'}</strong><br>${esc(uncollReason)}</div>${item.note?`<div class="anote">${esc(item.note)}</div>`:''}`
+            ? `<div class="acc-uncoll">⚠️ <strong>${lang==='en'?'Not collectible':'収集不可'}</strong><br>${esc(uncollReason)}</div>${item.note?`<div class="anote">${esc(item.note)}</div>`:''}${disposalGuideHtml(item.n, lang==='en')}`
             : `${feeDetailRow}
                <div class="arow"><span class="albl">${T('methodLabel')}</span><span>${esc(item.m||'-')}</span></div>
                ${item.note?`<div class="anote">📝 ${esc(item.note)}</div>`:''}
