@@ -66,6 +66,8 @@ const LANG = {
     infoContact:'申込先',infoMethod:'申込方法',infoHours:'受付時間',
     infoPayment:'支払方法',infoCollect:'出し方',infoCarryIn:'持ち込み',
     infoNonColl:'収集不可',infoDef:'粗大ごみとは',
+    accAddCart:'＋ カートに追加',accAdded:'✓ 追加済み',
+    accApply:'🌐 ウェブで申し込み',accSource:'出典:',accOfficialPage:'公式ページ',
   },
   en: {
     appName:'Bulky Waste Checker',
@@ -112,6 +114,8 @@ const LANG = {
     infoContact:'Contact',infoMethod:'Application',infoHours:'Hours',
     infoPayment:'Payment',infoCollect:'Collection',infoCarryIn:'Self drop-off',
     infoNonColl:'Non-collectible',infoDef:'What is bulky waste?',
+    accAddCart:'＋ Add to cart',accAdded:'✓ Added',
+    accApply:'🌐 Apply online',accSource:'Source:',accOfficialPage:'Official page',
   }
 };
 
@@ -2508,6 +2512,13 @@ function toggleGj(k,btn) {
   renderItems();
 }
 
+function getApplyUrl(city, rules) {
+  const u = rules?.webApplicationUrl || rules?.applicationUrl;
+  if (u && u.startsWith('http')) return u;
+  const q = encodeURIComponent((city?.name||'') + ' 粗大ごみ ウェブ申し込み');
+  return `https://www.google.com/search?q=${q}`;
+}
+
 function renderItems() {
   if(!cityData)return;
   const q=document.getElementById('sinput').value.trim();
@@ -2609,7 +2620,12 @@ function renderItems() {
             ? `<div class="acc-uncoll">⚠️ <strong>${lang==='en'?'Not collectible':'収集不可'}</strong><br>${esc(uncollReason)}</div>${item.note?`<div class="anote">${esc(item.note)}</div>`:''}`
             : `${feeDetailRow}
                <div class="arow"><span class="albl">${T('methodLabel')}</span><span>${esc(item.m||'-')}</span></div>
-               ${item.note?`<div class="anote">📝 ${esc(item.note)}</div>`:''}`}
+               ${item.note?`<div class="anote">📝 ${esc(item.note)}</div>`:''}
+               <div class="acc-actions">
+                 <button class="acc-btn-cart${inCart?' added':''}" onclick="addCart('${esc(item.n)}')">${inCart?T('accAdded'):T('accAddCart')}</button>
+                 <a class="acc-btn-apply" href="${esc(getApplyUrl(cityData?.city, cityData?.city?.rules))}" target="_blank" rel="noopener">${T('accApply')}</a>
+               </div>
+               <div class="acc-source">📋 ${T('accSource')} <a href="${esc(cityData?.city?.rules?.websiteUrl||'#')}" target="_blank" rel="noopener">${esc(currentCity?.name||'')} ${T('accOfficialPage')} ↗</a></div>`}
         </div>
       </div></div>`;
   });
