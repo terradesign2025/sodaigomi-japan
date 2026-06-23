@@ -9,6 +9,8 @@ const FB_FORM_URL = '';
 //   空文字('')の間は、Coming Soon画面の「URL情報を送る」フォームは自動的に非表示になります。
 //   URLを設定すると自動的に表示されます。
 const GAS_SUBMIT_URL = '';
+// ★ご意見箱用GAS WebアプリURLをデプロイ後に貼り付け（フィードバックがスプレッドシートに記録されます）
+const FEEDBACK_GAS_URL = '';
 
 // =====================================================
 // 料金体系メモ
@@ -2612,6 +2614,7 @@ function showApp() {
   renderItems();
   renderInfo();
   renderSponsors();
+  renderCityFeedback();
   updateCartBadge();
   // Step1: ホーム画面で選んだ品目があれば自動で検索バーに投入
   if (pendingItem) {
@@ -3112,16 +3115,16 @@ const REC_COMPANIES = [
   {name:'メルカリ',desc:'スマホで簡単フリマ。捨てる前にまずはメルカリで売却を',cat:'フリマアプリ',icon:'📱',url:'https://www.mercari.com/jp/'},
 ];
 
-// トップページ用 全国リユース・買取バナー
+// トップページ用 地域密着リサイクル・買取バナー（大手チェーン除外・地元店限定）
 const NATIONAL_BANNERS = [
-  {name:'ハードオフ',cat:'家電・家具買取',icon:'🏪',url:'https://www.hardoff.co.jp/'},
-  {name:'トレジャーファクトリー',cat:'総合リユース',icon:'💫',url:'https://www.treasure-f.com/'},
-  {name:'セカンドストリート',cat:'衣類・家電買取',icon:'♻️',url:'https://www.2ndstreet.jp/'},
-  {name:'ゲオ',cat:'ゲーム・家電買取',icon:'🎮',url:'https://geo-online.co.jp/'},
-  {name:'ブックオフ',cat:'本・CD・家電',icon:'📚',url:'https://www.bookoff.co.jp/'},
-  {name:'おたからや',cat:'ブランド・貴金属',icon:'💎',url:'https://www.otakaraya.jp/'},
-  {name:'ジモティー',cat:'地元無料譲渡',icon:'📣',url:'https://jmty.jp/'},
-  {name:'メルカリ',cat:'スマホで売却',icon:'📱',url:'https://www.mercari.com/jp/'},
+  {name:'エキスパート',cat:'関東・家電家具',icon:'🔧',url:'https://reuse-expert.com/'},
+  {name:'買取王国',cat:'東海・関西',icon:'👑',url:'https://www.okoku.jp/'},
+  {name:'再良市場',cat:'愛知・岐阜',icon:'🛋️',url:'https://www.sairyouichiba.co.jp/'},
+  {name:'モノ市場',cat:'愛知・家電家具',icon:'🏠',url:'https://www.monoichiba.com/'},
+  {name:'フェスタ',cat:'福岡・総合リユース',icon:'🌟',url:'https://www.festa-1.com/'},
+  {name:'オールモストニュー',cat:'福岡・北九州',icon:'♻️',url:'https://www.allmostnew.jp/'},
+  {name:'アウトレットモノハウス',cat:'北海道・家電',icon:'❄️',url:'https://www.outlet-monohouse.jp/'},
+  {name:'リサイクル店得',cat:'宮城・仙台',icon:'📦',url:'https://rec-109.com/'},
 ];
 
 function renderNationalBanners() {
@@ -3219,6 +3222,75 @@ async function renderSponsors() {
 }
 function openSponsorInquiry(){ window.open('sponsor.html','_blank','noopener'); }
 function openSponsorInfo(){ window.open('sponsor.html','_blank','noopener'); }
+
+// =====================================================
+// ご意見箱（フィードバック → GAS → スプレッドシート）
+// =====================================================
+let _fbType = 'bug';
+
+function renderCityFeedback() {
+  const el = document.getElementById('cityFeedbackSec');
+  if (!el) return;
+  const cityName = currentCity?.name || '';
+  const isEn = lang === 'en';
+  _fbType = 'bug';
+  const types = isEn
+    ? [['bug','🐛 Bug'],['fee','💴 Wrong fee'],['item','📦 Add item'],['other','💬 Other']]
+    : [['bug','🐛 バグ・不具合'],['fee','💴 料金が違う'],['item','📦 品目の追加'],['other','💬 その他']];
+  const typeBtns = types.map(([v,l],i) =>
+    `<button class="fb-type-btn${i===0?' sel':''}" onclick="setFbType('${v}',this)">${l}</button>`
+  ).join('');
+  el.innerHTML = `<div class="fb-sec">
+    <div class="fb-sec-hd">📮 ${isEn ? 'Feedback / Report' : 'ご意見・不具合報告'}</div>
+    <div class="fb-sec-sub">${isEn
+      ? cityName+' — Any issues or suggestions? Let us know!'
+      : cityName+'の情報で気になる点・不具合があればお知らせください。改善に役立てます。'}</div>
+    <div class="fb-types">${typeBtns}</div>
+    <textarea class="fb-msg" id="fbMsgInput" rows="3" placeholder="${isEn ? 'Details (optional)' : '詳細をご記入ください（任意）'}"></textarea>
+    <button class="fb-sbtn" onclick="submitCityFeedback()">${isEn ? '📤 Send' : '📤 送信する'}</button>
+  </div>`;
+  el.style.display = 'block';
+}
+
+function setFbType(type, btn) {
+  _fbType = type;
+  document.querySelectorAll('.fb-type-btn').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+}
+
+async function submitCityFeedback() {
+  const msgEl = document.getElementById('fbMsgInput');
+  const msg = (msgEl?.value || '').trim();
+  const cityId = currentCity?.id || '';
+  const cityName = currentCity?.name || '';
+  const isEn = lang === 'en';
+  const sendBtn = document.querySelector('.fb-sbtn');
+  if (sendBtn) { sendBtn.disabled = true; sendBtn.textContent = isEn ? 'Sending...' : '送信中...'; }
+
+  if (FEEDBACK_GAS_URL) {
+    try {
+      await fetch(FEEDBACK_GAS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'feedback',
+          cityId,
+          cityName,
+          type: _fbType,
+          message: msg,
+          lang,
+          ua: navigator.userAgent.substring(0, 120)
+        })
+      });
+    } catch(e) { console.warn('feedback send error', e); }
+  }
+
+  const el = document.getElementById('cityFeedbackSec');
+  if (el) {
+    el.innerHTML = `<div class="fb-sec"><div class="fb-done">🙏 ${isEn ? 'Thank you for your feedback!' : 'ご意見ありがとうございました！'}<br><span style="font-size:12px;color:var(--t3);font-weight:400">${isEn ? 'We will review it soon.' : '内容を確認の上、順次改善に反映します。'}</span></div></div>`;
+  }
+}
 
 // =====================================================
 // カート
