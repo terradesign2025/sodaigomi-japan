@@ -64,10 +64,25 @@ def kana_order(item):
         gi = len(GOJUON)
     return (gi, item.get('n', ''))
 
+# GitHub PagesはHTTPレスポンスヘッダーを設定できないため、CSPはmetaタグで配信する
+# （frame-ancestors等ヘッダー専用ディレクティブは_headersに残置＝Cloudflare移行時に有効化）
+CSP_META = ("default-src 'self'; "
+            "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; "
+            "style-src 'self' 'unsafe-inline'; "
+            "img-src 'self' data: https:; "
+            "font-src 'self' data:; "
+            "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com "
+            "https://www.googletagmanager.com https://stats.g.doubleclick.net "
+            "https://mreversegeocoder.gsi.go.jp https://zipcloud.ibsnet.co.jp "
+            "https://api.web3forms.com https://script.google.com https://script.googleusercontent.com; "
+            "base-uri 'self'; form-action 'self' https://api.web3forms.com; object-src 'none'")
+
 def head_common(title, desc, canonical_path, og_type='website'):
     url = BASE_URL + canonical_path
     return f'''<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="{CSP_META}">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{url}">
