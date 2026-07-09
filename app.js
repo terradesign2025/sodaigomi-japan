@@ -2628,7 +2628,7 @@ function showApp() {
     pendingItem = null;
   }
   document.getElementById('fnote').innerHTML=
-    `${T('fnoteBase')}<a href="${esc(cityData.city.rules.websiteUrl)}" target="_blank">${esc(currentCity.name)} ${T('officialSite')}</a> — Terra Design`;
+    `${T('fnoteBase')}<a href="${esc(cityData.city.rules.websiteUrl)}" target="_blank" rel="noopener">${esc(currentCity.name)} ${T('officialSite')}</a> — Terra Design`;
 }
 
 function switchTab(tab) {
