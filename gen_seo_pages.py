@@ -467,10 +467,14 @@ def gen_sitemap(cities, pref_codes):
         ('/lp.html', 'monthly', '0.8', None),
         ('/sponsor.html', 'monthly', '0.6', None),
         ('/blog/', 'weekly', '0.9', None),
-        ('/blog/sodaigomi-complete-guide.html', 'monthly', '0.8', None),
-        ('/blog/sodaigomi-cost-comparison.html', 'monthly', '0.8', None),
         ('/area/', 'weekly', '0.8', None),
     ]
+    # ブログ記事は blog/*.html を自動検出（index.html除く）
+    for path in sorted(glob.glob(os.path.join(ROOT, 'blog', '*.html'))):
+        fname = os.path.basename(path)
+        if fname == 'index.html':
+            continue
+        entries.append((f'/blog/{fname}', 'monthly', '0.8', None))
     for code in sorted(pref_codes):
         entries.append((f'/area/{code}.html', 'monthly', '0.7', None))
     for c in cities:

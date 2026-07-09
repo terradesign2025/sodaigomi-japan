@@ -21,6 +21,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://sodaigomi-navi.com/area/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://sodaigomi-navi.com/blog/sodaigomi-complete-guide.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -31,8 +36,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sodaigomi-navi.com/area/</loc>
-    <changefreq>weekly</changefreq>
+    <loc>https://sodaigomi-navi.com/blog/sofa-disposal-guide.html</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
