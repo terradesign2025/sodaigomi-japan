@@ -2080,16 +2080,49 @@ const PREFS=[
 let cityData=null, currentCity=null;
 let cart=loadCart(), activeKana=null, activeRegion=null, activePref=null;
 
+// SEO: URL連動（静的都市ページ /city/{id}.html からの ?city= ディープリンク対応）
+let DEFAULT_TITLE='', DEFAULT_DESC='';
+function syncCityUrl(cityId){
+  try{
+    const url=cityId?`${location.pathname}?city=${cityId}`:location.pathname;
+    history.replaceState(null,'',url);
+  }catch(e){}
+}
+function syncCityMeta(reset){
+  const md=document.querySelector('meta[name="description"]');
+  if(!reset&&currentCity){
+    document.title=`${currentCity.name}の粗大ごみ 料金・出し方検索｜粗大ごみナビ`;
+    if(md)md.setAttribute('content',`${currentCity.pref}${currentCity.name}の粗大ごみ処分手数料・申込み方法・出し方を品目ごとに無料検索。処理券の買い方やウェブ予約リンクもまとめています。`);
+  }else{
+    if(DEFAULT_TITLE)document.title=DEFAULT_TITLE;
+    if(md&&DEFAULT_DESC)md.setAttribute('content',DEFAULT_DESC);
+  }
+}
+
 // =====================================================
 // 起動
 // =====================================================
 window.addEventListener('DOMContentLoaded', async() => {
+  DEFAULT_TITLE=document.title;
+  DEFAULT_DESC=document.querySelector('meta[name="description"]')?.getAttribute('content')||'';
   await loadCitiesIndex();
   buildRg(); buildGj();
   applyLang();
-  const saved=localStorage.getItem(STORAGE_CITY);
-  if(saved){try{const v=JSON.parse(saved);await loadCity(v.id,v.name,v.pref);}catch(e){}}
-  showSel();
+  // SEO: ?city= ディープリンク（静的都市ページからの流入）を最優先で処理
+  let deepLinked=false;
+  const urlCityId=new URLSearchParams(location.search).get('city');
+  if(urlCityId&&/^\d{5}$/.test(urlCityId)){
+    const c=CITIES.find(x=>x.id===urlCityId);
+    if(c&&isCityReady(c)){
+      await loadCity(c.id,c.name,c.pref);
+      deepLinked=!!(currentCity&&currentCity.id===urlCityId);
+    }
+  }
+  if(!deepLinked){
+    const saved=localStorage.getItem(STORAGE_CITY);
+    if(saved){try{const v=JSON.parse(saved);await loadCity(v.id,v.name,v.pref);}catch(e){}}
+    showSel();
+  }
   loadRecent();
   renderNationalBanners();
 });
@@ -2527,6 +2560,8 @@ async function submitCityUrl() {
 }
 
 function showSel() {
+  syncCityUrl(null);
+  syncCityMeta(true);
   document.getElementById('scApp').style.display='none';
   document.getElementById('scComingSoon').style.display='none';
   document.getElementById('scSel').style.display='block';
@@ -2597,6 +2632,8 @@ function loadRecent(){
 // アプリ画面
 // =====================================================
 function showApp() {
+  syncCityUrl(currentCity?currentCity.id:null);
+  syncCityMeta();
   document.getElementById('scSel').style.display='none';
   document.getElementById('scApp').style.display='block';
   document.getElementById('bnav').style.display='flex';
