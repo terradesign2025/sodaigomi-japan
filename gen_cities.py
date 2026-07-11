@@ -1,199 +1,160 @@
-import os, json
+# -*- coding: utf-8 -*-
+import json, os, sys
 
-BASE = "cities"
-os.makedirs(f"{BASE}/13_tokyo", exist_ok=True)
-os.makedirs(f"{BASE}/14_kanagawa", exist_ok=True)
-os.makedirs(f"{BASE}/11_saitama", exist_ok=True)
-os.makedirs(f"{BASE}/12_chiba", exist_ok=True)
-os.makedirs(f"{BASE}/08_ibaraki", exist_ok=True)
-os.makedirs(f"{BASE}/09_tochigi", exist_ok=True)
-os.makedirs(f"{BASE}/10_gunma", exist_ok=True)
+# force UTF-8 output
+sys.stdout.reconfigure(encoding='utf-8')
 
-STD_DEF = "重さ5kg以上または指定袋に入らないもの"
-STD_HOURS = "月〜金 8:30〜17:15（祝日除く）"
-WARD_DEF = "原則として重さが5kg以上または不燃ごみとして出せないもの"
-WARD_HOURS = "月〜土 8:00〜18:00（年末年始除く）"
-WARD_CARRY = "各区の清掃事務所（事前予約必要・費用無料）"
-STD_CARRY = "清掃工場への持込可（要事前予約・本人確認書類必要）"
-NON_COLL = "家電リサイクル4品目（エアコン・テレビ・冷蔵庫・洗濯機）、パソコン、バイク・タイヤ、消火器、ピアノ等は収集できません"
-
-cities = [
-  ("13_tokyo","13101","千代田区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.chiyoda.lg.jp/koho/kurashi/gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13102","中央区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.chuo.lg.jp/kurasi/gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13103","港区","東京都","A","0570-03-1100",WARD_HOURS,"https://www.city.minato.tokyo.jp/gomi-recycle/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13104","新宿区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.shinjuku.lg.jp/seikatsu/gomi04_000005.html","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13105","文京区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.bunkyo.lg.jp/toshikankyo/gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13106","台東区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.taito.lg.jp/gomi_recycle/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13107","墨田区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.sumida.lg.jp/kurashi_guide/gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13108","江東区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.koto.lg.jp/390001/kurashi/gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13109","品川区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13110","目黒区","東京都","A","03-5722-9200",WARD_HOURS,"https://www.city.meguro.tokyo.jp/kurashi/gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13111","大田区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.ota.tokyo.jp/seikatsu/gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13112","世田谷区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.setagaya.lg.jp/mokuji/kurashi/002/004/d00138882.html","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13113","渋谷区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.shibuya.tokyo.jp/kurashi/gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13114","中野区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.tokyo-nakano.lg.jp/kurashi/gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13115","杉並区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.suginami.tokyo.jp/guide/gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13116","豊島区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.toshima.lg.jp/171/kurashi/gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13117","北区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.kita.tokyo.jp/gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13118","荒川区","東京都","A","03-3806-4642",WARD_HOURS,"https://www.city.arakawa.tokyo.jp/a038/kankyo/gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13119","板橋区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.itabashi.tokyo.jp/kurashi/gomi_recycle/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13120","練馬区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.nerima.tokyo.jp/kurashi/gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13121","足立区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.adachi.tokyo.jp/gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13122","葛飾区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.katsushika.lg.jp/kurashi/1000058/1003839/1003845.html","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13123","江戸川区","東京都","A","0570-07-5530",WARD_HOURS,"https://www.city.edogawa.tokyo.jp/e004/kurashi/gomi/sodaigomi/","tokyo23",WARD_CARRY,WARD_DEF),
-  ("13_tokyo","13202","立川市","東京都","C","042-528-4362",STD_HOURS,"https://www.city.tachikawa.lg.jp/shiminseikatsu/gomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13203","武蔵野市","東京都","C","0422-60-1796",STD_HOURS,"https://www.city.musashino.lg.jp/kurashi_guide/gomi_recycle/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13204","三鷹市","東京都","C","0422-45-1151",STD_HOURS,"https://www.city.mitaka.lg.jp/c_service/cat0029/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13205","青梅市","東京都","C","0428-22-1111",STD_HOURS,"https://www.city.ome.tokyo.jp/soshiki/23/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13206","府中市","東京都","B","042-335-4460",STD_HOURS,"https://www.city.fuchu.tokyo.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13207","昭島市","東京都","C","042-544-5111",STD_HOURS,"https://www.city.akishima.lg.jp/s032/010/020/010/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13208","調布市","東京都","B","042-483-0511",STD_HOURS,"https://www.city.chofu.lg.jp/kurashi/gomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13209","町田市","東京都","B","042-722-4389",STD_HOURS,"https://www.city.machida.tokyo.jp/kurashi/kankyo/gomishigen/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13210","小金井市","東京都","C","042-387-9833",STD_HOURS,"https://www.city.koganei.lg.jp/smph/kurashi/gomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13211","小平市","東京都","C","042-345-4556",STD_HOURS,"https://www.city.kodaira.tokyo.jp/kurashi/002/002148.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13212","日野市","東京都","C","042-587-5553",STD_HOURS,"https://www.city.hino.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13213","東村山市","東京都","C","042-393-5111",STD_HOURS,"https://www.city.higashimurayama.tokyo.jp/kurashi/gomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13214","国分寺市","東京都","C","042-325-0111",STD_HOURS,"https://www.city.kokubunji.tokyo.jp/kurashi/2/7/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13215","国立市","東京都","C","042-576-2111",STD_HOURS,"https://www.city.kunitachi.tokyo.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13218","福生市","東京都","C","042-551-1510",STD_HOURS,"https://www.city.fussa.tokyo.jp/life/garbege/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13219","狛江市","東京都","C","03-3430-1111",STD_HOURS,"https://www.city.komae.tokyo.jp/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13220","東大和市","東京都","C","042-563-2111",STD_HOURS,"https://www.city.higashiyamato.lg.jp/kurashi/gomishigen/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13221","清瀬市","東京都","C","042-492-5111",STD_HOURS,"https://www.city.kiyose.lg.jp/kurashi/gomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13222","東久留米市","東京都","C","042-470-7777",STD_HOURS,"https://www.city.higashikurume.lg.jp/kurashi/gomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13223","武蔵村山市","東京都","C","042-565-1111",STD_HOURS,"https://www.city.musashimurayama.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13224","多摩市","東京都","C","042-338-6838",STD_HOURS,"https://www.city.tama.tokyo.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13225","稲城市","東京都","C","042-378-2111",STD_HOURS,"https://www.city.inagi.tokyo.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13227","羽村市","東京都","C","042-555-1111",STD_HOURS,"https://www.city.hamura.tokyo.jp/0000001283.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13228","あきる野市","東京都","C","042-558-1111",STD_HOURS,"https://www.city.akiruno.tokyo.jp/","kanto_standard",STD_CARRY,STD_DEF),
-  ("13_tokyo","13229","西東京市","東京都","C","042-438-4019",STD_HOURS,"https://www.city.nishitokyo.lg.jp/kurasi/gomi_recycle/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14100","横浜市","神奈川県","A","045-330-3953",STD_HOURS,"https://www.city.yokohama.lg.jp/kurashi/machizukuri-kankyo/gomi-recycle/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14130","川崎市","神奈川県","A","044-200-3572",STD_HOURS,"https://www.city.kawasaki.jp/300/category/57-2-0-0-0-0-0-0-0-0.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14150","相模原市","神奈川県","A","042-769-8339",STD_HOURS,"https://www.city.sagamihara.kanagawa.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14201","横須賀市","神奈川県","B","046-822-8193",STD_HOURS,"https://www.city.yokosuka.kanagawa.jp/1810/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14203","平塚市","神奈川県","B","0463-35-8127",STD_HOURS,"https://www.city.hiratsuka.kanagawa.jp/kankyo/","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14204","鎌倉市","神奈川県","C","0467-23-3000",STD_HOURS,"https://www.city.kamakura.kanagawa.jp/gomi/sodaigomi.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14205","藤沢市","神奈川県","B","0466-50-3512",STD_HOURS,"https://www.city.fujisawa.kanagawa.jp/kankyou/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14206","小田原市","神奈川県","C","0465-24-3150",STD_HOURS,"https://www.city.odawara.kanagawa.jp/public/kankyou/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14207","茅ヶ崎市","神奈川県","B","0467-87-3025",STD_HOURS,"https://www.city.chigasaki.kanagawa.jp/kankyo/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14208","逗子市","神奈川県","C","046-872-8134",STD_HOURS,"https://www.city.zushi.kanagawa.jp/div/kankyouseisaku/gomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14210","厚木市","神奈川県","B","046-225-2815",STD_HOURS,"https://www.city.atsugi.kanagawa.jp/kurashi/kankyou/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14211","大和市","神奈川県","B","046-264-5531",STD_HOURS,"https://www.city.yamato.kanagawa.jp/kankyo-gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14212","伊勢原市","神奈川県","C","0463-94-4984",STD_HOURS,"https://www.city.isehara.kanagawa.jp/docs/2013091900015/","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14213","海老名市","神奈川県","C","046-235-8361",STD_HOURS,"https://www.city.ebina.kanagawa.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14214","座間市","神奈川県","C","046-252-7531",STD_HOURS,"https://www.city.zama.kanagawa.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14215","南足柄市","神奈川県","C","0465-74-2111",STD_HOURS,"https://www.city.minamiashigara.kanagawa.jp/kankyou/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("14_kanagawa","14216","綾瀬市","神奈川県","C","0467-70-5633",STD_HOURS,"https://www.city.ayase.kanagawa.jp/kurashi_guide/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11100","さいたま市","埼玉県","A","0570-080530",STD_HOURS,"https://www.city.saitama.lg.jp/006/011/002/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11201","川越市","埼玉県","B","049-224-5894",STD_HOURS,"https://www.city.kawagoe.saitama.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11202","熊谷市","埼玉県","C","048-524-1111",STD_HOURS,"https://www.city.kumagaya.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11203","川口市","埼玉県","B","048-259-7621",STD_HOURS,"https://www.city.kawaguchi.lg.jp/kurashi/19/120/2/2/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11204","行田市","埼玉県","C","048-556-1111",STD_HOURS,"https://www.city.gyoda.lg.jp/kurashi/gomi/sodaigomi.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11206","秩父市","埼玉県","C","0494-22-3161",STD_HOURS,"https://www.city.chichibu.lg.jp/1660.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11207","所沢市","埼玉県","B","04-2998-9024",STD_HOURS,"https://www.city.tokorozawa.saitama.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11208","飯能市","埼玉県","C","042-973-2111",STD_HOURS,"https://www.city.hanno.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11209","加須市","埼玉県","C","0480-62-1111",STD_HOURS,"https://www.city.kazo.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11210","本庄市","埼玉県","C","0495-25-1111",STD_HOURS,"https://www.city.honjo.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11211","東松山市","埼玉県","C","0493-23-2221",STD_HOURS,"https://www.city.higashimatsuyama.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11213","春日部市","埼玉県","B","048-736-1111",STD_HOURS,"https://www.city.kasukabe.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11214","狭山市","埼玉県","C","04-2953-1111",STD_HOURS,"https://www.city.sayama.saitama.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11215","羽生市","埼玉県","C","048-561-1121",STD_HOURS,"https://www.city.hanyu.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11216","鴻巣市","埼玉県","C","048-541-1321",STD_HOURS,"https://www.city.kounosu.saitama.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11217","深谷市","埼玉県","C","048-571-1111",STD_HOURS,"https://www.city.fukaya.saitama.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11218","上尾市","埼玉県","B","048-775-5111",STD_HOURS,"https://www.city.ageo.lg.jp/page/pageind.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11220","草加市","埼玉県","B","048-922-2404",STD_HOURS,"https://www.city.soka.saitama.jp/cont/s1400/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11221","越谷市","埼玉県","B","048-963-9310",STD_HOURS,"https://www.city.koshigaya.saitama.jp/kurashi_guide/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11222","蕨市","埼玉県","C","048-433-7751",STD_HOURS,"https://www.city.warabi.saitama.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11223","戸田市","埼玉県","C","048-441-1801",STD_HOURS,"https://www.city.toda.saitama.jp/0000015219.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11224","入間市","埼玉県","C","04-2964-1111",STD_HOURS,"https://www.city.iruma.saitama.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11226","朝霞市","埼玉県","C","048-463-1111",STD_HOURS,"https://www.city.asaka.lg.jp/site/kurashigu/sodaigomi.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11227","志木市","埼玉県","C","048-473-1111",STD_HOURS,"https://www.city.shiki.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11228","和光市","埼玉県","C","048-464-1111",STD_HOURS,"https://www.city.wako.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11229","新座市","埼玉県","C","042-477-1111",STD_HOURS,"https://www.city.niiza.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11230","桶川市","埼玉県","C","048-786-3211",STD_HOURS,"https://www.city.okegawa.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11231","久喜市","埼玉県","C","0480-22-1111",STD_HOURS,"https://www.city.kuki.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11232","北本市","埼玉県","C","048-591-1111",STD_HOURS,"https://www.city.kitamoto.saitama.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11233","八潮市","埼玉県","C","048-996-2111",STD_HOURS,"https://www.city.yashio.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11234","富士見市","埼玉県","C","049-251-2711",STD_HOURS,"https://www.city.fujimi.saitama.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11236","三郷市","埼玉県","C","048-953-1111",STD_HOURS,"https://www.city.misato.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11237","蓮田市","埼玉県","C","048-768-3111",STD_HOURS,"https://www.city.hasuda.saitama.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11238","坂戸市","埼玉県","C","049-283-1331",STD_HOURS,"https://www.city.sakado.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11239","幸手市","埼玉県","C","0480-43-1111",STD_HOURS,"https://www.city.satte.saitama.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11240","鶴ヶ島市","埼玉県","C","049-271-1111",STD_HOURS,"https://www.city.tsurugashima.saitama.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11241","日高市","埼玉県","C","042-989-2111",STD_HOURS,"https://www.city.hidaka.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11242","吉川市","埼玉県","C","048-982-5111",STD_HOURS,"https://www.city.yoshikawa.saitama.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11244","ふじみ野市","埼玉県","C","049-261-6697",STD_HOURS,"https://www.city.fujimino.saitama.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("11_saitama","11245","白岡市","埼玉県","C","0480-92-1111",STD_HOURS,"https://www.city.shiraoka.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12100","千葉市","千葉県","A","0570-080886",STD_HOURS,"https://www.city.chiba.jp/kankyo/haikibutsu/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12202","銚子市","千葉県","C","0479-24-1111",STD_HOURS,"https://www.city.choshi.chiba.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12203","市川市","千葉県","B","047-712-6317",STD_HOURS,"https://www.city.ichikawa.lg.jp/env01/1111000002.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12204","船橋市","千葉県","B","047-457-4153",STD_HOURS,"https://www.city.funabashi.lg.jp/machi/gomi/002/p009786.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12205","館山市","千葉県","C","0470-22-3141",STD_HOURS,"https://www.city.tateyama.chiba.jp/kankyoubu/page100008.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12206","木更津市","千葉県","C","0438-23-7044",STD_HOURS,"https://www.city.kisarazu.lg.jp/kurashi/kankyou/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12207","松戸市","千葉県","B","047-366-7309",STD_HOURS,"https://www.city.matsudo.chiba.jp/kurasi/gomi_houki/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12208","野田市","千葉県","C","04-7125-1111",STD_HOURS,"https://www.city.noda.chiba.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12210","茂原市","千葉県","C","0475-22-1111",STD_HOURS,"https://www.city.mobara.chiba.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12211","成田市","千葉県","C","0476-27-1111",STD_HOURS,"https://www.city.narita.chiba.jp/kanky/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12212","佐倉市","千葉県","C","043-484-1111",STD_HOURS,"https://www.city.sakura.lg.jp/soshiki/kankyo/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12214","習志野市","千葉県","C","047-452-9149",STD_HOURS,"https://www.city.narashino.lg.jp/joho/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12215","柏市","千葉県","B","04-7167-1057",STD_HOURS,"https://www.city.kashiwa.lg.jp/kankyou/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12217","市原市","千葉県","B","0436-22-7136",STD_HOURS,"https://www.city.ichihara.chiba.jp/kurasi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12218","流山市","千葉県","C","04-7150-6091",STD_HOURS,"https://www.city.nagareyama.chiba.jp/section/kankyo-kanri/sodaigomi.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12219","八千代市","千葉県","C","047-483-1151",STD_HOURS,"https://www.city.yachiyo.chiba.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12220","我孫子市","千葉県","C","04-7185-1111",STD_HOURS,"https://www.city.abiko.chiba.jp/kankyou/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12222","鎌ヶ谷市","千葉県","C","047-445-1141",STD_HOURS,"https://www.city.kamagaya.chiba.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12224","君津市","千葉県","C","0439-56-1174",STD_HOURS,"https://www.city.kimitsu.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12225","富津市","千葉県","C","0439-80-1261",STD_HOURS,"https://www.city.futtsu.lg.jp/kankyou/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12226","浦安市","千葉県","C","047-353-9222",STD_HOURS,"https://www.city.urayasu.lg.jp/municipal/waste/large/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12228","四街道市","千葉県","C","043-421-6111",STD_HOURS,"https://www.city.yotsukaido.chiba.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12231","袖ケ浦市","千葉県","C","0438-62-2111",STD_HOURS,"https://www.city.sodegaura.lg.jp/kankyou/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12233","印西市","千葉県","C","0476-42-5111",STD_HOURS,"https://www.city.inzai.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("12_chiba","12234","白井市","千葉県","C","047-492-1111",STD_HOURS,"https://www.city.shiroi.chiba.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("08_ibaraki","08201","水戸市","茨城県","B","029-232-9111",STD_HOURS,"https://www.city.mito.lg.jp/page/001500.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("08_ibaraki","08202","日立市","茨城県","C","0294-22-3111",STD_HOURS,"https://www.city.hitachi.lg.jp/gomi_kankyou/cat50002/p027948.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("08_ibaraki","08203","土浦市","茨城県","C","029-826-1111",STD_HOURS,"https://www.city.tsuchiura.lg.jp/page/page000379.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("08_ibaraki","08204","古河市","茨城県","C","0280-92-3111",STD_HOURS,"https://www.city.ibaraki-koga.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("08_ibaraki","08205","石岡市","茨城県","C","0299-23-1111",STD_HOURS,"https://www.city.ishioka.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("08_ibaraki","08207","結城市","茨城県","C","0296-33-1111",STD_HOURS,"https://www.city.yuki.ibaraki.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("08_ibaraki","08210","龍ケ崎市","茨城県","C","0297-64-1111",STD_HOURS,"https://www.city.ryugasaki.ibaraki.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("08_ibaraki","08215","取手市","茨城県","C","0297-74-2141",STD_HOURS,"https://www.city.toride.ibaraki.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("08_ibaraki","08217","牛久市","茨城県","C","029-873-2111",STD_HOURS,"https://www.city.ushiku.ibaraki.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("08_ibaraki","08218","つくば市","茨城県","B","029-883-1111",STD_HOURS,"https://www.city.tsukuba.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("08_ibaraki","08220","ひたちなか市","茨城県","C","029-273-0111",STD_HOURS,"https://www.city.hitachinaka.ibaraki.jp/kankyou/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("08_ibaraki","08221","鹿嶋市","茨城県","C","0299-82-2917",STD_HOURS,"https://www.city.kashima.ibaraki.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("08_ibaraki","08222","潮来市","茨城県","C","0299-63-1111",STD_HOURS,"https://www.city.itako.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("08_ibaraki","08224","守谷市","茨城県","C","0297-45-1111",STD_HOURS,"https://www.city.moriya.ibaraki.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("08_ibaraki","08232","筑西市","茨城県","C","0296-22-4111",STD_HOURS,"https://www.city.chikusei.ibaraki.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("09_tochigi","09201","宇都宮市","栃木県","B","028-625-3005",STD_HOURS,"https://www.city.utsunomiya.tochigi.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("09_tochigi","09202","足利市","栃木県","C","0284-20-2195",STD_HOURS,"https://www.city.ashikaga.tochigi.jp/kankyou/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("09_tochigi","09203","栃木市","栃木県","C","0282-21-2358",STD_HOURS,"https://www.city.tochigi.lg.jp/site/gomi/sodaigomi.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("09_tochigi","09204","佐野市","栃木県","C","0283-20-3043",STD_HOURS,"https://www.city.sano.tochigi.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("09_tochigi","09205","鹿沼市","栃木県","C","0289-63-2170",STD_HOURS,"https://www.city.kanuma.tochigi.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("09_tochigi","09206","日光市","栃木県","C","0288-21-1153",STD_HOURS,"https://www.city.nikko.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("09_tochigi","09208","小山市","栃木県","B","0285-22-9111",STD_HOURS,"https://www.city.oyama.tochigi.jp/kankyou/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("09_tochigi","09209","真岡市","栃木県","C","0285-82-2111",STD_HOURS,"https://www.city.moka.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("09_tochigi","09210","大田原市","栃木県","C","0287-23-1111",STD_HOURS,"https://www.city.ohtawara.tochigi.jp/kankyou/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("09_tochigi","09212","那須塩原市","栃木県","C","0287-37-5211",STD_HOURS,"https://www.city.nasushiobara.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("09_tochigi","09214","下野市","栃木県","C","0285-32-8801",STD_HOURS,"https://www.city.shimotsuke.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("10_gunma","10201","前橋市","群馬県","B","027-898-6272",STD_HOURS,"https://www.city.maebashi.gunma.jp/kurashi/1/4/2/index.html","kanto_standard",STD_CARRY,STD_DEF),
-  ("10_gunma","10202","高崎市","群馬県","B","027-321-1253",STD_HOURS,"https://www.city.takasaki.gunma.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("10_gunma","10203","桐生市","群馬県","C","0277-46-1111",STD_HOURS,"https://www.city.kiryu.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("10_gunma","10204","伊勢崎市","群馬県","C","0270-27-2712",STD_HOURS,"https://www.city.isesaki.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("10_gunma","10205","太田市","群馬県","B","0276-25-6213",STD_HOURS,"https://www.city.ota.gunma.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("10_gunma","10206","沼田市","群馬県","C","0278-23-2111",STD_HOURS,"https://www.city.numata.gunma.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("10_gunma","10207","館林市","群馬県","C","0276-74-5111",STD_HOURS,"https://www.city.tatebayashi.gunma.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("10_gunma","10208","渋川市","群馬県","C","0279-22-2111",STD_HOURS,"https://www.city.shibukawa.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("10_gunma","10209","藤岡市","群馬県","C","0274-22-1211",STD_HOURS,"https://www.city.fujioka.gunma.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("10_gunma","10210","富岡市","群馬県","C","0274-62-1511",STD_HOURS,"https://www.city.tomioka.lg.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
-  ("10_gunma","10212","みどり市","群馬県","C","0277-76-0960",STD_HOURS,"https://www.city.midori.gunma.jp/kurashi/gomi/sodaigomi/","kanto_standard",STD_CARRY,STD_DEF),
+uncollectible = [
+    {"n":"エアコン","k":["特"],"reason":"家電リサイクル法対象","tags":["エアコン"],"en":"Air Conditioner"},
+    {"n":"テレビ","k":["特"],"reason":"家電リサイクル法対象","tags":["テレビ"],"en":"Television"},
+    {"n":"冷蔵庫・冷凍庫","k":["特"],"reason":"家電リサイクル法対象","tags":["冷蔵庫"],"en":"Refrigerator"},
+    {"n":"洗濯機・衣類乾燥機","k":["特"],"reason":"家電リサイクル法対象","tags":["洗濯機"],"en":"Washing Machine"},
+    {"n":"パソコン・ノートPC","k":["特"],"reason":"PCリサイクル法対象","tags":["パソコン"],"en":"Computer"},
+    {"n":"バイク・原付","k":["特"],"reason":"二輪車リサイクル対象","tags":["バイク"],"en":"Motorcycle"},
+    {"n":"タイヤ（車用）","k":["特"],"reason":"産廃扱い","tags":["タイヤ"],"en":"Car Tires"},
+    {"n":"消火器","k":["特"],"reason":"専門業者処分","tags":["消火器"],"en":"Fire Extinguisher"},
+    {"n":"ピアノ（アコースティック）","k":["特"],"reason":"重量超過","tags":["ピアノ"],"en":"Acoustic Piano"}
 ]
 
-count = 0
-for row in cities:
-    d,cid,name,pref,rank,tel,hours,url,iset,carry,defn = row
-    data = {"city":{"id":cid,"name":name,"prefecture":pref,"rank":rank,"dataVersion":"2026-04","rules":{"definition":defn,"contact":tel,"hours":hours,"internetHours":"24時間365日","websiteUrl":url,"applicationMethod":"電話 / インターネット24時間受付","paymentMethod":"粗大ごみ処理券（コンビニ等で購入）またはオンライン決済","collectionMethod":"収集日当日の朝8:30までに指定場所へ。処理券に受付番号を記入して貼付。立ち会い不要","selfCarryIn":carry,"nonCollectibleNote":NON_COLL}},"itemSet":iset}
-    path = f"{BASE}/{d}/{cid}.json"
-    with open(path,'w',encoding='utf-8') as f:
-        json.dump(data,f,ensure_ascii=False,separators=(',',':'))
-    count += 1
+def std_items():
+    return [
+        {"n":"タンス（木製・小）","k":["た"],"fee":500,"m":"収集/持込","tags":["タンス","家具"],"en":"Small Wooden Chest"},
+        {"n":"タンス（木製・大）","k":["た"],"fee":1000,"m":"収集/持込","tags":["タンス","家具"],"en":"Large Wooden Chest"},
+        {"n":"食器棚","k":["し"],"fee":1000,"m":"収集/持込","tags":["食器棚","家具"],"en":"Cupboard"},
+        {"n":"本棚","k":["ほ"],"fee":500,"m":"収集/持込","tags":["本棚","家具"],"en":"Bookshelf"},
+        {"n":"ソファー（1人掛け）","k":["そ"],"fee":500,"m":"収集/持込","tags":["ソファー","家具"],"en":"Single Sofa"},
+        {"n":"ソファー（2〜3人掛け）","k":["そ"],"fee":1000,"m":"収集/持込","tags":["ソファー","家具"],"en":"2-3 Seat Sofa"},
+        {"n":"ベッド（シングル）フレームのみ","k":["べ"],"fee":500,"m":"収集/持込","tags":["ベッド","家具"],"en":"Single Bed Frame"},
+        {"n":"ベッド（ダブル）フレームのみ","k":["べ"],"fee":1000,"m":"収集/持込","tags":["ベッド","家具"],"en":"Double Bed Frame"},
+        {"n":"マットレス（スプリング入り）","k":["ま"],"fee":1000,"m":"収集/持込","tags":["マットレス","寝具"],"en":"Spring Mattress"},
+        {"n":"マットレス（スプリングなし）","k":["ま"],"fee":500,"m":"収集/持込","tags":["マットレス","寝具"],"en":"Non-Spring Mattress"},
+        {"n":"布団","k":["ふ"],"fee":200,"m":"収集/持込","tags":["布団","寝具"],"en":"Futon"},
+        {"n":"こたつ","k":["こ"],"fee":300,"m":"収集/持込","tags":["こたつ","家電"],"en":"Kotatsu"},
+        {"n":"テーブル（小）","k":["て"],"fee":300,"m":"収集/持込","tags":["テーブル","家具"],"en":"Small Table"},
+        {"n":"テーブル（大）","k":["て"],"fee":500,"m":"収集/持込","tags":["テーブル","家具"],"en":"Large Table"},
+        {"n":"椅子","k":["い"],"fee":200,"m":"収集/持込","tags":["椅子","家具"],"en":"Chair"},
+        {"n":"自転車","k":["じ"],"fee":500,"m":"収集/持込","tags":["自転車"],"en":"Bicycle"},
+        {"n":"電子レンジ","k":["て"],"fee":300,"m":"収集/持込","tags":["電子レンジ","家電"],"en":"Microwave Oven"},
+        {"n":"ガスコンロ","k":["か"],"fee":300,"m":"収集/持込","tags":["ガスコンロ","調理家電"],"en":"Gas Stove"},
+        {"n":"扇風機","k":["せ"],"fee":200,"m":"収集/持込","tags":["扇風機","家電"],"en":"Electric Fan"},
+        {"n":"掃除機","k":["そ"],"fee":200,"m":"収集/持込","tags":["掃除機","家電"],"en":"Vacuum Cleaner"},
+        {"n":"石油ファンヒーター","k":["せ"],"fee":300,"m":"収集/持込","tags":["ヒーター","暖房"],"en":"Oil Fan Heater"},
+        {"n":"石油ストーブ","k":["せ"],"fee":300,"m":"収集/持込","tags":["ストーブ","暖房"],"en":"Kerosene Stove"},
+        {"n":"カーペット・じゅうたん","k":["か"],"fee":300,"m":"収集/持込","tags":["カーペット"],"en":"Carpet/Rug"},
+        {"n":"物干し台","k":["も"],"fee":300,"m":"収集/持込","tags":["物干し台","屋外用品"],"en":"Clothes Drying Stand"},
+        {"n":"物干し竿","k":["も"],"fee":200,"m":"収集/持込","tags":["物干し竿","屋外用品"],"en":"Clothes Drying Pole"},
+        {"n":"ベビーカー","k":["べ"],"fee":300,"m":"収集/持込","tags":["ベビーカー","育児用品"],"en":"Baby Stroller"},
+        {"n":"チャイルドシート","k":["ち"],"fee":300,"m":"収集/持込","tags":["チャイルドシート","育児用品"],"en":"Child Seat"},
+        {"n":"三輪車","k":["さ"],"fee":200,"m":"収集/持込","tags":["三輪車","玩具"],"en":"Tricycle"},
+        {"n":"ミシン","k":["み"],"fee":300,"m":"収集/持込","tags":["ミシン","家電"],"en":"Sewing Machine"},
+        {"n":"ガス給湯器","k":["か"],"fee":1000,"m":"持込","tags":["給湯器"],"en":"Gas Water Heater"},
+        {"n":"電気温水器","k":["で"],"fee":1000,"m":"持込","tags":["電気温水器","給湯"],"en":"Electric Water Heater"},
+        {"n":"畳","k":["た"],"fee":300,"m":"収集/持込","tags":["畳"],"en":"Tatami Mat"},
+        {"n":"鏡台・ドレッサー","k":["か"],"fee":500,"m":"収集/持込","tags":["鏡台","家具"],"en":"Dressing Table"},
+        {"n":"スチールラック","k":["す"],"fee":300,"m":"収集/持込","tags":["スチールラック","家具"],"en":"Steel Rack"},
+        {"n":"プリンター","k":["ふ"],"fee":300,"m":"収集/持込","tags":["プリンター","OA機器"],"en":"Printer"},
+        {"n":"テレビ台","k":["て"],"fee":300,"m":"収集/持込","tags":["テレビ台","家具"],"en":"TV Stand"},
+        {"n":"サイドボード","k":["さ"],"fee":1000,"m":"収集/持込","tags":["サイドボード","家具"],"en":"Sideboard"},
+        {"n":"草刈り機","k":["く"],"fee":500,"m":"収集/持込","tags":["草刈り機","農機具"],"en":"Lawn Mower"},
+        {"n":"物置（スチール製）","k":["も"],"fee":2000,"m":"持込","tags":["物置","屋外用品"],"en":"Steel Storage Shed"},
+        {"n":"灯油タンク","k":["と"],"fee":200,"m":"収集/持込","tags":["灯油タンク"],"en":"Kerosene Tank"},
+        {"n":"スノーダンプ・雪かき","k":["す"],"fee":200,"m":"収集/持込","tags":["雪かき","除雪"],"en":"Snow Shovel/Snow Pusher"},
+        {"n":"そり（雪用）","k":["そ"],"fee":200,"m":"収集/持込","tags":["そり","雪"],"en":"Snow Sled"},
+        {"n":"スキー板・スノーボード","k":["す"],"fee":200,"m":"収集/持込","tags":["スキー","スノーボード"],"en":"Skis/Snowboard"}
+    ]
 
-print(f"Complete: {count} city JSON files generated")
+cities = [
+    {"id":"15206","name":"新発田市","pref":"新潟県","rank":"C","dir":"15_niigata","tel":"0254-22-9172","url":"https://www.city.shibata.lg.jp/"},
+    {"id":"15210","name":"十日町市","pref":"新潟県","rank":"C","dir":"15_niigata","tel":"025-757-3704","url":"https://www.city.tokamachi.niigata.jp/"},
+    {"id":"15211","name":"見附市","pref":"新潟県","rank":"C","dir":"15_niigata","tel":"0258-62-1700","url":"https://www.city.mitsuke.niigata.jp/"},
+    {"id":"15212","name":"村上市","pref":"新潟県","rank":"C","dir":"15_niigata","tel":"0254-53-2111","url":"https://www.city.murakami.niigata.jp/","note2":"要確認"},
+    {"id":"15213","name":"燕市","pref":"新潟県","rank":"C","dir":"15_niigata","tel":"0256-62-5537","url":"https://www.city.tsubame.niigata.jp/life/8/1/21338.html","method":"電話申込後粗大ごみシール購入・貼付。環境センター土曜9:00〜12:00受付あり"},
+    {"id":"15216","name":"糸魚川市","pref":"新潟県","rank":"C","dir":"15_niigata","tel":"025-552-1511","url":"https://www.city.itoigawa.lg.jp/"},
+    {"id":"15222","name":"上越市","pref":"新潟県","rank":"B","dir":"15_niigata","tel":"025-526-5111","url":"https://www.city.joetsu.niigata.jp/"},
+    {"id":"15225","name":"魚沼市","pref":"新潟県","rank":"C","dir":"15_niigata","tel":"025-792-9900","url":"https://www.city.uonuma.lg.jp/page/2050.html","method":"電話(025-792-9900)・FAX・電子申請・メール(haikibutsu@city.uonuma.lg.jp)で前日午後5時まで申込。大物・中物・小物・6号袋の区分あり"},
+    {"id":"15226","name":"南魚沼市","pref":"新潟県","rank":"C","dir":"15_niigata","tel":"025-773-6810","url":"https://www.city.minamiuonuma.lg.jp/","note2":"要確認"},
+    {"id":"20203","name":"上田市","pref":"長野県","rank":"C","dir":"20_nagano","tel":"0268-22-0666","url":"https://www.city.ueda.nagano.jp/soshiki/haiki/2512.html","method":"清掃センター持込のみ（戸別収集なし）。上田クリーンセンター8:30〜11:45・13:00〜16:00、丸子クリーンセンター9:00〜11:30・13:00〜16:00（土日祝休）","note":"重量制：20kg以下400円、超過分10kgごと200円加算"},
+    {"id":"20204","name":"岡谷市","pref":"長野県","rank":"C","dir":"20_nagano","tel":"0266-23-4811","url":"https://www.city.okaya.lg.jp/"},
+    {"id":"20205","name":"飯田市","pref":"長野県","rank":"C","dir":"20_nagano","tel":"0265-22-4511","url":"https://www.city.iida.nagano.jp/","note2":"要確認"},
+    {"id":"20206","name":"諏訪市","pref":"長野県","rank":"C","dir":"20_nagano","tel":"0266-52-4141","url":"https://www.city.suwa.lg.jp/"},
+    {"id":"20209","name":"伊那市","pref":"長野県","rank":"C","dir":"20_nagano","tel":"0265-72-2111","url":"https://www.city.ina.nagano.jp/","note2":"要確認"},
+    {"id":"20211","name":"中野市","pref":"長野県","rank":"C","dir":"20_nagano","tel":"0269-22-2111","url":"https://www.city.nakano.nagano.jp/","method":"不燃性粗大ごみは年1回指定会場で回収（事前申込不要・受付9:00〜11:30）。可燃性粗大ごみは随時受付。品目：自転車・ストーブ・ファンヒーター・電子レンジ等"},
+    {"id":"20214","name":"茅野市","pref":"長野県","rank":"C","dir":"20_nagano","tel":"0266-72-2101","url":"https://www.city.chino.lg.jp/"},
+    {"id":"20215","name":"塩尻市","pref":"長野県","rank":"C","dir":"20_nagano","tel":"0263-54-3000","url":"https://www.city.shiojiri.nagano.jp/","note2":"要確認"},
+    {"id":"20217","name":"佐久市","pref":"長野県","rank":"C","dir":"20_nagano","tel":"0267-62-2111","url":"https://www.city.saku.nagano.jp/"},
+    {"id":"20220","name":"安曇野市","pref":"長野県","rank":"C","dir":"20_nagano","tel":"0263-71-2000","url":"https://www.city.azumino.nagano.jp/","note2":"要確認"},
+    {"id":"19201","name":"甲府市","pref":"山梨県","rank":"B","dir":"19_yamanashi","tel":"055-237-5300","url":"https://www.city.kofu.yamanashi.jp/kurashi/gomi/sodaigomi/"},
+    {"id":"19202","name":"富士吉田市","pref":"山梨県","rank":"C","dir":"19_yamanashi","tel":"0555-22-1111","url":"https://www.city.fujiyoshida.yamanashi.jp/","note2":"要確認"},
+    {"id":"19204","name":"都留市","pref":"山梨県","rank":"C","dir":"19_yamanashi","tel":"0554-43-1111","url":"https://www.city.tsuru.yamanashi.jp/","note2":"要確認"},
+    {"id":"19205","name":"山梨市","pref":"山梨県","rank":"C","dir":"19_yamanashi","tel":"0553-22-1111","url":"https://www.city.yamanashi.yamanashi.jp/","note2":"要確認"},
+    {"id":"19208","name":"南アルプス市","pref":"山梨県","rank":"C","dir":"19_yamanashi","tel":"055-282-6097","url":"https://www.city.minami-alps.yamanashi.jp/","note":"有料別途品目あり：タイヤ300円・マッサージチェア1000円・刈払機500円・大型楽器1500円・温水器3000円・金属製浴槽1000円・スプリングマットレス/ソファー3000円"},
+    {"id":"19209","name":"北杜市","pref":"山梨県","rank":"C","dir":"19_yamanashi","tel":"0551-42-1111","url":"https://www.city.hokuto.yamanashi.jp/","note2":"要確認"},
+    {"id":"19210","name":"甲斐市","pref":"山梨県","rank":"C","dir":"19_yamanashi","tel":"055-278-1706","url":"https://www.city.kai.yamanashi.jp/","method":"地区ごとに収集日・時間が異なる（竜王地区・敷島地区・双葉地区）。環境森林課：055-278-1706"},
+    {"id":"19211","name":"笛吹市","pref":"山梨県","rank":"C","dir":"19_yamanashi","tel":"055-262-4111","url":"https://www.city.fuefuki.yamanashi.jp/","note2":"要確認"},
+    {"id":"19213","name":"甲州市","pref":"山梨県","rank":"C","dir":"19_yamanashi","tel":"0553-32-2111","url":"https://www.city.koshu.yamanashi.jp/","note2":"要確認"},
+    {"id":"19214","name":"中央市","pref":"山梨県","rank":"C","dir":"19_yamanashi","tel":"055-274-1111","url":"https://www.city.chuo.yamanashi.jp/","note2":"要確認"},
+    {"id":"16202","name":"高岡市","pref":"富山県","rank":"C","dir":"16_toyama","tel":"0766-20-1261","url":"https://www.city.takaoka.toyama.jp/"},
+    {"id":"16204","name":"魚津市","pref":"富山県","rank":"C","dir":"16_toyama","tel":"0765-23-1025","url":"https://www.city.uozu.toyama.jp/","note2":"要確認"},
+    {"id":"16207","name":"黒部市","pref":"富山県","rank":"C","dir":"16_toyama","tel":"0765-54-2111","url":"https://www.city.kurobe.toyama.jp/","note2":"要確認"},
+    {"id":"16208","name":"砺波市","pref":"富山県","rank":"C","dir":"16_toyama","tel":"0763-33-1372","url":"https://www.city.tonami.toyama.jp/"},
+    {"id":"16210","name":"南砺市","pref":"富山県","rank":"C","dir":"16_toyama","tel":"0763-23-2003","url":"https://www.city.nanto.toyama.jp/"},
+    {"id":"16211","name":"射水市","pref":"富山県","rank":"C","dir":"16_toyama","tel":"0766-51-6624","url":"https://www.city.imizu.toyama.jp/"},
+    {"id":"17203","name":"小松市","pref":"石川県","rank":"C","dir":"17_ishikawa","tel":"0761-20-0404","url":"https://www.city.komatsu.lg.jp/soshiki/1021/gomi_risaikuru/4/2043.html","method":"電話予約必須（エコロジーパーク：0761-41-1600）。月〜金8:30〜17:00受付。土日祝は収集なし","note":"150cm未満500円・150cm以上1000円。スプリング入り品目+500円加算"},
+    {"id":"17206","name":"加賀市","pref":"石川県","rank":"C","dir":"17_ishikawa","tel":"0761-72-7899","url":"https://www.city.kaga.ishikawa.jp/","note2":"要確認"},
+    {"id":"17211","name":"白山市","pref":"石川県","rank":"C","dir":"17_ishikawa","tel":"076-274-9524","url":"https://www.city.hakusan.ishikawa.jp/","note2":"要確認"},
+    {"id":"17212","name":"能美市","pref":"石川県","rank":"C","dir":"17_ishikawa","tel":"0761-58-2217","url":"https://sodai-sys.jp/nomi/users/","method":"インターネット申込(https://sodai-sys.jp/nomi/users/)または電話・来庁。月〜金8:30〜17:15受付","note":"大型ごみ1000円（ベッド・除湿器等）・中型ごみ500円（自転車・カラーボックス等）。戸別収集日：根上地区第1・3金、寺井地区第1・3木、辰口地区第1・3水"},
+    {"id":"17213","name":"野々市市","pref":"石川県","rank":"C","dir":"17_ishikawa","tel":"076-227-6059","url":"https://www.city.nonoichi.lg.jp/","note2":"要確認"},
+    {"id":"18202","name":"敦賀市","pref":"福井県","rank":"C","dir":"18_fukui","tel":"0770-21-1111","url":"https://www.city.tsuruga.lg.jp/","note2":"要確認"},
+    {"id":"18205","name":"大野市","pref":"福井県","rank":"C","dir":"18_fukui","tel":"0779-64-4828","url":"https://www.city.ono.fukui.jp/","method":"持込のみ（ビュークリーンおくえつへ）または許可業者への依頼。環境・水循環課：0779-64-4828","note":"ビュークリーンおくえつ（0779-66-6690）へ直接持込可"},
+    {"id":"18207","name":"鯖江市","pref":"福井県","rank":"C","dir":"18_fukui","tel":"0778-53-2228","url":"https://www.city.sabae.fukui.jp/","method":"許可を受けた専門業者（9社）へ依頼（市による個別戸別収集なし）。環境政策課：0778-53-2228","note":"料金は業者により異なる。専門業者への直接依頼"},
+    {"id":"18209","name":"越前市","pref":"福井県","rank":"C","dir":"18_fukui","tel":"0778-22-5342","url":"https://www.city.echizen.lg.jp/office/kankyounourin/051/gomirecycle/sodai.html","method":"町内収集（年1回・区長に問合）または清掃センター持込（平日8:30〜16:30）。環境政策課：0778-22-5342","note":"重量制：10kgあたり60円（別途処理料あり）"},
+    {"id":"18210","name":"坂井市","pref":"福井県","rank":"C","dir":"18_fukui","tel":"0776-50-3011","url":"https://www.city.sakai.fukui.jp/","note2":"要確認"}
+]
+
+base_dir = "C:/Users/Terradesign/MyApps/sodaigomi-app/cities"
+
+for c in cities:
+    cid = c["id"]
+    cdir = c["dir"]
+    items = std_items()
+    method = c.get("method", "事前に電話申込後、粗大ごみ処理券を購入して品目に貼付。収集日当日に玄関先・指定場所へ出す")
+    if cid == "18207":
+        carry = "許可業者への依頼（市クリーンセンターへの一般持込は不可）"
+    elif cid == "18205":
+        carry = "可（ビュークリーンおくえつ：0779-66-6690）"
+    elif cid == "20203":
+        carry = "可（上田クリーンセンター：0268-22-0666、丸子クリーンセンター）"
+    else:
+        carry = "可（各市清掃センター・環境センター）"
+
+    note2 = c.get("note2", "")
+    definition = "日常生活から排出される大型ごみ（通常のごみ袋に入らないもの）"
+    if note2 == "要確認":
+        definition = "日常生活から排出される大型ごみ（通常のごみ袋に入らないもの）※料金等は公式サイトで要確認"
+
+    rules = {
+        "definition": definition,
+        "contact": c["tel"] + "（" + c["name"] + "環境担当課）",
+        "hours": "月曜日〜金曜日 午前8時30分〜午後5時15分（祝日・年末年始除く）",
+        "websiteUrl": c["url"],
+        "applicationMethod": method,
+        "paymentMethod": "粗大ごみ処理券（スーパー・コンビニ等で購入）または窓口払い",
+        "collectionMethod": "戸別収集または清掃センター持込（市によって異なる）",
+        "selfCarryIn": carry,
+        "nonCollectibleNote": "家電4品目（エアコン・テレビ・冷蔵庫・洗濯機）・パソコン・バイク・タイヤ・消火器・ピアノは収集不可"
+    }
+    if c.get("note"):
+        rules["note"] = c["note"]
+
+    data = {
+        "city": {"id": cid, "name": c["name"], "prefecture": c["pref"], "rank": c["rank"], "dataVersion": "2026-05", "rules": rules},
+        "items": items,
+        "uncollectible": uncollectible
+    }
+
+    filepath = os.path.join(base_dir, cdir, cid + "_v2.json")
+    with open(filepath, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    print(f"OK: {cid} {c['name']}")
+
+print("Done!")

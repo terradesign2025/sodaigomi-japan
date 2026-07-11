@@ -24,6 +24,17 @@ WARDS = [
     ('13121', 'adachi'), ('13122', 'katsushika'), ('13123', 'edogawa'),
 ]
 
+# 主要都市（政令指定都市＋八王子）。23区と同じテンプレートで生成する
+MAJOR_CITIES = [
+    ('27100', 'osaka'), ('14100', 'yokohama'), ('23100', 'nagoya'), ('01100', 'sapporo'),
+    ('40130', 'fukuoka'), ('26100', 'kyoto'), ('11100', 'saitama'), ('13201', 'hachioji'),
+    ('14130', 'kawasaki'), ('12100', 'chiba'), ('28100', 'kobe'), ('04100', 'sendai'),
+    ('34100', 'hiroshima'), ('27140', 'sakai'), ('15100', 'niigata'), ('22100', 'shizuoka'),
+    ('14150', 'sagamihara'), ('33100', 'okayama'), ('43100', 'kumamoto'),
+    ('40100', 'kitakyushu'), ('22130', 'hamamatsu'),
+]
+ROMAJI = dict(WARDS) | dict(MAJOR_CITIES)
+
 # よく検索される品目（この順で最大18件拾う）
 POPULAR_KEYWORDS = [
     'ソファ', 'ベッド', 'マットレス', 'タンス', '布団', '自転車', 'テーブル', '椅子',
@@ -138,14 +149,19 @@ def esc(s):
 
 
 def fee_str(fee):
-    if isinstance(fee, (int, float)) and fee > 0:
-        return f'{int(fee):,}円'
+    if isinstance(fee, (int, float)):
+        return '無料' if fee == 0 else f'{int(fee):,}円'
     return '—'
 
 
+def has_fee(it):
+    return isinstance(it.get('fee'), (int, float)) and it['fee'] >= 0
+
+
 def load_ward(cid):
-    path = os.path.join(ROOT, 'cities', '13_tokyo', f'{cid}_v2.json')
-    with open(path, encoding='utf-8') as f:
+    import glob as _glob
+    paths = _glob.glob(os.path.join(ROOT, 'cities', '*', f'{cid}_v2.json'))
+    with open(paths[0], encoding='utf-8') as f:
         data = json.load(f)
     city = data.get('city') or {}
     items = data.get('items') or city.get('items') or []
@@ -163,23 +179,84 @@ def popular_items(items, limit=24):
     for kw in POPULAR_KEYWORDS:
         for it in items:
             n = it.get('n', '')
-            if kw in n and n not in used and isinstance(it.get('fee'), (int, float)) and it['fee'] > 0:
+            if kw in n and n not in used and has_fee(it):
                 picked.append(it)
                 used.add(n)
                 break
         if len(picked) >= limit:
             break
+    # キーワード一致が少ない都市は、残りを収録順で補完（表の情報量を確保）
+    if len(picked) < limit:
+        for it in items:
+            n = it.get('n', '')
+            if n not in used and has_fee(it):
+                picked.append(it)
+                used.add(n)
+                if len(picked) >= limit:
+                    break
     return picked
 
 
+def uniform_fee_para(w, fmin, fmax):
+    """均一料金制の都市向け解説（さいたま市等）"""
+    if fmin is None or fmin != fmax:
+        return ''
+    name, items = w['name'], w['items']
+    note = next((it.get('note') for it in items if it.get('note')), '')
+    note_txt = f'対象の目安は「{esc(note)}」とされています。' if note else ''
+    m = next((it.get('m') for it in items if it.get('m')), '')
+    m_txt = f'出し方の区分は「{esc(m)}」です。' if m else ''
+    return (f'<h3>{esc(name)}は品目によらない均一料金制です</h3>'
+            f'<p>{esc(name)}の収録データでは、粗大ごみの手数料は品目にかかわらず1点{fee_str(fmin)}の均一料金になっています。'
+            f'{note_txt}{m_txt}'
+            f'「この家具はいくらだろう」と品目ごとに調べる必要がない、わかりやすい制度です。'
+            f'ただし、サイズが基準に満たないものは通常ごみ、大きすぎるものは受付対象外となる場合があるため、'
+            f'迷ったら申込み時に寸法を伝えて確認しましょう。</p>')
+
+
+def base_plus_exception_para(w):
+    """「一般◯円＋例外品目」型の料金体系解説（さいたま市等・収録品目が少ない都市向け）"""
+    name, items = w['name'], w['items']
+    if len(items) >= 20:
+        return ''
+    base = next((it for it in items if '一般' in it.get('n', '') and has_fee(it)), None)
+    if not base:
+        return ''
+    exceptions = [it for it in items if has_fee(it) and it['fee'] != base['fee'] and it is not base]
+    exc_txt = ''
+    if exceptions:
+        tops = sorted(exceptions, key=lambda x: -x['fee'])[:4]
+        exc_txt = ('ただし、' + '、'.join(f'{esc(t["n"])}（{fee_str(t["fee"])}）' for t in tops) +
+                   'など、処理に手間がかかる品目は個別の料金が設定されています。')
+    note = base.get('note') or ''
+    note_txt = f'対象の目安は「{esc(note)}」とされています。' if note else ''
+    return (f'<h3>{esc(name)}の料金体系はシンプルです</h3>'
+            f'<p>{esc(name)}の収録データでは、一般的な家具・家電などの粗大ごみは「{esc(base["n"])}」として'
+            f'1点{fee_str(base["fee"])}に統一されています。{note_txt}'
+            f'品目ごとに料金を調べる手間が少ないわかりやすい制度です。{exc_txt}'
+            f'ご自身の品物がどちらに当たるか迷う場合は、申込み時に品目と寸法を伝えて確認しておくと、'
+            f'処理券の買い間違いを防げます。</p>')
+
+
+def fee_distribution_para(items, name):
+    fees = [int(it['fee']) for it in items if has_fee(it)]
+    if len(fees) < 5:
+        return ''
+    from collections import Counter
+    mode_fee, mode_cnt = Counter(fees).most_common(1)[0]
+    return (f'<p>収録データを集計すると、{esc(name)}の粗大ごみは全{len(fees)}品目のうち'
+            f'最も多い手数料が{mode_fee:,}円（{mode_cnt}品目）で、最低{min(fees):,}円〜最高{max(fees):,}円の範囲に分布しています。'
+            f'手数料は品物のサイズや種類で決まるため、申込み前に品目ごとの金額を確認しておくと、処理券の買い間違いを防げます。</p>')
+
+
 def fee_range(items):
-    fees = [it['fee'] for it in items if isinstance(it.get('fee'), (int, float)) and it['fee'] > 0]
-    return (int(min(fees)), int(max(fees))) if fees else (None, None)
+    fees = [int(it['fee']) for it in items if has_fee(it)]
+    return (min(fees), max(fees)) if fees else (None, None)
 
 
 def find_item(items, kw):
     for it in items:
-        if kw in it.get('n', '') and isinstance(it.get('fee'), (int, float)) and it['fee'] > 0:
+        if kw in it.get('n', '') and has_fee(it):
             return it
     return None
 
@@ -188,7 +265,7 @@ def top_fee_items(items, pops, limit=10):
     """高額品目トップN（早見表と重複しないもの）"""
     used = {p.get('n') for p in pops}
     cand = [it for it in items
-            if isinstance(it.get('fee'), (int, float)) and it['fee'] > 0 and it.get('n') not in used]
+            if has_fee(it) and it.get('n') not in used]
     cand.sort(key=lambda x: (-x['fee'], x.get('n', '')))
     return cand[:limit]
 
@@ -218,6 +295,18 @@ def item_detail_paras(w):
             f'<h3>布団を捨てる場合</h3>'
             f'<p>{esc(name)}では「{esc(futon["n"])}」が{fee_str(futon["fee"])}です。紐でしばってまとめ、処理券が見えるように貼って出します。'
             f'毛布・こたつ布団の扱いは品目区分の確認をおすすめします。</p>')
+    # ソファ・ベッド・布団が収録にない都市は、高額品目の解説で補完
+    if len(paras) < 2:
+        used_kw = {'ソファ', 'ベッド', '布団'}
+        cand = sorted(
+            [it for it in items if has_fee(it) and it['fee'] > 0
+             and not any(k in it.get('n', '') for k in used_kw)],
+            key=lambda x: -x['fee'])
+        for it in cand[:3 - len(paras)]:
+            paras.append(
+                f'<h3>{esc(it["n"])}を捨てる場合</h3>'
+                f'<p>{esc(name)}では「{esc(it["n"])}」が{fee_str(it["fee"])}です。大型で重さのある品物は搬出時のけがを防ぐため2人以上での運び出しをおすすめします。'
+                f'サイズによって区分が変わる場合があるため、申込み時に寸法を伝えて金額を確定させておくと安心です。</p>')
     return ''.join(paras)
 
 
@@ -256,10 +345,10 @@ def build_faq(w, fmin, fmax):
     return qa[:5]
 
 
-def ward_page(w, all_wards):
+def ward_page(w, group, category='東京23区ガイド', grid_title='東京23区のほかの区のガイド'):
     cid, name = w['id'], w['name']
     r, items = w['rules'], w['items']
-    romaji = dict(WARDS)[cid]
+    romaji = ROMAJI[cid]
     slug = f'{romaji}-sodaigomi-guide'
     path = f'/blog/{slug}.html'
     n_items = len(items)
@@ -363,10 +452,10 @@ def ward_page(w, all_wards):
 {''.join(unc_parts)}
 <p>冷蔵庫・テレビ・洗濯機・エアコンなどの家電リサイクル法対象品の正しい処分方法は、<a href="refrigerator-disposal-guide.html">冷蔵庫の処分ガイド</a>で詳しく解説しています。</p>'''
 
-    # ---- 他区リンク ----
+    # ---- 同グループの他都市リンク ----
     other_links = ''.join(
-        f'<a href="{dict(WARDS)[oid]}-sodaigomi-guide.html">{esc(oname)}</a>'
-        for oid, oname in all_wards if oid != cid
+        f'<a href="{ROMAJI[oid]}-sodaigomi-guide.html">{esc(oname)}</a>'
+        for oid, oname in group if oid != cid
     )
 
     # ---- FAQ ----
@@ -416,7 +505,7 @@ def ward_page(w, all_wards):
 </header>
 
 <div class="article-hero">
-  <div class="article-category">東京23区ガイド</div>
+  <div class="article-category">{esc(category)}</div>
   <h1>{esc(name)}の粗大ごみ完全ガイド<br>【申込み方法・料金・持ち込み】</h1>
   <div class="article-meta">
     <span>📅 {DATE_JP}</span>
@@ -512,6 +601,12 @@ def ward_page(w, all_wards):
 
     <p class="note-box">{ver_note}同じ品目でもサイズにより手数料が変わる場合があります。掲載のない品目や正確な区分は<a href="/?city={cid}">検索アプリ</a>でご確認ください。</p>
 
+    {fee_distribution_para(items, name)}
+
+    {uniform_fee_para(w, fmin, fmax)}
+
+    {base_plus_exception_para(w)}
+
     {top_table}
 
     {detail_html}
@@ -535,7 +630,7 @@ def ward_page(w, all_wards):
       <a href="/?city={cid}" class="btn-cta">📱 {esc(name)}の料金を検索する</a>
     </div>
 
-    <h2>東京23区のほかの区のガイド</h2>
+    <h2>{esc(grid_title)}</h2>
     <div class="ward-grid">{other_links}</div>
 
     <div class="related-section">
@@ -575,24 +670,31 @@ def visible_chars(src):
 
 def main():
     results = []
-    for cid, romaji in WARDS:
+    for cid, _ in WARDS:
         w = load_ward(cid)
         slug, html_out = ward_page(w, ALL_NAMES)
-        out = os.path.join(ROOT, 'blog', f'{slug}.html')
-        with open(out, 'w', encoding='utf-8') as f:
+        with open(os.path.join(ROOT, 'blog', f'{slug}.html'), 'w', encoding='utf-8') as f:
             f.write(html_out)
-        chars = visible_chars(html_out)
-        results.append((slug, w['name'], chars))
-        print(f'  {slug}: {w["name"]} {chars}字')
+        results.append((slug, w['name'], visible_chars(html_out)))
+    for cid, _ in MAJOR_CITIES:
+        w = load_ward(cid)
+        slug, html_out = ward_page(w, MAJOR_NAMES, '都市別ガイド', '主要都市の粗大ごみガイド')
+        with open(os.path.join(ROOT, 'blog', f'{slug}.html'), 'w', encoding='utf-8') as f:
+            f.write(html_out)
+        results.append((slug, w['name'], visible_chars(html_out)))
+    for slug, name, chars in results:
+        print(f'  {slug}: {name} {chars}字')
     short = [r for r in results if r[2] < 3500]
     print(f'\n{len(results)} pages generated. under 3500 chars: {len(short)}')
     for s in short:
         print('  SHORT:', s)
 
 
-# 区名一覧（他区リンク用に先読み）
+# 他都市リンク用の名前一覧（実行時に先読み）
 ALL_NAMES = []
+MAJOR_NAMES = []
 
 if __name__ == '__main__':
     ALL_NAMES = [(cid, load_ward(cid)['name']) for cid, _ in WARDS]
+    MAJOR_NAMES = [(cid, load_ward(cid)['name']) for cid, _ in MAJOR_CITIES]
     main()
