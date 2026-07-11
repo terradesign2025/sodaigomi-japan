@@ -1,0 +1,29 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "カムカム",
+      "category": "リサイクルショップ",
+      "address": "千葉県千葉市中央区神明町24-26",
+      "phone": "043-244-6337",
+      "url": "https://iot.comecome.mobi/",
+      "note": "中古品・ヴィンテージ品も扱う独立系"
+    },
+    {
+      "name": "リサイクルショップレインボー千葉寺本店",
+      "category": "リサイクルショップ",
+      "address": "千葉県千葉市中央区千葉寺町1210-3",
+      "phone": "043-208-2424",
+      "url": "http://www5c.biglobe.ne.jp/~rainbow/",
+      "note": "地域密着の老舗"
+    },
+    {
+      "name": "リサイクルショップトラスティ",
+      "category": "リサイクルショップ",
+      "address": "千葉県千葉市若葉区西都賀1-15-4",
+      "phone": "043-256-9393",
+      "url": "https://recycleshoptrusty.jimdofree.com/",
+      "note": "家具家電雑貨中心の独立系"
+    }
+  ]
+}

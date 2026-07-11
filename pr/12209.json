@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "船橋市再生センターリサイクルショップ",
+      "category": "リサイクルショップ",
+      "address": "千葉県船橋市金杉町915-1",
+      "phone": "047-406-9530",
+      "url": null,
+      "note": "船橋市有価物回収協同組合運営"
+    },
+    {
+      "name": "アールショップ",
+      "category": "リサイクルショップ",
+      "address": "千葉県船橋市関屋2-3-44",
+      "phone": "047-474-1422",
+      "url": "https://www.r-shop-jp.com/",
+      "note": "独立系実店舗"
+    }
+  ]
+}

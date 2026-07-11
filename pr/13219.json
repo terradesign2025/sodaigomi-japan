@@ -1,0 +1,29 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルBOY狛江店",
+      "category": "リサイクルショップ",
+      "address": "東京都狛江市岩戸北3-14-23",
+      "phone": "03-3488-5220",
+      "url": "http://www.recycle-boy.com/komae.html",
+      "note": "古着・家具・家電等の買取販売"
+    },
+    {
+      "name": "カメラのイズミ",
+      "category": "リサイクルショップ",
+      "address": "東京都狛江市東和泉1-22-12",
+      "phone": "03-3488-3233",
+      "url": "https://itp.ne.jp/info/134353823100000899/",
+      "note": "中古カメラ専門"
+    },
+    {
+      "name": "サテライト",
+      "category": "不用品買取",
+      "address": "東京都狛江市岩戸北3-11-3",
+      "phone": "03-3489-5502",
+      "url": "https://www.2060.jp/column/recycling-shop/komae-recycle/",
+      "note": "中古オフィス家具中心"
+    }
+  ]
+}

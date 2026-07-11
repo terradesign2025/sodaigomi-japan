@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "ゴールドステーション東大和店",
+      "category": "リサイクルショップ",
+      "address": "東京都東大和市高木3-413-1",
+      "phone": "042-590-2288",
+      "url": "https://golragoon.com/shop/higashiyamato/",
+      "note": "ブランド品・貴金属・時計等"
+    },
+    {
+      "name": "相伝屋",
+      "category": "不用品買取",
+      "address": "東京都東大和市奈良橋1-276-2",
+      "phone": "042-843-6371",
+      "url": "https://www.sodenya-kaitori.com/",
+      "note": "出張買取・遺品整理"
+    }
+  ]
+}

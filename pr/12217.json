@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "愛品倶楽部柏店",
+      "category": "リサイクルショップ",
+      "address": "千葉県柏市十余二254-781",
+      "phone": "04-7142-8007",
+      "url": "https://www.aihin.co.jp/kashiwa/",
+      "note": "柏市地元発祥の総合リユース"
+    },
+    {
+      "name": "ときわ屋質店",
+      "category": "不用品買取",
+      "address": "千葉県柏市柏3-7-10",
+      "phone": "047-167-2445",
+      "url": null,
+      "note": "地域密着の質屋・買取店"
+    }
+  ]
+}

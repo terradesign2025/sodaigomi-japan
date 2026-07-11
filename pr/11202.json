@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップ タカキュー バイパス店",
+      "category": "リサイクルショップ",
+      "address": "埼玉県熊谷市肥塚1367-1",
+      "phone": "048-525-5969",
+      "url": "https://recycle-takaq.com/",
+      "note": "厨房用品/オフィス家具"
+    },
+    {
+      "name": "ブランドアクア",
+      "category": "不用品買取",
+      "address": "埼玉県熊谷市箱田6-5-1",
+      "phone": "0120-568-147",
+      "url": "https://brand-a.co.jp/",
+      "note": "質屋・古物商許可、創業20年"
+    }
+  ]
+}

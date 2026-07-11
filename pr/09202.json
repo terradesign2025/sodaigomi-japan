@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップBM足利店",
+      "category": "リサイクルショップ",
+      "address": "栃木県足利市八幡町2丁目22-6",
+      "phone": "0284-72-8679",
+      "url": null,
+      "note": "家電・家具・骨董品・古道具を扱う個人商店"
+    },
+    {
+      "name": "有限会社ホーエイ",
+      "category": "不用品買取",
+      "address": "栃木県足利市八椚町483-7",
+      "phone": "0284-44-1214",
+      "url": "https://outletshop-hoei.com/",
+      "note": "創業20年以上・生前/遺品整理まで対応"
+    }
+  ]
+}

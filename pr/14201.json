@@ -1,0 +1,45 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "DSリサイクルショップタケダ",
+      "category": "リサイクルショップ",
+      "address": "横須賀市久里浜4-7-2",
+      "phone": "046-835-6036",
+      "url": "https://www.recycleshop-takeda.com/",
+      "note": "昭和40年創業の老舗"
+    },
+    {
+      "name": "リサイクル・サン衣笠店",
+      "category": "リサイクルショップ",
+      "address": "横須賀市佐野町6-22",
+      "phone": "046-851-5444",
+      "url": null,
+      "note": "家具・家電等のリユース販売店"
+    },
+    {
+      "name": "トロピカルリサイクルショップ",
+      "category": "不用品買取",
+      "address": "横須賀市追浜町2-14",
+      "phone": "0120-236373",
+      "url": "https://www.tropical-recycleshop.net/",
+      "note": "家具・家電・骨董等幅広く買取"
+    },
+    {
+      "name": "ミタテリサイクル",
+      "category": "不用品買取",
+      "address": "横須賀市浦賀丘3-6-5",
+      "phone": "0120-429770",
+      "url": "https://www.mitate-recycle.com/",
+      "note": "遺品整理・生前整理も対応"
+    },
+    {
+      "name": "リサイクルショップキララ",
+      "category": "不用品買取",
+      "address": "横須賀市米が浜通1-1-8",
+      "phone": "046-824-4124",
+      "url": "https://www.mapion.co.jp/phonebook/M02013/14201/21431151975/",
+      "note": "横須賀中央駅東口徒歩約5分"
+    }
+  ]
+}

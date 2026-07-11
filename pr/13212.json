@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップりんご",
+      "category": "不用品買取",
+      "address": "東京都日野市三沢3-7-4",
+      "phone": "0120-201885",
+      "url": "https://www.ekiten.jp/shop_3737783/",
+      "note": "地域密着型リサイクルショップ"
+    },
+    {
+      "name": "リサイクルショップハートリボン",
+      "category": "不用品買取",
+      "address": "東京都日野市東豊田1-17-1",
+      "phone": "042-514-9511",
+      "url": "https://www.ekiten.jp/shop_6293683/",
+      "note": "地域密着リサイクルショップ"
+    }
+  ]
+}

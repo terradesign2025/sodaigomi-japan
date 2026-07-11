@@ -1,0 +1,29 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップなじみや",
+      "category": "リサイクルショップ",
+      "address": "伊勢原市石田667-6",
+      "phone": "0463-95-4919",
+      "url": "https://www.najimiya.com/",
+      "note": "愛甲石田駅南口徒歩2分"
+    },
+    {
+      "name": "なじみや",
+      "category": "不用品買取",
+      "address": "伊勢原市石田667-6",
+      "phone": "0463-95-4919",
+      "url": "https://www.najimiya.com/",
+      "note": "家具家電の出張・店頭買取"
+    },
+    {
+      "name": "WEショップいせはら",
+      "category": "不用品買取",
+      "address": "伊勢原市石田670-7",
+      "phone": "0463-96-5752",
+      "url": null,
+      "note": "地域密着リサイクルショップ"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップ オクト",
+      "category": "リサイクルショップ",
+      "address": "東京都東村山市萩山町4-1-10",
+      "phone": "042-395-0314",
+      "url": "https://okuto.info/",
+      "note": "幅広く買取"
+    },
+    {
+      "name": "ガリバーハウス有限会社",
+      "category": "不用品買取",
+      "address": "東京都東村山市秋津町5-38-9",
+      "phone": "042-395-8999",
+      "url": "https://www.gulliver-house.com/",
+      "note": "家電・家具・整理品の買取"
+    },
+    {
+      "name": "総合リサイクルエコリンク",
+      "category": "不用品買取",
+      "address": "東京都東村山市恩多町5-38-22",
+      "phone": "042-306-4191",
+      "url": "https://eco-links.jp/",
+      "note": "不用品高価買取・生前整理兼業"
+    }
+  ]
+}

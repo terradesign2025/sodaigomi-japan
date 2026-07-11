@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップA 本庄店",
+      "category": "リサイクルショップ",
+      "address": "埼玉県本庄市小島721-1",
+      "phone": "0495-27-2261",
+      "url": "https://lifeindexa.com/",
+      "note": "中古オフィス家具中心"
+    },
+    {
+      "name": "フリマハイクラス",
+      "category": "不用品買取",
+      "address": "埼玉県本庄市緑1-1-5",
+      "phone": "0495-23-0730",
+      "url": "https://f-high-class.jp/",
+      "note": "本庄市内唯一の独立系質屋・買取店"
+    }
+  ]
+}

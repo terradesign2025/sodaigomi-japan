@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "丸和質商",
+      "category": "不用品買取",
+      "address": "埼玉県所沢市松葉町10-13",
+      "phone": "04-2992-0951",
+      "url": "https://7maruwa.com/",
+      "note": "埼玉県公安委員会許可の独立系質屋"
+    },
+    {
+      "name": "倉庫市",
+      "category": "リサイクルショップ",
+      "address": "埼玉県所沢市上新井2-70-11",
+      "phone": "04-2929-5920",
+      "url": "http://www.sokoichi.jp/",
+      "note": "所沢市に本社を置く地元密着型"
+    }
+  ]
+}

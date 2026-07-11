@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップねぎぼうず深谷店",
+      "category": "リサイクルショップ",
+      "address": "埼玉県深谷市東方町2-24-11",
+      "phone": "048-594-6676",
+      "url": null,
+      "note": "家具・家電製品・電動工具・楽器等"
+    },
+    {
+      "name": "エコハウス買取専門店深谷店",
+      "category": "不用品買取",
+      "address": "埼玉県深谷市菅沼587-8",
+      "phone": "048-577-8727",
+      "url": "https://kaitori-ecohouse.com/",
+      "note": "出張買取専門"
+    }
+  ]
+}

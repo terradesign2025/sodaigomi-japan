@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "古美術竜法堂",
+      "category": "リサイクルショップ",
+      "address": "埼玉県久喜市青毛2-6-7",
+      "phone": "0480-53-8970",
+      "url": "https://map.goo.ne.jp/place/RHR7URHC/",
+      "note": "骨董・レコード買取中心"
+    },
+    {
+      "name": "買取ファースト久喜店",
+      "category": "不用品買取",
+      "address": "埼玉県久喜市青毛1-7-1",
+      "phone": "0480-53-6477",
+      "url": "https://www.ekiten.jp/shop_80472423/",
+      "note": "地元密着型ブランド・貴金属買取"
+    }
+  ]
+}

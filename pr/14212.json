@@ -1,0 +1,29 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "コレクションシバ",
+      "category": "リサイクルショップ",
+      "address": "厚木市中町3-4-4",
+      "phone": "046-221-3848",
+      "url": "https://www.collection-shiba.co.jp/",
+      "note": "質屋・貴金属買取専門"
+    },
+    {
+      "name": "リサイクルショップ厚木",
+      "category": "不用品買取",
+      "address": "厚木市妻田北3-14-10",
+      "phone": "046-225-5101",
+      "url": null,
+      "note": "地域密着の店頭・出張買取"
+    },
+    {
+      "name": "いさみやスチール家具店",
+      "category": "不用品買取",
+      "address": "厚木市中依知202-7",
+      "phone": "046-245-3231",
+      "url": null,
+      "note": "オフィス用スチール家具中心の買取・販売"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルストア エコモンスター 伊勢崎店",
+      "category": "リサイクルショップ",
+      "address": "群馬県伊勢崎市波志江町2081-1",
+      "phone": "0270-75-5944",
+      "url": "https://eco-mon.jp/isesaki/",
+      "note": "家具・家電・生活雑貨等を扱う独立系"
+    },
+    {
+      "name": "リサイクルセンタートラスト",
+      "category": "不用品買取",
+      "address": "群馬県伊勢崎市波志江町2412",
+      "phone": "0120-13-5013",
+      "url": "https://trust-kaitori.com/",
+      "note": "伊勢崎市本社の独立系出張買取業者"
+    }
+  ]
+}

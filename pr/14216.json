@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "カエルファクトリー",
+      "category": "不用品買取",
+      "address": "座間市ひばりが丘5-51-15",
+      "phone": "0120-198-300",
+      "url": "https://kaerufactory.co.jp/",
+      "note": "家具家電・パソコン等幅広く買取"
+    },
+    {
+      "name": "リサイクルショップOne",
+      "category": "不用品買取",
+      "address": "座間市広野台1-45-7",
+      "phone": "046-215-0650",
+      "url": "https://recycle-one.jp/",
+      "note": "家具家電・自転車等の買取"
+    }
+  ]
+}

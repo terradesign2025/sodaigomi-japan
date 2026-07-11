@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "蜻蛉屋",
+      "category": "リサイクルショップ",
+      "address": "茨城県牛久市中央2丁目19-1",
+      "phone": "029-875-5990",
+      "url": "https://tonboya-risaikuru.com/",
+      "note": "着物専門"
+    },
+    {
+      "name": "トクスル",
+      "category": "不用品買取",
+      "address": "茨城県牛久市小坂町1963-98",
+      "phone": "080-3950-5356",
+      "url": "https://oikura.jp/shop/16427522/",
+      "note": "出張買取"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "アット・YOROZU",
+      "category": "リサイクルショップ",
+      "address": "茨城県つくば市天久保2丁目4-21",
+      "phone": "029-851-1311",
+      "url": "https://www.ekiten.jp/shop_1353348/",
+      "note": null
+    },
+    {
+      "name": "つくばや質店",
+      "category": "リサイクルショップ",
+      "address": "茨城県つくば市東新井32-4",
+      "phone": "029-855-2988",
+      "url": "https://www.tsukubaya78.com",
+      "note": "質屋兼リサイクル"
+    }
+  ]
+}

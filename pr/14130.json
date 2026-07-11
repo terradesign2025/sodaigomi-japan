@@ -1,0 +1,61 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクル はな",
+      "category": "リサイクルショップ",
+      "address": "川崎市中原区新丸子東1-825",
+      "phone": "044-422-7176",
+      "url": "https://hana.kenkenpa.net/",
+      "note": "新丸子駅徒歩3分・委託販売中心"
+    },
+    {
+      "name": "リサイクル つくも",
+      "category": "リサイクルショップ",
+      "address": "川崎市宮前区有馬5-23-23",
+      "phone": "080-5533-0052",
+      "url": "https://recycle-tukumo.com/",
+      "note": "出張買取・不用品回収専門の個人経営店"
+    },
+    {
+      "name": "株式会社リサイクルオフ",
+      "category": "不用品買取",
+      "address": "川崎市宮前区犬蔵2-17-34",
+      "phone": "044-863-8095",
+      "url": "https://recycle-off.com/",
+      "note": "川崎・横浜・東京・さいたまで家具家電買取"
+    },
+    {
+      "name": "リサイクルeco楽マート",
+      "category": "不用品買取",
+      "address": "川崎市川崎区日進町22-3",
+      "phone": "044-589-5893",
+      "url": "https://eco-raku.com/",
+      "note": "冷蔵庫・洗濯機等家電中心"
+    },
+    {
+      "name": "出張買取SSR",
+      "category": "不用品買取",
+      "address": "川崎市川崎区小田5-8-2",
+      "phone": "044-440-7084",
+      "url": "https://ssrkaitori.com/",
+      "note": "川崎市認定店表記あり"
+    },
+    {
+      "name": "WEショップたかつ",
+      "category": "不用品買取",
+      "address": "川崎市高津区溝口3-15-8-1F",
+      "phone": "044-829-5238",
+      "url": "https://www.city.kawasaki.jp/300/page/0000139423.html",
+      "note": "川崎市中古品店舗リスト掲載"
+    },
+    {
+      "name": "リサイクルショップトライスター",
+      "category": "不用品買取",
+      "address": "川崎市高津区東野川1-19-36",
+      "phone": "044-766-3002",
+      "url": "https://www.city.kawasaki.jp/300/page/0000139423.html",
+      "note": "川崎市中古品店舗リスト掲載"
+    }
+  ]
+}

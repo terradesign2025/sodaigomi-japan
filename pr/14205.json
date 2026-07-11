@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクル湘南",
+      "category": "リサイクルショップ",
+      "address": "藤沢市辻堂新町1-13-16",
+      "phone": "0466-63-5131",
+      "url": "https://www.ekiten.jp/shop_368561/",
+      "note": "辻堂駅近くの独立系出張買取専門店"
+    },
+    {
+      "name": "リサイクルガーデン藤沢用田店",
+      "category": "リサイクルショップ",
+      "address": "藤沢市用田1022-1",
+      "phone": "0466-60-0054",
+      "url": "https://youda-garden.on.omisenomikata.jp/",
+      "note": "用田エリアの独立系リサイクルショップ"
+    },
+    {
+      "name": "リサイクル わいるどふらわーず",
+      "category": "不用品買取",
+      "address": "藤沢市辻堂元町2-15-6",
+      "phone": "0120-099-417",
+      "url": "https://recycle-wildflowers.com/",
+      "note": "出張買取専門25年"
+    },
+    {
+      "name": "有限会社湘南コレクション",
+      "category": "不用品買取",
+      "address": "藤沢市湘南台6-51-12",
+      "phone": "0466-45-0844",
+      "url": "https://www.ekiten.jp/shop_368819/",
+      "note": "湘南台の質屋"
+    }
+  ]
+}

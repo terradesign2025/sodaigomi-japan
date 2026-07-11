@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップ・ワンポイント",
+      "category": "リサイクルショップ",
+      "address": "東京都武蔵野市中町2-28-7",
+      "phone": "0422-56-8315",
+      "url": null,
+      "note": "地域密着の買取店"
+    },
+    {
+      "name": "株式会社武蔵野質庫",
+      "category": "不用品買取",
+      "address": "東京都武蔵野市吉祥寺本町1-30-15",
+      "phone": "0422-22-2376",
+      "url": "https://www.musashinoshichiko.com/",
+      "note": "質屋・現金高価買取"
+    }
+  ]
+}

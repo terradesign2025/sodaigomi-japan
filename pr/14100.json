@@ -1,0 +1,61 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "横浜のリサイクルショップ買ったる堂",
+      "category": "リサイクルショップ",
+      "address": "横浜市南区六ツ川4-1142-1",
+      "phone": "045-828-6120",
+      "url": "https://kattarudo.jp/",
+      "note": "個人経営の地域密着型リサイクルショップ"
+    },
+    {
+      "name": "株式会社オールブルー(サウスリーフ)",
+      "category": "リサイクルショップ",
+      "address": "横浜市南区六ッ川2-123-13",
+      "phone": "0120-439-039",
+      "url": "https://39r.jp/",
+      "note": "南区地元の出張買取・リサイクルショップ"
+    },
+    {
+      "name": "リンクスリサイクルシステムズ株式会社",
+      "category": "リサイクルショップ",
+      "address": "横浜市磯子区栗木2-2-30",
+      "phone": "045-342-9681",
+      "url": "https://www.linxrecyclesystems.com/",
+      "note": "2003年創業・磯子区地元"
+    },
+    {
+      "name": "エキスパート横浜公田店",
+      "category": "不用品買取",
+      "address": "横浜市栄区公田町1638-54",
+      "phone": "045-894-9611",
+      "url": "https://reuse-expert.com/store/kuden/",
+      "note": "家具家電の出張買取"
+    },
+    {
+      "name": "高価買取鑑定本舗",
+      "category": "不用品買取",
+      "address": "横浜市旭区市沢町827",
+      "phone": "090-9826-1260",
+      "url": "https://shucchoukaitori-yokohama.com/",
+      "note": "家電・貴金属等オールジャンル買取"
+    },
+    {
+      "name": "リサイクル市場横浜橋店",
+      "category": "不用品買取",
+      "address": "横浜市南区浦舟町1-1-22",
+      "phone": "045-262-9999",
+      "url": "https://ameblo.jp/re-ichiba/",
+      "note": "横浜橋商店街近く・家具家電中心"
+    },
+    {
+      "name": "株式会社グッドフォーチュン港南店",
+      "category": "不用品買取",
+      "address": "横浜市港南区野庭町611-1-104",
+      "phone": "045-843-5515",
+      "url": "https://www.goodfortune.co.jp/",
+      "note": "家具家電の不用品買取"
+    }
+  ]
+}

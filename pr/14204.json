@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "アート熊野堂",
+      "category": "リサイクルショップ",
+      "address": "鎌倉市小袋谷2-5-6",
+      "phone": "0467-38-8307",
+      "url": "https://kumanodou.com/",
+      "note": "骨董品・着物・美術品買取"
+    },
+    {
+      "name": "かまくら花ぐるま",
+      "category": "リサイクルショップ",
+      "address": "鎌倉市長谷3-12-10",
+      "phone": "0467-23-2601",
+      "url": null,
+      "note": "鎌倉市公式「かまくらお店紹介」掲載"
+    },
+    {
+      "name": "グリーバー",
+      "category": "不用品買取",
+      "address": "鎌倉市御成町11-32",
+      "phone": "0467-38-6655",
+      "url": "https://greeber.jp/",
+      "note": "単独店・貴金属ジュエリー買取"
+    },
+    {
+      "name": "鎌倉買取(リサイクルショップオフバランス)",
+      "category": "不用品買取",
+      "address": "鎌倉市小袋谷1-9-34",
+      "phone": "050-5856-8192",
+      "url": "https://www.off-balance.net/",
+      "note": "創業21年・健康美容機器/教材等の買取"
+    }
+  ]
+}

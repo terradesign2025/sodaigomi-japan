@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクル百貨センター",
+      "category": "リサイクルショップ",
+      "address": "茨城県土浦市荒川沖5-8",
+      "phone": "029-842-5727",
+      "url": "https://www.recycle-hyakka-center.com/",
+      "note": "地元30年の老舗リサイクルショップ"
+    },
+    {
+      "name": "リユースステージCLAP",
+      "category": "リサイクルショップ",
+      "address": "茨城県土浦市荒川沖110-8",
+      "phone": "029-875-5320",
+      "url": "https://www.reuse-clap.jp/",
+      "note": "創業18年の実店舗型リサイクルショップ"
+    }
+  ]
+}

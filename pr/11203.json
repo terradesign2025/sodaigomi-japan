@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "総合リサイクルショップひかり 西川口店",
+      "category": "リサイクルショップ",
+      "address": "埼玉県川口市並木3-4-21",
+      "phone": "048-299-2008",
+      "url": "https://hikari-used.com/",
+      "note": "川口市地元企業"
+    },
+    {
+      "name": "リサイクルショップこれわん 川口店",
+      "category": "リサイクルショップ",
+      "address": "埼玉県川口市新井町17-19",
+      "phone": "048-228-6451",
+      "url": "http://www.korewan.com/",
+      "note": "川口・蕨エリア限定"
+    }
+  ]
+}

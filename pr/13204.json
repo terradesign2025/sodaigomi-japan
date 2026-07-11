@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "有限会社武蔵屋質店",
+      "category": "リサイクルショップ",
+      "address": "東京都三鷹市下連雀3-23-1",
+      "phone": "0422-43-4706",
+      "url": "https://www.musasiya78.co.jp/",
+      "note": "三鷹駅南口の質屋"
+    },
+    {
+      "name": "有限会社スチールストア",
+      "category": "不用品買取",
+      "address": "東京都三鷹市野崎3-23-15",
+      "phone": "0422-34-1800",
+      "url": "https://www.steel-store.co.jp/",
+      "note": "中古オフィス家具の買取販売"
+    }
+  ]
+}

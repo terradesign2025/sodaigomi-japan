@@ -1,0 +1,29 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "コスモスペース福生店",
+      "category": "リサイクルショップ",
+      "address": "東京都福生市熊川1499-1",
+      "phone": "042-539-7360",
+      "url": "https://re.cosmo-space.jp/subindex/fussa",
+      "note": "古着・家具・家電等の買取販売"
+    },
+    {
+      "name": "質福 有限会社たからや",
+      "category": "リサイクルショップ",
+      "address": "東京都福生市福生882-9",
+      "phone": "042-530-2727",
+      "url": "https://shichi-fuku.jp/",
+      "note": "ブランド品・貴金属買取"
+    },
+    {
+      "name": "合同会社ヘルプ",
+      "category": "不用品買取",
+      "address": "東京都福生市熊川1446-3",
+      "phone": "042-519-1512",
+      "url": "https://jmty.jp/tokyo/ser-recy/article-uvwkq",
+      "note": "古物商許可あり"
+    }
+  ]
+}

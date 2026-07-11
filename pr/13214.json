@@ -1,0 +1,29 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "古本-雲波",
+      "category": "リサイクルショップ",
+      "address": "東京都国分寺市本多1-1-17",
+      "phone": "042-321-2258",
+      "url": null,
+      "note": "独立系の古本買取店"
+    },
+    {
+      "name": "たまや質店",
+      "category": "不用品買取",
+      "address": "東京都国分寺市本町3-5-7",
+      "phone": "042-321-0720",
+      "url": "https://tamaya7.co.jp/",
+      "note": "昭和30年創業の老舗質屋"
+    },
+    {
+      "name": "三立電器",
+      "category": "不用品買取",
+      "address": "東京都国分寺市南町2-10-16",
+      "phone": "042-324-2262",
+      "url": "https://www.ekiten.jp/shop_179447/",
+      "note": "家電販売店による買取兼業"
+    }
+  ]
+}

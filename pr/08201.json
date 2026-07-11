@@ -1,0 +1,29 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "エコ水戸",
+      "category": "リサイクルショップ",
+      "address": "茨城県水戸市栗崎町1535-1",
+      "phone": "029-269-9068",
+      "url": "https://ecomito.com/",
+      "note": "中古バイク・自転車・金属スクラップも扱う総合リサイクルショップ"
+    },
+    {
+      "name": "シンエー",
+      "category": "リサイクルショップ",
+      "address": "茨城県水戸市赤塚1-1997-50",
+      "phone": "029-254-3001",
+      "url": "https://shinei310.wixsite.com/main",
+      "note": "昭和41年創業の家族経営リサイクルショップ"
+    },
+    {
+      "name": "リサイクルショップKOKI",
+      "category": "不用品買取",
+      "address": "茨城県水戸市谷田町466",
+      "phone": "029-246-6585",
+      "url": "https://www.koki2006-mito.com/",
+      "note": "出張買取・不用品回収と店舗販売を併営"
+    }
+  ]
+}

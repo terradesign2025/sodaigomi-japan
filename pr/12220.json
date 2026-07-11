@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "質さのや",
+      "category": "不用品買取",
+      "address": "千葉県我孫子市天王台1-13-13",
+      "phone": "04-7183-0455",
+      "url": "https://e-shichiya.com/",
+      "note": "創業約50年の質屋"
+    },
+    {
+      "name": "リサイクルショップ壱",
+      "category": "リサイクルショップ",
+      "address": "千葉県我孫子市布佐2499",
+      "phone": "0297-86-7770",
+      "url": null,
+      "note": "布佐駅徒歩約5分の独立系"
+    }
+  ]
+}

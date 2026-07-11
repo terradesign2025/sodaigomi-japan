@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップお宝堂",
+      "category": "リサイクルショップ",
+      "address": "千葉県松戸市五香2-43-2",
+      "phone": "047-387-3127",
+      "url": "https://www.ekiten.jp/shop_843455/",
+      "note": "電気店から発展した老舗"
+    },
+    {
+      "name": "エコアシスタント",
+      "category": "不用品買取",
+      "address": "千葉県松戸市大金平1-46",
+      "phone": "04-7157-2975",
+      "url": "https://eco-assistant.jp/",
+      "note": "出張買取専門・地元業者"
+    }
+  ]
+}

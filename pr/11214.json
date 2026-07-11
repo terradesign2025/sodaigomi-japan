@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "ラッキーマーケット",
+      "category": "リサイクルショップ",
+      "address": "埼玉県狭山市入間川4-16-26",
+      "phone": "04-2936-6080",
+      "url": "http://luckymarket.jp/",
+      "note": "骨董・古道具のほか家電・家具も買取"
+    },
+    {
+      "name": "リサイクルショップコーナン",
+      "category": "リサイクルショップ",
+      "address": "埼玉県狭山市狭山台2-28-18",
+      "phone": "04-2930-1404",
+      "url": "https://risaikuruko-nan.com/",
+      "note": "家電・家具・日用品・工具等"
+    }
+  ]
+}

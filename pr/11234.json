@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップ アイスタ",
+      "category": "リサイクルショップ",
+      "address": "埼玉県富士見市鶴瀬東1-10-10",
+      "phone": "0120-924-180",
+      "url": "https://www.recycleshop-aisuta.com/",
+      "note": "富士見市本社の独立系中古家電専門店"
+    },
+    {
+      "name": "埼玉屋",
+      "category": "リサイクルショップ",
+      "address": "埼玉県富士見市鶴馬2-12-41",
+      "phone": "049-293-7870",
+      "url": null,
+      "note": "地域密着の独立系"
+    }
+  ]
+}

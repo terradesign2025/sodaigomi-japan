@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクル・アールショップ",
+      "category": "リサイクルショップ",
+      "address": "千葉県習志野市津田沼2-3-44",
+      "phone": "047-474-1422",
+      "url": "https://www.r-shop-jp.com/",
+      "note": "生活家電・家具・楽器等取扱"
+    },
+    {
+      "name": "細野質店",
+      "category": "不用品買取",
+      "address": "千葉県習志野市東習志野4-1-7",
+      "phone": "0120-789-996",
+      "url": "https://www.sichiya.com/",
+      "note": "時計・貴金属から家電・パソコンまで買取"
+    }
+  ]
+}

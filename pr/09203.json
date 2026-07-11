@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップガレージ",
+      "category": "リサイクルショップ",
+      "address": "栃木県栃木市泉町24-11",
+      "phone": "0282-23-3900",
+      "url": null,
+      "note": "家具・生活雑貨中心"
+    },
+    {
+      "name": "三光質店",
+      "category": "不用品買取",
+      "address": "栃木県栃木市箱森町41-29",
+      "phone": "0282-25-3578",
+      "url": "https://sanko78.com/",
+      "note": "1947年創業の老舗質屋"
+    }
+  ]
+}

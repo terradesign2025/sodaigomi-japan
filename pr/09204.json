@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "トレジャーワールド",
+      "category": "リサイクルショップ",
+      "address": "栃木県佐野市相生町25-5",
+      "phone": "0283-24-3995",
+      "url": "https://treasureworld.tonosama.jp/",
+      "note": "家具・家電・雑貨"
+    },
+    {
+      "name": "立花屋質店",
+      "category": "不用品買取",
+      "address": "栃木県佐野市高萩町1326-7",
+      "phone": "0283-21-3178",
+      "url": null,
+      "note": "貴金属・ブランド品・パソコン等買取"
+    }
+  ]
+}

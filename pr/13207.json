@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "買取リッチ東京 昭島中神店",
+      "category": "リサイクルショップ",
+      "address": "東京都昭島市朝日町1-4-8",
+      "phone": "042-519-5288",
+      "url": "https://kaito-rich.com/locations/akishimanakagami",
+      "note": "直営店"
+    },
+    {
+      "name": "リサイクルショップ祥",
+      "category": "リサイクルショップ",
+      "address": "東京都昭島市上川原町2-12-12",
+      "phone": "042-549-8410",
+      "url": null,
+      "note": "昭島駅徒歩4分"
+    },
+    {
+      "name": "有限会社かめや商店",
+      "category": "不用品買取",
+      "address": "東京都昭島市福島町2-23-11",
+      "phone": "042-545-0574",
+      "url": "https://www.mapion.co.jp/phonebook/M02031/13207/21331499702/",
+      "note": "再生資源・リサイクルショップ"
+    },
+    {
+      "name": "地球リサイクル",
+      "category": "不用品買取",
+      "address": "東京都昭島市松原町2-8-3",
+      "phone": "042-541-5181",
+      "url": "https://map.yahoo.co.jp/v3/place/zkWdVFd1_hQ",
+      "note": "骨董品・リサイクル品買取"
+    }
+  ]
+}

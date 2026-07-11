@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "えっさほいさ",
+      "category": "リサイクルショップ",
+      "address": "東京都小平市美園町1-8-1-101",
+      "phone": "042-309-6363",
+      "url": "https://essahoisa.jp/",
+      "note": "片付け・不用品回収と兼業"
+    },
+    {
+      "name": "古本市場小平店",
+      "category": "リサイクルショップ",
+      "address": "東京都小平市小川町1-911",
+      "phone": "042-347-1232",
+      "url": "https://www.furu1.net/shop/shop0108.html",
+      "note": "実店舗確認済"
+    },
+    {
+      "name": "きむら質店",
+      "category": "不用品買取",
+      "address": "東京都小平市学園東町2-7-6",
+      "phone": "042-341-0277",
+      "url": "https://www.ekiten.jp/shop_202851/",
+      "note": "質屋兼業・ブランド品/貴金属買取"
+    },
+    {
+      "name": "マルイチ質店",
+      "category": "不用品買取",
+      "address": "東京都小平市小川東町1-21-18",
+      "phone": "042-345-1611",
+      "url": "http://maruichi-ogawa.jp/",
+      "note": "質屋兼業・ブランド品買取"
+    }
+  ]
+}

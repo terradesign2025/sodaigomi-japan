@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "買取専門店小江戸",
+      "category": "不用品買取",
+      "address": "埼玉県川越市脇田本町16-3",
+      "phone": "049-293-4001",
+      "url": "https://coedo.co.jp/kaitori/",
+      "note": "川越市内のみ展開の地元業者"
+    },
+    {
+      "name": "有限会社二村質店",
+      "category": "不用品買取",
+      "address": "埼玉県川越市末広町1-1-1",
+      "phone": "049-222-0728",
+      "url": "http://www.nimu267.com/",
+      "note": "質預かり・買取両対応の老舗質屋"
+    }
+  ]
+}

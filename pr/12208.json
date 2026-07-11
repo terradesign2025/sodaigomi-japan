@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクル チョップ",
+      "category": "リサイクルショップ",
+      "address": "千葉県野田市柏寺606-1",
+      "phone": "04-7136-7800",
+      "url": "https://www.recycle-chop.jp/",
+      "note": "引越・お片付け不用品の買取"
+    },
+    {
+      "name": "喜笑館",
+      "category": "不用品買取",
+      "address": "千葉県野田市東高野82",
+      "phone": "04-7196-7875",
+      "url": "http://kisyoukan.com/",
+      "note": "リユース販売・買取・不用品見積もり対応"
+    }
+  ]
+}

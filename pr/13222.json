@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リユースマイル東久留米滝山店",
+      "category": "リサイクルショップ",
+      "address": "東京都東久留米市滝山4-1-40",
+      "phone": "070-8551-3393",
+      "url": "https://reusmile.com/",
+      "note": "買取専門店"
+    },
+    {
+      "name": "ヒスコリサイクルセンター",
+      "category": "不用品買取",
+      "address": "東京都東久留米市下里7-8-10",
+      "phone": "042-455-1991",
+      "url": "https://oikura.jp/shop/16424285/",
+      "note": "出張買取対応"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルブティックABC武蔵小金井店",
+      "category": "リサイクルショップ",
+      "address": "東京都小金井市本町1-8-7",
+      "phone": "042-386-7555",
+      "url": "https://www.re-abc.com/",
+      "note": "地域チェーン(本社国立市)"
+    },
+    {
+      "name": "買取リッチ東京 東小金井店",
+      "category": "リサイクルショップ",
+      "address": "東京都小金井市梶野町5-6-4",
+      "phone": "042-382-9685",
+      "url": "https://kaito-rich.com/locations/higashikoganei",
+      "note": "東小金井駅徒歩3分"
+    },
+    {
+      "name": "千-sen",
+      "category": "不用品買取",
+      "address": "東京都小金井市東町4-38-26",
+      "phone": "042-386-6088",
+      "url": "https://www.city.koganei.lg.jp/smph/kurashi/446/sigenkatorikumi/reuse/riyu-sushopichiran.html",
+      "note": "小金井市公式リユースショップ一覧掲載"
+    },
+    {
+      "name": "アンティークス・エデュコ",
+      "category": "不用品買取",
+      "address": "東京都小金井市関野町1-4-6",
+      "phone": "042-401-2374",
+      "url": "https://antiques-educo.com/",
+      "note": "和洋アンティーク・古道具・古家具買取"
+    }
+  ]
+}

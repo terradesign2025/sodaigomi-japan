@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップ ロマンアート楽",
+      "category": "リサイクルショップ",
+      "address": "群馬県高崎市八千代町2丁目12-15",
+      "phone": "027-325-2221",
+      "url": null,
+      "note": "高崎駅近くの独立系リサイクルショップ"
+    },
+    {
+      "name": "エコジャック",
+      "category": "不用品買取",
+      "address": "群馬県高崎市萩原町484-1",
+      "phone": "0800-800-1396",
+      "url": "https://www.retown.net/nhtml/shop/Gun10002211006.html",
+      "note": "家具・家電・雑貨等の出張買取"
+    }
+  ]
+}

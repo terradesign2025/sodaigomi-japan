@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "有限会社サンハート",
+      "category": "リサイクルショップ",
+      "address": "栃木県真岡市台町2341",
+      "phone": "0285-83-6313",
+      "url": null,
+      "note": "リサイクルショップ"
+    },
+    {
+      "name": "買取布袋",
+      "category": "不用品買取",
+      "address": "栃木県真岡市下高間木1丁目13-5",
+      "phone": "0285-85-8092",
+      "url": "https://kaitori-hotei.crayonsite.info/",
+      "note": "ブランド品・家具家電・骨董品等幅広く買取"
+    }
+  ]
+}

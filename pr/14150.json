@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "ユーズドショップ クラウド相模原店",
+      "category": "リサイクルショップ",
+      "address": "相模原市中央区星が丘1-3-16",
+      "phone": "042-757-8996",
+      "url": "https://sagami.e-crowd.co.jp/",
+      "note": "1997年創業の地域密着リサイクルショップ"
+    },
+    {
+      "name": "フレッシュマンリサイクルショップ相模原店",
+      "category": "リサイクルショップ",
+      "address": "相模原市中央区千代田2-5-22",
+      "phone": "042-703-4266",
+      "url": "https://www.freshman-s.com/recycleshop",
+      "note": "昭和レトロ・古道具中心"
+    },
+    {
+      "name": "ブンブンサービス",
+      "category": "不用品買取",
+      "address": "相模原市中央区上溝2242",
+      "phone": "042-763-2181",
+      "url": "https://oikura.jp/shop/426910/",
+      "note": "電化製品・オーディオ等中心"
+    },
+    {
+      "name": "リサイクルショップMINATOKU",
+      "category": "不用品買取",
+      "address": "相模原市緑区向原1-10-45",
+      "phone": "0120-053-719",
+      "url": "https://www.ekiten.jp/shop_7138114/",
+      "note": "ブランド・家電・古本等幅広く買取"
+    }
+  ]
+}

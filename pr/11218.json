@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップ宝島 上尾店",
+      "category": "リサイクルショップ",
+      "address": "埼玉県上尾市栄町1-13",
+      "phone": "048-871-6628",
+      "url": "https://rstakara.com/",
+      "note": "さいたま市・上尾市の小規模独立系"
+    },
+    {
+      "name": "セキネ質店",
+      "category": "不用品買取",
+      "address": "埼玉県上尾市柏座1-12-6",
+      "phone": "048-771-4081",
+      "url": "http://sekine78.sakura.ne.jp/",
+      "note": "電化製品・楽器・工具等も買取対応"
+    }
+  ]
+}

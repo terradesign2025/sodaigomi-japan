@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "スーパーリサイクル虎や",
+      "category": "リサイクルショップ",
+      "address": "茨城県ひたちなか市大平4丁目1-2",
+      "phone": "0120-200025",
+      "url": "https://www.ekiten.jp/shop_4665465/",
+      "note": "家電・家具・生活雑貨等取扱"
+    },
+    {
+      "name": "買取サロンReborn",
+      "category": "不用品買取",
+      "address": "茨城県ひたちなか市東石川3157-1",
+      "phone": "029-212-8570",
+      "url": "https://www.ekiten.jp/shop_63084463/",
+      "note": "ブランド品・貴金属中心の買取専門店"
+    }
+  ]
+}

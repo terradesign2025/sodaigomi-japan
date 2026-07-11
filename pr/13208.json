@@ -1,0 +1,53 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップ夢市",
+      "category": "リサイクルショップ",
+      "address": "東京都調布市飛田給1-50-1",
+      "phone": "042-444-3068",
+      "url": null,
+      "note": "飛田給駅徒歩3分"
+    },
+    {
+      "name": "買取専門エコループ 西調布店",
+      "category": "リサイクルショップ",
+      "address": "東京都調布市西上石原1-27-9",
+      "phone": "042-444-3444",
+      "url": "https://kaitori-ecoloop.s-and-o.co.jp/",
+      "note": "遺品整理も対応"
+    },
+    {
+      "name": "ゲームリサイクルDAICHU",
+      "category": "リサイクルショップ",
+      "address": "東京都調布市緑ヶ丘2-60-8",
+      "phone": "03-6909-1039",
+      "url": null,
+      "note": "仙川駅徒歩5分"
+    },
+    {
+      "name": "ウスイ質店",
+      "category": "不用品買取",
+      "address": "東京都調布市多摩川4-35-29",
+      "phone": "042-484-2536",
+      "url": "https://www.usui-shichiya.info",
+      "note": "質屋・貴金属買取"
+    },
+    {
+      "name": "フレンドシップカンパニー",
+      "category": "不用品買取",
+      "address": "東京都調布市下石原2-9-5",
+      "phone": "042-490-5601",
+      "url": "https://chofu.com/units/36243/friendship/",
+      "note": "家電・家具・楽器買取"
+    },
+    {
+      "name": "深沢商店",
+      "category": "不用品買取",
+      "address": "東京都調布市国領町5-8-3",
+      "phone": "042-482-2088",
+      "url": "https://www.fukazawashyouten-chofu.com",
+      "note": "古物商・古道具・古美術"
+    }
+  ]
+}

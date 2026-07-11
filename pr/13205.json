@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "カシコシュ青梅新町店",
+      "category": "リサイクルショップ",
+      "address": "東京都青梅市新町5-1-1",
+      "phone": "0428-32-6591",
+      "url": "https://www.haseko.co.jp/kasikosh/",
+      "note": "長谷工グループ運営の大型リユース店（青梅市内唯一の実店舗）"
+    },
+    {
+      "name": "にじや質店",
+      "category": "リサイクルショップ",
+      "address": "東京都青梅市野上町3-23-34",
+      "phone": "0120-985-191",
+      "url": "https://nijiya-7ten.jp/",
+      "note": "青梅街道沿いの質屋・骨董品買取"
+    },
+    {
+      "name": "佐藤質店",
+      "category": "不用品買取",
+      "address": "東京都青梅市仲町275",
+      "phone": "0428-22-3743",
+      "url": "https://chirashi.ne.jp/main/shops/index/1900",
+      "note": "創業65年・青梅市内の質屋"
+    },
+    {
+      "name": "買取専門店バイヤーズ",
+      "category": "不用品買取",
+      "address": "東京都青梅市河辺町8-20-1",
+      "phone": "0428-34-9033",
+      "url": "https://www.0428buyers.com/",
+      "note": "ブランド品貴金属趣味品等の買取"
+    }
+  ]
+}

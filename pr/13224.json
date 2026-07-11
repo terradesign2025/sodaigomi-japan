@@ -1,0 +1,29 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップちいろばの家",
+      "category": "リサイクルショップ",
+      "address": "東京都多摩市東寺方1-16-3",
+      "phone": "042-372-3015",
+      "url": "http://www.chiiroba.tokyo/",
+      "note": "福祉ショップ"
+    },
+    {
+      "name": "出張買取バイトリップ",
+      "category": "不用品買取",
+      "address": "東京都多摩市落川1263-1",
+      "phone": "042-202-3220",
+      "url": "https://buytrip-kaitori.com/",
+      "note": "古物商許可番号確認済み"
+    },
+    {
+      "name": "リサイクルショップ夢倉庫",
+      "category": "不用品買取",
+      "address": "東京都多摩市一ノ宮4-34-7",
+      "phone": "042-376-6819",
+      "url": null,
+      "note": "家具・家電・雑貨の実店舗買取"
+    }
+  ]
+}

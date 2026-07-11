@@ -1,0 +1,53 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "サカショー",
+      "category": "リサイクルショップ",
+      "address": "東京都八王子市千人町4-14-14",
+      "phone": "042-663-3020",
+      "url": "https://recycle-sakasho.com/",
+      "note": "創業40年の地域密着店"
+    },
+    {
+      "name": "古着買取オルダー",
+      "category": "リサイクルショップ",
+      "address": "東京都八王子市八幡町2-17",
+      "phone": "080-4434-4326",
+      "url": "https://older.jp/",
+      "note": "古着専門の個人買取店"
+    },
+    {
+      "name": "REUSE SHOP Rinne",
+      "category": "不用品買取",
+      "address": "東京都八王子市大塚623-3",
+      "phone": "042-689-4856",
+      "url": "https://www.reuseshop-rinne.com/",
+      "note": "家電家具雑貨・遺品整理対応"
+    },
+    {
+      "name": "リサイクルショップはこぶね",
+      "category": "不用品買取",
+      "address": "東京都八王子市絹ヶ丘2-1-11 1F",
+      "phone": "042-638-0133",
+      "url": "https://www.hakobune-entoito.com/",
+      "note": "家具家電アンティーク・生前整理対応"
+    },
+    {
+      "name": "リサイクルショップ高田商店",
+      "category": "不用品買取",
+      "address": "東京都八王子市上野町18-13",
+      "phone": "042-686-2805",
+      "url": "https://itp.ne.jp/info/139112539069470850/",
+      "note": "骨董古道具中心のリサイクル店"
+    },
+    {
+      "name": "有限会社大谷質店",
+      "category": "不用品買取",
+      "address": "東京都八王子市寺町20-12",
+      "phone": "042-622-5007",
+      "url": "http://www.otani710.biz/",
+      "note": "質屋兼業・貴金属ブランド品中心"
+    }
+  ]
+}

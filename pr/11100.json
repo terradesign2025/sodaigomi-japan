@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップ宝島 指扇店",
+      "category": "リサイクルショップ",
+      "address": "埼玉県さいたま市西区指扇947-3",
+      "phone": "048-621-1915",
+      "url": "https://rstakara.com/",
+      "note": "家具・家電の出張買取対応"
+    },
+    {
+      "name": "総合リサイクル買取GO!!",
+      "category": "リサイクルショップ",
+      "address": "埼玉県さいたま市桜区栄和4-23-6",
+      "phone": "048-699-7452",
+      "url": "https://gokaitorigo.wixsite.com/sakawa",
+      "note": "2022年開業の独立系店舗"
+    },
+    {
+      "name": "ウラワ質店",
+      "category": "不用品買取",
+      "address": "埼玉県さいたま市南区南浦和2-28-9",
+      "phone": "048-881-0101",
+      "url": "https://www.urawa-shititen.com/",
+      "note": "埼玉県質屋組合連合会会員"
+    },
+    {
+      "name": "質/買取 宮下質店",
+      "category": "不用品買取",
+      "address": "埼玉県さいたま市大宮区大成町3-678-3",
+      "phone": "048-665-7430",
+      "url": "https://www.shichiyasan.com/",
+      "note": "公安委員会認可の質屋"
+    }
+  ]
+}

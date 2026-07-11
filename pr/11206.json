@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルマート＋質 秩父店",
+      "category": "リサイクルショップ",
+      "address": "埼玉県秩父市下影森1260-13",
+      "phone": "0494-26-7366",
+      "url": "https://www.recyclemart.jp/shop/chichibu/",
+      "note": "秩父市地元企業運営"
+    },
+    {
+      "name": "リサイクルマート良品市場",
+      "category": "リサイクルショップ",
+      "address": "埼玉県秩父市中宮地町22-21",
+      "phone": "0494-23-5759",
+      "url": "https://www.ekiten.jp/shop_560364/",
+      "note": "独立系リサイクルショップ"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルファクトリーアネシス村山店",
+      "category": "リサイクルショップ",
+      "address": "東京都武蔵村山市緑が丘1460-45-7",
+      "phone": "042-516-8992",
+      "url": "https://anesis-web.com/",
+      "note": "生活家電中心"
+    },
+    {
+      "name": "リサイクルショップ・KEI",
+      "category": "不用品買取",
+      "address": "東京都武蔵村山市大南1-60-9",
+      "phone": "042-565-5319",
+      "url": null,
+      "note": "家電・家具の実店舗買取"
+    }
+  ]
+}

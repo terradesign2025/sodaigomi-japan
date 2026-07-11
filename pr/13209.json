@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "株式会社リサイクルセンター城山",
+      "category": "リサイクルショップ",
+      "address": "東京都町田市相原町4581-1",
+      "phone": "042-783-3860",
+      "url": "https://www.r-shiroyama.com/",
+      "note": "生前整理・買取兼業"
+    },
+    {
+      "name": "リサイクル買取センター町田本店",
+      "category": "リサイクルショップ",
+      "address": "東京都町田市根岸2-16-14",
+      "phone": "0120-91-0303",
+      "url": "https://oikura.jp/shop/16424146/",
+      "note": "即日対応"
+    },
+    {
+      "name": "総合リサイクルいちばん堂",
+      "category": "不用品買取",
+      "address": "東京都町田市中町3-4-2",
+      "phone": "0120-773-788",
+      "url": "https://www.ichi-ban-do.com/",
+      "note": "総合リサイクル"
+    },
+    {
+      "name": "タクミホーム",
+      "category": "不用品買取",
+      "address": "東京都町田市大蔵町1611",
+      "phone": "042-736-5579",
+      "url": "https://itp.ne.jp/info/134941714159950970/",
+      "note": "遺品整理・不用品買取"
+    }
+  ]
+}

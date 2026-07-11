@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップけやき",
+      "category": "リサイクルショップ",
+      "address": "東京都立川市曙町1-35-22",
+      "phone": "042-540-3196",
+      "url": null,
+      "note": "福祉作業所併設の地域店"
+    },
+    {
+      "name": "R2(アールツー)",
+      "category": "不用品買取",
+      "address": "東京都立川市若葉町1-10-1",
+      "phone": "042-537-7877",
+      "url": "https://r2-exco.com/",
+      "note": "出張買取専門・古物商許可あり"
+    },
+    {
+      "name": "質たからや立川北口店",
+      "category": "不用品買取",
+      "address": "東京都立川市曙町2-5-19",
+      "phone": "042-524-3934",
+      "url": "https://7takaraya.jp/",
+      "note": "昭和32年創業の老舗質屋"
+    },
+    {
+      "name": "内堀マスヤ質店",
+      "category": "不用品買取",
+      "address": "東京都立川市曙町2-5-16",
+      "phone": "042-526-2444",
+      "url": "https://masuya78.com/",
+      "note": "立川で60年以上営業"
+    }
+  ]
+}

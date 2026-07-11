@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "工具市場",
+      "category": "リサイクルショップ",
+      "address": "埼玉県入間市東藤沢2-16-7",
+      "phone": "04-2964-3400",
+      "url": "https://59.e-ichiba.com/shop-info/",
+      "note": "中古工具専門の独立店"
+    },
+    {
+      "name": "NKネットワークシステム",
+      "category": "リサイクルショップ",
+      "address": "埼玉県入間市鍵山2-5-14",
+      "phone": "04-2901-0527",
+      "url": "https://nk-recycle.com/",
+      "note": "家電・家具の買取兼リサイクル業"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "オトワリバース",
+      "category": "リサイクルショップ",
+      "address": "栃木県宇都宮市陽東5-10-28",
+      "phone": "028-612-2223",
+      "url": "https://r-otowa.com/",
+      "note": "家具・家電・インテリア雑貨中心の地域密着リサイクルショップ"
+    },
+    {
+      "name": "リサイクルショップエルフ",
+      "category": "リサイクルショップ",
+      "address": "栃木県宇都宮市上籠谷町3349-3",
+      "phone": "028-667-5222",
+      "url": "https://rec-elf.com/",
+      "note": "家具・家電の買取販売・出張買取対応"
+    },
+    {
+      "name": "宇都宮リサイクルMORE",
+      "category": "不用品買取",
+      "address": "栃木県宇都宮市下平出町351-3",
+      "phone": "028-601-7211",
+      "url": "https://recyclemore.jimdofree.com/",
+      "note": "家具・家電・農機具・バイク等の出張買取"
+    }
+  ]
+}

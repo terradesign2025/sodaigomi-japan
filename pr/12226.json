@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "たかみ質店 浦安本店",
+      "category": "不用品買取",
+      "address": "千葉県浦安市当代島1-16-7",
+      "phone": "047-382-3611",
+      "url": "https://takami78.com/",
+      "note": "嘉永4年創業の老舗質屋"
+    },
+    {
+      "name": "IRIS(アイリス)リサイクルショップ",
+      "category": "リサイクルショップ",
+      "address": "千葉県浦安市北栄4-28-15",
+      "phone": "090-4727-4887",
+      "url": "http://recycle-iris.com/",
+      "note": "独立系リサイクルショップ"
+    }
+  ]
+}

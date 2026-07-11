@@ -1,0 +1,29 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "株式会社エコス",
+      "category": "リサイクルショップ",
+      "address": "平塚市宮の前1-4",
+      "phone": "0463-43-7500",
+      "url": "https://kaitoriecos.com/",
+      "note": "ブランド品・貴金属等の高価買取専門店"
+    },
+    {
+      "name": "リサイクルショップようでん",
+      "category": "不用品買取",
+      "address": "平塚市北金目3-9-15",
+      "phone": "080-5041-6420",
+      "url": "https://oikura.jp/shop/16423433/",
+      "note": "創業40年・電動工具等に強い"
+    },
+    {
+      "name": "エコサイクル西湘",
+      "category": "不用品買取",
+      "address": "平塚市紅谷町9-22",
+      "phone": "0120-997-907",
+      "url": "https://www.ekiten.jp/shop_65305552/",
+      "note": "家具家電・バイク等買取"
+    }
+  ]
+}

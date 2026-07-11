@@ -1,0 +1,29 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "カインドベア",
+      "category": "リサイクルショップ",
+      "address": "茅ヶ崎市共恵1-10-16",
+      "phone": "0467-81-5326",
+      "url": "https://kindbea.com/",
+      "note": "ブランド品/貴金属/骨董買取の地域密着店"
+    },
+    {
+      "name": "オフィスパプリカ",
+      "category": "不用品買取",
+      "address": "茅ヶ崎市室田2-15-1",
+      "phone": "0467-50-0556",
+      "url": "https://paprica.store/",
+      "note": "楽器・オーディオ機器専門買取販売レンタル"
+    },
+    {
+      "name": "湘南エビス屋",
+      "category": "不用品買取",
+      "address": "茅ヶ崎市若松町19-40",
+      "phone": "0467-88-0788",
+      "url": "https://www.ekiten.jp/shop_365518/",
+      "note": "貴金属・ブランド品買取"
+    }
+  ]
+}

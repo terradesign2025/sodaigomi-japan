@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップミテクル",
+      "category": "リサイクルショップ",
+      "address": "東京都府中市新町1-67-2",
+      "phone": "042-306-8889",
+      "url": null,
+      "note": "地域密着型"
+    },
+    {
+      "name": "エコメッセ府中店",
+      "category": "リサイクルショップ",
+      "address": "東京都府中市宮町2-15-1",
+      "phone": "042-319-9458",
+      "url": "https://ecomesse.jp/shop-info/fuchu/",
+      "note": "NPO運営チャリティショップ"
+    },
+    {
+      "name": "アナスタシヤ",
+      "category": "不用品買取",
+      "address": "東京都府中市晴見町1-12-11",
+      "phone": "042-336-4114",
+      "url": "http://anastacya.jimdo.com/",
+      "note": "総合リサイクルショップ"
+    },
+    {
+      "name": "back yard(バックヤード)",
+      "category": "不用品買取",
+      "address": "東京都府中市府中町1-26-16",
+      "phone": "042-306-8046",
+      "url": "https://back-yard.tokyo/",
+      "note": "家具買取・修理専門店"
+    }
+  ]
+}

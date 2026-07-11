@@ -1,0 +1,29 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルたちやま",
+      "category": "リサイクルショップ",
+      "address": "大和市西鶴間5-10-9",
+      "phone": "046-216-9241",
+      "url": null,
+      "note": "地元密着リサイクル業者"
+    },
+    {
+      "name": "リサイクルプラネット",
+      "category": "不用品買取",
+      "address": "大和市代官2-1-11",
+      "phone": "0120-95-9515",
+      "url": null,
+      "note": "家具家電中心の買取"
+    },
+    {
+      "name": "リサイクルショップ如月",
+      "category": "不用品買取",
+      "address": "大和市代官1-14-5",
+      "phone": "046-244-6928",
+      "url": "https://hachi-kisaragi.com/",
+      "note": "昭和レトロ雑貨・ゲーム等の買取"
+    }
+  ]
+}

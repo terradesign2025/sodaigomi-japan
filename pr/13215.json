@@ -1,0 +1,29 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "独立（ドクリツ）",
+      "category": "リサイクルショップ",
+      "address": "東京都国立市北2-13-48-101",
+      "phone": "042-577-3452",
+      "url": null,
+      "note": "家具・家電・楽器等幅広く買取"
+    },
+    {
+      "name": "丸信リサイクル",
+      "category": "不用品買取",
+      "address": "東京都国立市西1-18-22",
+      "phone": "042-575-0020",
+      "url": "https://www.2060.jp/column/recycling-shop/kunitachi-recycle/",
+      "note": "地域密着リサイクルショップ"
+    },
+    {
+      "name": "SiSSY.Japon",
+      "category": "不用品買取",
+      "address": "東京都国立市中1-16-20",
+      "phone": "042-843-0741",
+      "url": "https://www.sissy.tokyo/",
+      "note": "ハイブランド品買取専門"
+    }
+  ]
+}

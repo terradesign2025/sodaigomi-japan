@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "セカンドマーケットプレイス",
+      "category": "リサイクルショップ",
+      "address": "埼玉県越谷市相模町7-3926-3",
+      "phone": "048-986-3878",
+      "url": null,
+      "note": "中古CD・レコード等の独立系"
+    },
+    {
+      "name": "質・買取ハラダ",
+      "category": "不用品買取",
+      "address": "埼玉県越谷市蒲生東町16-29",
+      "phone": "048-985-0071",
+      "url": "https://www.7harada.jp/",
+      "note": "ドライブスルー質屋"
+    }
+  ]
+}

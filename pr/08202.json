@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "日立リサイクルセンター",
+      "category": "リサイクルショップ",
+      "address": "茨城県日立市日高町4丁目12-20",
+      "phone": "0294-33-7743",
+      "url": "https://hitachi-recycle.com/",
+      "note": "総合リサイクルショップ・買取販売"
+    },
+    {
+      "name": "白い部屋 桜川店",
+      "category": "リサイクルショップ",
+      "address": "茨城県日立市桜川町1丁目5-17",
+      "phone": "0294-33-0282",
+      "url": null,
+      "note": "地域密着リサイクルショップ"
+    }
+  ]
+}

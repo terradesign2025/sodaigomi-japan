@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップ これわん わらび店",
+      "category": "リサイクルショップ",
+      "address": "埼玉県蕨市塚越5-5-5",
+      "phone": "048-229-6655",
+      "url": "http://www.korewan.com/",
+      "note": "家具・家電・衣料等"
+    },
+    {
+      "name": "リサイクルちぇんじ",
+      "category": "リサイクルショップ",
+      "address": "埼玉県蕨市中央7-14-3",
+      "phone": "048-444-8332",
+      "url": "https://recyclechenji.com/",
+      "note": "埼玉県産業振興公社掲載"
+    }
+  ]
+}
