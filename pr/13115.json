@@ -1,0 +1,45 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップ かっぱ堂本店",
+      "category": "リサイクルショップ",
+      "address": "東京都杉並区久我山5-24-32",
+      "phone": "03-3331-1068",
+      "url": "https://www.kappado.biz/",
+      "note": "富士見ヶ丘駅近くの個人経営リサイクルショップ"
+    },
+    {
+      "name": "素人の乱5号店",
+      "category": "リサイクルショップ",
+      "address": "東京都杉並区高円寺北3-9-11",
+      "phone": "03-3330-2939",
+      "url": null,
+      "note": "高円寺北中通り商店街の老舗リサイクルショップ"
+    },
+    {
+      "name": "リサイクルショップもぐランド杉並永福店",
+      "category": "不用品買取",
+      "address": "東京都杉並区永福4-19-6",
+      "phone": "03-6304-3513",
+      "url": "https://www.recycleshop-mogland.jp/",
+      "note": "家具・家電・着物等総合買取"
+    },
+    {
+      "name": "骨董品買取道具屋慈光",
+      "category": "不用品買取",
+      "address": "東京都杉並区西荻北4-8-8",
+      "phone": "03-5382-5171",
+      "url": "https://antiquesjikoh.com/",
+      "note": "骨董品・アンティーク家具・茶道具等"
+    },
+    {
+      "name": "古着買取unstitch",
+      "category": "不用品買取",
+      "address": "東京都杉並区高円寺南3-45-13-203",
+      "phone": "03-3317-2188",
+      "url": "http://www.unstitch.com/",
+      "note": "古着・ブランド品買取"
+    }
+  ]
+}

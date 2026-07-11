@@ -1,0 +1,61 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "LUMBERROOM",
+      "category": "リサイクルショップ",
+      "address": "東京都品川区荏原3-5-7 1F",
+      "phone": "03-6421-6408",
+      "url": "https://lumberroom635.com/",
+      "note": "個人経営のヴィンテージ家具・雑貨買取専門店"
+    },
+    {
+      "name": "リサイクルショップティファナ武蔵小山店",
+      "category": "リサイクルショップ",
+      "address": "東京都品川区荏原3-3-15",
+      "phone": "03-5749-5557",
+      "url": "https://www.tifana.net/musashikoyama/",
+      "note": "武蔵小山パルム商店街"
+    },
+    {
+      "name": "リサイクルショップZACK戸越店",
+      "category": "リサイクルショップ",
+      "address": "東京都品川区戸越2-1-3",
+      "phone": "03-5749-5381",
+      "url": null,
+      "note": "戸越銀座商店街近く"
+    },
+    {
+      "name": "Lumber Room武蔵小山店",
+      "category": "不用品買取",
+      "address": "東京都品川区荏原3-5-7 1F",
+      "phone": "03-6421-6408",
+      "url": "https://lumberroom635.com/",
+      "note": "ヴィンテージ家具・生活家電等の買取販売"
+    },
+    {
+      "name": "もぐランド武蔵小山店",
+      "category": "不用品買取",
+      "address": "東京都品川区小山3-2-4",
+      "phone": "03-5734-1156",
+      "url": "https://www.recycleshop-mogland.jp/",
+      "note": "品川区に本社を置く地域密着業者"
+    },
+    {
+      "name": "ウエストヴィレッジ荏原町店",
+      "category": "不用品買取",
+      "address": "東京都品川区中延5-3-9",
+      "phone": "03-6426-8420",
+      "url": "https://westvillage.tokyo/",
+      "note": "荏原町商店街内・衣類雑貨食器家電の買取販売"
+    },
+    {
+      "name": "リサイクルショップリボン大井町店",
+      "category": "不用品買取",
+      "address": "東京都品川区広町2-1-36",
+      "phone": "03-5742-6933",
+      "url": "https://www.ekiten.jp/shop_3017592/",
+      "note": "家具・インテリア中心の買取・委託販売"
+    }
+  ]
+}

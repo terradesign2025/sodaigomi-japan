@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "なんでも家",
+      "category": "リサイクルショップ",
+      "address": "東京都荒川区町屋2-3-10",
+      "phone": "03-3892-8308",
+      "url": null,
+      "note": "個人経営・日曜定休"
+    },
+    {
+      "name": "企業組合あうん",
+      "category": "不用品買取",
+      "address": "東京都荒川区東日暮里1-36-10",
+      "phone": "03-5604-0873",
+      "url": "http://awn-net.com/",
+      "note": "家電・古着・家具等を買取"
+    },
+    {
+      "name": "有限会社おくらや",
+      "category": "不用品買取",
+      "address": "東京都荒川区東日暮里6-16-13",
+      "phone": "03-3805-2222",
+      "url": "https://www.recycle-store.net/108tokyoto/10338052222.html",
+      "note": "質屋・古物商として貴金属・ブランド品等の高価買取"
+    },
+    {
+      "name": "リサイクル123",
+      "category": "不用品買取",
+      "address": "東京都荒川区東日暮里6-37-7",
+      "phone": "0120-988-448",
+      "url": "https://recycle123.net/",
+      "note": "家具・家電の出張査定・現金買取"
+    }
+  ]
+}

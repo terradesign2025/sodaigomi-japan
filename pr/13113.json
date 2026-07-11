@@ -1,0 +1,45 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "安藤商店 笹塚店",
+      "category": "リサイクルショップ",
+      "address": "東京都渋谷区笹塚1-59-15",
+      "phone": "03-5990-6654",
+      "url": "https://www.andoshouten-kaitori.com/",
+      "note": "骨董品・ブランド品・古着買取の個人経営店"
+    },
+    {
+      "name": "NEWS INDIGO",
+      "category": "リサイクルショップ",
+      "address": "東京都渋谷区笹塚2-22-2",
+      "phone": "03-5304-0356",
+      "url": null,
+      "note": "デザイナーズ・ヴィンテージ家具中心の買取販売店"
+    },
+    {
+      "name": "安藤商店",
+      "category": "不用品買取",
+      "address": "東京都渋谷区笹塚1-59-15",
+      "phone": "03-5990-6654",
+      "url": "https://www.andoshouten-kaitori.com/",
+      "note": "骨董品・アンティーク品・ブランド品の買取と販売"
+    },
+    {
+      "name": "リサイクルショップインディゴ",
+      "category": "不用品買取",
+      "address": "東京都渋谷区笹塚2-22-2",
+      "phone": "03-5304-0356",
+      "url": "https://www.rsindigo.com/",
+      "note": "家電・家具等を店頭・出張で買取"
+    },
+    {
+      "name": "フォーカス",
+      "category": "不用品買取",
+      "address": "東京都渋谷区千駄ヶ谷3-7-4",
+      "phone": "03-6721-0435",
+      "url": "https://www.focus.tokyo.jp/",
+      "note": "ブランド家具・デザイナーズ家具・オフィス家具・家電専門"
+    }
+  ]
+}

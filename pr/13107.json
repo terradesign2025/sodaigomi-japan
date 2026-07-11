@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "大石商会",
+      "category": "リサイクルショップ",
+      "address": "東京都墨田区東向島2-14-1",
+      "phone": "0120-740-014",
+      "url": null,
+      "note": null
+    },
+    {
+      "name": "リサイクルショップてるてるぼうず",
+      "category": "不用品買取",
+      "address": "東京都墨田区東向島2-14-1",
+      "phone": "03-3616-2439",
+      "url": "https://www.recycle-store.net/108tokyoto/10120740014.html",
+      "note": "家具・家電・雑貨等の店頭買取／出張買取対応"
+    },
+    {
+      "name": "晟興商事株式会社",
+      "category": "不用品買取",
+      "address": "東京都墨田区江東橋4-25-7",
+      "phone": "03-6659-6588",
+      "url": "https://www.seikou8.com/",
+      "note": "中古家電・家具の店頭買取／出張買取"
+    },
+    {
+      "name": "株式会社山久",
+      "category": "不用品買取",
+      "address": "東京都墨田区業平1-3-13",
+      "phone": "03-3625-0288",
+      "url": "https://www.yama9-recycle.com/",
+      "note": "家具・家電・工具・楽器等の買取"
+    }
+  ]
+}

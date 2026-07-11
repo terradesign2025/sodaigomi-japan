@@ -1,0 +1,29 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップ富士中",
+      "category": "不用品買取",
+      "address": "東京都文京区本郷5-4-7",
+      "phone": "03-3815-1451",
+      "url": "https://www.fujichu.jp/",
+      "note": "文京区リサイクル推進協力店認定店"
+    },
+    {
+      "name": "LiCS（リックス）",
+      "category": "不用品買取",
+      "address": "東京都文京区本駒込3-17-6",
+      "phone": "03-5834-8136",
+      "url": "http://lics-tp.com/komagome.html",
+      "note": "昭和レトロ家具・楽器・骨董品等を買取"
+    },
+    {
+      "name": "三浦ピアノ本郷店",
+      "category": "不用品買取",
+      "address": "東京都文京区本郷6-26-1",
+      "phone": "03-3811-5906",
+      "url": "https://miurapiano.com/",
+      "note": "ピアノ専門の買取・修理・販売"
+    }
+  ]
+}

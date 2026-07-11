@@ -1,0 +1,45 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "TOKYO RECYCLE imption",
+      "category": "リサイクルショップ",
+      "address": "東京都世田谷区千歳台2-46-10 1F",
+      "phone": "0120-987-565",
+      "url": "https://tokyo-recycle.net/",
+      "note": "デザイナーズ・北欧家具専門"
+    },
+    {
+      "name": "リサイクル・ヤング",
+      "category": "不用品買取",
+      "address": "東京都世田谷区経堂1-38-3",
+      "phone": "03-5426-2771",
+      "url": "https://www.recycle-co.jp/",
+      "note": "経堂駅近くの地域密着型リサイクルショップ"
+    },
+    {
+      "name": "Recycle Gallery NEWS 世田谷店",
+      "category": "リサイクルショップ",
+      "address": "東京都世田谷区世田谷3-1-1",
+      "phone": "03-5451-0741",
+      "url": null,
+      "note": null
+    },
+    {
+      "name": "ばら商店 三軒茶屋本店",
+      "category": "不用品買取",
+      "address": "東京都世田谷区代沢4-16-19",
+      "phone": "03-3413-7768",
+      "url": "http://www.barashoten.com/",
+      "note": "骨董・家具・家電を扱う老舗。世田谷区内2店舗のみ"
+    },
+    {
+      "name": "アドア東京世田谷店",
+      "category": "不用品買取",
+      "address": "東京都世田谷区上用賀6-26-7",
+      "phone": "03-3706-3380",
+      "url": "https://www.a-zrecycle.com/",
+      "note": "家具買取専門・開業10年超の単独店舗"
+    }
+  ]
+}

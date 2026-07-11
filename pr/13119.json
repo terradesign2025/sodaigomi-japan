@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップ平安高島平店",
+      "category": "リサイクルショップ",
+      "address": "東京都板橋区高島平7-20-17",
+      "phone": "0120-07-1386",
+      "url": null,
+      "note": null
+    },
+    {
+      "name": "マミーリサイクルショップ",
+      "category": "不用品買取",
+      "address": "東京都板橋区清水町77-8",
+      "phone": "0120-323-012",
+      "url": "http://www.mamy-recycle-shop.com/",
+      "note": "創業15年の地域密着店"
+    },
+    {
+      "name": "総合リサイクルTOYBOX",
+      "category": "不用品買取",
+      "address": "東京都板橋区舟渡4-16-6",
+      "phone": "03-3558-5374",
+      "url": null,
+      "note": "家具・家電・酒・楽器等の高価買取"
+    },
+    {
+      "name": "リサイクルショップカモン",
+      "category": "不用品買取",
+      "address": "東京都板橋区上板橋3-11-5",
+      "phone": "03-6915-7134",
+      "url": "http://www.tokyo-comeon.jp/",
+      "note": "地域密着の買取専門店"
+    }
+  ]
+}

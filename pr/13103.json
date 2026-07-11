@@ -1,0 +1,21 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "諸道具みやた",
+      "category": "リサイクルショップ",
+      "address": "東京都港区高輪1-27-21",
+      "phone": "03-3441-4448",
+      "url": "https://www.miyata-douguten.com",
+      "note": "書画・骨董・古美術買取"
+    },
+    {
+      "name": "横倉屋三田店",
+      "category": "リサイクルショップ",
+      "address": "東京都港区芝5-24-2",
+      "phone": "03-3451-1552",
+      "url": "https://www.yokokuraya-mita.com/",
+      "note": "質預かり・貴金属等買取"
+    }
+  ]
+}

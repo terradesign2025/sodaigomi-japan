@@ -1,0 +1,29 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "遊遊市場",
+      "category": "不用品買取",
+      "address": "東京都足立区綾瀬7-16-22",
+      "phone": "03-5673-2424",
+      "url": "https://youyou-itiba.com/",
+      "note": "330坪の大型総合リサイクルショップ"
+    },
+    {
+      "name": "リサイクルショップオサム",
+      "category": "不用品買取",
+      "address": "東京都足立区佐野2-13-9",
+      "phone": "03-3620-1099",
+      "url": "https://www.ekiten.jp/shop_43198/",
+      "note": "家電・家具・日用品を扱う地域密着の個人店"
+    },
+    {
+      "name": "キャプテンフランク",
+      "category": "リサイクルショップ",
+      "address": "東京都足立区佐野2-13-9",
+      "phone": "03-3620-1099",
+      "url": null,
+      "note": null
+    }
+  ]
+}

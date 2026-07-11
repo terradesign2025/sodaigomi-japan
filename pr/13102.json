@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "サイ・リサイクル",
+      "category": "リサイクルショップ",
+      "address": "東京都中央区新川1-28-4 越前堀永谷マンション1407",
+      "phone": "0120-916-623",
+      "url": null,
+      "note": "家具・家電・ブランド品出張買取"
+    },
+    {
+      "name": "アトランティス銀座店",
+      "category": "リサイクルショップ",
+      "address": "東京都中央区銀座8-7-2 銀座藤井ビル2",
+      "phone": "03-6264-5130",
+      "url": "https://www.import-atlantis.com/",
+      "note": "ブランド品買取"
+    },
+    {
+      "name": "銀座大雅堂美術",
+      "category": "リサイクルショップ",
+      "address": "東京都中央区銀座1-9-8 奥野ビル6F",
+      "phone": "03-3563-8985",
+      "url": "https://taigadou.jp/",
+      "note": "骨董品・絵画・茶道具買取"
+    },
+    {
+      "name": "銀座 呂藝",
+      "category": "リサイクルショップ",
+      "address": "東京都中央区銀座1-5-7 6F",
+      "phone": "03-3562-1301",
+      "url": "https://rogei.tokyo/",
+      "note": "古布・骨董・着物買取"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "楠本質店",
+      "category": "リサイクルショップ",
+      "address": "東京都練馬区関町東2-11-4",
+      "phone": "03-3920-7878",
+      "url": null,
+      "note": "質屋・貴金属買取"
+    },
+    {
+      "name": "総合リサイクルハロッズ",
+      "category": "リサイクルショップ",
+      "address": "東京都練馬区三原台1-14-23",
+      "phone": "03-5933-0862",
+      "url": "https://harrods.co.jp/",
+      "note": "年中無休"
+    },
+    {
+      "name": "リサイクルショップナガワ",
+      "category": "不用品買取",
+      "address": "東京都練馬区北町3-19-4",
+      "phone": "03-3933-3275",
+      "url": "https://re-nagawa.com/",
+      "note": "老舗買取専門店"
+    },
+    {
+      "name": "リサイクルショップエコキーパーズ",
+      "category": "不用品買取",
+      "address": "東京都練馬区石神井町7-4-3",
+      "phone": "03-3996-6122",
+      "url": "https://ecokeepers.jp/",
+      "note": "石神井公園駅南口徒歩6分の地域密着店"
+    },
+    {
+      "name": "リサイクルショップたかせ",
+      "category": "不用品買取",
+      "address": "東京都練馬区春日町3-3-2",
+      "phone": "03-3970-5143",
+      "url": "https://itp.ne.jp/info/136300836100000899/",
+      "note": "創業50年以上の老舗"
+    }
+  ]
+}

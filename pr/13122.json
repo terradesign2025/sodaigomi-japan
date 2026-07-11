@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップえん",
+      "category": "リサイクルショップ",
+      "address": "東京都葛飾区南水元4-2-24",
+      "phone": "03-6879-7031",
+      "url": null,
+      "note": null
+    },
+    {
+      "name": "リサイクルブティックマリーノ",
+      "category": "リサイクルショップ",
+      "address": "東京都葛飾区亀有3-15-8",
+      "phone": "03-5680-5677",
+      "url": null,
+      "note": null
+    },
+    {
+      "name": "コジマリサイクル買取センター",
+      "category": "不用品買取",
+      "address": "東京都葛飾区亀有4-22-3",
+      "phone": "03-3602-0783",
+      "url": "https://www.genkinkaitori-katsushika-kojimarecycle.com/",
+      "note": "亀有駅徒歩8〜10分の地域密着買取店"
+    },
+    {
+      "name": "古道具買取サンマ",
+      "category": "不用品買取",
+      "address": "東京都葛飾区柴又1-9-9",
+      "phone": "070-4093-9524",
+      "url": "https://www.kaitori-sanma.com/",
+      "note": "予約制の古道具・骨董買取店"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リユース・リパブリック",
+      "category": "リサイクルショップ",
+      "address": "東京都江戸川区中葛西2-22-1",
+      "phone": "03-5878-1580",
+      "url": "https://ec-republic.com/",
+      "note": null
+    },
+    {
+      "name": "リサイクルギャラリーNEWS江戸川店",
+      "category": "リサイクルショップ",
+      "address": "東京都江戸川区春江町2-50-11",
+      "phone": "03-5636-1733",
+      "url": "https://news.gr.jp/",
+      "note": null
+    },
+    {
+      "name": "THEリサイクルショップ",
+      "category": "不用品買取",
+      "address": "東京都江戸川区南小岩7-29-3",
+      "phone": "03-5876-7933",
+      "url": "https://the-recycleshop.com/",
+      "note": "小岩駅南口徒歩5分・単独独立店舗"
+    },
+    {
+      "name": "リユース・リパブリック環七葛西店",
+      "category": "不用品買取",
+      "address": "東京都江戸川区中葛西2-22-1",
+      "phone": "03-5878-1580",
+      "url": "https://ec-republic.com/",
+      "note": "運営元は江戸川区所在の株式会社わくらく"
+    },
+    {
+      "name": "リユース家電Happy西葛西店",
+      "category": "不用品買取",
+      "address": "東京都江戸川区西葛西7-5-3",
+      "phone": "03-3688-1230",
+      "url": "https://www.119happy.net/",
+      "note": "西葛西駅南口徒歩8分・中古家電専門"
+    }
+  ]
+}

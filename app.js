@@ -3087,6 +3087,18 @@ function renderInfo() {
 // =====================================================
 // スポンサー
 // =====================================================
+// 都市別PR欄データ（開発・プレビュー用サンプル）
+// 本番は ./pr/{cityId}.json を自動fetch（loadPRData参照）
+const PR_SAMPLES = {
+  '13101': {
+    sponsored: null,
+    listings: [
+      {name:'合同会社スマイルファクトリー',category:'リサイクルショップ',address:'東京都千代田区神田平河町1',phone:'050-5319-5360',url:'https://www.smilefactory.tokyo',note:'スマートフォン・携帯電話買取専門'},
+      {name:'古美術 漢和堂',category:'不用品買取',address:'東京都千代田区神田神保町1-22-7',phone:'03-3259-2668',url:'http://kangwado.com/',note:'中国古美術専門の買取店'}
+    ]
+  }
+};
+
 // 都市別スポンサーデータ（開発・プレビュー用サンプル）
 // 本番は ./sponsors/{cityId}.json を自動fetch（loadSponsorData参照）
 const SPONSOR_SAMPLES = {
@@ -3143,14 +3155,18 @@ async function loadSponsorData(cityId) {
 
 function getSponsorForCity(id){ return SPONSOR_SAMPLES[id] || null; }
 
-// Webに強い・アクセス計測している全国大手5社（プロト用）
-const REC_COMPANIES = [
-  {name:'ハードオフグループ',desc:'家電・家具・楽器・ブランド品の買取&リユース。全国900店超',cat:'買取・リユース',icon:'🏪',url:'https://www.hardoff.co.jp/'},
-  {name:'セカンドストリート',desc:'家電・家具・衣類・スポーツ用品なんでも買取の総合リユース',cat:'総合リユース',icon:'♻️',url:'https://www.2ndstreet.jp/'},
-  {name:'おたからや',desc:'貴金属・ブランド品・骨董品・お酒の高価買取。出張・宅配対応',cat:'ブランド・貴金属買取',icon:'💎',url:'https://www.otakaraya.jp/'},
-  {name:'ジモティー',desc:'地元の人と0円で譲り合い・売買できる掲示板。粗大ごみになる前に',cat:'地元譲渡・売買',icon:'📣',url:'https://jmty.jp/'},
-  {name:'メルカリ',desc:'スマホで簡単フリマ。捨てる前にまずはメルカリで売却を',cat:'フリマアプリ',icon:'📱',url:'https://www.mercari.com/jp/'},
-];
+// pr/{cityId}.json を非同期で取得（本番用・地元のリサイクルショップ/不用品買取業者データ）
+// ファイルが存在しない(404)→ null、ネットワークエラー→ null を返す
+const PR_CATEGORY_ICON = {'リサイクルショップ':'♻️','不用品買取':'💰'};
+async function loadPRData(cityId) {
+  if (!cityId) return null;
+  if (location.protocol === 'file:') return PR_SAMPLES[cityId] || null;
+  try {
+    const res = await fetch(`./pr/${cityId}.json`, { cache: 'no-cache' });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch(e) { return null; }
+}
 
 // トップページ用 地域密着リサイクル・買取バナー（大手チェーン除外・地元店限定）
 const NATIONAL_BANNERS = [
@@ -3194,14 +3210,30 @@ async function renderSponsors() {
   const sp = await loadSponsorData(currentCity?.id);
   const t=document.getElementById('spTop'), b=document.getElementById('spBot');
 
-  // 共通：PR（このエリアのおすすめ）
-  const prHtml = `<div class="sp-rec">
-    <div class="sp-rec-hd">📢 PR · ${esc(cn)}エリアのおすすめサービス</div>
-    ${REC_COMPANIES.map(c=>`<a class="sp-rec-item" href="${esc(c.url)}" target="_blank" rel="noopener">
-      <div class="sp-rec-ico">${c.icon}</div>
-      <div class="sp-rec-body"><div class="sp-rec-name">${esc(c.name)}</div><div class="sp-rec-cat">${esc(c.cat)} · ${esc(c.desc)}</div></div>
-      <span class="sp-rec-arr">›</span></a>`).join('')}
-  </div>`;
+  // 共通：PR（このエリアの地元リサイクルショップ・不用品買取業者）
+  // pr/{cityId}.json が無い・空の都市では非表示（データが揃うまで全国チェーンで穴埋めしない）
+  const pr = await loadPRData(currentCity?.id);
+  let prHtml = '';
+  if (pr?.sponsored) {
+    // PR枠スポンサー契約中：他の掲載はすべて非表示にして独占表示
+    const s = pr.sponsored;
+    prHtml = `<div class="sp-rec">
+      <div class="sp-rec-hd">📢 PR · ${esc(cn)}エリアのおすすめサービス</div>
+      <a class="sp-rec-item sp-rec-exclusive" href="${esc(s.url)}" target="_blank" rel="noopener sponsored">
+        <div class="sp-rec-ico">${s.icon||'🏪'}</div>
+        <div class="sp-rec-body"><div class="sp-rec-name">${esc(s.name)}</div><div class="sp-rec-cat">${esc(s.category||'')}${s.note?' · '+esc(s.note):''}</div></div>
+        <span class="sp-rec-arr">›</span></a>
+    </div>`;
+  } else if (pr?.listings?.length) {
+    const items = pr.listings.slice(0, 8);
+    prHtml = `<div class="sp-rec">
+      <div class="sp-rec-hd">📢 PR · ${esc(cn)}エリアの地元リサイクル・買取店</div>
+      ${items.map(c=>`<a class="sp-rec-item" href="${c.url?esc(c.url):'#'}" target="_blank" rel="noopener">
+        <div class="sp-rec-ico">${PR_CATEGORY_ICON[c.category]||'♻️'}</div>
+        <div class="sp-rec-body"><div class="sp-rec-name">${esc(c.name)}</div><div class="sp-rec-cat">${esc(c.category)}${c.note?' · '+esc(c.note):''}</div></div>
+        <span class="sp-rec-arr">›</span></a>`).join('')}
+    </div>`;
+  }
 
   if(sp) {
     // ── スポンサーあり ──

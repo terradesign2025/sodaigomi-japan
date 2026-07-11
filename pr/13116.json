@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルAsuka",
+      "category": "不用品買取",
+      "address": "東京都豊島区北大塚1-14-7",
+      "phone": "03-3915-5557",
+      "url": "https://www.kaitori-asuka.com/",
+      "note": "家電/家具/骨董品/美術品など幅広く買取"
+    },
+    {
+      "name": "総合リサイクルショップ めだま家",
+      "category": "リサイクルショップ",
+      "address": "東京都豊島区高松1-1-18 1F",
+      "phone": "03-3959-8979",
+      "url": "https://rpcom.co.jp/",
+      "note": "古着・家電・家具・雑貨等を扱う地域密着型買取店"
+    },
+    {
+      "name": "リサイクルショップめだま家",
+      "category": "不用品買取",
+      "address": "東京都豊島区上池袋3-33-22",
+      "phone": "03-3915-6825",
+      "url": "https://rpcom.co.jp/",
+      "note": "古着/家電/家具/雑貨/楽器買取"
+    },
+    {
+      "name": "リサイクルショップらやね",
+      "category": "不用品買取",
+      "address": "東京都豊島区上池袋1-10-9",
+      "phone": "03-3940-4242",
+      "url": "https://www.rayaneh1.com/",
+      "note": "家具/家電等の不用品買取・出張買取対応"
+    }
+  ]
+}

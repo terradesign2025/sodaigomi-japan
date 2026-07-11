@@ -1,0 +1,45 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルブティックABC都立大学店",
+      "category": "リサイクルショップ",
+      "address": "東京都目黒区平町1-25-15",
+      "phone": "03-5731-5811",
+      "url": "https://www.re-abc.com/",
+      "note": "運営元は国立市だが目黒区内に実店舗"
+    },
+    {
+      "name": "ブランドコレクション自由が丘",
+      "category": "リサイクルショップ",
+      "address": "東京都目黒区自由が丘2-11-7",
+      "phone": "03-5731-3888",
+      "url": "https://bc-jiyugaoka.com/",
+      "note": "自由が丘で約20年の実績"
+    },
+    {
+      "name": "リサイクルショップサイ中目黒店",
+      "category": "不用品買取",
+      "address": "東京都目黒区東山1-3-3",
+      "phone": "03-5724-3474",
+      "url": "http://nakameguro.sai-works.com/",
+      "note": "家具・家電・貴金属・美術品まで買取"
+    },
+    {
+      "name": "Hand To Mouth",
+      "category": "不用品買取",
+      "address": "東京都目黒区中町1-35-8",
+      "phone": "03-3785-0355",
+      "url": "https://hand-to-mouth-online.com/",
+      "note": "デザイン性重視の家具・インテリア・ファッション買取"
+    },
+    {
+      "name": "オフバザール学芸大学店",
+      "category": "不用品買取",
+      "address": "東京都目黒区鷹番2-4-12",
+      "phone": "03-6303-2880",
+      "url": null,
+      "note": "総合リサイクル。品川区・目黒区中心の小規模地域チェーン"
+    }
+  ]
+}

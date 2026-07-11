@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "ブルジョネ商事株式会社",
+      "category": "リサイクルショップ",
+      "address": "東京都台東区松が谷3-8-3",
+      "phone": "0120-527-714",
+      "url": "https://taitokukaitori.com/",
+      "note": "出張・店頭買取"
+    },
+    {
+      "name": "リサイクルショップBOURGEONNER",
+      "category": "不用品買取",
+      "address": "東京都台東区松が谷3-8-3",
+      "phone": "0120-527-714",
+      "url": "https://taitokukaitori.com/",
+      "note": "家電・家具・着物・ブランド品等の出張買取"
+    },
+    {
+      "name": "総合リサイクル日本市",
+      "category": "不用品買取",
+      "address": "東京都台東区上野3-17-5 3F",
+      "phone": "0120-089-689",
+      "url": "https://nihon-ichi.info/",
+      "note": "都内2拠点のみの独立系。出張買取中心"
+    },
+    {
+      "name": "リサイクルショップレトリーバー入谷店",
+      "category": "不用品買取",
+      "address": "東京都台東区入谷2-3-1",
+      "phone": "03-3876-5184",
+      "url": "https://www.recycle-retriever.com/",
+      "note": "家電・貴金属・家具等幅広く買取"
+    }
+  ]
+}

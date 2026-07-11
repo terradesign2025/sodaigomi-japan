@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルハウス",
+      "category": "不用品買取",
+      "address": "東京都大田区蒲田本町2-4-1",
+      "phone": "03-6424-7761",
+      "url": "https://recycle-house.com/",
+      "note": "京急蒲田駅徒歩4分・古物商許可番号確認済み"
+    },
+    {
+      "name": "リサイクルショップ樅の木",
+      "category": "不用品買取",
+      "address": "東京都大田区鵜の木2-27-1",
+      "phone": "03-3758-0807",
+      "url": "https://hp.omisenomikata.jp/shop/8202129/",
+      "note": "鵜の木駅近くの地域密着リサイクルショップ"
+    },
+    {
+      "name": "e-生活館",
+      "category": "不用品買取",
+      "address": "東京都大田区大森中2-1-1",
+      "phone": "03-5763-5541",
+      "url": "https://e-seikatsukan.com/",
+      "note": "家具館・家電館の2店舗運営"
+    },
+    {
+      "name": "ココカラココロ",
+      "category": "不用品買取",
+      "address": "東京都大田区中央1-21-5",
+      "phone": "03-6303-8866",
+      "url": "https://cococaracocoro.jp/",
+      "note": "出張・持込・宅配買取に対応"
+    }
+  ]
+}

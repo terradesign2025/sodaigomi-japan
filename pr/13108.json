@@ -1,0 +1,61 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "買取専門さくら",
+      "category": "不用品買取",
+      "address": "東京都江東区住吉1-19-1",
+      "phone": "03-6659-2666",
+      "url": "https://jimalabo.jp/",
+      "note": "貴金属・宝石・ブランド品・時計等を買取"
+    },
+    {
+      "name": "リサイクル工房サラエ",
+      "category": "リサイクルショップ",
+      "address": "東京都江東区東砂5-16-3-101",
+      "phone": "03-5632-6601",
+      "url": null,
+      "note": null
+    },
+    {
+      "name": "サンフィールド江東店",
+      "category": "リサイクルショップ",
+      "address": "東京都江東区亀戸4-23-1",
+      "phone": "03-3682-8460",
+      "url": null,
+      "note": null
+    },
+    {
+      "name": "生活快館ララ 扇橋店",
+      "category": "リサイクルショップ",
+      "address": "東京都江東区扇橋3-1-6",
+      "phone": "03-5725-2902",
+      "url": null,
+      "note": null
+    },
+    {
+      "name": "生活快館ララ",
+      "category": "不用品買取",
+      "address": "東京都江東区扇橋3-1-6",
+      "phone": "03-3699-8666",
+      "url": "https://seikatsukaikanlala.com/",
+      "note": "家具・家電・食器・宝飾品等を買取"
+    },
+    {
+      "name": "生活快館LaLa",
+      "category": "不用品買取",
+      "address": "東京都江東区北砂4-35-10",
+      "phone": "03-5677-5170",
+      "url": null,
+      "note": "家具・家電・バッグ・宝飾品等を買取"
+    },
+    {
+      "name": "リサイクルアピオ",
+      "category": "不用品買取",
+      "address": "東京都江東区東砂4-16-10",
+      "phone": "03-3640-0684",
+      "url": "https://www.ekiten.jp/shop_3080152/",
+      "note": "小型家具・家電・釣具・楽器等を買取"
+    }
+  ]
+}

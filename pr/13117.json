@@ -1,0 +1,69 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "買取センター三浦商会",
+      "category": "リサイクルショップ",
+      "address": "東京都北区志茂4-12-4",
+      "phone": "03-3903-2492",
+      "url": null,
+      "note": null
+    },
+    {
+      "name": "買取専門店さすがや王子店",
+      "category": "リサイクルショップ",
+      "address": "東京都北区王子1-2-1",
+      "phone": "03-5961-2560",
+      "url": "https://sasugaya.jp/",
+      "note": null
+    },
+    {
+      "name": "中澤機械店",
+      "category": "リサイクルショップ",
+      "address": "東京都北区田端新町2-17-11",
+      "phone": "03-3893-0840",
+      "url": null,
+      "note": "工作機械等の買取・卸中心"
+    },
+    {
+      "name": "リサイクルショップワンツー",
+      "category": "リサイクルショップ",
+      "address": "東京都北区東十条3-10-15",
+      "phone": "03-3911-7271",
+      "url": "https://www.onetwo-shop.net/",
+      "note": "引越・遺品整理時の不用品回収も対応"
+    },
+    {
+      "name": "このみ",
+      "category": "リサイクルショップ",
+      "address": "東京都北区中十条2-12-1",
+      "phone": "03-5948-5692",
+      "url": "https://btt-konomi.com/",
+      "note": null
+    },
+    {
+      "name": "リサイクルショップ・ネオ",
+      "category": "不用品買取",
+      "address": "東京都北区赤羽1-16-2",
+      "phone": "03-3903-1331",
+      "url": "https://www.mapion.co.jp/phonebook/M02013/13117/21331074107/",
+      "note": "赤羽駅東口徒歩1分・家電家具等の買取"
+    },
+    {
+      "name": "ROD-リサイクルショップ・ワンツー",
+      "category": "不用品買取",
+      "address": "東京都北区東十条3-10-15",
+      "phone": "03-3911-7271",
+      "url": "https://www.onetwo-shop.net/",
+      "note": "家電家具からおもちゃまで幅広く買取"
+    },
+    {
+      "name": "マーリサイクルショップ",
+      "category": "不用品買取",
+      "address": "東京都北区田端新町3-1-1",
+      "phone": "03-3892-5622",
+      "url": "https://ma-recycle.com/",
+      "note": "冷蔵庫や洗濯機など生活家電中心に買取"
+    }
+  ]
+}

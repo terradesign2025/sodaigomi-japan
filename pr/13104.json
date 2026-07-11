@@ -1,0 +1,61 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルステーションわせだ",
+      "category": "不用品買取",
+      "address": "東京都新宿区西早稲田1-13-2",
+      "phone": "0120-145-679",
+      "url": "https://www.recycle-station.com/",
+      "note": "店頭買取・出張買取の両方に対応"
+    },
+    {
+      "name": "ニューワールドヨンイルサ",
+      "category": "リサイクルショップ",
+      "address": "東京都新宿区大久保2-18-10",
+      "phone": "03-3208-4989",
+      "url": "https://www.newworldyonirusa.com/",
+      "note": "家電製品出張買取"
+    },
+    {
+      "name": "古美術永澤",
+      "category": "リサイクルショップ",
+      "address": "東京都新宿区下落合3-21-1",
+      "phone": "0120-08-5108",
+      "url": "https://www.eizawa.com/",
+      "note": "掛軸・日本画・茶道具等買取"
+    },
+    {
+      "name": "株式会社ニューワールドヨンイルサ",
+      "category": "不用品買取",
+      "address": "東京都新宿区大久保2-18-10",
+      "phone": "03-3208-4989",
+      "url": "https://www.newworldyonirusa.com/",
+      "note": "新大久保駅徒歩6分。家電・家具・中古品の買取と店頭販売"
+    },
+    {
+      "name": "トリノス",
+      "category": "不用品買取",
+      "address": "東京都新宿区神楽坂6-23",
+      "phone": "03-6885-1766",
+      "url": "https://www.torinoth.com/",
+      "note": "アンティーク・雑貨中心のリサイクルセレクトショップ"
+    },
+    {
+      "name": "リサイクルショップecocolo",
+      "category": "不用品買取",
+      "address": "東京都新宿区西新宿5-15-6",
+      "phone": "03-3373-7555",
+      "url": "https://ecocolo.jp/",
+      "note": "1991年設立の地元事業者"
+    },
+    {
+      "name": "リサイクルボム",
+      "category": "不用品買取",
+      "address": "東京都新宿区大久保2-5-20",
+      "phone": "03-6228-0091",
+      "url": "https://www.ekiten.jp/shop_6255576/",
+      "note": "東新宿駅徒歩7分の個人経営の小規模店舗"
+    }
+  ]
+}

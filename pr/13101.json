@@ -1,0 +1,77 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "合同会社スマイルファクトリー",
+      "category": "リサイクルショップ",
+      "address": "東京都千代田区神田平河町1 第3東ビル601・14号室",
+      "phone": "050-5319-5360",
+      "url": "https://www.smilefactory.tokyo",
+      "note": "スマートフォン・携帯電話買取専門"
+    },
+    {
+      "name": "アキバリバティー",
+      "category": "リサイクルショップ",
+      "address": "東京都千代田区外神田4-7-1 リバティービル",
+      "phone": "0120-128-825",
+      "url": "https://liberty-kaitori.com/",
+      "note": "フィギュア・ホビー買取専門"
+    },
+    {
+      "name": "愛書館中川書房 神田神保町本店",
+      "category": "リサイクルショップ",
+      "address": "東京都千代田区神田神保町2-3-11",
+      "phone": "0120-489-544",
+      "url": "https://www.koshokaitori.com/",
+      "note": "古書・古本買取専門"
+    },
+    {
+      "name": "矢口書店",
+      "category": "リサイクルショップ",
+      "address": "東京都千代田区神田神保町2-5-1",
+      "phone": "03-3261-5708",
+      "url": "https://yaguchishoten.jp/",
+      "note": "古書買取・大正7年創業"
+    },
+    {
+      "name": "小宮山書店",
+      "category": "リサイクルショップ",
+      "address": "東京都千代田区神田神保町1-7",
+      "phone": "03-3291-0495",
+      "url": "https://book-komiyama.co.jp/",
+      "note": "古書・美術品買取"
+    },
+    {
+      "name": "長島書店",
+      "category": "リサイクルショップ",
+      "address": "東京都千代田区神田神保町2-5-1",
+      "phone": "03-3512-8115",
+      "url": "http://www.nagashimasyoten.com/",
+      "note": "古書・骨董品買取（明治35年創業）"
+    },
+    {
+      "name": "古美術 漢和堂",
+      "category": "不用品買取",
+      "address": "東京都千代田区神田神保町1-22-7",
+      "phone": "03-3259-2668",
+      "url": "http://kangwado.com/",
+      "note": "中国古美術（陶磁器・文房具・書画等）専門の買取店"
+    },
+    {
+      "name": "栄豊齋",
+      "category": "不用品買取",
+      "address": "東京都千代田区神田司町2-8-4",
+      "phone": "03-3258-9088",
+      "url": "https://www.eihousai.com/",
+      "note": "骨董品（掛軸・茶道具・陶器等）買取と遺品整理に対応"
+    },
+    {
+      "name": "中（あたり）質店",
+      "category": "不用品買取",
+      "address": "東京都千代田区神田神保町2-3",
+      "phone": "03-3261-6570",
+      "url": "https://www.atarishichiten.com/",
+      "note": "宝石・時計・海外ブランド品専門の質屋"
+    }
+  ]
+}

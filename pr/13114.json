@@ -1,0 +1,37 @@
+{
+  "sponsored": null,
+  "listings": [
+    {
+      "name": "リサイクルショップ ティファナ東中野店",
+      "category": "リサイクルショップ",
+      "address": "東京都中野区東中野3-9-10",
+      "phone": "03-5338-0551",
+      "url": "https://www.tifana.net/higashinakano/",
+      "note": "中野発祥の古着・家具買取店"
+    },
+    {
+      "name": "リサイクルショップギャザー",
+      "category": "不用品買取",
+      "address": "東京都中野区東中野5-5-6",
+      "phone": "03-5389-4339",
+      "url": "https://www.heart-beat-nakano.com/shop/42009.html",
+      "note": "東中野で16年の地域密着店"
+    },
+    {
+      "name": "リサイクルショップティファナ",
+      "category": "不用品買取",
+      "address": "東京都中野区新井4-13-23",
+      "phone": "03-5318-3733",
+      "url": "https://www.tifana.net/",
+      "note": "中野発祥の地域チェーン"
+    },
+    {
+      "name": "株式会社エイブイ",
+      "category": "不用品買取",
+      "address": "東京都中野区上鷺宮5-10-1",
+      "phone": "03-3998-4610",
+      "url": "https://eibui.co.jp/",
+      "note": "創業35年の地域密着リサイクルショップ"
+    }
+  ]
+}
