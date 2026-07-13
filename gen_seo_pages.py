@@ -39,6 +39,19 @@ REGIONS = [
     ('四国', ['36','37','38','39']),
     ('九州・沖縄', ['40','41','42','43','44','45','46','47']),
 ]
+# 区市ガイドのブログ記事があるcityId → blog/{slug}-sodaigomi-guide.html
+BLOG_GUIDE_MAP = {
+    '13121':'adachi','13118':'arakawa','13105':'bunkyo','12100':'chiba','13101':'chiyoda',
+    '13102':'chuo','13123':'edogawa','40130':'fukuoka','13201':'hachioji','22130':'hamamatsu',
+    '34100':'hiroshima','13119':'itabashi','13122':'katsushika','14130':'kawasaki','13117':'kita',
+    '40100':'kitakyushu','28100':'kobe','13108':'koto','43100':'kumamoto','26100':'kyoto',
+    '13110':'meguro','13103':'minato','23100':'nagoya','13114':'nakano','13120':'nerima',
+    '15100':'niigata','33100':'okayama','27100':'osaka','13111':'ota','14150':'sagamihara',
+    '11100':'saitama','27140':'sakai','01100':'sapporo','04100':'sendai','13112':'setagaya',
+    '13113':'shibuya','13109':'shinagawa','13104':'shinjuku','22100':'shizuoka','13115':'suginami',
+    '13107':'sumida','13106':'taito','13116':'toshima','14100':'yokohama',
+}
+
 GOJUON = ['あ','か','さ','た','な','は','ま','や','ら','わ','特']
 POPULAR_KEYWORDS = [
     'ソファ','ベッド','マットレス','タンス','布団','自転車','テーブル','椅子',
@@ -141,6 +154,15 @@ footer.site nav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:10px}
 footer.site a{color:var(--t2);text-decoration:none}
 footer.site a:hover{color:var(--p)}
 .disclaimer{background:var(--card);border-radius:var(--r);padding:12px 14px;font-size:11px;color:var(--t3);line-height:1.8;margin-bottom:14px}
+.blog-link{display:block;background:var(--pl);color:var(--pd);text-align:center;font-weight:700;padding:12px;border-radius:12px;text-decoration:none;margin:16px 0;font-size:14px}
+.blog-link:hover{background:var(--p);color:#fff}
+.pr-list{padding:4px 0}
+.pr-item{padding:12px 16px;border-bottom:1px solid var(--b)}
+.pr-item:last-child{border-bottom:none}
+.pr-item a{color:var(--t1);font-weight:700;font-size:14px;text-decoration:none}
+.pr-item a:hover{color:var(--pd)}
+.pr-item span{color:var(--t1);font-weight:700;font-size:14px}
+.pr-meta{font-size:12px;color:var(--t3);margin-top:2px}
 </style>'''
 
 FOOTER_DISCLAIMER = '掲載している料金・申込方法は各自治体の公式情報をもとに作成していますが、改定等により実際と異なる場合があります。お申し込み前に必ず各自治体の公式情報をご確認ください。'
@@ -205,6 +227,40 @@ def popular_items(items):
         if len(picked) >= 12:
             break
     return picked
+
+def load_pr_listings(cid):
+    path = os.path.join(ROOT, 'pr', f'{cid}.json')
+    if not os.path.exists(path):
+        return []
+    try:
+        with open(path, encoding='utf-8') as f:
+            data = json.load(f)
+    except Exception:
+        return []
+    if data.get('sponsored'):
+        return [data['sponsored']]
+    return data.get('listings') or []
+
+def pr_section_html(cid, name):
+    listings = load_pr_listings(cid)
+    if not listings:
+        return ''
+    items = ''.join(
+        f'''<div class="pr-item"><a href="{esc(b['url'])}" target="_blank" rel="noopener">{esc(b['name'])}</a>
+<div class="pr-meta">{esc(b.get('category',''))}{f" ・ {esc(b['note'])}" if b.get('note') else ''}{f" ・ {esc(b['address'])}" if b.get('address') else ''}</div></div>'''
+        if b.get('url') else
+        f'''<div class="pr-item"><span>{esc(b['name'])}</span>
+<div class="pr-meta">{esc(b.get('category',''))}{f" ・ {esc(b['note'])}" if b.get('note') else ''}{f" ・ {esc(b['address'])}" if b.get('address') else ''}</div></div>'''
+        for b in listings
+    )
+    return f'''<h2>{esc(name)}の地元リサイクルショップ・不用品買取店</h2>
+<div class="card pr-list">{items}</div>'''
+
+def blog_link_html(cid, name):
+    slug = BLOG_GUIDE_MAP.get(cid)
+    if not slug:
+        return ''
+    return f'''<a class="blog-link" href="/blog/{slug}-sodaigomi-guide.html">📖 {esc(name)}の粗大ごみ完全ガイド記事を読む →</a>'''
 
 def fee_range(items):
     fees = [it['fee'] for it in items if isinstance(it.get('fee'), (int, float)) and it['fee'] > 0]
@@ -349,6 +405,8 @@ def city_page(c, pref_cities):
     ver_note = f'※ 掲載内容は{esc(ver)}時点の情報です。' if ver else ''
     lead_app = r.get('applicationMethod', '')
     lead_app_short = (lead_app[:40] + '…') if len(lead_app) > 40 else lead_app
+    blog_link = blog_link_html(cid, name)
+    pr_html = pr_section_html(cid, name)
 
     return f'''<!DOCTYPE html>
 <html lang="ja">
@@ -363,6 +421,7 @@ def city_page(c, pref_cities):
 <h1>{esc(pref)}{esc(name)}の粗大ごみ処分料金・出し方</h1>
 <p class="lead">{esc(name)}の粗大ごみ処分手数料を全{n_items}品目掲載しています。{f'手数料は品目により{range_txt}です。' if range_txt else ''}{f'申込みは{esc(lead_app_short)}。' if lead_app_short else ''}{ver_note}</p>
 <a class="cta" href="/?city={cid}">🔍 品目を検索して料金を合計する（無料アプリ）</a>
+{blog_link}
 <h2>{esc(name)}の粗大ごみ 申込み・出し方の基本情報</h2>
 {info_table}
 {pop_html}
@@ -371,6 +430,7 @@ def city_page(c, pref_cities):
 <p class="note">{FOOTER_DISCLAIMER}</p>
 {unc_html}
 {faq_html}
+{pr_html}
 <a class="cta" href="/?city={cid}">📱 {esc(name)}の料金をアプリで検索する</a>
 {rel_html}
 {site_footer()}
