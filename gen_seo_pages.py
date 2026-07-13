@@ -278,7 +278,7 @@ def load_pr_listings(cid):
     return data.get('listings') or []
 
 def pr_section_html(cid, name):
-    listings = load_pr_listings(cid)
+    listings = [b for b in load_pr_listings(cid) if b.get('name')]
     if not listings:
         return ''
     items = ''.join(
