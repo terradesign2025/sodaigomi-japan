@@ -181,6 +181,42 @@ def site_footer():
 <div>© 2026 株式会社テラデザイン</div>
 </footer>'''
 
+def load_pop_data():
+    """data/cities_*.json（cities_kana_addition.json除く）から id -> {pop, rank} を集約"""
+    pop_data = {}
+    for path in sorted(glob.glob(os.path.join(ROOT, 'data', 'cities_*.json'))):
+        if 'kana_addition' in path:
+            continue
+        try:
+            with open(path, encoding='utf-8') as f:
+                d = json.load(f)
+        except Exception:
+            continue
+        for c in d.get('cities', []):
+            cid = c.get('id')
+            if cid and c.get('pop'):
+                pop_data[cid] = {'pop': c['pop'], 'rank': c.get('rank', '')}
+    return pop_data
+
+POP_DATA = load_pop_data()
+
+RANK_LABEL = {'A': '地域の中心都市', 'B': '中規模の都市', 'C': '地域に根ざした市区町村'}
+
+def area_intro_html(c, others):
+    info = POP_DATA.get(c['id'])
+    parts = []
+    if info and info.get('pop'):
+        pop_man = info['pop'] / 10000
+        pop_txt = f'{pop_man:.1f}万人'.replace('.0万人', '万人')
+        rank_label = RANK_LABEL.get(info.get('rank'), '')
+        parts.append(f"{esc(c['name'])}は{esc(c['pref'])}に属し、人口はおよそ{pop_txt}です。" + (f"{rank_label}として知られています。" if rank_label else ''))
+    if others:
+        neighbor_names = '・'.join(esc(x['name']) for x in others[:3])
+        parts.append(f'近隣には{neighbor_names}などがあり、あわせてお住まいの地域の粗大ごみ料金を調べることもできます。')
+    if not parts:
+        return ''
+    return f'<p class="lead">{"".join(parts)}</p>'
+
 def load_cities():
     cities = []
     for path in sorted(glob.glob(os.path.join(ROOT, 'cities', '*', '*_v2.json'))):
@@ -407,6 +443,8 @@ def city_page(c, pref_cities):
     lead_app_short = (lead_app[:40] + '…') if len(lead_app) > 40 else lead_app
     blog_link = blog_link_html(cid, name)
     pr_html = pr_section_html(cid, name)
+    others_for_intro = [x for x in pref_cities if x['id'] != cid][:3]
+    intro_html = area_intro_html(c, others_for_intro)
 
     return f'''<!DOCTYPE html>
 <html lang="ja">
@@ -422,6 +460,7 @@ def city_page(c, pref_cities):
 <p class="lead">{esc(name)}の粗大ごみ処分手数料を全{n_items}品目掲載しています。{f'手数料は品目により{range_txt}です。' if range_txt else ''}{f'申込みは{esc(lead_app_short)}。' if lead_app_short else ''}{ver_note}</p>
 <a class="cta" href="/?city={cid}">🔍 品目を検索して料金を合計する（無料アプリ）</a>
 {blog_link}
+{intro_html}
 <h2>{esc(name)}の粗大ごみ 申込み・出し方の基本情報</h2>
 {info_table}
 {pop_html}
