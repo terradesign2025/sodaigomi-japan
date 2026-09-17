@@ -6,3 +6,6 @@ Thumbs.db
 *.bak
 *.bak_*
 index.html.bak*
+
+# 内部管理ツール（公開サイトには含めない）
+_internal/
