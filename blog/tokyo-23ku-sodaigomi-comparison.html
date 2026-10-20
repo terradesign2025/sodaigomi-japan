@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://mreversegeocoder.gsi.go.jp https://zipcloud.ibsnet.co.jp https://api.web3forms.com https://script.google.com https://script.googleusercontent.com; base-uri 'self'; form-action 'self' https://api.web3forms.com; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.clarity.ms https://scripts.clarity.ms 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://mreversegeocoder.gsi.go.jp https://zipcloud.ibsnet.co.jp https://api.web3forms.com https://script.google.com https://script.googleusercontent.com https://*.clarity.ms https://c.bing.com https://www.google.com https://*.g.doubleclick.net; base-uri 'self'; form-action 'self' https://api.web3forms.com; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>東京23区の粗大ごみ料金を全区比較【2026年10月版】｜同じ品目でも区で倍以上違う｜粗大ごみナビ</title>
 <meta name="description" content="東京23区の粗大ごみ料金を代表8区の実データで比較。ソファ1人掛けは400〜900円、2人掛けは1,200〜2,300円と区によって大きな差があります。自転車・タンスの区別料金比較表と、なぜ差が生まれるかの解説つきです（2026年10月時点）。">
@@ -66,8 +66,7 @@
 </script>
 
 <!-- FAQ Schema -->
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
@@ -76,7 +75,7 @@
       "name": "東京23区の粗大ごみ料金はなぜ区によって違うのですか？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "各区がそれぞれ独立した財政で処理施設を運営しているためです。処理施設の建設・維持コスト、委託業者との契約内容、区の財政規模などが異なるため、同じ品目でも料金が変わります。また、品目の分類方法（サイズ区分の刻み方・スプリング入りの別区分など）も区ごとに独自設定されています。"
+        "text": "各区が独立した財政で処理施設を運営しているためです。施設コスト・委託料金・品目分類が区ごとに異なるため、同じ品目でも料金が変わります。また、サイズ区分の刻み方（人数・長辺・重量など）も区によって独自に設定されています。"
       }
     },
     {
@@ -84,7 +83,7 @@
       "name": "東京23区でソファを捨てる場合、最も安い区と高い区はどこですか？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "粗大ごみナビの収録データ（2026年5月時点）に基づくと、1人掛けソファは足立区が400円で最安水準です。2人掛け以上では足立区が1,200円（二人以上用）に対して、渋谷区・江東区は2,300円と約2倍の差があります。千代田区は1人掛け600円・2人以上用1,600円と独自の料金体系を持っています。"
+        "text": "粗大ごみナビの収録データ（2026年5月時点）に基づくと、1人掛けソファは足立区が400円で最安水準です。2人掛け以上では足立区が1,200円（二人以上用）に対して、渋谷区・江東区は2,300円と約2倍の差があります。千代田区は1人掛け600円・2人以上用1,600円という独自の料金体系です。"
       }
     },
     {
@@ -100,7 +99,7 @@
       "name": "タンスの粗大ごみ料金は区によってどう違いますか？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "タンスは区によってサイズ区分の刻み方が大きく異なります。千代田区は「箱物家具」として高さと幅の合計で5段階（300円〜2,200円）、新宿区は4段階（400円〜3,200円）に分類しています。渋谷区はタンス小型400円・大型3,200円と2段階で差が大きく、同じ高さ180cmクラスの大型タンスでも区によって料金が3〜4倍以上異なる場合があります（2026年5月時点）。"
+        "text": "タンスは区によってサイズ区分の刻み方が大きく異なります。千代田区は「箱物家具」として高さと幅の合計で5段階（300円〜2,200円）、新宿区は4段階（400円〜3,200円）に分類しています。渋谷区はタンス小型400円・大型3,200円の2段階で差が大きく、同じ大型タンスでも区によって料金が数倍異なる場合があります（2026年5月時点）。"
       }
     },
     {
@@ -108,12 +107,11 @@
       "name": "引越しで複数の粗大ごみを同時に処分する場合、申込みはどうすればいいですか？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "同じ自治体なら1回の申込みで複数品目をまとめて申し込めます（1回あたりの上限は区によって異なり、千代田区は10点まで）。引越しシーズン（3〜4月）や年末は収集日が先になりやすいため、退去日の1か月前には品目を洗い出して申込みを済ませておくことをおすすめします。粗大ごみナビでは市区と品目を選ぶだけで料金の合計を計算できます。"
+        "text": "同じ区なら1回の申込みで複数品目をまとめて申し込めます（1回あたりの上限は区によって異なり、千代田区は10点まで）。引越しシーズン（3〜4月）や年末は収集日が先になりやすいため、退去日の1か月前には品目を洗い出して申込みを済ませることをおすすめします。粗大ごみナビでは市区と品目を選ぶだけで料金の合計を計算できます。"
       }
     }
   ]
-}
-</script>
+}</script>
 
 <style>
 :root {
@@ -267,6 +265,7 @@ footer a:hover { text-decoration: underline; }
   .cta-box { padding: 24px 18px; }
 }
 </style>
+<script src="/analytics-events.js" defer></script>
 </head>
 <body>
 

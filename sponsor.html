@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://mreversegeocoder.gsi.go.jp https://zipcloud.ibsnet.co.jp https://api.web3forms.com https://script.google.com https://script.googleusercontent.com; base-uri 'self'; form-action 'self' https://api.web3forms.com; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.clarity.ms https://scripts.clarity.ms 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://mreversegeocoder.gsi.go.jp https://zipcloud.ibsnet.co.jp https://api.web3forms.com https://script.google.com https://script.googleusercontent.com https://*.clarity.ms https://c.bing.com https://www.google.com https://*.g.doubleclick.net; base-uri 'self'; form-action 'self' https://api.web3forms.com; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>地域掲載パートナー募集 | 粗大ごみ処分料金かんたん検索</title>
 <meta name="description" content="全国478市区・800品目以上対応の粗大ごみ検索アプリに、地域の専門業者様の情報を掲載しませんか。今すぐ処分したい高購買意欲ユーザーへ、地域ピンポイントで訴求できます。">
@@ -275,6 +275,7 @@ footer a{color:rgba(255,255,255,.7);}
   .merit-grid,.case-grid{gap:12px;}
 }
 </style>
+<script src="/analytics-events.js" defer></script>
 </head>
 <body>
 
@@ -799,6 +800,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   .then(function(res) { return res.json(); })
   .then(function(json) {
     if (json.success) {
+      if (window.sodaiTrack) sodaiTrack('generate_lead', { form_name: 'sponsor_inquiry', inquiry_type: (form.querySelector('[name=plan]')||{}).value || '' });
       form.style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
       showToast('送信が完了しました！');

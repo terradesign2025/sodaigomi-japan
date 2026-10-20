@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://mreversegeocoder.gsi.go.jp https://zipcloud.ibsnet.co.jp https://api.web3forms.com https://script.google.com https://script.googleusercontent.com; base-uri 'self'; form-action 'self' https://api.web3forms.com; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.clarity.ms https://scripts.clarity.ms 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://mreversegeocoder.gsi.go.jp https://zipcloud.ibsnet.co.jp https://api.web3forms.com https://script.google.com https://script.googleusercontent.com https://*.clarity.ms https://c.bing.com https://www.google.com https://*.g.doubleclick.net; base-uri 'self'; form-action 'self' https://api.web3forms.com; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>粗大ごみナビ｜処分料金・申込み方法を無料検索 全国478市区対応</title>
 <meta name="description" content="粗大ごみの処分料金・出し方・申込先・ウェブ予約リンクを市区町村ごとに無料で検索。全国478市区対応・815市区へ拡大中。800品目以上収録。東京・大阪・名古屋・横浜・札幌・福岡など主要都市をカバー。">
@@ -451,7 +451,36 @@ h1.sel-title{font-size:22px;font-weight:800;margin:0 0 4px;line-height:1.3}
 .site-footer-links a{font-size:11px;color:var(--t2);text-decoration:none}
 .site-footer-links a:hover{color:var(--p);text-decoration:underline}
 .site-footer-copy{font-size:10px;color:var(--t3)}
+
+/* TOP改善: 検索ボックス拡大＋クイックリンク */
+.if-card .sinput{font-size:17px;padding-top:15px;padding-bottom:15px}
+.ql-sec{margin:12px 0 4px}
+.ql-lbl{font-size:12px;font-weight:700;color:var(--t2);margin:10px 0 6px}
+.ql-row{display:flex;flex-wrap:wrap;gap:6px}
+.ql-row a,.ql-row button{font-size:13px;padding:7px 13px;border-radius:20px;border:1px solid var(--b);background:var(--card);color:var(--t1);text-decoration:none;cursor:pointer;font-family:inherit}
+.ql-row a:hover,.ql-row button:hover{border-color:var(--p);color:var(--pd)}
+
+/* トップへ戻るボタン（市区表示中のみ） */
+.hd-top{display:none;align-items:center;gap:4px;height:34px;padding:0 12px;border-radius:17px;border:1.5px solid var(--p);background:#fff;color:var(--pd);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
+.hd-top:hover{background:var(--pl)}
+.app:has(#scSel[style*="none"]) .hd-top{display:inline-flex}
+
+/* 特集カード */
+.ft-hd{font-size:15px;font-weight:800;color:var(--t1);margin:18px 0 8px}
+.ft-card{background:var(--card);border:1px solid var(--b);border-radius:14px;padding:14px 14px 6px;margin-bottom:10px;box-shadow:var(--sh)}
+.ft-h{display:flex;gap:10px;align-items:center;margin-bottom:6px}
+.ft-ico{font-size:24px}
+.ft-t{font-size:14px;font-weight:800;color:var(--t1)}
+.ft-s{font-size:11px;color:var(--t3);line-height:1.5}
+.ft-list a{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:11px 2px;border-top:1px solid var(--b);color:var(--t1);text-decoration:none;font-size:13px;line-height:1.4}
+.ft-list a i{font-style:normal;color:var(--t3);font-size:16px}
+.ft-list a:hover{color:var(--pd)}
+.ft-more{display:block;text-align:center;font-size:13px;font-weight:700;color:var(--pd);padding:10px;text-decoration:none}
+/* ページ先頭へ戻るボタン */
+.to-top{position:fixed;right:16px;bottom:128px;z-index:88;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--p);background:#fff;color:var(--pd);font-size:20px;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.15);cursor:pointer;display:none;align-items:center;justify-content:center}
+.to-top.show{display:flex}
 </style>
+<script src="/analytics-events.js" defer></script>
 </head>
 <body>
 <div class="app">
@@ -465,6 +494,7 @@ h1.sel-title{font-size:22px;font-weight:800;margin:0 0 4px;line-height:1.3}
         </div>
       </div>
       <div class="hd-right">
+        <button class="hd-top" id="hdTop" onclick="showSel()" title="トップに戻る">← トップへ</button>
         <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
         <button class="hd-avatar" onclick="showSel()" title="地域変更">👤</button>
       </div>
@@ -482,18 +512,6 @@ h1.sel-title{font-size:22px;font-weight:800;margin:0 0 4px;line-height:1.3}
       </div>
     </div>
     <div class="sel-body">
-      <!-- Step2: ホーム用スポンサー枠（TOP） -->
-      <div id="spHero"></div>
-      <!-- スポンサー募集バナー -->
-      <div id="spRecruitBanner" style="display:none">
-        <div class="sp-recruit-banner">
-          <div style="flex:1">
-            <div class="sp-recruit-title">🎉 今だけ特別価格！スポンサー募集中</div>
-            <div class="sp-recruit-sub">サービス開始記念・先着割引価格でご掲載いただけます</div>
-          </div>
-          <button class="sp-recruit-btn" onclick="openSponsorInfo()">詳しくはこちら →</button>
-        </div>
-      </div>
       <!-- Step1: 品目から先に検索 -->
       <div class="if-card">
         <div class="if-title">🔍 <span id="ifTitle">何を捨てたいですか？</span></div>
@@ -505,6 +523,14 @@ h1.sel-title{font-size:22px;font-weight:800;margin:0 0 4px;line-height:1.3}
         </div>
         <div id="ifResults"></div>
         <div id="ifSelected"></div>
+      </div>
+      <div class="ql-sec" id="quickLinks">
+        <div class="ql-lbl">人気の品目</div>
+        <div class="ql-row"><button type="button" onclick="quickItem('テレビ')">テレビ</button><button type="button" onclick="quickItem('洗濯機')">洗濯機</button><button type="button" onclick="quickItem('冷蔵庫')">冷蔵庫</button><button type="button" onclick="quickItem('エアコン')">エアコン</button><button type="button" onclick="quickItem('ソファー')">ソファー</button><button type="button" onclick="quickItem('ベッド')">ベッド</button><button type="button" onclick="quickItem('布団')">布団</button><button type="button" onclick="quickItem('自転車')">自転車</button></div>
+        <div class="ql-lbl">人気の市区</div>
+        <div class="ql-row"><a href="/city/14100.html">横浜市</a><a href="/city/27100.html">大阪市</a><a href="/city/23100.html">名古屋市</a><a href="/city/28100.html">神戸市</a><a href="/city/26100.html">京都市</a><a href="/city/01100.html">札幌市</a><a href="/city/40130.html">福岡市</a><a href="/city/11100.html">さいたま市</a><a href="/city/13112.html">世田谷区</a><a href="/city/13201.html">八王子市</a></div>
+        <div class="ql-lbl">品目別ガイド</div>
+        <div class="ql-row"><a href="/blog/tv-disposal-guide.html">テレビの処分</a><a href="/blog/washing-machine-disposal-guide.html">洗濯機の処分</a><a href="/blog/refrigerator-disposal-guide.html">冷蔵庫の処分</a><a href="/blog/">ガイド一覧へ</a></div>
       </div>
       <div class="if-divider" id="ifDivider">または地域から選ぶ</div>
       <div style="display:flex;gap:8px;align-items:center;margin-bottom:4px;">
@@ -530,6 +556,25 @@ h1.sel-title{font-size:22px;font-weight:800;margin:0 0 4px;line-height:1.3}
         <button class="back-btn" onclick="showPref()">← <span id="lblBackPref">都道府県選択に戻る</span></button>
         <div class="sec-label" id="cityLabel"></div>
         <div class="city-list" id="cityList"></div>
+      </div>
+      <!-- Step2: ホーム用スポンサー枠（TOP） -->
+      <div id="spHero"></div>
+      <!-- スポンサー募集バナー -->
+      <div id="spRecruitBanner" style="display:none">
+        <div class="sp-recruit-banner">
+          <div style="flex:1">
+            <div class="sp-recruit-title">🎉 今だけ特別価格！スポンサー募集中</div>
+            <div class="sp-recruit-sub">サービス開始記念・先着割引価格でご掲載いただけます</div>
+          </div>
+          <button class="sp-recruit-btn" onclick="openSponsorInfo()">詳しくはこちら →</button>
+        </div>
+      </div>
+      <div id="featureSec">
+        <div class="ft-hd">特集から探す</div>
+        <div class="ft-card"><div class="ft-h"><span class="ft-ico">⚠️</span><div><div class="ft-t">捨てにくいもの・出せないもの特集</div><div class="ft-s">エアコン・冷蔵庫など、粗大ごみに出せない品目の正しい行き先</div></div></div><div class="ft-list"><a href="/blog/aircon-disposal-guide.html"><span>エアコンの処分方法と無料回収の注意点</span><i>›</i></a><a href="/blog/refrigerator-disposal-guide.html"><span>冷蔵庫は粗大ごみに出せません</span><i>›</i></a><a href="/blog/home-appliance-4items-recycle-summary-guide.html"><span>家電4品目の処分方法まとめ</span><i>›</i></a><a href="/blog/sodaigomi-non-collectible-items.html"><span>粗大ごみに出せないもの一覧</span><i>›</i></a><a href="/blog/battery-disposal-guide.html"><span>リチウム電池・モバイルバッテリー</span><i>›</i></a><a href="/blog/fire-extinguisher-municipal-no-collect-consult-guide.html"><span>消火器の行き先と相談先</span><i>›</i></a><a href="/blog/sodaigomi-cannot-collect-sticker-guide.html"><span>「収集できません」シールが貼られたら</span><i>›</i></a></div></div>
+        <div class="ft-card"><div class="ft-h"><span class="ft-ico">📦</span><div><div class="ft-t">引っ越し前の粗大ごみ</div><div class="ft-s">日程の組み方と、間に合わないときの対処</div></div></div><div class="ft-list"><a href="/blog/moving-sodaigomi-schedule-guide.html"><span>申込みから収集まで何日かかる？</span><i>›</i></a><a href="/blog/moving-bulk-disposal-steps-guide.html"><span>引越しの粗大ごみを一括処分する手順</span><i>›</i></a><a href="/blog/moving-deadline-emergency-guide.html"><span>退去日に間に合わないときの3つの対処法</span><i>›</i></a><a href="/blog/moving-company-disposal-service-guide.html"><span>引越し業者は引き取ってくれる？</span><i>›</i></a></div></div>
+        <div class="ft-card"><div class="ft-h"><span class="ft-ico">♻️</span><div><div class="ft-t">業者・リサイクル・買取の選び方</div><div class="ft-s">自治体と業者の比較、悪質業者の見分け方、売るか捨てるか</div></div></div><div class="ft-list"><a href="/blog/municipal-vs-collector-comparison-guide.html"><span>自治体と業者、どちらが得か</span><i>›</i></a><a href="/blog/kaitori-vs-sodaigomi-breakeven-guide.html"><span>買取と粗大ごみ、どちらが得か</span><i>›</i></a><a href="/blog/sell-or-dispose-decision-guide.html"><span>売るか捨てるか迷ったときの判断手順</span><i>›</i></a><a href="/blog/illegal-collector-warning-guide.html"><span>悪徳不用品回収業者の見分け方</span><i>›</i></a><a href="/blog/municipal-permit-collector-list-search-guide.html"><span>自治体の許可業者一覧の探し方</span><i>›</i></a><a href="/blog/collector-overcharge-response-guide.html"><span>高額請求に遭ったときの対処</span><i>›</i></a></div></div>
+        <a class="ft-more" href="/blog/">お役立ち記事をすべて見る ›</a>
       </div>
       <!-- 全国リユース・買取バナー -->
       <div id="nationalBannerSec"></div>
@@ -691,5 +736,12 @@ h1.sel-title{font-size:22px;font-weight:800;margin:0 0 4px;line-height:1.3}
 
 <script src="app.js" defer></script>
 
+<script>
+function quickItem(q){var i=document.getElementById('ifInput');if(!i)return;i.value=q;i.focus();if(typeof searchMasterItem==='function')searchMasterItem(q);if(window.sodaiTrack)sodaiTrack('quick_item_click',{item:q});}
+</script>
+<button type="button" class="to-top" id="toTop" aria-label="ページの先頭へ" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+(function(){var b=document.getElementById('toTop');function f(){b.classList.toggle('show',window.scrollY>500)}window.addEventListener('scroll',f,{passive:true});f();})();
+</script>
 </body>
 </html>
